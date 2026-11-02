@@ -1,0 +1,857 @@
+-- [ LeakD ] Ѕourсе Соԁе Deоbfusсаtеԁ Ву LеаkD
+-- [ Source ] https://discord.gg/hkQAMzyGum
+
+local marketplaceService = game:GetService("MarketplaceService")
+local players = game:GetService("Players")
+local rbxAnalyticsService = game:GetService("RbxAnalyticsService")
+local coreGui = game:GetService("CoreGui")
+local httpService = game:GetService("HttpService")
+local tweenService = game:GetService("TweenService")
+local userInputService = game:GetService("UserInputService")
+
+if not game:IsLoaded() then
+  tick()
+end
+
+local v1 = {
+  RENDER = {
+    Name = "Server 1 (Cloudflare Edge)",
+    Url = "https://scriptauth.unorazmer.workers.dev",
+    IsDefault = true,
+  },
+  SUPABASE = {
+    Name = "Server 2 (Supabase RU)",
+    Url = "https://pijzgwkoowrmwligzily.supabase.co/functions/v1/hyper-handler",
+    IsDefault = false,
+  },
+}
+
+local v2 = {
+  TG_LINK = "https://t.me/hubhubhubhubhubhubhub_bot",
+  WORKINK_GATEWAY = "https://scriptauth.unorazmer.workers.dev/workink/start?userId=",
+  FOLDER = "HubHubHub_Configs",
+  FILE = "KeyAuth_Session.json",
+  HOURS = 24,
+  MASTER_KEY = "Ilovebananasfuckthatsreallycoolthingandmaybethebestthingever",
+}
+
+local v3 = {
+  Players = players,
+  HttpService = httpService,
+  TweenService = tweenService,
+  UserInputService = userInputService,
+  RbxAnalyticsService = rbxAnalyticsService,
+  MarketplaceService = marketplaceService,
+}
+
+local localPlayer = v3.Players.LocalPlayer
+
+while not localPlayer do
+  task.wait()
+  localPlayer = v3.Players.LocalPlayer
+end
+
+local function getInstance(p1, p2, list)
+  local instance = Instance.new(p1)
+
+  for key, value in pairs(p2 or {}) do
+    instance[key] = value
+  end
+
+  if list then
+    for _, value2 in ipairs(list) do
+      value2.Parent = instance
+    end
+  end
+
+  return instance
+end
+
+local function f1()
+  local v4 = tostring(game.GameId or 0)
+
+  if v4 == "0" or v4 == "" then
+    pcall(function()
+      local getProductInfo = v3.MarketplaceService:GetProductInfo(game.PlaceId)
+
+      if getProductInfo and getProductInfo.UniverseId then
+        v4 = tostring(getProductInfo.UniverseId)
+      end
+    end)
+  end
+
+  return v4
+end
+
+local function f2()
+  local getClientId = "UNKNOWN"
+
+  pcall(function()
+    if gethwid then
+      getClientId = gethwid()
+    elseif v3.RbxAnalyticsService and v3.RbxAnalyticsService.GetClientId then
+      getClientId = v3.RbxAnalyticsService:GetClientId()
+    end
+  end)
+
+  return tostring(getClientId)
+end
+
+local function f3(tgLINK)
+  pcall(function()
+    if setclipboard then
+      setclipboard(tgLINK)
+    elseif toclipboard then
+      toclipboard(tgLINK)
+    elseif Clipboard and Clipboard.set then
+      Clipboard.set(tgLINK)
+    end
+  end)
+end
+
+local function f4(savedKey)
+  if tostring(savedKey or ""):sub(1, 3):upper() == "TG-" then
+    return 21600
+  end
+
+  return 86400
+end
+
+local function f5(p3)
+  if type(p3) ~= "table" then
+    return nil
+  end
+
+  local body = p3.Body or p3.body
+
+  if body == nil or body == "" then
+    return nil
+  end
+
+  if type(body) == "table" then
+    return body
+  end
+
+  local ok, result = pcall(function() return v3.HttpService:JSONDecode(body) end)
+
+  if ok and type(result) == "table" then
+    return result
+  end
+
+  return nil
+end
+
+local function f6(p4, p5)
+  local v5 = p5
+  v5 = v5 or p4
+
+  local flag = false
+  local position, position2
+
+  p4.InputBegan:Connect(function(input)
+    if input.UserInputType == Enum.UserInputType.MouseButton1
+      or input.UserInputType == Enum.UserInputType.Touch then
+      flag = true
+      position = input.Position
+      position2 = v5.Position
+    end
+  end)
+
+  v3.UserInputService.InputEnded:Connect(function(input2)
+    if input2.UserInputType == Enum.UserInputType.MouseButton1
+      or input2.UserInputType == Enum.UserInputType.Touch then
+      flag = false
+    end
+  end)
+
+  local v6
+
+  p4.InputChanged:Connect(function(input3)
+    if input3.UserInputType == Enum.UserInputType.MouseMovement
+      or input3.UserInputType == Enum.UserInputType.Touch then
+      v6 = input3
+    end
+  end)
+
+  v3.UserInputService.InputChanged:Connect(function(input4)
+    if flag and input4 == v6 then
+      local v7 = input4.Position - position
+
+      v5.Position = UDim2.new(
+        position2.X.Scale, position2.X.Offset + v7.X, position2.Y.Scale,
+        position2.Y.Offset + v7.Y
+      )
+    end
+  end)
+end
+
+local function f7(p6, userId, authNamespace, p7)
+  local rounded = math.floor(os.time() / 60)
+
+  local text = tostring(p6) .. "::" .. tostring(userId) .. "::" .. tostring(rounded + (p7 or 0))
+    .. "::" .. tostring(authNamespace)
+
+  local v8 = 5381
+
+  for i = 1, #text do
+    v8 = (v8 * 33 + text:byte(i)) % 2147483647
+  end
+
+  return tostring(v8)
+end
+
+local function f8()
+  local v9, v10
+
+  pcall(function()
+    if identifyexecutor then
+      local v11
+      v9, v11 = identifyexecutor()
+      v10 = v11
+    elseif getexecutorname then
+      local v12
+      v9, v12 = getexecutorname()
+      v10 = v12
+    elseif getexecutor then
+      v9 = getexecutor
+    end
+  end)
+
+  if not v9 or v9 == "" or v9 == "Unknown" then
+    pcall(function()
+      local v13 = getgenv and getgenv() or _G or {}
+
+      if syn and syn.request then
+        v9 = "Synapse Z"
+      elseif delta or v13.delta then
+        v9 = "Delta"
+      elseif fluxus or v13.fluxus then
+        v9 = "Fluxus"
+      elseif codex or v13.codex then
+        v9 = "Codex"
+      elseif arceus or v13.arceus then
+        v9 = "Arceus X"
+      elseif hydrogen or v13.hydrogen then
+        v9 = "Hydrogen"
+      elseif v13.WAVE_LOADED or WAVE_LOADED then
+        v9 = "Wave"
+      elseif v13.SOLARA_LOADED or SOLARA_LOADED then
+        v9 = "Solara"
+      elseif v13.ELECTRON_LOADED or ELECTRON_LOADED then
+        v9 = "Electron"
+      elseif v13.CELERY_LOADED or CELERY_LOADED then
+        v9 = "Celery"
+      elseif KRNL_LOADED then
+        v9 = "Krnl"
+      elseif is_sirhurt_closure then
+        v9 = "SirHurt"
+      elseif Cryptic then
+        v9 = "Cryptic"
+      elseif Cubix then
+        v9 = "Cubix"
+      elseif VegaX then
+        v9 = "Vega X"
+      else
+        v9 = "Custom / Mobile"
+      end
+    end)
+  end
+
+  local text2 = tostring(v9 or "Unknown Executor")
+
+  if v10 and tostring(v10) ~= "" and not text2:find(tostring(v10)) then
+    text2 = text2 .. " " .. tostring(v10)
+  end
+
+  return text2
+end
+
+local function makeFolder()
+  local ok2, result2 = pcall(function() return gethui and gethui() end)
+
+  if ok2 and result2 then
+    return result2
+  end
+
+  local ok3, result3 = pcall(function() return coreGui end)
+
+  if ok3 and result3 and pcall(function() Instance.new("Folder", result3):Destroy() end) then
+    return result3
+  end
+
+  return localPlayer:WaitForChild("PlayerGui", 10) or localPlayer:FindFirstChild("PlayerGui")
+end
+
+local executor = f8()
+
+local function f9(text3)
+  if not text3 then
+    return ""
+  end
+
+  return tostring(text3):gsub("[%s\r\n\t]", "")
+end
+
+local function f10()
+  local clipboard = ""
+
+  pcall(function()
+    if getclipboard then
+      clipboard = getclipboard()
+    elseif Clipboard and Clipboard.get then
+      clipboard = Clipboard.get()
+    end
+  end)
+
+  return tostring(clipboard or "")
+end
+
+local function f11(p8, parent)
+  return getInstance("UICorner", { CornerRadius = UDim.new(0, p8 or 8), Parent = parent })
+end
+
+local function f12(color, p9, parent2)
+  return getInstance("UIStroke", {
+    Color = color or Color3.fromRGB(55, 55, 65),
+    Thickness = p9 or 1,
+    Parent = parent2,
+  })
+end
+
+local f13
+
+local function f14(p10, p11, url)
+  if not f13() then
+    return
+  end
+
+  v3.HttpService:JSONEncode({
+    type = "telemetry",
+    userId = tostring(localPlayer.UserId),
+    executor = executor,
+    gameId = f1(),
+    loadTime = tostring(p10),
+    status = p11 or "success",
+  })
+
+  task.spawn(function() end)
+end
+
+function f13()
+  return syn and syn.request or request or http_request or http and http.request
+end
+
+local flag2 = false
+local f15
+
+local function f16(savedKey2, data, p12, serverUsed, p13)
+  task.spawn(function()
+    local code = data and data.code
+
+    local function f17()
+      if p12 and not flag2 then
+        flag2 = true
+        f14(math.floor((tick() - p12) * 10) / 10, "failed", serverUsed or v1.RENDER.Url)
+      end
+    end
+
+    if not code or code == "" then
+      return f17()
+    end
+
+    local v14, v15 = loadstring((code:gsub("^\239\187\191", ""):gsub("^%s+", "")))
+
+    if not v14 then
+      return f17()
+    end
+
+    if p12 and not flag2 then
+      flag2 = true
+      f14(math.floor((tick() - p12) * 10) / 10, "success", serverUsed or v1.RENDER.Url)
+    end
+
+    local authNamespace2 = data.authNamespace or "DOORS_SECURE_AUTH"
+
+    local v16 = {
+      Token = f7(savedKey2, localPlayer.UserId, authNamespace2, 0),
+      UserId = localPlayer.UserId,
+      Key = savedKey2,
+    }
+
+    getgenv()._HUBHUBHUB_AUTH_DISPATCH = function()
+      getgenv()._HUBHUBHUB_AUTH_DISPATCH = nil
+      return v16
+    end
+
+    getgenv()._DOORS_AUTH_DISPATCH = function()
+      getgenv()._DOORS_AUTH_DISPATCH = nil
+      return v16
+    end
+
+    local v17
+
+    if not data.isMaster and savedKey2 ~= v2.MASTER_KEY then
+      local v18 = tostring(savedKey2):sub(1, 3):upper() == "TG-" and 21600 or 86400
+      v17 = tonumber(data.ttlSeconds) or v18
+
+      task.spawn(function()
+        task.wait(math.clamp(v17, 5, 86400))
+
+        if f15 then
+          pcall(f15)
+        end
+      end)
+    end
+
+    task.spawn(v14)
+  end)
+end
+
+local function f18(savedKey3, p14)
+  local v19 = f13()
+
+  if not v19 then
+    return nil
+  end
+
+  local jsonEncode = v3.HttpService:JSONEncode({
+    key = tostring(savedKey3),
+    userId = tostring(localPlayer.UserId),
+    hwid = f2(),
+    executor = executor,
+    gameId = f1(),
+    placeId = tostring(game.PlaceId or 0),
+  })
+
+  local render = v1[p14 or "RENDER"] or v1.RENDER
+  local supabase = render == v1.RENDER and v1.SUPABASE or v1.RENDER
+  local url2 = render.Url
+  local url3 = supabase.Url
+  local v20 = tostring(os.time()) .. "_" .. tostring(math.random(1000, 9999))
+  local v21
+
+-- https://discord.gg/hkQAMzyGum
+  for _, value3 in ipairs({ url2, url3 }) do
+    local url4 = value3 .. (value3:find("%?") and "&" or "?") .. "nocache=" .. v20
+    local v22
+
+    if pcall(function()
+      v22 = v19({
+        Url = url4,
+        Method = "POST",
+        Headers = {
+          ["Content-Type"] = "application/json",
+          ["X-Auth-Security"] = "DoorsHubSecureClient-v1",
+          ["Cache-Control"] = "no-cache, no-store, must-revalidate",
+          Pragma = "no-cache",
+        },
+        Body = jsonEncode,
+        Timeout = 20,
+      })
+    end) and type(v22) == "table" then
+      local statusCode = v22.StatusCode or v22.status_code or v22.Status
+
+      if statusCode then
+        local v23 = statusCode == 200
+        local v24 = { statusCode = statusCode, data = f5(v22), serverUsed = value3 }
+
+        if v23 or statusCode == 403 or statusCode == 429 or statusCode == 404 then
+          return v24
+        end
+
+        v21 = v24
+      end
+    end
+  end
+
+  return v21
+end
+
+function f15()
+  if makefolder and isfolder and not isfolder(v2.FOLDER) then
+    pcall(makefolder, v2.FOLDER)
+  end
+
+  local v25 = v2.FOLDER .. "/" .. v2.FILE
+  local v26 = "RENDER"
+
+  task.spawn(function()
+    local folder = makeFolder()
+
+    if folder and folder:FindFirstChild("HubKey_BW") then
+      folder.HubKey_BW:Destroy()
+    end
+
+    if isfile and isfile(v25) and readfile then
+      local ok4, result4 = pcall(function() return v3.HttpService:JSONDecode(readfile(v25)) end)
+
+      if ok4 and type(result4) == "table" and result4.savedKey then
+        local v27 = f4(result4.savedKey)
+        local now = os.time()
+        local flag3 = false
+
+        if result4.savedKey == v2.MASTER_KEY then
+          flag3 = true
+        elseif result4.expiresAtUnix and now >= tonumber(result4.expiresAtUnix) then
+          flag3 = true
+        elseif not result4.timestamp or now - tonumber(result4.timestamp) >= v27 then
+          flag3 = true
+        end
+
+        if flag3 then
+          pcall(delfile, v25)
+        else
+          local v28 = tick()
+          local v29 = f18(result4.savedKey, v26)
+
+          if v29 and v29.statusCode == 200 and v29.data and v29.data.ok and v29.data.code
+            and v29.data.code ~= "" then
+            f16(result4.savedKey, v29.data, v28, v29.serverUsed, v25)
+            return
+          end
+
+          pcall(delfile, v25)
+        end
+      else
+        pcall(delfile, v25)
+      end
+    end
+
+    local instance2 = getInstance("ScreenGui", {
+      Name = "HubKey_BW",
+      Parent = makeFolder(),
+      ResetOnSpawn = false,
+    })
+
+    local parent3 = getInstance("Frame", {
+      Size = UDim2.new(0, 390, 0, 320),
+      Position = UDim2.new(0.5, 0, 0.5, 0),
+      AnchorPoint = Vector2.new(0.5, 0.5),
+      BackgroundColor3 = Color3.fromRGB(16, 16, 20),
+      Parent = instance2,
+    }, {
+      f11(12), f12(Color3.fromRGB(50, 50, 65), 1.5),
+      getInstance("TextLabel", {
+        Size = UDim2.new(1, 0, 0, 38),
+        BackgroundTransparency = 1,
+        Text = "HUB SYSTEM — KEY",
+        TextColor3 = Color3.fromRGB(255, 255, 255),
+        Font = Enum.Font.GothamBlack,
+        TextSize = 15,
+      }),
+      getInstance("TextButton", {
+        Name = "CloseKeyBtn",
+        Size = UDim2.new(0, 26, 0, 26),
+        Position = UDim2.new(1, -34, 0, 6),
+        BackgroundColor3 = Color3.fromRGB(24, 24, 30),
+        Text = "X",
+        TextColor3 = Color3.fromRGB(200, 200, 210),
+        Font = Enum.Font.GothamBold,
+        TextSize = 12,
+      }, { f11(6), f12(Color3.fromRGB(45, 45, 55)) }),
+    })
+
+    parent3.CloseKeyBtn.MouseButton1Click:Connect(function() instance2:Destroy() end)
+
+    f6(parent3)
+    local instance3 = getInstance("UIScale", { Parent = parent3 })
+
+    local function f19()
+      local currentCamera = workspace.CurrentCamera
+
+      if not currentCamera then
+        return
+      end
+
+      local viewportSize = currentCamera.ViewportSize
+      local clamped = 1
+
+      if viewportSize.X < 410 or viewportSize.Y < 340 then
+        local x = viewportSize.X
+        local y = viewportSize.Y
+        clamped = math.clamp(math.min(x / 410, y / 340) * 0.94, 0.55, 1)
+      end
+
+      instance3.Scale = clamped
+    end
+
+    f19()
+
+    local currentCamera2 = workspace.CurrentCamera
+
+    if currentCamera2 then
+      currentCamera2:GetPropertyChangedSignal("ViewportSize"):Connect(f19)
+    end
+
+    local parent4 = getInstance("Frame", {
+      Size = UDim2.new(0.88, 0, 0, 28),
+      Position = UDim2.new(0.06, 0, 0.13, 0),
+      BackgroundTransparency = 1,
+      Parent = parent3,
+    }, {
+      getInstance("UIListLayout", {
+        FillDirection = Enum.FillDirection.Horizontal,
+        Padding = UDim.new(0.03, 0),
+        SortOrder = Enum.SortOrder.LayoutOrder,
+        HorizontalAlignment = Enum.HorizontalAlignment.Center,
+      }),
+    })
+
+    local instance4 = getInstance("TextButton", {
+      Size = UDim2.new(0.48, 0, 1, 0),
+      BackgroundColor3 = Color3.fromRGB(240, 240, 245),
+      Text = "Server 1",
+      TextColor3 = Color3.fromRGB(16, 16, 20),
+      Font = Enum.Font.GothamBold,
+      TextSize = 10,
+      Parent = parent4,
+    }, { f11(6), f12(Color3.fromRGB(60, 60, 75), 1) })
+
+    local instance5 = getInstance("TextButton", {
+      Size = UDim2.new(0.48, 0, 1, 0),
+      BackgroundColor3 = Color3.fromRGB(24, 24, 30),
+      Text = "Server 2 (Rec. for RU)",
+      TextColor3 = Color3.fromRGB(160, 160, 175),
+      Font = Enum.Font.GothamBold,
+      TextSize = 10,
+      Parent = parent4,
+    }, { f11(6), f12(Color3.fromRGB(45, 45, 55), 1) })
+
+    local function f20()
+      local v30 = v26 == "RENDER"
+
+      instance4.BackgroundColor3 = v30 and Color3.fromRGB(240, 240, 245)
+        or Color3.fromRGB(24, 24, 30)
+
+      instance4.TextColor3 = v30 and Color3.fromRGB(16, 16, 20) or Color3.fromRGB(160, 160, 175)
+
+      instance5.BackgroundColor3 = not v30 and Color3.fromRGB(240, 240, 245)
+        or Color3.fromRGB(24, 24, 30)
+
+      instance5.TextColor3 = not v30 and Color3.fromRGB(16, 16, 20)
+        or Color3.fromRGB(160, 160, 175)
+    end
+
+    instance4.MouseButton1Click:Connect(function()
+      v26 = "RENDER"
+      f20()
+    end)
+
+    instance5.MouseButton1Click:Connect(function()
+      v26 = "SUPABASE"
+      f20()
+    end)
+
+    local instance6 = getInstance("TextBox", {
+      Size = UDim2.new(0.88, 0, 0, 36),
+      Position = UDim2.new(0.06, 0, 0.25, 0),
+      BackgroundColor3 = Color3.fromRGB(24, 24, 30),
+      Text = "",
+      PlaceholderText = "Enter Key...",
+      TextColor3 = Color3.fromRGB(255, 255, 255),
+      PlaceholderColor3 = Color3.fromRGB(120, 120, 135),
+      Font = Enum.Font.GothamBold,
+      TextSize = 13,
+      ClearTextOnFocus = false,
+      Parent = parent3,
+    }, { f11(8), f12(Color3.fromRGB(45, 45, 55)) })
+
+    local instance7 = getInstance("Frame", {
+      Size = UDim2.new(0.88, 0, 0, 34),
+      Position = UDim2.new(0.06, 0, 0.42, 0),
+      BackgroundTransparency = 1,
+      Parent = parent3,
+    }, {
+      getInstance("UIListLayout", {
+        FillDirection = Enum.FillDirection.Horizontal,
+        Padding = UDim.new(0.04, 0),
+        SortOrder = Enum.SortOrder.LayoutOrder,
+        HorizontalAlignment = Enum.HorizontalAlignment.Center,
+      }),
+    })
+
+    local instance8 = getInstance("Frame", {
+      Size = UDim2.new(0.88, 0, 0, 34),
+      Position = UDim2.new(0.06, 0, 0.58, 0),
+      BackgroundTransparency = 1,
+      Parent = parent3,
+    }, {
+      getInstance("UIListLayout", {
+        FillDirection = Enum.FillDirection.Horizontal,
+        Padding = UDim.new(0.04, 0),
+        SortOrder = Enum.SortOrder.LayoutOrder,
+        HorizontalAlignment = Enum.HorizontalAlignment.Center,
+      }),
+    })
+
+    getInstance("TextLabel", {
+      Size = UDim2.new(1, -20, 0, 16),
+      Position = UDim2.new(0, 10, 1, -22),
+      BackgroundTransparency = 1,
+      Text = "⚡ Инжектор: " .. executor,
+      TextColor3 = Color3.fromRGB(110, 110, 130),
+      Font = Enum.Font.GothamMedium,
+      TextSize = 10,
+      TextXAlignment = Enum.TextXAlignment.Center,
+      Parent = parent3,
+    })
+
+    local function f21(parent5, text4, p15, p16, p17)
+      local instance9 = getInstance("TextButton", {
+        Size = p17 or UDim2.new(0.48, 0, 1, 0),
+        BackgroundColor3 = p16 and Color3.fromRGB(240, 240, 245) or Color3.fromRGB(28, 28, 36),
+        Text = text4,
+        TextColor3 = p16 and Color3.fromRGB(16, 16, 20) or Color3.fromRGB(255, 255, 255),
+        Font = Enum.Font.GothamBold,
+        TextSize = 11,
+        Parent = parent5,
+      }, { f11(8), f12(Color3.fromRGB(50, 50, 65), 1) })
+
+      instance9.MouseButton1Click:Connect(p15)
+      return instance9
+    end
+
+    f21(instance7, "Get TG (6ч)", function()
+      f3(v2.TG_LINK)
+      instance6.PlaceholderText = "TG link copied!"
+      task.wait(1.5)
+      instance6.PlaceholderText = "Enter Key..."
+    end, false)
+
+    f21(instance7, "Work.ink (24ч)", function()
+      f3(v2.WORKINK_GATEWAY .. tostring(localPlayer.UserId))
+      instance6.PlaceholderText = "Work.ink link copied!"
+      task.wait(1.5)
+      instance6.PlaceholderText = "Enter Key..."
+    end, false)
+
+    f21(instance8, "Paste", function()
+      local v31 = f10()
+
+      if v31 ~= "" then
+        instance6.Text = f9(v31)
+      end
+    end, false)
+
+    local flag4 = false
+    local v32 = 0
+    local v33 = 0
+    local v34 = 0
+
+    f21(instance8, "Activate", function()
+      local v35 = tick()
+
+      if v35 < v33 then
+        instance6.PlaceholderText = "Подождите " .. math.ceil(v33 - v35)
+          .. " сек..."
+
+        return
+      end
+
+      if flag4 then
+        return
+      end
+
+      local v36 = f9(instance6.Text)
+
+      if v36 == "" then
+        return
+      end
+
+      if v35 - v34 > 12 then
+        v32 = 0
+      end
+
+      v34 = v35
+      v32 = v32 + 1
+
+      if v32 >= 3 then
+        v33 = v35 + 10
+        v32 = 0
+        flag4 = true
+        instance6.Text = ""
+
+        task.spawn(function()
+          for j = 10, 1, -1 do
+            instance6.PlaceholderText = "Спам! Ждите " .. j .. " сек..."
+            task.wait(1)
+          end
+
+          instance6.PlaceholderText = "Enter Key..."
+          flag4 = false
+        end)
+
+        return
+      end
+
+      flag4 = true
+
+      instance6.PlaceholderText = "Checking (max 20s)..."
+      instance6.Text = ""
+
+      task.spawn(function()
+        local v37 = tick()
+        local v38 = f18(v36, v26)
+        local v39 = math.floor((tick() - v37) * 10) / 10
+        local statusCode2 = v38 and v38.statusCode
+        local data2 = v38 and v38.data
+
+        if statusCode2 == 200 and data2 and data2.ok and data2.code then
+          if writefile and not (data2.isMaster == true or v36 == v2.MASTER_KEY) then
+            local v40 = tonumber(data2.ttlSeconds) or f4(v36)
+
+            pcall(writefile, v25, v3.HttpService:JSONEncode({
+              timestamp = os.time(),
+              expiresAtUnix = os.time() + v40,
+              savedKey = v36,
+            }))
+          end
+
+          instance2:Destroy()
+          f16(v36, data2, v37, v38.serverUsed, v25)
+        elseif statusCode2 == 429 then
+          instance6.PlaceholderText = "Слишком часто! Ждите..."
+          task.wait(2)
+
+          if tick() >= v33 then
+            instance6.PlaceholderText = "Enter Key..."
+          end
+        elseif statusCode2 == 403 then
+          if delfile then
+            pcall(delfile, v25)
+          end
+
+          instance6.PlaceholderText = data2 and data2.message or "Invalid or Expired Key!"
+          task.wait(1.5)
+
+          if tick() >= v33 then
+            instance6.PlaceholderText = "Enter Key..."
+          end
+        elseif statusCode2 == 404 then
+          instance6.PlaceholderText = "Для этой игры скрипта нет"
+          task.wait(2)
+
+          if tick() >= v33 then
+            instance6.PlaceholderText = "Enter Key..."
+          end
+        else
+          task.spawn(function() f14(v39, "timeout_or_fail", v1[v26].Url) end)
+          instance6.PlaceholderText = "Timeout / Error (" .. v39 .. "s)!"
+          task.wait(2.5)
+
+          if tick() >= v33 then
+            instance6.PlaceholderText = "Enter Key..."
+          end
+        end
+
+        if tick() >= v33 then
+          flag4 = false
+        end
+      end)
+    end, true)
+  end)
+end
+
+f15()
+
+-- https://discord.gg/hkQAMzyGum
