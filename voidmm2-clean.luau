@@ -1,0 +1,10944 @@
+-- [VOID Cleanroom] Части объединены в один файл.
+-- Вставляй по порядку: часть 1, затем "дальше", затем 2, 3, 4.
+-- [VOID Cleanroom] Части объединены в один файл.
+if _G.VOIDV2Cleanup then
+    _G.__VOIDReloading = true
+    pcall(_G.VOIDV2Cleanup)
+    _G.__VOIDReloading = nil
+end
+
+do
+    local _4, _d = pcall(function() return identifyexecutor() end)
+    _4 = _4 and type(_d) == "string"
+    local _5 = ""
+    if not _4 then
+        _d = _5
+    end
+
+    if _d == "" then
+        local _4, _5 = pcall(function() return getexecutorname() end)
+        if _4 and type(_5) == "string" then
+            _d = _5
+        end
+    end
+
+    _d = _d:match("^%s*(%a+)") or _d
+    local _7 = _d:lower()
+    local _b = false
+    for _4, _d in ipairs({"solara", "xeno"}) do
+        if _7:find(_d, 1, true) then
+            _b = true
+        end
+    end
+
+    if _b then
+        local _4 = Color3.fromRGB(236, 236, 244)
+        local _5 = Color3.fromRGB(168, 168, 184)
+        local _7 = Color3.fromRGB(29, 29, 37)
+        local _b = Color3.fromRGB(158, 158, 174)
+        local _3 = Color3.fromRGB(232, 232, 240)
+        local _0 = Color3.fromRGB(22, 22, 28)
+        local _8 = Color3.fromRGB(140, 140, 165)
+        local _e = gethui and gethui() or game:GetService("CoreGui")
+        local _f = Instance.new("ScreenGui")
+        _f.Name = "VOIDExecutorWarning"
+        _f.IgnoreGuiInset = true
+        _f.ResetOnSpawn = false
+        _f.DisplayOrder = 2000000
+        _f.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+        _f.Parent = _e
+
+        local _2 = Instance.new("Frame")
+        _2.Size = UDim2.fromScale(1, 1)
+        _2.BackgroundColor3 = Color3.new(0, 0, 0)
+        _2.BackgroundTransparency = .4
+        _2.BorderSizePixel = 0
+        _2.ZIndex = 1
+        _2.Parent = _f
+
+        local _1 = workspace.CurrentCamera and workspace.CurrentCamera.ViewportSize.X or 800
+        local _c = Instance.new("Frame")
+        _c.AnchorPoint = Vector2.new(.5, .5)
+        _c.Position = UDim2.fromScale(.5, .5)
+        _c.Size = UDim2.fromOffset(math.min(440, math.max(300, _1 - 40)), 236)
+        _c.BackgroundColor3 = Color3.fromRGB(23, 23, 28)
+        _c.BorderSizePixel = 0
+        _c.ZIndex = 2
+        _c.Parent = _f
+        ;(Instance.new("UICorner", _c)).CornerRadius = UDim.new(0, 22)
+
+        local _6 = Instance.new("UIGradient", _c)
+        _6.Rotation = 90
+        _6.Color = ColorSequence.new({
+            ColorSequenceKeypoint.new(0, Color3.fromRGB(30, 30, 36)),
+            ColorSequenceKeypoint.new(1, Color3.fromRGB(16, 16, 20))
+        })
+
+        local _9 = Instance.new("UIStroke", _c)
+        _9.Color = _8
+        _9.Thickness = 1
+        _9.Transparency = .7
+
+        local _a = Instance.new("TextLabel")
+        _a.BackgroundTransparency = 1
+        _a.Position = UDim2.new(0, 26, 0, 24)
+        _a.Size = UDim2.new(1, -52, 0, 24)
+        _a.Font = Enum.Font.GothamBold
+        _a.TextSize = 18
+        _a.TextXAlignment = Enum.TextXAlignment.Left
+        _a.TextColor3 = _4
+        _a.Text = "Executor Warning"
+        _a.ZIndex = 3
+        _a.Parent = _c
+
+        local _4d = Instance.new("TextLabel")
+        _4d.BackgroundTransparency = 1
+        _4d.Position = UDim2.new(0, 26, 0, 48)
+        _4d.Size = UDim2.new(1, -52, 0, 18)
+        _4d.Font = Enum.Font.Gotham
+        _4d.TextSize = 12
+        _4d.TextXAlignment = Enum.TextXAlignment.Left
+        _4d.TextColor3 = _b
+        _4d.Text = _d
+        _4d.ZIndex = 3
+        _4d.Parent = _c
+
+        local _dd = Instance.new("TextLabel")
+        _dd.BackgroundTransparency = 1
+        _dd.Position = UDim2.new(0, 26, 0, 78)
+        _dd.Size = UDim2.new(1, -52, 0, 96)
+        _dd.Font = Enum.Font.Gotham
+        _dd.TextSize = 14
+        _dd.TextWrapped = true
+        _dd.LineHeight = 1.15
+        _dd.TextXAlignment = Enum.TextXAlignment.Left
+        _dd.TextYAlignment = Enum.TextYAlignment.Top
+        _dd.TextColor3 = _5
+        _dd.Text = "Seems like you are using " .. (_d .. ". This executor might not support all features of the script, and may result in bigger glitches or bugs.\n\nPlease use a better executor next time.")
+        _dd.ZIndex = 3
+        _dd.Parent = _c
+
+        local _5d = Instance.new("TextButton")
+        _5d.AnchorPoint = Vector2.new(.5, 1)
+        _5d.Position = UDim2.new(.5, 0, 1, -22)
+        _5d.Size = UDim2.new(1, -52, 0, 38)
+        _5d.BackgroundColor3 = _7
+        _5d.BorderSizePixel = 0
+        _5d.AutoButtonColor = false
+        _5d.Font = Enum.Font.GothamBold
+        _5d.TextSize = 13
+        _5d.TextColor3 = _b
+        _5d.Text = "Understood  (5)"
+        _5d.ZIndex = 3
+        _5d.Parent = _c
+        ;(Instance.new("UICorner", _5d)).CornerRadius = UDim.new(0, 12)
+
+        local _7d = false
+        local _bd = false
+        task.spawn(function()
+            for _4 = 5, 1, -1 do
+                _5d.Text = "Understood  (" .. (_4 .. ")")
+                task.wait(1)
+            end
+            _7d = true
+            _5d.Text = "Understood"
+            _5d.BackgroundColor3 = _3
+            _5d.TextColor3 = _0
+        end)
+
+        local function _3d()
+            if not _7d or _bd then
+                return
+            end
+            _bd = true
+            pcall(function() _f:Destroy() end)
+        end
+
+        _5d.MouseButton1Click:Connect(_3d)
+        _5d.TouchTap:Connect(_3d)
+
+        local _0d = 0
+        while not _bd and _0d < 120 do
+            task.wait(.2)
+            _0d += .2
+        end
+        pcall(function() _f:Destroy() end)
+    end
+end
+
+LOADUI = {}
+do
+    local _4 = gethui and gethui() or game:GetService("CoreGui")
+    local _d = _4:FindFirstChild("VOIDLoading")
+    if _d then
+        _d:Destroy()
+    end
+    local _5 = game:GetService("TweenService")
+    local _7 = Instance.new("ScreenGui")
+    _7.Name = "VOIDLoading"
+    _7.IgnoreGuiInset = true
+    _7.ResetOnSpawn = false
+    _7.DisplayOrder = 99998
+    _7.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+    _7.Parent = _4
+
+    local _b = Instance.new("Frame")
+    _b.Size = UDim2.fromScale(1, 1)
+    _b.BackgroundColor3 = Color3.new(0, 0, 0)
+    _b.BackgroundTransparency = 1
+    _b.BorderSizePixel = 0
+    _b.Parent = _7
+
+    local _3 = Instance.new("Frame")
+    _3.AnchorPoint = Vector2.new(.5, .5)
+    _3.Position = UDim2.fromScale(.5, .5)
+    _3.Size = UDim2.fromOffset(math.min(360, math.max(280, (workspace.CurrentCamera and workspace.CurrentCamera.ViewportSize.X or 800) - 40)), 102)
+    _3.BackgroundColor3 = Color3.fromRGB(23, 23, 28)
+    _3.BackgroundTransparency = 1
+    _3.BorderSizePixel = 0
+    _3.Parent = _7
+    ;(Instance.new("UICorner", _3)).CornerRadius = UDim.new(0, 18)
+
+    local _0 = Instance.new("UIGradient", _3)
+    _0.Rotation = 90
+    local _8 = ColorSequenceKeypoint.new
+    local _e = Color3.fromRGB
+    _0.Color = ColorSequence.new({
+        ColorSequenceKeypoint.new(0, Color3.fromRGB(30, 30, 36)),
+        _8(1, _e(16, 16, 20))
+    })
+
+    local _f = Instance.new("UIStroke", _3)
+    _f.Color = Color3.fromRGB(140, 140, 165)
+    _f.Thickness = 1
+    _f.Transparency = 1
+
+    local _2 = Instance.new("Frame")
+    _2.Position = UDim2.fromOffset(22, 18)
+    _2.Size = UDim2.fromOffset(44, 44)
+    _2.BackgroundColor3 = Color3.fromRGB(38, 38, 47)
+    _2.BackgroundTransparency = 1
+    _2.BorderSizePixel = 0
+    _2.Parent = _3
+    ;(Instance.new("UICorner", _2)).CornerRadius = UDim.new(1, 0)
+
+    local _1 = Instance.new("UIStroke", _2)
+    _1.Color = Color3.fromRGB(140, 140, 165)
+    _1.Thickness = 1
+    _1.Transparency = 1
+
+    local _c = Instance.new("ImageLabel")
+    _c.AnchorPoint = Vector2.new(.5, .5)
+    _c.Position = UDim2.fromScale(.5, .5)
+    _c.Size = UDim2.fromOffset(23, 23)
+    _c.BackgroundTransparency = 1
+    _c.Image = "rbxassetid://110926118391987"
+    _c.ImageColor3 = Color3.fromRGB(236, 236, 244)
+    _c.ImageTransparency = 1
+    _c.Parent = _2
+
+    local _6 = Instance.new("TextLabel")
+    _6.Position = UDim2.fromOffset(81, 20)
+    _6.Size = UDim2.new(1, -103, 0, 22)
+    _6.BackgroundTransparency = 1
+    _6.Font = Enum.Font.GothamBold
+    _6.TextSize = 19
+    _6.TextXAlignment = Enum.TextXAlignment.Left
+    _6.TextColor3 = Color3.fromRGB(242, 242, 248)
+    _6.TextTransparency = 1
+    _6.Text = "Loading VOID"
+    _6.Parent = _3
+
+    local _9 = Instance.new("TextLabel")
+    _9.Position = UDim2.fromOffset(81, 43)
+    _9.Size = UDim2.new(1, -103, 0, 19)
+    _9.BackgroundTransparency = 1
+    _9.Font = Enum.Font.Gotham
+    _9.TextSize = 16
+    _9.TextXAlignment = Enum.TextXAlignment.Left
+    _9.TextColor3 = Color3.fromRGB(139, 139, 153)
+    _9.TextTransparency = 1
+    _9.Text = "Starting up"
+    _9.Parent = _3
+
+    local _a = Instance.new("Frame")
+    _a.Position = UDim2.fromOffset(22, 79)
+    _a.Size = UDim2.new(1, -44, 0, 5)
+    _a.BackgroundColor3 = Color3.fromRGB(38, 38, 47)
+    _a.BackgroundTransparency = 1
+    _a.BorderSizePixel = 0
+    _a.Parent = _3
+    ;(Instance.new("UICorner", _a)).CornerRadius = UDim.new(1, 0)
+
+    local _4d = Instance.new("Frame")
+    _4d.Size = UDim2.new(0, 0, 1, 0)
+    _4d.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    _4d.BackgroundTransparency = 1
+    _4d.BorderSizePixel = 0
+    _4d.Parent = _a
+    ;(Instance.new("UICorner", _4d)).CornerRadius = UDim.new(1, 0)
+
+    local _dd = ColorSequence.new
+    local _5d = ColorSequenceKeypoint.new
+    local _7d = Color3.fromRGB
+    ;(Instance.new("UIGradient", _4d)).Color = _dd({
+        ColorSequenceKeypoint.new(0, Color3.fromRGB(143, 143, 158)),
+        _5d(1, _7d(255, 255, 255))
+    })
+
+    local _bd = TweenInfo.new(.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out)
+    ;(_5:Create(_b, _bd, {BackgroundTransparency = .5})):Play()
+    ;(_5:Create(_3, _bd, {BackgroundTransparency = 0})):Play()
+    ;(_5:Create(_f, _bd, {Transparency = .58})):Play()
+    ;(_5:Create(_2, _bd, {BackgroundTransparency = 0})):Play()
+    ;(_5:Create(_1, _bd, {Transparency = .5})):Play()
+    ;(_5:Create(_c, _bd, {ImageTransparency = 0})):Play()
+    ;(_5:Create(_6, _bd, {TextTransparency = 0})):Play()
+    ;(_5:Create(_9, _bd, {TextTransparency = 0})):Play()
+    ;(_5:Create(_a, _bd, {BackgroundTransparency = 0})):Play()
+    ;(_5:Create(_4d, _bd, {BackgroundTransparency = 0})):Play()
+
+    local _3d = true
+    local _0d = {}
+    local function _8d()
+        for _4, _d in ipairs(_4:GetChildren()) do
+            local _5 = _d:IsA("ScreenGui") and (_d.Enabled and _d ~= _7)
+            if _5 then
+                _5 = _d.Name == "WindUI" or _d.Name:match("^WindUI/") or _d.Name:match("^VOID.+Button$")
+            end
+            if _5 then
+                _d.Enabled = false
+                _0d[#_0d + 1] = _d
+            end
+        end
+    end
+
+    LOADUI.reveal = function()
+        for _4, _d in ipairs(_0d) do
+            pcall(function() _d.Enabled = true end)
+        end
+        _0d = {}
+    end
+
+    task.spawn(function()
+        while _3d do
+            pcall(_8d)
+            task.wait(.05)
+        end
+    end)
+
+    local _ed = 0
+    LOADUI.step = function(_4, _d)
+        if not _3d then
+            return
+        end
+        pcall(function()
+            if type(_4) == "number" and _4 > _ed then
+                _ed = math.clamp(_4, 0, 1)
+                ;(_5:Create(_4d, TweenInfo.new(.35, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {Size = UDim2.new(_ed, 0, 1, 0)})):Play()
+            end
+            if _d then
+                _9.Text = tostring(_d)
+            end
+        end)
+    end
+
+    LOADUI.done = function()
+        if not _3d then
+            return
+        end
+        _3d = false
+        pcall(function()
+            _9.Text = "Ready"
+            ;(_5:Create(_4d, TweenInfo.new(.25, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {Size = UDim2.new(1, 0, 1, 0)})):Play()
+            task.delay(.34, function()
+                LOADUI.reveal()
+                local _4 = TweenInfo.new(.26, Enum.EasingStyle.Quad, Enum.EasingDirection.Out)
+                ;(_5:Create(_b, _4, {BackgroundTransparency = 1})):Play()
+                ;(_5:Create(_3, _4, {BackgroundTransparency = 1})):Play()
+                ;(_5:Create(_f, _4, {Transparency = 1})):Play()
+                ;(_5:Create(_2, _4, {BackgroundTransparency = 1})):Play()
+                ;(_5:Create(_1, _4, {Transparency = 1})):Play()
+                ;(_5:Create(_c, _4, {ImageTransparency = 1})):Play()
+                ;(_5:Create(_6, _4, {TextTransparency = 1})):Play()
+                ;(_5:Create(_9, _4, {TextTransparency = 1})):Play()
+                ;(_5:Create(_a, _4, {BackgroundTransparency = 1})):Play()
+                ;(_5:Create(_4d, _4, {BackgroundTransparency = 1})):Play()
+                task.delay(.3, function()
+                    pcall(function() _7:Destroy() end)
+                end)
+            end)
+        end)
+    end
+end
+
+task.delay(30, function() LOADUI.done() end)
+task.spawn(function()
+    print("-- LOADING VOID --")
+    for _4, _d in ipairs({0, 5, 11, 22}) do
+        local _5 = math.floor((_d / 22) * 100 + .5)
+        print("[" .. (string.rep("#", _d) .. (string.rep(" ", 22 - _d) .. ("] " .. string.format("%02d%%", _5)))))
+        task.wait(.25)
+    end
+    print("Loaded. t.me/acript")
+end)
+
+if _G.VOIDV2 then
+    local _4 = _G.VOIDV2
+    local _d = false
+    pcall(function()
+        _d = not _4.Destroyed and (_4.UIElements and (_4.UIElements.Main and _4.UIElements.Main.Parent ~= nil))
+    end)
+    if _d then
+        pcall(function() _4:Destroy() end)
+        local _d = os.clock()
+        while true do
+            task.wait(.1)
+            if not (_4.Destroyed or os.clock() - _d > 3) then
+                continue
+            end
+            break
+        end
+        task.wait(.7)
+    end
+    _G.VOIDV2 = nil
+end
+
+_G.VOIDV2Cleanup = nil
+pcall(function()
+    local _4 = ipairs
+    local _d = game:GetService("CoreGui")
+    for _4, _d in _4(_d:GetChildren()) do
+        if _d.Name == "VOIDESP" or _d.Name:match("^VOID.+Button$") then
+            _d:Destroy()
+        end
+    end
+end)
+
+pcall(function()
+    local _4 = gethui and gethui() or game:GetService("CoreGui")
+    for _4, _d in ipairs(_4:GetChildren()) do
+        if _d.Name == "WindUI" or _d.Name:match("^WindUI/") then
+            _d:Destroy()
+        end
+    end
+end)
+-- [VOID Cleanroom] Части объединены в один файл.
+-- Вставляй после части 1. Копируется без последствий.
+
+LOADUI.step(.12, "Fetching library")
+local _4
+do
+    local _d = nil
+    local function _5(_4)
+        if makefolder and (isfolder and not isfolder(_4)) then
+            pcall(makefolder, _4)
+        end
+            if isfile and (readfile and isfile("VOIDV2/windui.lua")) then
+                local _4, _5 = pcall(readfile, "VOIDV2/windui.lua")
+                if _4 and (type(_5) == "string" and #_5 > 100000) then
+                    _d = _5
+                end
+            end
+        local _7 = _d ~= nil
+        _d = _d or game:HttpGet("https://github.com/Footagesus/WindUI/releases/latest/download/main.lua")
+        local _b = loadstring(_d)
+        if not _b and _7 then
+            _d = game:HttpGet("https://github.com/Footagesus/WindUI/releases/latest/download/main.lua")
+            _b = loadstring(_d)
+            _7 = false
+        end
+        if not _7 and writefile then
+            pcall(function()
+                _5("VOIDV2")
+                writefile("VOIDV2/windui.lua", _d)
+            end)
+        end
+        if writefile and (isfile and not isfile("VOIDV2/icons-main.lua")) then
+            pcall(function()
+                local _4, _d = (game:HttpGet("https://raw.githubusercontent.com/Footagesus/Icons/main/Main-v2.lua")):gsub("return game:HttpGet%(url%)", function()
+                    return "do\n    local _p = \"VOIDV2/icons/\" .. url:gsub(\"%W\", \"_\") .. \".txt\"\n    if isfile and readfile and isfile(_p) then\n        local _o, _d = pcall(readfile, _p)\n        if _o and type(_d) == \"string\" and #_d > 0 then return _d end\n    end\n    local _d = game:HttpGet(url)\n    pcall(function()\n        if makefolder and isfolder and not isfolder(\"VOIDV2/icons\") then makefolder(\"VOIDV2/icons\") end\n        writefile(_p, _d)\n    end)\n    return _d\nend"
+                end)
+                if _d > 0 and loadstring(_4) then
+                    _5("VOIDV2")
+                    writefile("VOIDV2/icons-main.lua", _4)
+                end
+            end)
+        end
+    end
+
+    if isfile and isfile("VOIDV2/icons-main.lua") then
+        local _4, _5 = _d:gsub("game%.HttpGet and game:HttpGet%(%w+%)or %w+:GetAsync%(%w+%)", "readfile(\"VOIDV2/icons-main.lua\")")
+        if _5 > 0 then
+            _b = loadstring(_4) or _b
+        end
+    end
+    _4 = _b()
+end
+
+_4:AddTheme({
+    Name = "VOID",
+    Background = _4:Gradient({
+        ["0"] = {Color = Color3.fromHex("#161619"), Transparency = .12},
+        ["100"] = {Color = Color3.fromHex("#161619"), Transparency = .12}
+    }, {Rotation = 90}),
+    Accent = _4:Gradient({
+        ["0"] = {Color = Color3.fromHex("#101014"), Transparency = 0},
+        ["100"] = {Color = Color3.fromHex("#2a2a32"), Transparency = 0}
+    }, {Rotation = 90}),
+    Dialog = Color3.fromHex("#141418"),
+    Outline = Color3.fromHex("#ffffff"),
+    Text = Color3.fromHex("#ffffff"),
+    Placeholder = Color3.fromHex("#a1a1aa"),
+    Button = Color3.fromHex("#3f3f46"),
+    Icon = Color3.fromHex("#d4d4d8"),
+    Toggle = Color3.fromHex("#ffffff"),
+    Slider = Color3.fromHex("#ffffff"),
+    Checkbox = Color3.fromHex("#ffffff"),
+    SliderIcon = Color3.fromHex("#71717a"),
+    Primary = Color3.fromHex("#ffffff"),
+    PanelBackground = Color3.fromHex("#ffffff"),
+    PanelBackgroundTransparency = .94,
+    LabelBackground = Color3.fromHex("#000000"),
+    LabelBackgroundTransparency = .8,
+    ElementBackground = Color3.fromHex("#18181b"),
+    ElementBackgroundTransparency = .3
+})
+_4:SetTheme("VOID")
+
+LOADUI.step(.4, "Building window")
+local _d
+do
+    local _5 = _4
+    local _7 = _5.CreateWindow
+    local _b = {
+        Title = "VOID Script - Premium",
+        Icon = "solar:planet-bold",
+        Author = "Murder Mystery 2",
+        Folder = "VOIDV2",
+        Background = "https://raw.githubusercontent.com/xdxd-coder/Background-icon/refs/heads/main/backgr0und.png",
+        Size = UDim2.fromOffset(
+            math.max(560, math.min(850, (workspace.CurrentCamera and workspace.CurrentCamera.ViewportSize or Vector2.new(1920, 1080)).X - 24)),
+            math.max(350, math.min(560, (workspace.CurrentCamera and workspace.CurrentCamera.ViewportSize or Vector2.new(1920, 1080)).Y - 24))
+        )
+    }
+    _b.MaxSize = Vector2.new(850, 560)
+    _b.HideSearchBar = false
+    _b.Transparent = true
+    _b.Theme = "VOID"
+    _b.Resizable = true
+    _b.ToggleKey = nil
+    _b.BackgroundImageTransparency = .35
+    _b.Acrylic = false
+    _b.ShadowTransparency = .3
+    _b.Radius = 18
+    _b.IconRadius = 1
+    _b.IconSize = 27
+    _b.SideBarWidth = 185
+    _b.Topbar = {Height = 56, ButtonsType = "Default"}
+    _b.User = {Enabled = false, Anonymous = false}
+    _d = _7(_5, _b)
+end
+
+_d:Tag({Title = "@acript", Icon = "youtube", Color = Color3.fromHex("#ffffff"), Radius = 6})
+_d:Tag({Title = "t.me/acript", Icon = "message-square-more", Color = Color3.fromHex("#ffffff"), Radius = 6})
+_d:Tag({Title = "Mobile & PC", Icon = "smartphone", Color = Color3.fromHex("#ffffff"), Radius = 6})
+
+task.spawn(function()
+    local _4 = {["t.me/acript"] = true, ["Mobile & PC"] = true, ["@acript"] = true}
+    local _5 = ColorSequence.new
+    local _7 = {}
+    local _b = ColorSequenceKeypoint.new(0, Color3.fromRGB(26, 26, 32))
+    local _3 = ColorSequenceKeypoint.new(.35, Color3.fromRGB(46, 46, 56))
+    local _0 = ColorSequenceKeypoint.new(.7, Color3.fromRGB(32, 32, 39))
+    local _8 = ColorSequenceKeypoint.new
+    local _e = Color3.fromRGB
+    _7[1] = _b
+    _7[2] = _3
+    _7[3] = _0
+    do
+        local _4 = table.pack(_8(1, _e(42, 42, 51)))
+        table.move(_4, 1, _4.n, 4, _7)
+    end
+    local _f = _5(_7)
+    local _2 = Color3.fromRGB(228, 228, 236)
+    for _5 = 1, 120, 1 do
+        local _7 = 0
+        pcall(function()
+            for _d, _5 in ipairs(_d.UIElements.Main:GetDescendants()) do
+                if _5:IsA("TextLabel") and _4[_5.Text] then
+                    local _4 = _5.Parent and _5.Parent.Parent
+                    if _4 and _4:IsA("ImageLabel") then
+                        if not _4:FindFirstChildWhichIsA("UIGradient") then
+                            local _d = Instance.new("UIGradient")
+                            _d.Rotation = 45
+                            _d.Color = _f
+                            _d.Parent = _4
+                        end
+                        for _d, _5 in ipairs(_4:GetDescendants()) do
+                            if _5:IsA("TextLabel") then
+                                _5.TextColor3 = _2
+                            elseif _5:IsA("ImageLabel") and _5 ~= _4 then
+                                _5.ImageColor3 = _2
+                            end
+                        end
+                        _7 += 1
+                    end
+                end
+            end
+        end)
+        local _b = 0
+        for _4 in pairs(_4) do
+            _b += 1
+        end
+        if _7 >= _b then
+            local _5 = {}
+            pcall(function()
+                for _d, _7 in ipairs(_d.UIElements.Main:GetDescendants()) do
+                    if _7:IsA("TextLabel") and (_4[_7.Text] and _7.Parent) then
+                        local _4 = nil
+                        for _d, _5 in ipairs(_7.Parent:GetChildren()) do
+                            if _5 ~= _7 and _5:IsA("GuiObject") then
+                                _4 = _5
+                            end
+                        end
+                        if _4 then
+                            _5[#_5 + 1] = {lbl = _7, icon = _4}
+                        end
+                    end
+                end
+            end)
+            local function _7(_4, _d)
+                if _d then
+                    local _d = _4.lbl.Parent and _4.lbl.Parent:FindFirstChildOfClass("UIListLayout")
+                    if _d then
+                        local _4 = _d.Parent
+                        _d.Parent = nil
+                        RunService.RenderStepped:Wait()
+                        if _4.Parent then
+                            _d.Parent = _4
+                        end
+                    end
+                    return
+                end
+                local _5 = _4.icon.Size
+                _4.icon.Size = UDim2.new(_5.X.Scale, _5.X.Offset + 1, _5.Y.Scale, _5.Y.Offset)
+                RunService.RenderStepped:Wait()
+                if _4.icon.Parent then
+                    _4.icon.Size = _5
+                end
+            end
+            local _b = os.clock()
+            local _3 = 0
+            while _G.VOIDV2 == _d and _3 < 40 do
+                for _4, _d in ipairs(_5) do
+                    if _d.lbl.Parent and (_d.icon.Parent and (_d.icon.AbsoluteSize.X > 0 and (_d.lbl.AbsoluteSize.X > 0 and _d.lbl.AbsolutePosition.X < _d.icon.AbsolutePosition.X + _d.icon.AbsoluteSize.X))) then
+                        _3 += 1
+                        pcall(_7, _d, _3 > 6)
+                    end
+                end
+                task.wait(os.clock() - _b < 25 and .3 or 3)
+            end
+            return
+        end
+        RunService.RenderStepped:Wait()
+    end
+end)
+
+_d:SetBackgroundTransparency(.4)
+
+task.spawn(function()
+    local _4 = game:GetService("RunService")
+    for _5 = 1, 120, 1 do
+        local _7 = _d.UIElements and (_d.UIElements.Main and _d.UIElements.Main:FindFirstChild("Background"))
+        if _7 then
+            local _4 = false
+            for _d, _5 in ipairs(_7:GetChildren()) do
+                if _5:IsA("ImageLabel") and _5.Size == UDim2.new(1, 0, 1, 0) then
+                    _5.ScaleType = Enum.ScaleType.Stretch
+                    _4 = true
+                end
+            end
+            if _4 then
+                return
+            end
+        end
+        _4.RenderStepped:Wait()
+    end
+end)
+
+task.spawn(function()
+    local _4 = game:GetService("TweenService")
+    local _5 = game:GetService("RunService")
+    local function _7()
+        local _4 = _d.UIElements and _d.UIElements.Main
+        if not _4 then
+            return nil
+        end
+        local _5 = _4:FindFirstChild("Topbar", true)
+        for _4, _d in ipairs({"Left", "Title", "Title"}) do
+            _5 = _5 and _5:FindFirstChild(_d)
+        end
+        if _5 and _5:IsA("TextLabel") then
+            return _5
+        end
+        for _4, _5 in ipairs(_4:GetDescendants()) do
+            if _5:IsA("TextLabel") and _5.Text == _d.Title then
+                return _5
+            end
+        end
+        return nil
+    end
+    local _b = nil
+    for _4 = 1, 120, 1 do
+        _b = _7()
+        if not _b then
+            _5.RenderStepped:Wait()
+            continue
+        end
+        break
+    end
+    if not _b or _b:FindFirstChild("VOIDTitleSheen") then
+        return
+    end
+    local _3 = _b:FindFirstChildWhichIsA("UIGradient")
+    if _3 then
+        _3:Destroy()
+    end
+    local _0 = Instance.new("UIGradient")
+    _0.Name = "VOIDTitleSheen"
+    _0.Rotation = 12
+    local _8 = ColorSequence.new
+    local _e = {}
+    local _f = ColorSequenceKeypoint.new(0, Color3.fromRGB(148, 148, 164))
+    local _2 = ColorSequenceKeypoint.new(.45, Color3.fromRGB(255, 255, 255))
+    local _1 = ColorSequenceKeypoint.new(.55, Color3.fromRGB(255, 255, 255))
+    local _c = ColorSequenceKeypoint.new
+    local _6 = Color3.fromRGB
+    _e[1] = _f
+    _e[2] = _2
+    _e[3] = _1
+    do
+        local _4 = table.pack(_c(1, _6(148, 148, 164)))
+        table.move(_4, 1, _4.n, 4, _e)
+    end
+    _0.Color = _8(_e)
+    _0.Offset = Vector2.new(-.550000011920929, 0)
+    _0.Parent = _b
+    local _9 = Instance.new("UIStroke")
+    _9.Name = "VOIDTitleGlow"
+    _9.Color = Color3.fromRGB(236, 239, 250)
+    _9.Thickness = 1.4
+    _9.Transparency = .82
+    _9.ApplyStrokeMode = Enum.ApplyStrokeMode.Contextual
+    _9.Parent = _b
+    ;(_4:Create(_0, TweenInfo.new(2.6, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut, -1, true), {Offset = Vector2.new(.550000011920929, 0)})):Play()
+    ;(_4:Create(_9, TweenInfo.new(1.7, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut, -1, true), {Transparency = .42})):Play()
+end)
+
+local _5 = Color3.fromHex
+_d:EditOpenButton({
+    Title = "VOID",
+    Icon = "solar:planet-bold",
+    CornerRadius = UDim.new(0, 16),
+    StrokeThickness = 2,
+    Color = ColorSequence.new(Color3.fromHex("#2a2a32"), _5("#c9c9d4")),
+    OnlyMobile = false,
+    Enabled = true,
+    Draggable = true
+})
+_G.VOIDV2 = _d
+
+local _7
+_7 = {
+    farmTargetTime = 0,
+    shellsOn = false,
+    shellsRunning = false,
+    flingAllRunning = false,
+    hudScale = 1,
+    flingWhenDone = false,
+    flingDoneFired = false,
+    sawCoins = false,
+    lastMap = nil,
+    killWhenFull = false,
+    killFired = false,
+    el = {},
+    conns = {},
+    revealed = {},
+    clipWas = {},
+    farmClipWas = {},
+    config = nil,
+    hudBtns = {},
+    hudPos = {},
+    cfgSnapshot = nil,
+    cfgWiped = false,
+    hudDir = "WindUI/VOIDV2/hud",
+    hudFile = "WindUI/VOIDV2/hud/autosave.json"
+}
+
+pcall(function()
+    if makefolder and (isfolder and not isfolder(_7.hudDir)) then
+        makefolder(_7.hudDir)
+    end
+end)
+
+_7.sfxId = {
+    error = 131039887376992,
+    gun = 131390520971848,
+    click = 139800881181209,
+    toggle = 136108770017536
+}
+_7.sfxVol = {
+    error = .55,
+    gun = .75,
+    click = .65,
+    toggle = .6
+}
+_7.sfxOn = {
+    error = true,
+    gun = true,
+    click = true,
+    toggle = true
+}
+_7.sfxReady = false
+_7.sfxQuiet = false
+_7.sfx = {}
+
+_7.playSfx = function(_4)
+    if not _7.sfxOn[_4] then
+        return
+    end
+    local _d = _7.sfxId[_4]
+    if not _d then
+        return
+    end
+    pcall(function()
+        local _5 = game:GetService("SoundService")
+        local _b = _5:FindFirstChild("VOIDSFX")
+        if not _b then
+            _b = Instance.new("Folder")
+            _b.Name = "VOIDSFX"
+            _b.Parent = _5
+        end
+        local _3 = _7.sfx[_4]
+        if not _3 or not _3.Parent then
+            _3 = _b:FindFirstChild(_4) or Instance.new("Sound")
+            _3.Name = _4
+            _3.SoundId = "rbxassetid://" .. _d
+            _3.Volume = _7.sfxVol[_4] or .5
+            _3.Parent = _b
+            _7.sfx[_4] = _3
+        end
+        _3.TimePosition = 0
+        _3:Play()
+    end)
+end
+
+local _b = _d.Tab
+_d.Tab = function(_4, _d)
+    local _5 = _b(_4, _d)
+    if type(_5) == "table" and type(_5.Toggle) == "function" then
+        local _4 = _5.Toggle
+        _5.Toggle = function(_d, _5)
+            if type(_5) == "table" then
+                local _4 = _5.Callback
+                _5.Callback = function(...)
+                    if _7.sfxReady and not _7.sfxQuiet then
+                        _7.playSfx("toggle")
+                    end
+                    if _4 then
+                        return _4(...)
+                    end
+                end
+            end
+            return _4(_d, _5)
+        end
+    end
+    return _5
+end
+
+_7.notifyReady = false
+_7.realNotify = _4.Notify
+_4.Notify = function(_4, _d)
+    if not _7.notifyReady then
+        return
+    end
+    if type(_d) == "table" and (_d.Icon == "x" or _d.Icon == "clock") then
+        _7.playSfx("error")
+    end
+    return _7.realNotify(_4, _d)
+end
+_7.notifyNow = function(_d)
+    return _7.realNotify(_4, _d)
+end
+task.delay(4, function() _7.notifyReady = true end)
+task.delay(20, function() _7.sfxReady = true end)
+
+task.spawn(function()
+    local _4 = game:GetService("CoreGui")
+    local function _d(_4)
+        if not (_4 and _4:IsA("GuiObject")) then
+            return
+        end
+        task.spawn(function()
+            local _d = nil
+            for _5 = 1, 60, 1 do
+                _d = _4:FindFirstChildWhichIsA("ImageLabel")
+                if not (_d or not _4.Parent) then
+                    task.wait()
+                    continue
+                end
+                break
+            end
+            if not _d or _d:FindFirstChild("VOIDToastRamp") then
+                return
+            end
+            local _5 = Instance.new("UIGradient")
+            _5.Name = "VOIDToastRamp"
+            _5.Rotation = 45
+            _5.Color = ColorSequence.new({
+                ColorSequenceKeypoint.new(0, Color3.new(1, 1, 1)),
+                ColorSequenceKeypoint.new(1, Color3.fromRGB(118, 118, 130))
+            })
+            _5.Parent = _d
+        end)
+    end
+    local _5 = nil
+    for _d = 1, 900, 1 do
+        _5 = _4:FindFirstChild("WindUI/Notifications", true)
+        if not _5 then
+            task.wait(.2)
+            continue
+        end
+        break
+    end
+    if not _5 then
+        return
+    end
+    local _7 = nil
+    for _4 = 1, 900, 1 do
+        _7 = _5:FindFirstChildWhichIsA("Frame")
+        if not _7 then
+            task.wait(.2)
+            continue
+        end
+        break
+    end
+    if not _7 then
+        return
+    end
+    for _4, _5 in ipairs(_7:GetChildren()) do
+        _d(_5)
+    end
+    _7.ChildAdded:Connect(_d)
+end)
+
+_7.findOpenPill = function()
+    local _4 = (gethui and gethui() or game:GetService("CoreGui")):FindFirstChild("WindUI")
+    _4 = _4 and _4:FindFirstChild("Window")
+    if not _4 then
+        return nil, nil
+    end
+    local _d = nil
+    local _5 = nil
+    for _4, _7 in ipairs(_4:GetChildren()) do
+        if _7:IsA("Frame") then
+            if _7:FindFirstChild("Main") then
+                _d = _7
+            elseif _7:FindFirstChildWhichIsA("TextButton", true) then
+                _5 = _7
+            end
+        end
+    end
+    return _5, _d
+end
+
+_7.pinOpenPill = function()
+    task.spawn(function()
+        local _4 = nil
+        local _d = nil
+        for _5 = 1, 200, 1 do
+            _4, _d = _7.findOpenPill()
+            if not (_4 and _d) then
+                task.wait(.05)
+                continue
+            end
+            break
+        end
+        if not (_4 and _d) then
+            return
+        end
+        local function _5()
+            local _5 = not _d.Visible
+            if _4.Visible ~= _5 then
+                _4.Visible = _5
+            end
+        end
+        _5()
+        _7.conns[#_7.conns + 1] = (_d:GetPropertyChangedSignal("Visible")):Connect(_5)
+        _7.conns[#_7.conns + 1] = (_4:GetPropertyChangedSignal("Visible")):Connect(_5)
+    end)
+end
+
+_7.mouseAimPoint = function()
+    local _4 = Workspace.CurrentCamera
+    if not _4 then
+        return nil
+    end
+    local _d, _5 = pcall(function()
+        local _d = UserInputService:GetMouseLocation()
+        local _5 = _4:ViewportPointToRay(_d.X, _d.Y)
+        local _7 = RaycastParams.new()
+        _7.FilterType = Enum.RaycastFilterType.Exclude
+        _7.FilterDescendantsInstances = {LocalPlayer.Character}
+        local _b = Workspace:Raycast(_5.Origin, _5.Direction * 300, _7)
+        return _b and _b.Position or _5.Origin + _5.Direction * 300
+    end)
+    return _d and _5 or nil
+end
+
+_7.xrayWas = {}
+_7.xrayOn = false
+_7.setXray = function(_4)
+    _7.xrayOn = _4
+    if _4 then
+        for _4, _d in ipairs(Workspace:GetDescendants()) do
+            if _d:IsA("BasePart") and _d.Transparency < .5 then
+                local _4 = _d:FindFirstAncestorWhichIsA("Model")
+                if not (_4 and Players:GetPlayerFromCharacter(_4)) then
+                    if _7.xrayWas[_d] == nil then
+                        _7.xrayWas[_d] = _d.Transparency
+                    end
+                    _d.Transparency = .5
+                end
+            end
+        end
+    else
+        for _4, _d in next, _7.xrayWas, nil do
+            pcall(function()
+                if _4.Parent then
+                    _4.Transparency = _d
+                end
+            end)
+        end
+        _7.xrayWas = {}
+    end
+end
+
+_7.dropConns = function(_4)
+    if type(_4) ~= "table" then
+        return
+    end
+    for _4, _d in ipairs(_4) do
+        pcall(function() _d:Disconnect() end)
+    end
+    for _d = #_4, 1, -1 do
+        _4[_d] = nil
+    end
+end
+
+_7.unreveal = function()
+    for _4, _d in next, _7.revealed, nil do
+        pcall(function()
+            if _4.Parent then
+                _4.Transparency = _d
+            end
+        end)
+    end
+    _7.revealed = {}
+end
+
+_7.reclip = function(_4)
+    for _4 in next, _4, nil do
+        pcall(function()
+            if _4.Parent then
+                _4.CanCollide = true
+            end
+        end)
+    end
+    for _d in next, _4, nil do
+        _4[_d] = nil
+    end
+end
+
+_7.DISCORD_INVITE = "acript"
+_7.discordInfo = nil
+_7.discordFetch = function() return nil end
+
+_7.CLIPBOARD_FNS = {"setclipboard", "toclipboard", "tosetclipboard", "set_clipboard", "write_clipboard", "setClipboard"}
+_7.copyText = function(_4)
+    local _d = getgenv and getgenv() or _G
+    for _5, _7 in ipairs(_7.CLIPBOARD_FNS) do
+        local _b = rawget(_d, _7)
+        local _3
+        if type(_b) ~= "function" then
+            local _4
+            _4, _3 = pcall(function() return (getfenv(0))[_7] end)
+            if not (_4 and type(_3) == "function") then
+                _3 = _b
+            end
+        else
+            _3 = _b
+        end
+        if type(_3) == "function" and pcall(_3, _4) then
+            return true
+        end
+    end
+    local _5 = ipairs
+    local _b = {}
+    local _3 = {syn, "write_clipboard"}
+    local _0 = {syn, "set_clipboard"}
+    local _8 = {rawget(_d, "Clipboard"), "set"}
+    local _e = {rawget(_d, "Clipboard"), "Set"}
+    _b[1] = _3
+    _b[2] = _0
+    _b[3] = _8
+    _b[4] = _e
+    for _d, _5 in _5(_b) do
+        local _7 = _5[1]
+        local _b = _5[2]
+        if type(_7) == "table" and type(rawget(_7, _b)) == "function" then
+            if pcall(_7[_b], _4) then
+                return true
+            end
+        end
+    end
+    return false
+end
+
+_7.copyInvite = function()
+    local _4 = "https://t.me/" .. _7.DISCORD_INVITE
+    return _7.copyText(_4), _4
+end
+
+_7.discordCard = function(_d)
+    local _5 = _7.discordFetch()
+    local _b = {
+        Title = "Join Channel",
+        Callback = function()
+            local _d, _5 = _7.copyInvite()
+            _4:Notify({
+                Title = _d and "Copied!" or "Telegram",
+                Content = _d and _5 .. " is on your clipboard." or _5,
+                Duration = 5,
+                Icon = _d and "check" or "info"
+            })
+        end
+    }
+    local _3 = _d.Paragraph
+    local _0 = {Title = _5 and _5.name or "VOID Script"}
+    local _8
+    if _5 then
+        _8 = "Member Count : " .. tostring(_5.members or "?")
+    else
+        _8 = _5
+    end
+    _0.Desc = (_8 or "t.me/" .. _7.DISCORD_INVITE) .. "\n\nJoin our telegram to report bugs, give suggestions or ask a question! If you can't, just ask in our YouTube description."
+    _0.Image = _5 and _5.icon or "message-square-more"
+    _0.ImageSize = 48
+    _0.Buttons = {_b}
+    _3(_d, _0)
+end
+
+task.spawn(function()
+    local _4 = game:GetService("RunService")
+    for _5 = 1, 300, 1 do
+        local _b = _d.UIElements and _d.UIElements.Main
+        if _b then
+            if not _7.bgAsset then
+                local _4 = _b:FindFirstChild("Background")
+                local _d = ipairs
+                local _5 = _4 and _4:GetChildren() or {}
+                for _4, _d in _d(_5) do
+                    if _d:IsA("ImageLabel") and (_d.Size == UDim2.new(1, 0, 1, 0) and tostring(_d.Image) ~= "") then
+                        _7.bgAsset = _d.Image
+                    end
+                end
+            end
+            if not _7.markIcon then
+                local _4 = _b:FindFirstChild("Topbar", true)
+                local _d = ipairs
+                _4 = _4 and _4:GetDescendants() or {}
+                for _4, _d in _d(_4) do
+                    if _d:IsA("ImageLabel") and (_d.Size == UDim2.new(1, 0, 1, 0) and (tostring(_d.Image)):find("rbxassetid", 1, true)) then
+                        _7.markIcon = _d:Clone()
+                        break
+                    end
+                end
+            end
+            if _7.bgAsset and _7.markIcon then
+                return
+            end
+        end
+        _4.RenderStepped:Wait()
+    end
+end)
+-- [VOID Cleanroom] Части объединены в один файл.
+-- Вставляй после части 2. Копируется без последствий.
+
+_7.card = function(_4)
+    local _d = _4 or {}
+    local function _5() end
+    pcall(function()
+        local _4 = gethui and gethui() or CoreGui
+        local _b = _4:FindFirstChild("VOIDCard")
+        if _b then
+            _b:Destroy()
+        end
+        local _3 = Instance.new("ScreenGui")
+        _3.Name = "VOIDCard"
+        _3.IgnoreGuiInset = true
+        _3.ResetOnSpawn = false
+        _3.DisplayOrder = 99999
+        _3.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+        _3.Parent = _4
+
+        local _0 = game:GetService("TweenService")
+        local _8 = Color3.fromRGB(140, 140, 165)
+        local _e = Color3.fromRGB(158, 158, 174)
+        local _f = Color3.fromRGB(168, 168, 184)
+        local _2 = Color3.fromRGB(29, 29, 37)
+        local _1 = Color3.fromRGB(233, 233, 242)
+        local _c = Color3.fromRGB(232, 232, 240)
+        local _6 = Color3.fromRGB(22, 22, 28)
+        local _9 = Color3.fromRGB(236, 236, 244)
+        local _a = _d.actions
+        local _4d = type(_a) == "table" and #_a > 0
+        local _dd = _4d and 254 or 204
+
+        local _5d = Instance.new("TextButton")
+        _5d.Size = UDim2.fromScale(1, 1)
+        _5d.BackgroundColor3 = Color3.new(0, 0, 0)
+        _5d.BackgroundTransparency = 1
+        _5d.BorderSizePixel = 0
+        _5d.AutoButtonColor = false
+        _5d.Text = ""
+        _5d.Parent = _3
+
+        local _7d = Instance.new("Frame")
+        _7d.AnchorPoint = Vector2.new(.5, .5)
+        _7d.Position = UDim2.fromScale(.5, .5)
+        _7d.Size = UDim2.fromOffset(math.min(440, math.max(300, (workspace.CurrentCamera and workspace.CurrentCamera.ViewportSize.X or 800) - 40)), _dd)
+        _7d.BackgroundColor3 = Color3.fromRGB(23, 23, 28)
+        _7d.BackgroundTransparency = 1
+        _7d.BorderSizePixel = 0
+        _7d.ClipsDescendants = true
+        _7d.Parent = _3
+        ;(Instance.new("UICorner", _7d)).CornerRadius = UDim.new(0, 22)
+
+        local _bd = Instance.new("UIScale", _7d)
+        _bd.Scale = .96
+
+        local _3d = Instance.new("UIGradient", _7d)
+        _3d.Rotation = 90
+        local _0d = ColorSequenceKeypoint.new
+        local _8d = Color3.fromRGB
+        _3d.Color = ColorSequence.new({
+            ColorSequenceKeypoint.new(0, Color3.fromRGB(30, 30, 36)),
+            _0d(1, _8d(16, 16, 20))
+        })
+
+        local _ed = Instance.new("UIStroke", _7d)
+        _ed.Color = _8
+        _ed.Thickness = 1
+        _ed.Transparency = 1
+
+        local _fd = _7.bgAsset and _7.bgAsset ~= ""
+        local _2d = nil
+        if _fd then
+            _2d = Instance.new("ImageLabel")
+            _2d.Size = UDim2.fromScale(1, 1)
+            _2d.BackgroundTransparency = 1
+            _2d.Image = _7.bgAsset
+            _2d.ScaleType = Enum.ScaleType.Crop
+            _2d.ImageTransparency = 1
+            _2d.ZIndex = 0
+            _2d.Parent = _7d
+            ;(Instance.new("UICorner", _2d)).CornerRadius = UDim.new(0, 22)
+        end
+
+        local _1d = Instance.new("Frame")
+        _1d.Position = UDim2.fromOffset(22, 20)
+        _1d.Size = UDim2.fromOffset(48, 48)
+        _1d.BackgroundColor3 = Color3.fromRGB(38, 38, 48)
+        _1d.BackgroundTransparency = 1
+        _1d.BorderSizePixel = 0
+        _1d.ZIndex = 1
+        _1d.Parent = _7d
+        ;(Instance.new("UICorner", _1d)).CornerRadius = UDim.new(1, 0)
+
+        local _cd = Instance.new("UIStroke", _1d)
+        _cd.Color = _8
+        _cd.Thickness = 1
+        _cd.Transparency = 1
+
+        local _6d
+        if _7.markIcon then
+            _6d = _7.markIcon:Clone()
+        else
+            _6d = Instance.new("ImageLabel")
+            _6d.Image = "rbxassetid://120139782405970"
+        end
+        _6d.Name = "Mark"
+        _6d.AnchorPoint = Vector2.new(.5, .5)
+        _6d.Position = UDim2.fromScale(.5, .5)
+        _6d.Size = UDim2.fromOffset(26, 26)
+        _6d.BackgroundTransparency = 1
+        _6d.ImageColor3 = _1
+        _6d.ImageTransparency = 1
+        _6d.Visible = true
+        _6d.Parent = _1d
+
+        local _9d = Instance.new("TextLabel")
+        _9d.Position = UDim2.fromOffset(86, 22)
+        _9d.Size = UDim2.new(1, -108, 0, 26)
+        _9d.BackgroundTransparency = 1
+        _9d.Font = Enum.Font.GothamBold
+        _9d.TextSize = 22
+        _9d.TextXAlignment = Enum.TextXAlignment.Left
+        _9d.TextColor3 = Color3.fromRGB(255, 255, 255)
+        _9d.TextTransparency = 1
+        _9d.Text = tostring(_d.title or "VOID")
+        _9d.ZIndex = 1
+        _9d.Parent = _7d
+
+        local _ad = Instance.new("UIGradient", _9d)
+        _ad.Rotation = 10
+        local _45 = ColorSequence.new
+        local _d5 = {}
+        local _55 = ColorSequenceKeypoint.new(0, Color3.fromRGB(154, 154, 168))
+        local _75 = ColorSequenceKeypoint.new(.42, Color3.fromRGB(255, 255, 255))
+        local _b5 = ColorSequenceKeypoint.new(.58, Color3.fromRGB(255, 255, 255))
+        local _35 = ColorSequenceKeypoint.new
+        local _05 = Color3.fromRGB
+        _d5[1] = _55
+        _d5[2] = _75
+        _d5[3] = _b5
+        do
+            local _4 = table.pack(_35(1, _05(154, 154, 168)))
+            table.move(_4, 1, _4.n, 4, _d5)
+        end
+        _ad.Color = _45(_d5)
+
+        local _85 = Instance.new("TextLabel")
+        _85.Position = UDim2.fromOffset(86, 50)
+        _85.Size = UDim2.new(1, -108, 0, 18)
+        _85.BackgroundTransparency = 1
+        _85.Font = Enum.Font.Gotham
+        _85.TextSize = 14
+        _85.TextXAlignment = Enum.TextXAlignment.Left
+        _85.TextColor3 = _e
+        _85.TextTransparency = 1
+        _85.Text = tostring(_d.subtitle or "")
+        _85.ZIndex = 1
+        _85.Parent = _7d
+
+        local _e5 = Instance.new("TextLabel")
+        _e5.Position = UDim2.fromOffset(22, 82)
+        _e5.Size = UDim2.new(1, -44, 0, 42)
+        _e5.BackgroundTransparency = 1
+        _e5.Font = Enum.Font.Gotham
+        _e5.TextSize = 15
+        _e5.LineHeight = 1.25
+        _e5.TextWrapped = true
+        _e5.TextXAlignment = Enum.TextXAlignment.Left
+        _e5.TextYAlignment = Enum.TextYAlignment.Top
+        _e5.TextColor3 = _f
+        _e5.TextTransparency = 1
+        _e5.Text = tostring(_d.body or "")
+        _e5.ZIndex = 1
+        _e5.Parent = _7d
+
+        local _f5 = Instance.new("Frame")
+        _f5.Position = UDim2.fromOffset(22, 136)
+        _f5.Size = UDim2.new(1, -44, 0, 48)
+        _f5.BackgroundColor3 = _2
+        _f5.BackgroundTransparency = 1
+        _f5.BorderSizePixel = 0
+        _f5.ZIndex = 1
+        _f5.Parent = _7d
+        ;(Instance.new("UICorner", _f5)).CornerRadius = UDim.new(0, 14)
+
+        local _25 = Instance.new("UIStroke", _f5)
+        _25.Color = _8
+        _25.Thickness = 1
+        _25.Transparency = 1
+
+        local _15 = Instance.new("TextLabel")
+        _15.AnchorPoint = Vector2.new(0, .5)
+        _15.Position = UDim2.new(0, 15, .5, 0)
+        _15.Size = UDim2.new(1, -135, 0, 20)
+        _15.BackgroundTransparency = 1
+        _15.Font = Enum.Font.Gotham
+        _15.TextSize = 15
+        _15.TextXAlignment = Enum.TextXAlignment.Left
+        _15.TextColor3 = _1
+        _15.TextTransparency = 1
+        _15.Text = "t.me/" .. _7.DISCORD_INVITE
+        _15.Parent = _f5
+
+        local _c5 = Instance.new("TextButton")
+        _c5.AnchorPoint = Vector2.new(1, .5)
+        _c5.Position = UDim2.new(1, -7, .5, 0)
+        _c5.Size = UDim2.fromOffset(100, 34)
+        _c5.BackgroundColor3 = _c
+        _c5.BackgroundTransparency = 1
+        _c5.BorderSizePixel = 0
+        _c5.AutoButtonColor = false
+        _c5.Font = Enum.Font.GothamMedium
+        _c5.TextSize = 15
+        _c5.TextColor3 = _6
+        _c5.TextTransparency = 1
+        _c5.Text = "Copy"
+        _c5.Parent = _f5
+        ;(Instance.new("UICorner", _c5)).CornerRadius = UDim.new(0, 11)
+
+        _5 = function()
+            pcall(function() _3:Destroy() end)
+        end
+
+        local function _65(_4, _d)
+            local _5 = 0
+            local function _7()
+                local _4 = os.clock()
+                if _4 - _5 < .25 then
+                    return
+                end
+                _5 = _4
+                _d()
+            end
+            _4.MouseButton1Click:Connect(_7)
+            _4.TouchTap:Connect(_7)
+        end
+
+        local _95 = TweenInfo.new(.12, Enum.EasingStyle.Quad)
+        _c5.MouseEnter:Connect(function()
+            (_0:Create(_c5, _95, {BackgroundColor3 = Color3.fromRGB(255, 255, 255)})):Play()
+        end)
+        _c5.MouseLeave:Connect(function()
+            (_0:Create(_c5, _95, {BackgroundColor3 = _c})):Play()
+        end)
+
+        local _a5 = Instance.new("UIScale", _c5)
+        _c5.MouseButton1Down:Connect(function()
+            (_0:Create(_a5, TweenInfo.new(.07), {Scale = .96})):Play()
+        end)
+        _c5.MouseButton1Up:Connect(function()
+            (_0:Create(_a5, TweenInfo.new(.12), {Scale = 1})):Play()
+        end)
+
+        _65(_c5, function()
+            (_0:Create(_a5, TweenInfo.new(.12), {Scale = 1})):Play()
+            _7.copyInvite()
+            _c5.Text = "Copied"
+            _15.Text = "Copied to your clipboard"
+            task.delay(1.8, function()
+                if _c5.Parent then
+                    _c5.Text = "Copy"
+                end
+                if _15.Parent then
+                    _15.Text = "t.me/" .. _7.DISCORD_INVITE
+                end
+            end)
+        end)
+
+        _65(_5d, _5)
+
+        local _47 = {}
+        if _4d then
+            local _4 = Instance.new("Frame")
+            _4.AnchorPoint = Vector2.new(1, 0)
+            _4.Position = UDim2.new(1, -22, 0, 196)
+            _4.Size = UDim2.new(1, -44, 0, 38)
+            _4.BackgroundTransparency = 1
+            _4.ZIndex = 1
+            _4.Parent = _7d
+
+            local _d = Instance.new("UIListLayout", _4)
+            _d.FillDirection = Enum.FillDirection.Horizontal
+            _d.HorizontalAlignment = Enum.HorizontalAlignment.Right
+            _d.VerticalAlignment = Enum.VerticalAlignment.Center
+            _d.Padding = UDim.new(0, 10)
+            _d.SortOrder = Enum.SortOrder.LayoutOrder
+
+            local _7 = #_a
+            local _b = _d.Padding.Offset
+            local _3 = 0
+            for _4, _d in ipairs(_a) do
+                _3 += _d.flex or 1
+            end
+            for _d, _e in ipairs(_a) do
+                local _f = _e.tint or (_e.primary and _c) or Color3.fromRGB(34, 34, 42)
+                local _2 = _e.primary and _6 or _9
+                local _1 = Instance.new("TextButton")
+                _1.LayoutOrder = _d
+                local _a = (_e.flex or 1) / _3
+                _1.Size = _e.width and UDim2.fromOffset(_e.width, 36) or UDim2.new(_a, (-_b * (_7 - 1)) * _a, 0, 36)
+                _1.BackgroundColor3 = _f
+                _1.BackgroundTransparency = 1
+                _1.BorderSizePixel = 0
+                _1.AutoButtonColor = false
+                _1.Font = Enum.Font.GothamMedium
+                _1.TextSize = 15
+                _1.TextColor3 = _2
+                _1.TextTransparency = 1
+                _1.Text = tostring(_e.label or "")
+                _1.Parent = _4
+                ;(Instance.new("UICorner", _1)).CornerRadius = UDim.new(0, 11)
+                if not _e.primary and not _e.tint then
+                    local _4 = Instance.new("UIStroke", _1)
+                    _4.Color = _8
+                    _4.Thickness = 1
+                    _4.Transparency = 1
+                    table.insert(_47, {obj = _4, prop = "Transparency", to = .5})
+                end
+                table.insert(_47, {obj = _1, prop = "BackgroundTransparency", to = 0})
+                table.insert(_47, {obj = _1, prop = "TextTransparency", to = 0})
+
+                local _4d = Instance.new("UIScale", _1)
+                _1.MouseButton1Down:Connect(function()
+                    (_0:Create(_4d, TweenInfo.new(.07), {Scale = .96})):Play()
+                end)
+                _1.MouseButton1Up:Connect(function()
+                    (_0:Create(_4d, TweenInfo.new(.12), {Scale = 1})):Play()
+                end)
+
+                local _dd = _e.callback
+                _65(_1, function()
+                    (_0:Create(_4d, TweenInfo.new(.12), {Scale = 1})):Play()
+                    if _e.closes ~= false then
+                        _5()
+                    end
+                    if _dd then
+                        task.spawn(_dd)
+                    end
+                end)
+            end
+        end
+
+        local _d7 = TweenInfo.new(.24, Enum.EasingStyle.Quad, Enum.EasingDirection.Out)
+        local _57 = TweenInfo.new(.34, Enum.EasingStyle.Quint, Enum.EasingDirection.Out)
+        _7d.Position = UDim2.fromScale(.5, .52)
+        ;(_0:Create(_7d, _57, {Position = UDim2.fromScale(.5, .5)})):Play()
+        ;(_0:Create(_bd, _57, {Scale = 1})):Play()
+        ;(_0:Create(_5d, _d7, {BackgroundTransparency = .5})):Play()
+        ;(_0:Create(_7d, _d7, {BackgroundTransparency = 0})):Play()
+        ;(_0:Create(_ed, _d7, {Transparency = .42})):Play()
+        ;(_0:Create(_1d, _d7, {BackgroundTransparency = 0})):Play()
+        ;(_0:Create(_cd, _d7, {Transparency = .42})):Play()
+        ;(_0:Create(_6d, _d7, {ImageTransparency = 0})):Play()
+        ;(_0:Create(_9d, _d7, {TextTransparency = 0})):Play()
+        ;(_0:Create(_85, _d7, {TextTransparency = 0})):Play()
+        ;(_0:Create(_e5, _d7, {TextTransparency = 0})):Play()
+        ;(_0:Create(_f5, _d7, {BackgroundTransparency = 0})):Play()
+        ;(_0:Create(_25, _d7, {Transparency = .42})):Play()
+        ;(_0:Create(_15, _d7, {TextTransparency = 0})):Play()
+        ;(_0:Create(_c5, _d7, {BackgroundTransparency = 0, TextTransparency = 0})):Play()
+        if _2d then
+            (_0:Create(_2d, _d7, {ImageTransparency = .84})):Play()
+        end
+        for _4, _d in ipairs(_47) do
+            (_0:Create(_d.obj, _d7, {[_d.prop] = _d.to})):Play()
+        end
+        local _77 = _d.timeout or 25
+        if _77 > 0 then
+            task.delay(_77, function() _5() end)
+        end
+    end)
+    return _5
+end
+
+_7.farewell = function()
+    if _G.__VOIDReloading then
+        return
+    end
+    if _7.saidBye then
+        return
+    end
+    _7.saidBye = true
+    _7.card({
+        title = "Bye bye!",
+        subtitle = "Thanks for running VOID Script",
+        body = "Something let you down? Tell us in the server."
+    })
+end
+
+_7.inLobbyNow = function()
+    local _4 = (game:GetService("Players")).LocalPlayer
+    _4 = _4 and _4:FindFirstChild("PlayerGui")
+    _4 = _4 and _4:FindFirstChild("MainGUI")
+    _4 = _4 and _4:FindFirstChild("Game")
+    if not _4 then
+        return true
+    end
+    return _4:FindFirstChild("Inventory") == nil
+end
+
+_7.coinFails = {}
+_7.coinSkips = {}
+_7.coinSkip = function(_4)
+    local _d = _7.coinSkips[_4]
+    if not _d then
+        return false
+    end
+    if _d < tick() then
+        _7.coinSkips[_4] = nil
+        _7.coinFails[_4] = nil
+        return false
+    end
+    return true
+end
+_7.coinFailed = function(_4)
+    local _d = (_7.coinFails[_4] or 0) + 1
+    _7.coinFails[_4] = _d
+    if _d >= 2 then
+        _7.coinSkips[_4] = tick() + 20
+    end
+end
+_7.coinReset = function()
+    local _4 = _7
+    _7.coinFails = {}
+    _4.coinSkips = {}
+end
+
+pcall(function()
+    if not (isfile and delfile) then
+        return
+    end
+    if isfile("WindUI/VOIDV2/config/void_hud.json") then
+        if writefile and not isfile(_7.hudFile) then
+            writefile(_7.hudFile, readfile("WindUI/VOIDV2/config/void_hud.json"))
+        end
+        delfile("WindUI/VOIDV2/config/void_hud.json")
+    end
+    if listfiles then
+        for _4, _d in ipairs(listfiles("WindUI/VOIDV2/config")) do
+            local _5 = (tostring(_d)):match("[^/\\]+$") or ""
+            if _5:match("^void_hud") then
+                local _4 = _5:match("^void_hud_(.+)%.json$")
+                if _4 and writefile then
+                    pcall(function()
+                        writefile(_7.hudDir .. ("/" .. (_4 .. ".json")), readfile(_d))
+                    end)
+                end
+                pcall(function() delfile(_d) end)
+            end
+        end
+    end
+end)
+
+pcall(function()
+    if isfile and isfile(_7.hudFile) then
+        local _4 = (game:GetService("HttpService")):JSONDecode(readfile(_7.hudFile))
+        if type(_4) == "table" then
+            _7.hudPos = _4
+        end
+    end
+end)
+
+pcall(function()
+    _7.config = _d.ConfigManager:CreateConfig("autosave")
+    if _7.config and _7.config.SetAsCurrent then
+        _7.config:SetAsCurrent()
+    end
+end)
+
+Players = game:GetService("Players")
+RunService = game:GetService("RunService")
+Workspace = game:GetService("Workspace")
+ReplicatedStorage = game:GetService("ReplicatedStorage")
+CoreGui = game:GetService("CoreGui")
+HttpService = game:GetService("HttpService")
+CollectionService = game:GetService("CollectionService")
+
+_3, _0, _8, _e, _f, _2, _1, _c, _6, _9 = nil, nil, nil, nil, nil, nil, nil, nil, nil, nil
+_a, _4d, _dd, _5d, _7d = nil, nil, nil, nil, nil
+
+do
+    local function _d(_4)
+        pcall(function() CollectionService:AddTag(_4, "WeaponPassthrough") end)
+    end
+
+    _3 = Players.LocalPlayer
+    espColors = {
+        murderer = Color3.fromRGB(255, 0, 4),
+        sheriff = Color3.fromRGB(0, 153, 255),
+        innocent = Color3.fromRGB(0, 255, 8),
+        gun = Color3.fromRGB(0, 153, 255),
+        trap = Color3.fromHex("#A855F7")
+    }
+    _0 = false
+    _8 = false
+    _e = false
+    _f = false
+    _2 = false
+    local _5 = nil
+    local _b = {}
+    _b.__index = _b
+    _b.new = function()
+        local _4 = setmetatable({}, _b)
+        _4.ScreenGui = Instance.new("ScreenGui")
+        _4.ScreenGui.Name = "VOIDESP"
+        _4.ScreenGui.IgnoreGuiInset = true
+        _4.ScreenGui.ResetOnSpawn = false
+        _4.ScreenGui.Parent = CoreGui
+        _4.Groups = {}
+        return _4
+    end
+    _b.Add = function(_4, _d, _5)
+        if not _d then
+            return
+        end
+        local _7 = Instance.new("Highlight")
+        _7.Name = "HL_" .. HttpService:GenerateGUID(false)
+        _7.Adornee = _d
+        _7.FillColor = _5.Color
+        _7.OutlineColor = _5.Color
+        _7.FillTransparency = _5.FillTransparency
+        _7.OutlineTransparency = _5.OutlineTransparency
+        _7.DepthMode = Enum.HighlightDepthMode.AlwaysOnTop
+        _7.Parent = _4.ScreenGui
+        local _b = _4.Groups[_5.GroupName]
+        if not _b then
+            _b = {}
+            _4.Groups[_5.GroupName] = _b
+        end
+        table.insert(_b, _7)
+        if _5.Label then
+            local _7 = Instance.new("BillboardGui")
+            _7.Name = "LBL_" .. HttpService:GenerateGUID(false)
+            _7.Adornee = _5.LabelAdornee or _d
+            _7.AlwaysOnTop = true
+            _7.Size = UDim2.new(0, 140, 0, 16)
+            _7.StudsOffset = Vector3.new(0, _5.LabelAdornee and 2.2 or 2, 0)
+            if _5.LabelMaxDistance then
+                _7.MaxDistance = _5.LabelMaxDistance
+            end
+            _7.Parent = _4.ScreenGui
+            local _3 = Instance.new("TextLabel")
+            _3.Size = UDim2.new(1, 0, 1, 0)
+            _3.BackgroundTransparency = 1
+            _3.Font = Enum.Font.FredokaOne
+            _3.TextSize = 11
+            _3.TextColor3 = _5.Color
+            _3.Text = _5.Label
+            _3.Parent = _7
+            local _0 = Instance.new("UIStroke")
+            _0.Thickness = .5
+            _0.Color = Color3.new(0, 0, 0)
+            _0.Parent = _3
+            table.insert(_b, _7)
+        end
+    end
+    _b.RemoveGroup = function(_4, _d)
+        local _5 = _4.Groups[_d]
+        if not _5 then
+            return
+        end
+        for _4, _d in ipairs(_5) do
+            _d.Adornee = nil
+            _d:Destroy()
+        end
+        _4.Groups[_d] = nil
+    end
+    _b.Destroy = function(_4)
+        for _d in pairs(_4.Groups) do
+            _4:RemoveGroup(_d)
+        end
+        if _4.ScreenGui then
+            _4.ScreenGui:Destroy()
+        end
+    end
+    _1 = _b.new()
+    _c = function()
+        for _4, _d in ipairs(Players:GetPlayers()) do
+            local _5 = _d:FindFirstChildOfClass("Backpack")
+            if _5 and _5:FindFirstChild("Knife") then
+                return _d
+            end
+        end
+        for _4, _d in ipairs(Players:GetPlayers()) do
+            if _d.Character and _d.Character:FindFirstChild("Knife") then
+                return _d
+            end
+        end
+        if _5 then
+            for _4, _d in pairs(_5) do
+                if _d.Role == "Murderer" and Players:FindFirstChild(_4) then
+                    return Players:FindFirstChild(_4)
+                end
+            end
+        end
+        return nil
+    end
+    _6 = function()
+        for _4, _d in ipairs(Players:GetPlayers()) do
+            local _5 = _d:FindFirstChildOfClass("Backpack")
+            if _5 and _5:FindFirstChild("Gun") then
+                return _d
+            end
+        end
+        for _4, _d in ipairs(Players:GetPlayers()) do
+            if _d.Character and _d.Character:FindFirstChild("Gun") then
+                return _d
+            end
+        end
+        if _5 then
+            for _4, _d in pairs(_5) do
+                if _d.Role == "Sheriff" and Players:FindFirstChild(_4) then
+                    return Players:FindFirstChild(_4)
+                end
+            end
+        end
+        return nil
+    end
+
+    local function _bd(_4)
+        for _4, _5 in ipairs(_4:GetDescendants()) do
+            if _5:IsA("BasePart") and (_5.Name ~= "HumanoidRootPart" and _5.Transparency >= 1) then
+                _d(_5)
+                if _7.revealed[_5] == nil then
+                    _7.revealed[_5] = _5.Transparency
+                end
+                _5.Transparency = .9
+            end
+        end
+    end
+
+    ROLEBOX = {conns = {}}
+    ROLEBOX.hide = function(_4)
+        if not _4:IsA("BoxHandleAdornment") then
+            return
+        end
+        _4.Visible = false
+        table.insert(ROLEBOX.conns, (_4:GetPropertyChangedSignal("Visible")):Connect(function()
+            if _4.Visible then
+                _4.Visible = false
+            end
+        end))
+    end
+    ROLEBOX.watch = function(_4)
+        for _4, _d in ipairs(_4:GetDescendants()) do
+            ROLEBOX.hide(_d)
+        end
+        table.insert(ROLEBOX.conns, _4.DescendantAdded:Connect(ROLEBOX.hide))
+    end
+    ROLEBOX.start = function()
+        for _4, _d in ipairs(Players:GetPlayers()) do
+            if _d.Character then
+                ROLEBOX.watch(_d.Character)
+            end
+            table.insert(ROLEBOX.conns, _d.CharacterAdded:Connect(ROLEBOX.watch))
+        end
+        table.insert(ROLEBOX.conns, Players.PlayerAdded:Connect(function(_4)
+            table.insert(ROLEBOX.conns, _4.CharacterAdded:Connect(ROLEBOX.watch))
+        end))
+    end
+    ROLEBOX.stop = function()
+        for _4, _d in ipairs(ROLEBOX.conns) do
+            pcall(function() _d:Disconnect() end)
+        end
+        ROLEBOX.conns = {}
+        for _4, _d in ipairs(Players:GetPlayers()) do
+            if _d.Character then
+                for _4, _d in ipairs(_d.Character:GetDescendants()) do
+                    if _d:IsA("BoxHandleAdornment") then
+                        _d.Visible = true
+                    end
+                end
+            end
+        end
+    end
+    ROLEBOX.start()
+
+    _9 = function()
+        return _0 or _8 or _e
+    end
+    _a = function()
+        _1:RemoveGroup("players")
+        if not _9() then
+            return
+        end
+        local _4 = 1
+        if _8 then
+            _4 = .75
+        end
+        local _d = 1
+        if _0 then
+            _d = .1
+        end
+        local _5 = _c()
+        local _7 = _6()
+        for _b, _0 in ipairs(Players:GetPlayers()) do
+            if _0 ~= _3 and _0.Character then
+                _bd(_0.Character)
+                local _b = espColors.innocent
+                if _0 == _5 then
+                    _b = espColors.murderer
+                elseif _0 == _7 then
+                    _b = espColors.sheriff
+                end
+                _1:Add(_0.Character, {
+                    Color = _b,
+                    GroupName = "players",
+                    FillTransparency = _4,
+                    OutlineTransparency = _d,
+                    Label = _e and _0.DisplayName or nil,
+                    LabelAdornee = _0.Character:FindFirstChild("Head"),
+                    LabelMaxDistance = 300
+                })
+            end
+        end
+    end
+
+    local function _3d(_4)
+        _1:Add(_4, {
+            Color = espColors.gun,
+            GroupName = "gun",
+            Label = "Gun",
+            FillTransparency = .5,
+            OutlineTransparency = 0
+        })
+    end
+
+    local function _0d(_4)
+        _d(_4)
+        pcall(function() _4.Transparency = 0 end)
+        _1:Add(_4, {
+            Color = espColors.trap,
+            GroupName = "trap",
+            Label = "Trap",
+            FillTransparency = .5,
+            OutlineTransparency = 0
+        })
+    end
+
+    _4d = function()
+        _1:RemoveGroup("gun")
+        if not _f then
+            return
+        end
+        for _4, _d in ipairs(Workspace:GetDescendants()) do
+            if _d.Name == "GunDrop" and (_d:IsA("BasePart") or _d:IsA("Model")) then
+                _3d(_d)
+            end
+        end
+    end
+
+    _dd = function()
+        _1:RemoveGroup("trap")
+        if not _2 then
+            return
+        end
+        for _4, _d in ipairs(Workspace:GetDescendants()) do
+            if _d.Name == "Trap" and (_d.Parent and (_d.Parent:IsA("Folder") or _d.Parent:IsA("Model"))) then
+                _0d(_d)
+            end
+        end
+    end
+
+    local _8d = 0
+    _7.espRecolourSoon = function()
+        if not _9() then
+            return
+        end
+        pcall(_a)
+        for _4, _d in ipairs({.1, .3, .6}) do
+            task.delay(_d, function()
+                if _9() then
+                    pcall(_a)
+                end
+            end)
+        end
+    end
+
+    pcall(function()
+        _7.conns[#_7.conns + 1] = Workspace.DescendantAdded:Connect(function(_d)
+            if _2 and (_d.Name == "Trap" and (_d.Parent and (_d.Parent:IsA("Folder") or _d.Parent:IsA("Model")))) then
+                _0d(_d)
+            end
+            if _d.Name == "Gun" and _d:IsA("Tool") then
+                if _d.Parent and Players:GetPlayerFromCharacter(_d.Parent) then
+                    _7.espRecolourSoon()
+                    if _d.Name == "GunDrop" and (_d:IsA("BasePart") or _d:IsA("Model")) then
+                        if _f then
+                            _3d(_d)
+                        end
+                        if tick() - _8d > 3 then
+                            _8d = tick()
+                            _7.playSfx("gun")
+                            _4:Notify({
+                                Title = "Gun Dropped!",
+                                Content = "The sheriff died — the gun is on the floor.",
+                                Duration = 5,
+                                Icon = "crosshair"
+                            })
+                        end
+                    end
+                end
+            end
+        end)
+
+        _7.conns[#_7.conns + 1] = Workspace.DescendantRemoving:Connect(function(_4)
+            if _f and _4.Name == "GunDrop" then
+                task.defer(_4d)
+            end
+            if _2 and _4.Name == "Trap" then
+                task.defer(_dd)
+            end
+            if _4.Name == "GunDrop" then
+                task.defer(_7.espRecolourSoon)
+            end
+        end)
+    end)
+
+    local _ed = false
+    _5d = function()
+        if _ed then
+            return
+        end
+        _ed = true
+        task.spawn(function()
+            while _ed do
+                task.wait(1)
+                if _9() then
+                    pcall(_a)
+                end
+            end
+        end)
+    end
+    _7d = function()
+        _ed = false
+    end
+end
+
+_7.tr = {
+    lines = false,
+    dist = false,
+    arrows = false,
+    parts = {},
+    murd = nil,
+    sher = nil,
+    roleAt = 0,
+    conn = nil
+}
+
+_7.tr.any = function()
+    return _7.tr.lines or _7.tr.dist or _7.tr.arrows
+end
+
+_7.tr.colorOf = function(_4)
+    if _4 == _7.tr.murd then
+        return espColors.murderer
+    end
+    if _4 == _7.tr.sher then
+        return espColors.sheriff
+    end
+    return espColors.innocent
+end
+
+_7.tr.slot = function(_4)
+    local _d = _7.tr.parts[_4]
+    if _d and (_d.line and _d.line.Parent) then
+        return _d
+    end
+    local _5 = _1 and _1.ScreenGui
+    if not _5 or not _5.Parent then
+        return nil
+    end
+    local _b = {line = Instance.new("Frame")}
+    _b.line.Name = "VOIDTracer"
+    _b.line.AnchorPoint = Vector2.new(.5, .5)
+    _b.line.BorderSizePixel = 0
+    _b.line.Visible = false
+    _b.line.ZIndex = 2
+    _b.line.Parent = _5
+    _b.lbl = Instance.new("TextLabel")
+    _b.lbl.Name = "VOIDDist"
+    _b.lbl.AnchorPoint = Vector2.new(.5, 0)
+    _b.lbl.BackgroundTransparency = 1
+    _b.lbl.Size = UDim2.fromOffset(90, 14)
+    _b.lbl.Font = Enum.Font.FredokaOne
+    _b.lbl.TextSize = 11
+    _b.lbl.Visible = false
+    _b.lbl.ZIndex = 3
+    _b.lbl.Parent = _5
+    local _3 = Instance.new("UIStroke")
+    _3.Thickness = .5
+    _3.Color = Color3.new(0, 0, 0)
+    _3.Parent = _b.lbl
+    _b.arw = Instance.new("TextLabel")
+    _b.arw.Name = "VOIDArrow"
+    _b.arw.AnchorPoint = Vector2.new(.5, .5)
+    _b.arw.BackgroundTransparency = 1
+    _b.arw.Size = UDim2.fromOffset(28, 28)
+    _b.arw.Font = Enum.Font.SourceSansBold
+    _b.arw.TextSize = 24
+    _b.arw.Text = utf8.char(9650)
+    _b.arw.Visible = false
+    _b.arw.ZIndex = 3
+    _b.arw.Parent = _5
+    local _0 = Instance.new("UIStroke")
+    _0.Thickness = 1
+    _0.Color = Color3.new(0, 0, 0)
+    _0.Parent = _b.arw
+    _7.tr.parts[_4] = _b
+    return _b
+end
+
+_7.tr.drop = function(_4)
+    local _d = _7.tr.parts[_4]
+    if not _d then
+        return
+    end
+    _7.tr.parts[_4] = nil
+    for _4, _d in pairs(_d) do
+        pcall(function() _d:Destroy() end)
+    end
+end
+
+_7.tr.step = function()
+    local _4 = Workspace.CurrentCamera
+    if not _4 then
+        return
+    end
+    local _d = _4.ViewportSize
+    if _d.X < 1 or _d.Y < 1 then
+        return
+    end
+    local _5 = os.clock()
+    if _5 - _7.tr.roleAt > .5 then
+        _7.tr.roleAt = _5
+        _7.tr.murd = _c()
+        _7.tr.sher = _6()
+        for _4 in pairs(_7.tr.parts) do
+            if _4.Parent == nil then
+                _7.tr.drop(_4)
+            end
+        end
+    end
+    local _b = _3.Character
+    _b = _b and _b:FindFirstChild("HumanoidRootPart")
+    local _0 = _d.X * .5
+    local _8 = _d.Y
+    local _e = _d.X * .5
+    local _f = _d.Y * .5
+    local _2 = math.min(_d.X, _d.Y) * .33
+    local _1 = _7.tr.any()
+    for _d, _5 in ipairs(Players:GetPlayers()) do
+        local _c = _7.tr.parts[_5]
+        local _6 = _5 ~= _3 and _5.Character or nil
+        local _9 = _6 and _6:FindFirstChild("HumanoidRootPart")
+        _6 = _6 and _6:FindFirstChildOfClass("Humanoid")
+        if _1 and (_9 and (_6 and _6.Health > 0)) then
+            _c = _c or _7.tr.slot(_5)
+        elseif _c then
+            local _4 = _c.lbl
+            local _d = _c.arw
+            _c.line.Visible = false
+            _4.Visible = false
+            _d.Visible = false
+            _c = nil
+        end
+        if _c then
+            local _d = _7.tr.colorOf(_5)
+            local _3, _1 = _4:WorldToViewportPoint(_9.Position)
+            local _6 = _3.Z <= 0
+            _1 = _1 and not _6
+            if _7.tr.lines and _1 then
+                local _4 = _3.X - _0
+                local _5 = _3.Y - _8
+                _c.line.BackgroundColor3 = _d
+                _c.line.Size = UDim2.fromOffset(2, math.sqrt(_4 * _4 + _5 * _5))
+                _c.line.Position = UDim2.fromOffset(_0 + _4 * .5, _8 + _5 * .5)
+                _c.line.Rotation = math.deg(math.atan2(_5, _4)) - 90
+                _c.line.Visible = true
+            else
+                _c.line.Visible = false
+            end
+            if _7.tr.dist and _1 then
+                local _5 = _b and (_9.Position - _b.Position).Magnitude or (_9.Position - _4.CFrame.Position).Magnitude
+                local _7 = _4:WorldToViewportPoint(_9.Position - Vector3.new(0, 3.2, 0))
+                _c.lbl.TextColor3 = _d
+                _c.lbl.Text = math.floor(_5 + .5) .. "m"
+                _c.lbl.Position = UDim2.fromOffset(_7.X, _7.Y)
+                _c.lbl.Visible = true
+            else
+                _c.lbl.Visible = false
+            end
+            if _7.tr.arrows and not _1 then
+                local _4 = _3.X - _e
+                local _5 = _3.Y - _f
+                if _6 then
+                    _4 = -_4
+                    _5 = -_5
+                end
+                local _7 = math.sqrt(_4 * _4 + _5 * _5)
+                if _7 < 1 then
+                    _4 = 0
+                    _5 = -1
+                    _7 = 1
+                end
+                _c.arw.TextColor3 = _d
+                _c.arw.Position = UDim2.fromOffset(_e + (_4 / _7) * _2, _f + (_5 / _7) * _2)
+                _c.arw.Rotation = math.deg(math.atan2(_5, _4)) + 90
+                _c.arw.Visible = true
+            else
+                _c.arw.Visible = false
+            end
+        end
+    end
+end
+
+_7.tr.start = function()
+    if _7.tr.conn then
+        return
+    end
+    _7.tr.conn = RunService.RenderStepped:Connect(function()
+        pcall(_7.tr.step)
+    end)
+end
+
+_7.tr.stop = function()
+    if _7.tr.conn then
+        pcall(function() _7.tr.conn:Disconnect() end)
+        _7.tr.conn = nil
+    end
+    for _4 in pairs(_7.tr.parts) do
+        _7.tr.drop(_4)
+    end
+end
+
+_7.tr.sync = function()
+    if _7.tr.any() then
+        _7.tr.start()
+    else
+        _7.tr.stop()
+    end
+end
+
+pcall(function()
+    local _4 = ReplicatedStorage:FindFirstChild("Remotes")
+    _4 = _4 and _4:FindFirstChild("Gameplay")
+    local _d = _4 and _4:FindFirstChild("PlayerDataChanged")
+    if _d and _d:IsA("RemoteEvent") then
+        _7.conns[#_7.conns + 1] = _d.OnClientEvent:Connect(function(_4)
+            _5 = _4
+            if _9() then
+                _a()
+            end
+        end)
+    end
+end)
+
+TeleportService = game:GetService("TeleportService")
+local _bd, _3d, _0d, _8d, _ed, _fd, _2d, _1d, _cd
+-- MM2 script — fixed syntax, part 4a/4
+-- Вставляй после части 3. Копируется без последствий.
+
+do
+    local _d = game.PlaceId
+    local _5 = game.JobId
+
+    _bd = false
+    _3d = function(_d)
+        if _bd then
+            _4:Notify({
+                Title = "Fling Active!",
+                Content = "Wait for the current fling to finish!",
+                Duration = 1.5,
+                Icon = "clock"
+            })
+            return
+        end
+        if not _d or not _d.Character then
+            _4:Notify({
+                Title = "Error!",
+                Content = "Could not find that player!",
+                Duration = 1.5,
+                Icon = "x"
+            })
+            return
+        end
+        if not _d.Character:FindFirstChildOfClass("Humanoid") then
+            return
+        end
+        local _5 = _3.Character
+        if not _5 then
+            return
+        end
+        local _7 = _5:FindFirstChildOfClass("Humanoid")
+        if not _7 then
+            return
+        end
+        local _b = _7.RootPart
+        if not _b then
+            return
+        end
+        _bd = true
+        local _0 = _b.CFrame
+        local _8 = Workspace.FallenPartsDestroyHeight
+        local _e = _7.Health
+        local _f = _d.Character
+        local _2 = _f:FindFirstChildOfClass("Humanoid")
+        local _1 = _2 and _2.RootPart
+        local _c = _f:FindFirstChild("Head")
+        local _6 = _f:FindFirstChildOfClass("Accessory")
+        _6 = _6 and _6:FindFirstChild("Handle")
+        if _2 and _2.Sit then
+            _bd = false
+            return
+        end
+        if _c then
+            Workspace.CurrentCamera.CameraSubject = _c
+        elseif _6 then
+            Workspace.CurrentCamera.CameraSubject = _6
+        elseif _2 then
+            Workspace.CurrentCamera.CameraSubject = _2
+        end
+        local function _9(_4, _d, _7)
+            _b.CFrame = (CFrame.new(_4.Position) * _d) * _7
+            pcall(function() _5:SetPrimaryPartCFrame((CFrame.new(_4.Position) * _d) * _7) end)
+            _b.Velocity = Vector3.new(90000000, 900000000, 90000000)
+            _b.RotVelocity = Vector3.new(900000000, 900000000, 900000000)
+        end
+        local function _a(_4)
+            local _5 = tick()
+            local _3 = 0
+            while true do
+                if not (not _b or not _2 or not _bd) then
+                    if _4.Velocity.Magnitude < 50 then
+                        _3 += 100
+                        local _d = (_2.MoveDirection * _4.Velocity.Magnitude) / 1.25
+                        local _5 = CFrame.Angles
+                        _9(_4, CFrame.new(0, 1.5, 0) + _d, _5(math.rad(_3), 0, 0))
+                        task.wait()
+                        local _7 = (_2.MoveDirection * _4.Velocity.Magnitude) / 1.25
+                        local _b = CFrame.Angles
+                        _9(_4, CFrame.new(0, -1.5, 0) + _7, _b(math.rad(_3), 0, 0))
+                        task.wait()
+                        local _0 = (_2.MoveDirection * _4.Velocity.Magnitude) / 1.25
+                        local _8 = CFrame.Angles
+                        _9(_4, CFrame.new(2.25, 1.5, -2.25) + _0, _8(math.rad(_3), 0, 0))
+                        task.wait()
+                        local _e = (_2.MoveDirection * _4.Velocity.Magnitude) / 1.25
+                        local _f = CFrame.Angles
+                        _9(_4, CFrame.new(-2.25, -1.5, 2.25) + _e, _f(math.rad(_3), 0, 0))
+                        task.wait()
+                        local _1 = _2.MoveDirection
+                        local _c = CFrame.Angles
+                        _9(_4, CFrame.new(0, 1.5, 0) + _1, _c(math.rad(_3), 0, 0))
+                        task.wait()
+                        local _6 = _2.MoveDirection
+                        local _a = CFrame.Angles
+                        _9(_4, CFrame.new(0, -1.5, 0) + _6, _a(math.rad(_3), 0, 0))
+                        task.wait()
+                    else
+                        local _d = CFrame.Angles
+                        _9(_4, CFrame.new(0, 1.5, _2.WalkSpeed), _d(1.5707963267948966, 0, 0))
+                        task.wait()
+                        local _5 = CFrame.Angles
+                        _9(_4, CFrame.new(0, -1.5, -_2.WalkSpeed), _5(0, 0, 0))
+                        task.wait()
+                        local _7 = CFrame.Angles
+                        _9(_4, CFrame.new(0, 1.5, _2.WalkSpeed), _7(1.5707963267948966, 0, 0))
+                        task.wait()
+                        local _b = CFrame.Angles
+                        _9(_4, CFrame.new(0, -1.5, 0), _b(1.5707963267948966, 0, 0))
+                        task.wait()
+                        local _3 = CFrame.Angles
+                        _9(_4, CFrame.new(0, -1.5, 0), _3(0, 0, 0))
+                        task.wait()
+                        local _0 = CFrame.Angles
+                        _9(_4, CFrame.new(0, -1.5, 0), _0(-1.5707963267948966, 0, 0))
+                        task.wait()
+                        local _8 = CFrame.Angles
+                        _9(_4, CFrame.new(0, -1.5, 0), _8(0, 0, 0))
+                        task.wait()
+                    end
+                    if not (_4.Velocity.Magnitude > 500 or _4.Parent ~= _d.Character or _d.Parent ~= Players or _7.Health <= 0 or _7.Health < _e or _2 and _2.Sit or tick() > _5 + 2 or not _bd) then
+                        continue
+                    end
+                end
+                break
+            end
+        end
+        Workspace.FallenPartsDestroyHeight = 0 / 0
+        local _4d = Instance.new("BodyVelocity")
+        _4d.Name = "SkidFlingBV"
+        _4d.Parent = _b
+        _4d.Velocity = Vector3.zero
+        _4d.MaxForce = Vector3.new(math.huge, math.huge, math.huge)
+        _7:SetStateEnabled(Enum.HumanoidStateType.Seated, false)
+        pcall(function()
+            if _1 and _c then
+                if (_1.CFrame.p - _c.CFrame.p).Magnitude <= 5 then
+                    _a(_1)
+                else
+                    _a(_c)
+                end
+            elseif _1 then
+                _a(_1)
+            elseif _c then
+                _a(_c)
+            elseif _6 then
+                _a(_6)
+            end
+        end)
+        _4d:Destroy()
+        _7:SetStateEnabled(Enum.HumanoidStateType.Seated, true)
+        Workspace.CurrentCamera.CameraSubject = _7
+        if _0 then
+            pcall(function()
+                for _4 = 1, 50, 1 do
+                    _b.CFrame = _0 * CFrame.new(0, .5, 0)
+                    pcall(function() _5:SetPrimaryPartCFrame(_0 * CFrame.new(0, .5, 0)) end)
+                    _7:ChangeState("GettingUp")
+                    for _4, _d in ipairs(_5:GetChildren()) do
+                        if _d:IsA("BasePart") then
+                            _d.Velocity = Vector3.zero
+                            _d.RotVelocity = Vector3.zero
+                        end
+                    end
+                    task.wait()
+                    if not ((_b.Position - _0.p).Magnitude < 25) then
+                        continue
+                    end
+                    break
+                end
+            end)
+        end
+        Workspace.FallenPartsDestroyHeight = _8
+        _bd = false
+        if _7.Health <= 0 then
+            _4:Notify({
+                Title = "Fling Backfired",
+                Content = _d.Name .. " killed you mid-fling.",
+                Duration = 3,
+                Icon = "x"
+            })
+        elseif _7.Health < _e then
+            _4:Notify({
+                Title = "Flinged!",
+                Content = "Flinged " .. (_d.Name .. " - took a hit, bailed early."),
+                Duration = 2,
+                Icon = "flame"
+            })
+        else
+            _4:Notify({
+                Title = "Flinged!",
+                Content = "Flinged " .. (_d.Name .. "!"),
+                Duration = 1.5,
+                Icon = "flame"
+            })
+        end
+    end
+
+    _0d = false
+    local _b = false
+    _8d = function() return nil end
+    _ed = function()
+        if _b then
+            return
+        end
+        _b = true
+        task.spawn(function()
+            while _0d do
+                task.wait(.5)
+                pcall(function()
+                    if not _0d then
+                        return
+                    end
+                    if _bd then
+                        return
+                    end
+                    local _4 = _8d()
+                    if not _4 then
+                        return
+                    end
+                    local _d = Players:FindFirstChild(_4)
+                    if _d and (_d ~= _3 and _d.Character) then
+                        _3d(_d)
+                    end
+                end)
+                if _bd then
+                    while _bd and _0d do
+                        task.wait(.2)
+                    end
+                    task.wait(1)
+                end
+            end
+            _b = false
+        end)
+    end
+    _fd = function()
+        _0d = false
+    end
+
+    _2d = function(_d, _5)
+        _d = _d and _d.Character
+        if not _d or not _d:FindFirstChild("HumanoidRootPart") then
+            _4:Notify({
+                Title = "Error!",
+                Content = "No " .. (_5 .. " found!"),
+                Duration = 1.5,
+                Icon = "x"
+            })
+            return
+        end
+        local _7 = _3.Character
+        if not _7 or not _7:FindFirstChild("HumanoidRootPart") then
+            return
+        end
+        _7.HumanoidRootPart.Velocity = Vector3.zero
+        _7.HumanoidRootPart.CFrame = _d.HumanoidRootPart.CFrame * CFrame.new(0, 0, 3)
+        _4:Notify({
+            Title = "Teleported!",
+            Content = "Teleported to " .. _5,
+            Duration = 1.5,
+            Icon = "check"
+        })
+    end
+
+    local function _0(_4)
+        local _d, _5 = pcall(function()
+            if syn and syn.request then
+                return HttpService:JSONDecode((syn.request({Url = _4, Method = "GET"})).Body)
+            end
+            if http and http.request then
+                return HttpService:JSONDecode((http.request({Url = _4, Method = "GET"})).Body)
+            end
+            if request then
+                return HttpService:JSONDecode((request({Url = _4, Method = "GET"})).Body)
+            end
+            if httpget then
+                return HttpService:JSONDecode(httpget(_4))
+            end
+            return HttpService:JSONDecode(game:HttpGet(_4))
+        end)
+        if _d then
+            return _5
+        end
+        return nil
+    end
+
+    _1d = function()
+        _4:Notify({
+            Title = "Server Hop",
+            Content = "Teleporting to a new server...",
+            Duration = 3,
+            Icon = "loader"
+        })
+        task.wait(.5)
+        local _5, _7 = pcall(function() TeleportService:Teleport(_d) end)
+        if not _5 then
+            _4:Notify({
+                Title = "Error!",
+                Content = "Failed to hop: " .. tostring(_7),
+                Duration = 3,
+                Icon = "x"
+            })
+        end
+    end
+
+    _cd = function()
+        _4:Notify({
+            Title = "Smallest Server",
+            Content = "Finding the emptiest server...",
+            Duration = 3,
+            Icon = "loader"
+        })
+        local _7 = {}
+        local _b = 0
+        local _3 = ""
+        while _b < 5 do
+            _b += 1
+            local _4 = "https://games.roblox.com/v1/games/" .. (_d .. "/servers/Public?sortOrder=Asc&limit=100")
+            if _3 and _3 ~= "" then
+                _4 ..= "&cursor=" .. _3
+            end
+            local _8 = _0(_4)
+            if not _8 or not _8.data then
+                break
+            end
+            for _4, _d in ipairs(_8.data) do
+                if _d.id ~= _5 and (_d.playing and (_d.maxPlayers and _d.playing < _d.maxPlayers)) then
+                    table.insert(_7, _d)
+                end
+            end
+            _3 = _8.nextPageCursor
+            if not _3 or _3 == "" then
+                break
+            end
+        end
+        if #_7 == 0 then
+            _4:Notify({
+                Title = "No Servers!",
+                Content = "No joinable servers found. Trying random hop...",
+                Duration = 2,
+                Icon = "x"
+            })
+            task.wait(1)
+            pcall(function() TeleportService:Teleport(_d) end)
+            return
+        end
+        table.sort(_7, function(_4, _d) return _4.playing < _d.playing end)
+        local _8 = _7[1]
+        _4:Notify({
+            Title = "Joining!",
+            Content = "Joining server with " .. (_8.playing .. " players..."),
+            Duration = 2,
+            Icon = "check"
+        })
+        task.wait(.5)
+        pcall(function() TeleportService:TeleportToPlaceInstance(_d, _8.id) end)
+    end
+
+    _7.HOP_MIN_PLAYERS = 2
+    _7.HOP_GRACE = 15
+    _7.HOP_RETRY = 60
+    _7.HOP_CONFIRM = 6
+    _7.hopThread = nil
+    _7.hopping = false
+
+    _7.hopAttempt = function()
+        _4:Notify({
+            Title = "Server Empty",
+            Content = "Under " .. (_7.HOP_MIN_PLAYERS .. " players here - hopping..."),
+            Duration = 4,
+            Icon = "loader"
+        })
+        task.wait(.5)
+        if pcall(function() TeleportService:Teleport(_d) end) then
+            task.wait(_7.HOP_CONFIRM)
+        end
+        _4:Notify({
+            Title = "Matchmaking Refused",
+            Content = "Picking from the server list...",
+            Duration = 3,
+            Icon = "x"
+        })
+        local _b = nil
+        local _3 = 0
+        local _8 = ""
+        while _3 < 4 do
+            _3 += 1
+            local _4 = "https://games.roblox.com/v1/games/" .. (_d .. "/servers/Public?sortOrder=Desc&limit=100")
+            if _8 ~= "" then
+                _4 ..= "&cursor=" .. _8
+            end
+            local _7 = _0(_4)
+            if not (not _7 or not _7.data) then
+                for _4, _d in ipairs(_7.data) do
+                    if _d.id ~= _5 and (_d.playing and (_d.maxPlayers and _d.playing < _d.maxPlayers)) then
+                        if not _b or _d.playing > _b.playing then
+                            _b = _d
+                        end
+                    end
+                end
+                _8 = _7.nextPageCursor or ""
+                if _8 ~= "" then
+                    continue
+                end
+            end
+            break
+        end
+        if _b then
+            _4:Notify({
+                Title = "Hopping",
+                Content = "Joining a server with " .. (_b.playing .. " players..."),
+                Duration = 3,
+                Icon = "check"
+            })
+            task.wait(.5)
+            if pcall(function() TeleportService:TeleportToPlaceInstance(_d, _b.id) end) then
+                task.wait(_7.HOP_CONFIRM)
+            end
+        end
+        return false
+    end
+
+    _7.populatedHop = function()
+        if _7.hopping then
+            return false
+        end
+        _7.hopping = true
+        local _d, _5 = pcall(_7.hopAttempt)
+        if _d and _5 then
+            return true
+        end
+        _7.hopping = false
+        _4:Notify({
+            Title = "Hop Failed",
+            Content = _d and "The server would not let go. Trying again in a minute." or "Hop errored - trying again in a minute.",
+            Duration = 4,
+            Icon = "x"
+        })
+        return false
+    end
+
+    _7.stopFarmHopWatch = function()
+        if _7.hopThread then
+            pcall(task.cancel, _7.hopThread)
+            _7.hopThread = nil
+        end
+    end
+
+    _7.startFarmHopWatch = function()
+        _7.stopFarmHopWatch()
+        _7.hopThread = task.spawn(function()
+            local _4 = 0
+            while true do
+                task.wait(3)
+                if not _7.farmHopOn then
+                    _4 = 0
+                    continue
+                end
+                if not (#Players:GetPlayers() < _7.HOP_MIN_PLAYERS) then
+                    _4 = 0
+                    continue
+                end
+                _4 += 3
+                if not (_7.HOP_GRACE <= _4) then
+                    continue
+                end
+                local _d, _5 = pcall(_7.populatedHop)
+                local _b = false
+                if _d then
+                    _b = _5 and true or false
+                end
+                if not _b then
+                    task.wait(_7.HOP_RETRY)
+                    _4 = 0
+                    continue
+                end
+                break
+            end
+        end)
+    end
+
+    UserInputService = game:GetService("UserInputService")
+    _7.touches = {}
+    pcall(function()
+        _7.conns[#_7.conns + 1] = UserInputService.InputBegan:Connect(function(_4)
+            if _4.UserInputType == Enum.UserInputType.Touch then
+                _7.touches[_4] = true
+            end
+        end)
+    end)
+
+    _7.pointerHeld = function()
+        for _4 in pairs(_7.touches) do
+            if _4.UserInputState == Enum.UserInputState.End or _4.UserInputState == Enum.UserInputState.Cancel then
+                _7.touches[_4] = nil
+            end
+        end
+        if next(_7.touches) then
+            return true
+        end
+        local _4 = false
+        pcall(function()
+            for _d, _5 in ipairs(UserInputService:GetMouseButtonsPressed()) do
+                if _5.UserInputType == Enum.UserInputType.MouseButton1 then
+                    _4 = true
+                end
+            end
+        end)
+        return _4
+    end
+
+    task.spawn(function()
+        while _G.VOIDV2 == _d do
+            task.wait(.25)
+            if _4.CurrentInput ~= nil and not _7.pointerHeld() then
+                _4.CurrentInput = nil
+            end
+        end
+    end)
+
+    _6d = false
+_9d, _ad, _45, _d5, _55, _75, _b5, _35, _05, _85 = nil, nil, nil, nil, nil, nil, nil, nil, nil, nil
+_e5, _f5, _25, _15, _c5, _65 = nil, nil, nil, nil, nil, nil
+
+    do
+        local _4 = nil
+        _9d = false
+        local _d = nil
+        local _5 = nil
+        local _b = nil
+        _ad = 50
+        _45 = false
+        local _0 = nil
+        local _8 = 0
+        _d5 = false
+        local _e = nil
+        _55 = 16
+        _75 = 50
+
+        _b5 = function(_4)
+            _55 = _4
+            pcall(function()
+                local _d = _3.Character and _3.Character:FindFirstChildOfClass("Humanoid")
+                if _d then
+                    _d.WalkSpeed = _4
+                end
+            end)
+        end
+
+        _35 = function(_4)
+            _75 = _4
+            pcall(function()
+                local _d = _3.Character and _3.Character:FindFirstChildOfClass("Humanoid")
+                if _d then
+                    _d.JumpPower = _4
+                    _d.UseJumpPower = true
+                end
+            end)
+        end
+
+        _05 = function()
+            if _4 then
+                return
+            end
+            _4 = RunService.Stepped:Connect(function()
+                if not _6d then
+                    return
+                end
+                pcall(function()
+                    local _4 = _3.Character
+                    if _4 then
+                        for _4, _d in ipairs(_4:GetDescendants()) do
+                            if _d:IsA("BasePart") and _d.CanCollide then
+                                if _7.clipWas[_d] == nil then
+                                    _7.clipWas[_d] = true
+                                end
+                                _d.CanCollide = false
+                            end
+                        end
+                    end
+                end)
+            end)
+        end
+
+        _85 = function()
+            if _4 then
+                _4:Disconnect()
+                _4 = nil
+            end
+            _7.reclip(_7.clipWas)
+        end
+
+        _e5 = function()
+            if _d then
+                return
+            end
+            local _4 = _3.Character
+            if not _4 then
+                return
+            end
+            local _7 = _4:FindFirstChild("HumanoidRootPart")
+            if not _7 then
+                return
+            end
+            local _0 = _4:FindFirstChildOfClass("Humanoid")
+            if not _0 then
+                return
+            end
+            _5 = Instance.new("BodyVelocity")
+            _5.Name = "FlyVelocity"
+            _5.Velocity = Vector3.zero
+            _5.MaxForce = Vector3.new(math.huge, math.huge, math.huge)
+            _5.Parent = _7
+            _b = Instance.new("BodyGyro")
+            _b.Name = "FlyGyro"
+            _b.P = 90000
+            _b.MaxTorque = Vector3.new(9000000000, 9000000000, 9000000000)
+            _b.CFrame = _7.CFrame
+            _b.Parent = _7
+            _0.PlatformStand = true
+            _d = RunService.Heartbeat:Connect(function()
+                pcall(function()
+                    if not _9d then
+                        return
+                    end
+                    local _4 = Workspace.CurrentCamera
+                    _b.CFrame = _4.CFrame
+                    local _d = UserInputService
+                    local _7 = Vector3.zero
+                    if _d:IsKeyDown(Enum.KeyCode.W) then
+                        _7 = Vector3.zero + _4.CFrame.LookVector
+                    end
+                    if UserInputService:IsKeyDown(Enum.KeyCode.S) then
+                        _7 -= _4.CFrame.LookVector
+                    end
+                    if UserInputService:IsKeyDown(Enum.KeyCode.A) then
+                        _7 -= _4.CFrame.RightVector
+                    end
+                    if UserInputService:IsKeyDown(Enum.KeyCode.D) then
+                        _7 += _4.CFrame.RightVector
+                    end
+                    if UserInputService:IsKeyDown(Enum.KeyCode.Space) then
+                        _7 += Vector3.new(0, 1, 0)
+                    end
+                    if UserInputService:IsKeyDown(Enum.KeyCode.LeftShift) then
+                        _7 -= Vector3.new(0, 1, 0)
+                    end
+                    if _7.Magnitude > 0 then
+                        _5.Velocity = _7.Unit * _ad
+                    else
+                        _5.Velocity = Vector3.zero
+                    end
+                end)
+            end)
+        end
+
+        _f5 = function()
+            if _d then
+                _d:Disconnect()
+                _d = nil
+            end
+            if _5 then
+                _5:Destroy()
+                _5 = nil
+            end
+            if _b then
+                _b:Destroy()
+                _b = nil
+            end
+            pcall(function()
+                local _4 = _3.Character and _3.Character:FindFirstChildOfClass("Humanoid")
+                if _4 then
+                    _4.PlatformStand = false
+                end
+            end)
+        end
+
+        _25 = function()
+            if _0 then
+                return
+            end
+            _0 = UserInputService.JumpRequest:Connect(function()
+                if not _45 then
+                    return
+                end
+                local _4 = tick()
+                if _4 - _8 < .15 then
+                    return
+                end
+                _8 = _4
+                pcall(function()
+                    local _4 = _3.Character and _3.Character:FindFirstChildOfClass("Humanoid")
+                    local _d
+                    if _4 then
+                        local _5 = Enum.HumanoidStateType.Jumping
+                        _d = _4:GetState() ~= _5
+                    else
+                        _d = _4
+                    end
+                    if _d then
+                        _4:ChangeState(Enum.HumanoidStateType.Jumping)
+                    end
+                end)
+            end)
+        end
+
+        _15 = function()
+            if _0 then
+                _0:Disconnect()
+                _0 = nil
+            end
+        end
+
+        _c5 = function()
+            if _e then
+                return
+            end
+            _e = RunService.Heartbeat:Connect(function()
+                if not _d5 then
+                    return
+                end
+                pcall(function()
+                    local _4 = _3.Character
+                    if not _4 then
+                        return
+                    end
+                    local _d = _4:FindFirstChild("HumanoidRootPart")
+                    if not _d then
+                        return
+                    end
+                    for _4, _5 in ipairs(Players:GetPlayers()) do
+                        if _5 ~= _3 and _5.Character then
+                            for _4, _5 in ipairs(_5.Character:GetDescendants()) do
+                                if _5:IsA("BasePart") and (not _5.Anchored and _5.Velocity.Magnitude > 200) then
+                                    if (_5.Position - _d.Position).Magnitude < 30 then
+                                        _5.Velocity = Vector3.zero
+                                        _5.RotVelocity = Vector3.zero
+                                        _5.Anchored = true
+                                        task.delay(.3, function()
+                                            if _5 and _5.Parent then
+                                                _5.Anchored = false
+                                            end
+                                        end)
+                                    end
+                                end
+                            end
+                        end
+                    end
+                end)
+            end)
+        end
+
+        _65 = function()
+            if _e then
+                _e:Disconnect()
+                _e = nil
+            end
+        end
+    end
+
+    _7.conns[#_7.conns + 1] = _3.CharacterAdded:Connect(function(_4)
+        _4:WaitForChild("Humanoid")
+        task.wait(.5)
+        pcall(function()
+            local _d = _4:FindFirstChildOfClass("Humanoid")
+            if _d then
+                if _55 ~= 16 then
+                    _d.WalkSpeed = _55
+                end
+                if _75 ~= 50 then
+                    _d.JumpPower = _75
+                    _d.UseJumpPower = true
+                end
+            end
+        end)
+        if _9d then
+            pcall(_f5)
+            task.wait(.2)
+            pcall(_e5)
+        end
+        if _6d then
+            pcall(_85)
+            pcall(_05)
+        end
+    end)
+
+    TweenService = game:GetService("TweenService")
+    VirtualUser = game:GetService("VirtualUser")
+    local _95, _a5, _47, _d7, _57, _77, _b7, _37, _07, _87
+    local _e7
+end
+-- MM2 script — fixed syntax, part 4b-1/4
+-- Вставляй после части 4a. Копируется без последствий.
+
+do
+    local _d = false
+    local _5 = false
+    _95 = nil
+    local _b = nil
+    local _0 = false
+    local _8 = nil
+    local _e = nil
+    local _f = nil
+    _a5 = 23
+    local _2 = 0
+    local _1 = nil
+    _47 = false
+    local _6 = false
+    _d7 = false
+    local _9 = nil
+
+    local function _a(_4, _d, _5)
+        local _7 = next
+        local _b, _3 = _4:GetChildren()
+        for _4, _7 in _7, _b, _3 do
+            if _7.Name == _d and (not _5 or _7.ClassName == _5) then
+                return _7
+            end
+        end
+    end
+
+    _57 = function(_4)
+        if _4 and _4.Character then
+            return _a(_4.Character, "HumanoidRootPart") or _a(_4.Character, "PrimaryPart")
+        end
+    end
+
+    local function _4d()
+        local _4 = _57(_3)
+        if not _4 or not _95 then
+            return nil
+        end
+        local _d = _a(_95, "CoinContainer")
+        if not _d then
+            return nil
+        end
+        local _5 = next
+        local _b, _0 = _d:GetChildren()
+        local _8 = math.huge
+        local _e = nil
+        for _d, _5 in _5, _b, _0 do
+            if _5.Name == "Coin_Server" and (not _5:GetAttribute("Collected") and not _7.coinSkip(_5)) then
+                local _d = (_4.Position - _5.Position).Magnitude
+                if _d < _8 then
+                    _8 = _d
+                    _e = _5
+                end
+            end
+        end
+        return _e
+    end
+
+    local function _dd()
+        local _4 = Workspace:FindFirstChild("RoundTimerPart")
+        if _4 then
+            return tonumber(_4:GetAttribute("Time")) or 0
+        end
+        return 0
+    end
+
+    local function _5d()
+        local _4, _d = pcall(function()
+            local _4
+            if not _7.inLobbyNow() then
+                _4 = _3.PlayerGui.MainGUI.Game.CoinBags.Container
+            else
+                _4 = _3.PlayerGui.MainGUI.Lobby.Dock.CoinBags.Container
+            end
+            if not _4 then
+                return 0
+            end
+            local _d = next
+            local _5, _b = _4:GetChildren()
+            local _0 = nil
+            for _4, _d in _d, _5, _b do
+                if _d:IsA("GuiObject") and _d:FindFirstChild("CurrencyFrame") then
+                    if _d.Visible then
+                        _0 = _d
+                        break
+                    elseif _d.Name == "Coin" and not _0 then
+                        _0 = _d
+                    end
+                end
+            end
+            if not _0 then
+                return 0
+            end
+            local _8 = _0:FindFirstChild("Full")
+            if _8 and _8.Visible then
+                return 999
+            end
+            local _e = _0:FindFirstChild("CurrencyFrame")
+            _e = _e and _e:FindFirstChild("Icon")
+            _e = _e and _e:FindFirstChild("Coins")
+            _e = _e and _e.Text
+            if _e and ((string.lower(_e)):find("full") or (string.lower(_e)):find("max")) then
+                return 999
+            end
+            return tonumber(_e) or 0
+        end)
+        if _4 then
+            return _d
+        end
+        return 0
+    end
+
+    local function _7d(_4)
+        if _4 then
+            if not _f then
+                _f = RunService.Stepped:Connect(function()
+                    local _4 = _3.Character
+                    if _4 then
+                        local _d = next
+                        local _5, _b = _4:GetDescendants()
+                        for _4, _d in _d, _5, _b do
+                            if _d:IsA("BasePart") and _d.CanCollide then
+                                if _7.farmClipWas[_d] == nil then
+                                    _7.farmClipWas[_d] = true
+                                end
+                                _d.CanCollide = false
+                            end
+                        end
+                    end
+                end)
+            end
+        else
+            if _f then
+                _f:Disconnect()
+                _f = nil
+            end
+            _7.reclip(_7.farmClipWas)
+        end
+    end
+
+    local function _0d(_4)
+        local _d = _3.Character and _3.Character:FindFirstChild("UpperTorso")
+        if not _d then
+            return
+        end
+        local _5 = _d:FindFirstChild("ODH Auto Farm BodyGyro")
+        local _7 = _d:FindFirstChild("ODH Auto Farm BodyVelocity")
+        if _4 then
+            _5 = _5 or _7
+            if _5 then
+                return
+            end
+            local _4 = _57(_3)
+            if not _4 then
+                return
+            end
+            local _b = _3.Character:FindFirstChild("Humanoid")
+            if not _b then
+                return
+            end
+            local _0 = _4.CFrame
+            local _8 = CFrame.new(_0.X, _0.Y, _0.Z) * CFrame.Angles(1.5707963267948966, 0, 1.5707963267948966)
+            _7d(true)
+            local _e = Instance.new("BodyGyro")
+            _e.Name = "ODH Auto Farm BodyGyro"
+            _e.Parent = _d
+            _e.P = 90000
+            _e.MaxTorque = Vector3.new(9000000000, 9000000000, 9000000000)
+            _e.CFrame = _8
+            local _f = Instance.new("BodyVelocity")
+            _f.Name = "ODH Auto Farm BodyVelocity"
+            _f.Parent = _d
+            _f.Velocity = Vector3.zero
+            _f.MaxForce = Vector3.new(9000000000, 9000000000, 9000000000)
+            _4.CFrame = _8
+            _b.PlatformStand = true
+        else
+            local _4 = _3.Character and _3.Character:FindFirstChild("Humanoid")
+            if _4 then
+                if _5 then
+                    _5:Destroy()
+                end
+                if _7 then
+                    _7:Destroy()
+                end
+                _4.PlatformStand = false
+                _7d(false)
+            end
+        end
+    end
+
+    local function _8d()
+        if not _95 then
+            return
+        end
+        local _4 = next
+        local _d, _5 = _95.Spawns:GetChildren()
+        local _7 = nil
+        for _4, _d in _4, _d, _5 do
+            if _d.Name == "Spawn" or _d.Name == "PlayerSpawn" or _d.Name == "SpawnLocation" then
+                _7 = _d
+            end
+        end
+        if not _7 then
+            return
+        end
+        local _b = _7.CFrame
+        local _0 = _57(_3)
+        if _0 then
+            _0.Velocity = Vector3.zero
+            _0.CFrame = CFrame.new(_b.X, _b.Y + 5, _b.Z)
+        end
+    end
+
+    local function _ed()
+        pcall(function()
+            local _4 = _3:FindFirstChild("PlayerGui")
+            _4 = _4 and _4:FindFirstChild("MainGUI")
+            _4 = _4 and _4:FindFirstChild("Game")
+            if _4 then
+                _b = not _4:FindFirstChild("Inventory")
+            end
+        end)
+        local _4 = next
+        local _d, _5 = Workspace:GetChildren()
+        for _4, _d in _4, _d, _5 do
+            if _d:FindFirstChild("CoinAreas") or _d:FindFirstChild("CoinContainer") then
+                _95 = _d
+            end
+        end
+        _0 = false
+        _8 = nil
+        _e = nil
+    end
+
+    local function _fd()
+        if _0 then
+            _0 = false
+            _e = nil
+            if _3.Character then
+                if _8 then
+                    _8:Cancel()
+                    _8 = nil
+                end
+                _0d(false)
+                if _dd() > 0 and _95 then
+                    _8d()
+                end
+            end
+        end
+    end
+
+    _77 = function()
+        if _d then
+            return
+        end
+        _d = true
+        _ed()
+        task.spawn(function()
+            while _d do
+                task.wait(.1)
+                pcall(function()
+                    if not _d then
+                        return
+                    end
+                    if not _3.Character then
+                        _5 = false
+                    else
+                        local _4 = ReplicatedStorage:FindFirstChild("Remotes")
+                        local _d = _4 and _4:FindFirstChild("Extras")
+                        local _7 = _d and _d:FindFirstChild("GetPlayerData")
+                        if _7 then
+                            local _4, _d = pcall(function() return _7:InvokeServer() end)
+                            if _4 and _d then
+                                local _4 = _d[_3.Name]
+                                if _4 then
+                                    _4 = not _4.Dead and not _4.Killed
+                                end
+                                _5 = _4
+                            end
+                        end
+                    end
+                    local _4 = next
+                    local _b, _f = Workspace:GetChildren()
+                    for _4, _d in _4, _b, _f do
+                        if _d:FindFirstChild("CoinAreas") or _d:FindFirstChild("CoinContainer") then
+                            _95 = _d
+                        end
+                    end
+                    if _95 ~= _7.lastMap then
+                        _7.lastMap = _95
+                        _7.sawCoins = false
+                        _7.flingDoneFired = false
+                        _7.killFired = false
+                        _7.coinReset()
+                    end
+                    local _6 = _57(_3)
+                    if _5 and (_95 and (_6 and (not _7.sawCoins and not _4d()))) then
+                        if _7.hideUnderMap(_6) then
+                            return
+                        end
+                    end
+                    if _dd() > 0 then
+                        local _4 = _5d()
+                        if (_3:GetAttribute("Elite") and 50 or 40) <= _4 then
+                            _fd()
+                            _7.finishFling()
+                            if _7.killWhenFull and (not _7.killFired and _c() == _3) then
+                                _7.killFired = true
+                                task.spawn(function() pcall(killAll) end)
+                            end
+                        elseif _5 and _3.Character then
+                            local _4 = _57(_3)
+                            local _d = _4 and _4d()
+                            if _4 and _d then
+                                _7.sawCoins = true
+                                if _d ~= _e or _e and _e:GetAttribute("Collected") then
+                                    _e = _d
+                                    _0 = true
+                                    _7.farmTargetTime = tick()
+                                    if _8 then
+                                        _8:Cancel()
+                                        _8 = nil
+                                    end
+                                    _0d(true)
+                                    local _5 = _d.CFrame
+                                    local _b = (_4.Position - _d.Position).Magnitude / _a5
+                                    if _b > 15 then
+                                        _b = 3
+                                    end
+                                    if _b < .05 then
+                                        _b = .05
+                                    end
+                                    _4.Velocity = Vector3.zero
+                                    _8 = TweenService:Create(_4, TweenInfo.new(_b, Enum.EasingStyle.Linear), {CFrame = CFrame.new(_5.X, _5.Y - 3.5, _5.Z) * CFrame.Angles(1.5707963267948966, 0, 1.5707963267948966)})
+                                    _8:Play()
+                                    _4.Velocity = Vector3.zero
+                                else
+                                    local _5 = (_4.Position - _d.Position).Magnitude
+                                    if _5 <= 6 and not _d:GetAttribute("Collected") then
+                                        _d.CFrame = CFrame.new(_4.Position + Vector3.new(math.random(-80, 80) / 100, math.random(-50, 300) / 100, math.random(-80, 80) / 100))
+                                        if (_d.Position - _4.Position).Magnitude > .1 then
+                                            _4.CFrame = _4.CFrame * CFrame.new(0, math.random(-20, 20) / 100, math.random(-20, 20) / 100)
+                                        end
+                                        if _1 ~= _d then
+                                            _1 = _d
+                                            _2 = tick()
+                                        end
+                                        if tick() - _2 > 2 then
+                                            _1 = nil
+                                            _2 = 0
+                                            _e = nil
+                                        end
+                                    elseif _5 > 6 then
+                                        local _4 = _7.farmTargetTime
+                                        if tick() - _4 > 4 then
+                                            _7.coinFailed(_d)
+                                            _e = nil
+                                            _1 = nil
+                                            _2 = 0
+                                        end
+                                    end
+                                end
+                            elseif _4 then
+                                if _7.sawCoins then
+                                    _fd()
+                                    _7.finishFling()
+                                end
+                            else
+                                _fd()
+                            end
+                        else
+                            _fd()
+                        end
+                    end
+                end)
+            end
+        end)
+    end
+
+    _7.inActiveRound = function()
+        if _7.inLobbyNow() then
+            return false
+        end
+        if not _5 then
+            return false
+        end
+        local _4 = next
+        local _d, _b = Workspace:GetChildren()
+        local _0 = nil
+        for _4, _d in _4, _d, _b do
+            if _d:FindFirstChild("CoinAreas") or _d:FindFirstChild("CoinContainer") then
+                _0 = _d
+            end
+        end
+        if not _0 then
+            return false
+        end
+        local _8 = _3.Character
+        _8 = _8 and _8:FindFirstChildOfClass("Humanoid")
+        if not _8 or _8.Health <= 0 then
+            return false
+        end
+        _95 = _0
+        return true
+    end
+
+    _7.teleportHome = function()
+        if not _95 then
+            return
+        end
+        local _4 = _95:FindFirstChild("Spawns")
+        if not _4 then
+            return
+        end
+        local _d = next
+        local _5, _7 = _4:GetChildren()
+        local _b = nil
+        local _0 = nil
+        for _4, _d in _d, _5, _7 do
+            if _d:IsA("BasePart") then
+                _b = _b or _d
+                if _d.Name == "Spawn" or _d.Name == "PlayerSpawn" or _d.Name == "SpawnLocation" then
+                    _0 = _d
+                end
+            end
+        end
+        _0 = _0 or _b
+        if not _0 then
+            return
+        end
+        local _8 = _57(_3)
+        if not _8 then
+            return
+        end
+        local _e = _3.Character and _3.Character:FindFirstChildOfClass("Humanoid")
+        if _e then
+            _e.PlatformStand = false
+            _e:ChangeState(Enum.HumanoidStateType.GettingUp)
+        end
+        local _f = _0.CFrame
+        _8.Velocity = Vector3.zero
+        _8.RotVelocity = Vector3.zero
+        _8.CFrame = CFrame.new(_f.X, (_f.Y + _0.Size.Y / 2) + 4, _f.Z)
+    end
+
+    _b7 = function()
+        _d = false
+        if _8 then
+            pcall(function() _8:Cancel() end)
+            _8 = nil
+        end
+        pcall(function() _0d(false) end)
+        local _4 = false
+        pcall(function()
+            if not (_3.Character and _57(_3)) then
+                return
+            end
+            _4 = _7.inActiveRound()
+            if _4 then
+                _7.teleportHome()
+            end
+        end)
+        task.spawn(function()
+            task.wait(.35)
+            pcall(function()
+                if _8 then
+                    _8:Cancel()
+                    _8 = nil
+                end
+            end)
+            pcall(function() _0d(false) end)
+            local _d = false
+            pcall(function()
+                local _4 = _3.Character
+                if not _4 then
+                    return
+                end
+                local _5 = next
+                local _7, _b = _4:GetDescendants()
+                for _4, _5 in _5, _7, _b do
+                    if _5.Name == "ODH Auto Farm BodyGyro" or _5.Name == "ODH Auto Farm BodyVelocity" then
+                        _5:Destroy()
+                        _d = true
+                    end
+                end
+                local _0 = _4:FindFirstChildOfClass("Humanoid")
+                if _0 and _0.PlatformStand then
+                    _0.PlatformStand = false
+                    _0:ChangeState(Enum.HumanoidStateType.GettingUp)
+                    _d = true
+                end
+            end)
+            if _4 and _d then
+                pcall(_7.teleportHome)
+            end
+        end)
+    end
+
+    _7.claimRewardPopup = function()
+        local _4 = _3:FindFirstChild("PlayerGui")
+        if not _4 then
+            return false
+        end
+        local _d = nil
+        local _5 = _4:FindFirstChild("CrossPlatform")
+        local _b = _5 and (_5:FindFirstChild("NewItem") and _5.NewItem:FindFirstChild("Medium"))
+        if _b and _b.Visible then
+            _d = _b:FindFirstChild("Container") and _b.Container:FindFirstChild("Claim")
+        else
+            _b = _4:FindFirstChild("MainGUI") and _4.MainGUI:FindFirstChild("Game")
+            _b = _b and _b:FindFirstChild("NewItem")
+            local _5 = _b and _b.Visible
+            local _7 = nil
+            if _5 then
+                _d = _b:FindFirstChild("Container") and _b.Container:FindFirstChild("Claim")
+            else
+                _b = _7
+            end
+        end
+        if not _b or not _d then
+            return false
+        end
+        local _0 = _b:FindFirstChild("Amount", true)
+        local _8 = _b:FindFirstChild("Label", true)
+        local _e = _b:FindFirstChild("Icon", true)
+        local _f = _0 and _0.Text or nil
+        local _2 = _8 and _8.Text or nil
+        local _1 = _e and (tostring(_e.Image)):match("%d+") or nil
+        task.spawn(function() pcall(_7.whReward, _f, _2, _1) end)
+        if getconnections then
+            for _4, _5 in ipairs({"Activated", "MouseButton1Click"}) do
+                local _7, _b = pcall(getconnections, _d[_5])
+                if _7 and (_b and #_b > 0) then
+                    for _4, _d in next, _b, nil do
+                        pcall(function() _d:Fire() end)
+                    end
+                    return true
+                end
+            end
+        end
+        return (pcall(function()
+            local _4 = game:GetService("VirtualInputManager")
+            local _5 = _d.AbsolutePosition
+            local _7 = _d.AbsoluteSize
+            local _b = _5.X + _7.X / 2
+            local _3 = (_5.Y + _7.Y / 2) + 36
+            _4:SendMouseButtonEvent(_b, _3, 0, true, game, 1)
+            task.wait(.05)
+            _4:SendMouseButtonEvent(_b, _3, 0, false, game, 1)
+        end))
+    end
+
+    _7.startShells = function()
+        if _7.shellsRunning then
+            return
+        end
+        _7.shellsRunning = true
+        task.spawn(function()
+            while _7.shellsOn do
+                task.wait(.5)
+                pcall(_7.claimRewardPopup)
+            end
+            _7.shellsRunning = false
+        end)
+    end
+    _7.stopShells = function() _7.shellsOn = false end
+
+    _7.SBOX_DELAY = 1
+    _7.CUR_NAME = {SummerKey2026 = "Shells"}
+    _7.curName = function(_4) return _7.CUR_NAME[_4] or tostring(_4) end
+    _7.BOX_CURRENCY = {Summer2026Box = "SummerKey2026"}
+    _7.BOXES = {
+        {"Summer2026Box", "Summer Box '26"},
+        {"MysteryBox1", "Mystery Box #1"},
+        {"MysteryBox2", "Mystery Box #2"},
+        {"KnifeBox1", "Knife Box #1"},
+        {"KnifeBox2", "Knife Box #2"},
+        {"KnifeBox3", "Knife Box #3"},
+        {"KnifeBox4", "Knife Box #4"},
+        {"KnifeBox5", "Knife Box #5"},
+        {"GunBox1", "Gun Box #1"},
+        {"GunBox2", "Gun Box #2"},
+        {"GunBox3", "Gun Box #3"},
+        {"MLG Box", "Rainbow Box"}
+    }
+    _7.boxOn = {}
+    _7.boxRunning = {}
+    _7.boxWaiting = {}
+
+    _7.boxPrice = function(_4)
+        local _d = _7.BOX_CURRENCY[_4] or "Coins"
+        local _5, _b = pcall(require, (game:GetService("ReplicatedStorage")).Database.Sync.NewShop)
+        if not _5 or type(_b) ~= "table" then
+            return _d, nil
+        end
+        local _3 = _b[_4]
+        local _0 = type(_3) == "table" and (type(_3.Price) == "table" and _3.Price) or nil
+        return _d, _0 and tonumber(_0[_d]) or nil
+    end
+
+    _7.boxImage = function(_4)
+        local _d, _5 = pcall(require, (game:GetService("ReplicatedStorage")).Database.Sync.MysteryBox)
+        if not _d or type(_5) ~= "table" then
+            return nil
+        end
+        local _7 = _5[_4]
+        return type(_7) == "table" and _7.Image or nil
+    end
+
+    _7.boxFunds = function(_4)
+        local _d = _7.readOwned()
+        if not _d then
+            return nil
+        end
+        return tonumber(_d[_4]) or 0
+    end
+
+    _7.openBox = function(_4)
+        local _d = (game:GetService("ReplicatedStorage")):FindFirstChild("Remotes")
+        _d = _d and _d:FindFirstChild("Shop")
+        _d = _d and _d:FindFirstChild("OpenCrate")
+        if not _d then
+            return nil, "the OpenCrate remote is gone"
+        end
+        local _5 = _7.BOX_CURRENCY[_4] or "Coins"
+        local _b, _3 = pcall(function() return _d:InvokeServer(_4, "MysteryBox", _5) end)
+        if not _b then
+            return nil, tostring(_3)
+        end
+        return _3
+    end
+
+    _7.startBox = function(_d, _5)
+        if _7.boxRunning[_d] then
+            return
+        end
+        _7.boxRunning[_d] = true
+        task.spawn(function()
+            local _b = 0
+            while _7.boxOn[_d] do
+                local _3, _0 = _7.boxPrice(_d)
+                local _8 = _7.boxFunds(_3)
+                if _0 and (_8 and _8 < _0) then
+                    if not _7.boxWaiting[_d] then
+                        _7.boxWaiting[_d] = true
+                        _4:Notify({
+                            Title = _5,
+                            Content = "Waiting for " .. (_7.comma(_0 - _8) .. (" more " .. (_7.curName(_3) .. ". It opens on its own once you can afford one."))),
+                            Duration = 5,
+                            Icon = "clock"
+                        })
+                    end
+                    task.wait(5)
+                else
+                    _7.boxWaiting[_d] = false
+                    local _8, _e = _7.openBox(_d)
+                    if not _8 then
+                        local _8 = _7.boxFunds(_3)
+                        if _0 and (_8 and _8 < _0) then
+                            task.wait(5)
+                        else
+                            _7.boxOn[_d] = false
+                            if _7.el.box and _7.el.box[_d] then
+                                _7.setToggle(_7.el.box[_d], false)
+                            end
+                            _4:Notify({
+                                Title = _5,
+                                Content = (_b > 0 and "Opened " .. (_b .. ", then stopped: ") or "Nothing opened: ") .. ((_e or "the server refused") .. "."),
+                                Duration = 6,
+                                Icon = "x"
+                            })
+                            break
+                        end
+                    else
+                        _b += 1
+                        task.spawn(function() pcall(_7.whBox, _8) end)
+                        task.wait(_7.SBOX_DELAY)
+                    end
+                end
+            end
+            _7.boxRunning[_d] = false
+            _7.boxWaiting[_d] = false
+        end)
+    end
+
+    _7.stopBox = function(_4) _7.boxOn[_4] = false end
+
+    _G.__VOIDBuild = "gatestyle-38"
+    _G.__VOIDGen = (_G.__VOIDGen or 0) + 1
+    _7.gen = _G.__VOIDGen
+    _7.current = function() return _7.gen == _G.__VOIDGen end
+
+    _7.WH_URL = ""
+    _7.whOn = false
+    _7.whUrlNow = function()
+        return (((tostring(_7.WH_URL or "")):gsub("^%s+", "")):gsub("%s+$", ""))
+    end
+    _7.WH_HOSTS = {"discord.com", "discordapp.com", "canary.discord.com", "ptb.discord.com"}
+    _7.whReady = function()
+        if not _7.current() then
+            return false
+        end
+        if not _7.whOn then
+            return false
+        end
+        if _7.whBreak then
+            return false
+        end
+        local _4 = _7.whUrlNow()
+        for _d, _5 in ipairs(_7.WH_HOSTS) do
+            if _4:find("^https://" .. (_5:gsub("%.", "%%.") .. "/api/webhooks/")) then
+                return true
+            end
+        end
+        return false
+    end
+    _7.COIN_ICON = "197012173"
+    _7.CLR_LINE = 1
+    _7.BANNER = ""
+    _7.comma = function(_4)
+        local _d = tonumber(_4)
+        if _d == nil then
+            return "?"
+        end
+        local _5 = _d < 0 and "-" or ""
+        local _7 = tostring
+        local _b = table.pack(math.floor(math.abs(_d)))
+        return _5 .. ((((_7(table.unpack(_b, 1, _b.n))):reverse()):gsub("(%d%d%d)", "%1,")):reverse()):gsub("^,", "")
+    end
+    _7.fld = function(_4, _d, _5)
+        return {name = _4, value = _d, inline = _5 ~= false}
+    end
+    _7.avatarUrl = function()
+        if _7.avatarCache ~= nil then
+            return _7.avatarCache or nil
+        end
+        local _4 = (game:GetService("Players")).LocalPlayer
+        local _d, _5 = pcall(function()
+            return game:HttpGet("https://thumbnails.roblox.com/v1/users/avatar-headshot?userIds=" .. (tostring(_4.UserId) .. "&size=150x150&format=Png&isCircular=false"))
+        end)
+        local _b = _d and (type(_5) == "string" and _5:match("\"imageUrl\"%s*:%s*\"([^\"]+)\"")) or nil
+        _7.avatarCache = _b or false
+        return _b
+    end
+    _7.markUrl = function()
+        if _7.markCache then
+            return _7.markCache
+        end
+        local _4 = _7.markIcon and (tostring(_7.markIcon.Image)):match("(%d+)")
+        if not _4 then
+            return nil
+        end
+        _7.markCache = _7.itemThumb(_4) or nil
+        return _7.markCache
+    end
+    _7.FARM_FLAGS = {
+        {"Toggle_Coin_Autofarm", "Coin Autofarm"},
+        {"Slider_Farm_Speed", "Farm Speed"},
+        {"Toggle_Discord_Sender", "Discord Sender"},
+        {"Toggle_Farm_Perf_Master", "Performance Mode"},
+        {"Toggle_Farm_Dead_Hop", "Hop When Server Dies"},
+        {"Toggle_Anti_AFK", "Anti-AFK"},
+        {"Toggle_Auto_Reset_When_Bag_Full", "Auto-Reset When Bag Full"},
+        {"Toggle_Auto_Claim_Shells", "Auto Claim Shells"},
+        {"Toggle_Auto_Summer_Box", "Auto Open Summer Box"},
+        {"Toggle_Fling_Murderer_When_Done", "Fling Murderer When Done"},
+        {"Toggle_Kill_All_When_Bag_Full", "Kill All When Bag Full"}
+    }
+    _7.flagText = function(_4, _d)
+        if _4 == "Toggle_Discord_Sender" then
+            return _7.whOn and "on" or "off"
+        end
+        if _d.__type == "Slider" then
+            return type(_d.Value) == "table" and tostring(_d.Value.Default) or tostring(_d.Value)
+        end
+        return _d.Value == true and "on" or "off"
+    end
+    _7.settingsBlob = function()
+        local _4 = _7.config and _7.config.Elements
+        if type(_4) ~= "table" then
+            return "_unavailable_"
+        end
+        local _d = {}
+        local _5 = 0
+        for _b, _3 in ipairs(_7.FARM_FLAGS) do
+            local _0 = _4[_3[1]]
+            if type(_0) == "table" then
+                _d[#_d + 1] = {_3[2], _7.flagText(_3[1], _0)}
+                if _5 < #_3[2] then
+                    _5 = #_3[2]
+                end
+            end
+        end
+        if #_d == 0 then
+            return "_unavailable_"
+        end
+        local _b = {}
+        for _4, _d in ipairs(_d) do
+            local _7 = #_b + 1
+            local _3 = _d[2]
+            _b[_7] = _d[1] .. (string.rep(" ", (_5 - #_d[1]) + 2) .. _3)
+        end
+        local _3 = "```\n" .. (table.concat(_b, "\n") .. "\n```")
+        if #_3 > 1000 then
+            _3 = _3:sub(1, 986) .. "\n...\n```"
+        end
+        return _3
+    end
+    _7.setState = function()
+        local _4 = _7.config and _7.config.Elements
+        if type(_4) ~= "table" then
+            return nil
+        end
+        local _d = {}
+        for _5, _b in ipairs(_7.FARM_FLAGS) do
+            local _3 = _4[_b[1]]
+            if type(_3) == "table" then
+                _d[_b[1]] = _7.flagText(_b[1], _3)
+            end
+        end
+        return _d
+    end
+    _7.setDiff = function(_4, _d)
+        if type(_4) ~= "table" or type(_d) ~= "table" then
+            return {}
+        end
+        local _5 = {}
+        for _4, _d in ipairs(_7.FARM_FLAGS) do
+            _5[_d[1]] = _d[2]
+        end
+        local _b = {}
+        for _d, _7 in pairs(_d) do
+            if _4[_d] ~= nil and _4[_d] ~= _7 then
+                _b[#_b + 1] = "**" .. (tostring(_5[_d] or _d) .. ("**  " .. (tostring(_4[_d]) .. ("  ->  **" .. (tostring(_7) .. "**")))))
+            end
+        end
+        table.sort(_b)
+        return _b
+    end
+    _7.whSettings = function(_4)
+        if not _7.whReady() then
+            return false, "not sending"
+        end
+        local _d = _4 and #_4 > 0
+        local _5 = "Autofarm settings changed."
+        if _d then
+            _5 = table.concat(_4, "\n")
+            if #_5 > 3500 then
+                _5 = _5:sub(1, 3480) .. "\n..."
+            end
+        end
+        return _7.whPost({
+            title = "Settings Changed",
+            body = _5,
+            thumb = _7.avatarUrl(),
+            fields = {{name = "Autofarm Settings", value = _7.settingsBlob(), inline = false}}
+        })
+    end
+
+    task.spawn(function()
+        task.wait(15)
+        _7.setSnap = _7.setState()
+        while true do
+            task.wait(3)
+            if not _7.current() then
+                break
+            else
+                local _4 = _7.setState()
+                if _4 and _7.setSnap then
+                    if #_7.setDiff(_7.setSnap, _4) > 0 then
+                        task.wait(3)
+                        local _d = _7.setState() or _4
+                        local _5 = _7.setDiff(_7.setSnap, _d)
+                        _7.setSnap = _d
+                        if #_5 > 0 and _7.whReady() then
+                            task.spawn(function() pcall(_7.whSettings, _5) end)
+                        end
+                    end
+                elseif _4 then
+                    _7.setSnap = _4
+                end
+            end
+        end
+    end)
+
+    _7.whHello = function()
+        if _7.saidHello then
+            return true, "already sent"
+        end
+        local _4 = (game:GetService("Players")).LocalPlayer
+        _7.readCoins()
+        _7.readShells()
+        local _d = _7.whPost
+        local _5 = {
+            title = "VOID logger started",
+            body = "Logging as **" .. (_4.DisplayName .. ("** since <t:" .. (tostring(os.time()) .. ":f>."))),
+            thumb = _7.avatarUrl(),
+            wait = true
+        }
+        local _b = _7.pad3
+        local _3 = {}
+        local _0 = _7.fld("User ID", "`" .. (tostring(_4.UserId) .. "`"))
+        local _8 = _7.fld("Coins", "`" .. (_7.comma(_7.coinsTotal) .. "`"))
+        local _e = _7.fld("Shells", "`" .. (_7.comma(_7.shellsLeft) .. "`"))
+        local _f = _7.fld
+        local _2 = _7.settingsBlob()
+        _3[1] = _0
+        _3[2] = _8
+        _3[3] = _e
+        do
+            local _4 = table.pack(_f("Autofarm settings", _2, false))
+            table.move(_4, 1, _4.n, 4, _3)
+        end
+        _5.fields = _b(_3)
+        local _1, _c = _d(_5)
+        if _1 then
+            _7.saidHello = true
+        end
+        return _1, _c
+    end
+
+    _7.whQ = {}
+    _7.whQBusy = false
+    _7.whSentN = 0
+    _7.whDropped = 0
+    _7.whLastErr = nil
+    _7.whBreak = false
+
+    _7.whSend = function(_4)
+        local _d = syn and syn.request or request or http_request or http and http.request
+        if not _d then
+            return false, "no request function", nil
+        end
+        local _5, _b = pcall(_d, {
+            Url = _7.whUrlNow(),
+            Method = "POST",
+            Headers = {["Content-Type"] = "application/json"},
+            Body = _4
+        })
+        if not _5 then
+            return false, "request failed", 5
+        end
+        local _3 = tonumber(type(_b) == "table" and (_b.StatusCode or _b.Status) or nil) or 0
+        if _3 == 204 or _3 == 200 or _3 == 0 and (type(_b) == "table" and _b.Success == true) then
+            return true, tostring(_3), nil
+        end
+        if _3 == 429 then
+            local _4 = type(_b) == "table"
+            if _4 then
+                _4 = tostring(_b.Body or "")
+            end
+            return false, "429", math.min(60, (tonumber((_4 or ""):match("\"retry_after\"%s*:%s*([%d%.]+)")) or 1) + .25)
+        end
+        if _3 >= 500 then
+            return false, tostring(_3), 5
+        end
+        return false, tostring(_3), nil
+    end
+
+    _7.whPump = function()
+        if _7.whQBusy then
+            return
+        end
+        _7.whQBusy = true
+        task.spawn(function()
+            while #_7.whQ > 0 and (_7.current() and not _7.whBreak) do
+                local _d = _7.whQ[1]
+                local _5, _b, _3 = _7.whSend(_d.body)
+                if _5 then
+                    table.remove(_7.whQ, 1)
+                    _7.whSentN = _7.whSentN + 1
+                    _7.whLastErr = nil
+                    _d.ok = true
+                    _d.code = _b
+                    _d.done = true
+                    task.wait(.35)
+                elseif _3 then
+                    task.wait(_3)
+                else
+                    table.remove(_7.whQ, 1)
+                    _7.whDropped = _7.whDropped + 1
+                    _7.whLastErr = _b
+                    _d.ok = false
+                    _d.code = _b
+                    _d.done = true
+                    if _b == "401" or _b == "403" or _b == "404" then
+                        _7.whBreak = true
+                        _4:Notify({
+                            Title = "Webhook Rejected",
+                            Content = "Discord answered " .. (_b .. ". The webhook was deleted or revoked, so sending has stopped. Paste a new one."),
+                            Duration = 10,
+                            Icon = "x"
+                        })
+                    end
+                end
+            end
+            if _7.whBreak then
+                for _4, _d in ipairs(_7.whQ) do
+                    _d.done = true
+                    _d.ok = false
+                    _d.code = "stopped"
+                end
+                _7.whDropped = _7.whDropped + #_7.whQ
+                _7.whQ = {}
+            end
+            _7.whQBusy = false
+        end)
+    end
+
+    _7.whPost = function(_4)
+        if not _7.whReady() then
+            return false, "no webhook set"
+        end
+        local _d = (game:GetService("Players")).LocalPlayer
+        local _5 = {
+            title = _4.title,
+            description = _4.body,
+            color = _7.CLR_LINE,
+            timestamp = os.date("!%Y-%m-%dT%H:%M:%SZ"),
+            author = {
+                name = _d.Name .. ("  (" .. (_d.DisplayName .. ")")),
+                url = "https://www.roblox.com/users/" .. (tostring(_d.UserId) .. "/profile"),
+                icon_url = _7.avatarUrl()
+            },
+            footer = {
+                text = tostring(game.JobId),
+                icon_url = _7.markUrl()
+            }
+        }
+        if _4.thumb then
+            _5.thumbnail = {url = _4.thumb}
+        end
+        if _7.BANNER ~= "" then
+            _5.image = {url = _7.BANNER}
+        end
+        if _4.fields and #_4.fields > 0 then
+            _5.fields = _4.fields
+        end
+        local _b = {
+            username = "VOID",
+            avatar_url = _7.markUrl(),
+            allowed_mentions = {parse = {}},
+            embeds = {_5}
+        }
+        if _4.ping then
+            _b.content = "@everyone"
+            _b.allowed_mentions = {parse = {"everyone"}}
+        end
+        local _3, _0 = pcall(function()
+            return (game:GetService("HttpService")):JSONEncode(_b)
+        end)
+        if not _3 then
+            return false, "could not encode the payload"
+        end
+        local _8 = {body = _0, done = false}
+        if #_7.whQ >= 40 then
+            local _4 = table.remove(_7.whQ, 1)
+            _4.done = true
+            _4.ok = false
+            _4.code = "dropped"
+            _7.whDropped = _7.whDropped + 1
+        end
+        _7.whQ[#_7.whQ + 1] = _8
+        _7.whPump()
+        if not _4.wait then
+            return true, "queued"
+        end
+        local _e = os.clock()
+        while not _8.done and os.clock() - _e < 25 do
+            task.wait(.1)
+        end
+        if not _8.done then
+            return false, "no answer from Discord"
+        end
+        return _8.ok, _8.code
+    end
+
+    task.spawn(function()
+        _7.avatarUrl()
+        task.wait(4)
+        _7.markUrl()
+        _7.itemThumb(_7.COIN_ICON)
+    end)
+
+    _7.thumbCache = {}
+    _7.itemThumb = function(_4)
+        if not _4 then
+            return nil
+        end
+        local _d = tostring(_4)
+        if _7.thumbCache[_d] ~= nil then
+            return _7.thumbCache[_d] or nil
+        end
+        local _5 = "https://thumbnails.roblox.com/v1/assets?assetIds=" .. (_d .. "&size=150x150&format=Png&isCircular=false")
+        local _b, _3 = pcall(function() return game:HttpGet(_5) end)
+        _b = _b and (type(_3) == "string" and _3:match("\"imageUrl\"%s*:%s*\"([^\"]+)\"")) or nil
+        if _b and _b:find("PrivateImage", 1, true) then
+            _b = nil
+        end
+        _7.thumbCache[_d] = _b or false
+        return _b
+    end
+
+    _7.SHELL_IMG = "https://static.wikia.nocookie.net/murder-mystery-2/images/e/e5/Shells.png/revision/latest?cb=20260724145424"
+    _7.ZWSP = utf8.char(8203)
+    _7.pad3 = function(_4)
+        local _d = {}
+        local _5 = {}
+        for _4, _7 in ipairs(_4) do
+            if _7.inline then
+                _d[#_d + 1] = _7
+            else
+                _5[#_5 + 1] = _7
+            end
+        end
+        while #_d % 3 ~= 0 do
+            _d[#_d + 1] = {name = _7.ZWSP, value = _7.ZWSP, inline = true}
+        end
+        for _4, _5 in ipairs(_5) do
+            _d[#_d + 1] = _5
+        end
+        return _d
+    end
+
+    _7.SHELL_KEY = "SummerKey2026"
+    _7.SBOX_COST = 120
+    _7.shellsLeft = nil
+    _7.coinsTotal = nil
+
+    _7.readOwned = function()
+        local _4, _d = pcall(require, (game:GetService("ReplicatedStorage")).Modules.ProfileData)
+        if not _4 or type(_d) ~= "table" then
+            return nil
+        end
+        local _5 = _d.Materials and _d.Materials.Owned
+        return type(_5) == "table" and _5 or nil
+    end
+    _7.readXP = function()
+        local _4, _d = pcall(require, (game:GetService("ReplicatedStorage")).Modules.ProfileData)
+        if not _4 or type(_d) ~= "table" then
+            return nil
+        end
+        return tonumber(_d.NewXP)
+    end
+    _7.readLevel = function()
+        local _4 = _7.readXP()
+        if not _4 then
+            return nil
+        end
+        local _d, _5 = pcall(require, (game:GetService("ReplicatedStorage")).Modules.LevelModule)
+        if not _d or type(_5) ~= "table" or type(_5.GetLevel) ~= "function" then
+            return nil
+        end
+        local _b, _3 = pcall(_5.GetLevel, _4)
+        return _b and tonumber(_3) or nil
+    end
+    _7.readShells = function()
+        local _4 = _7.readOwned()
+        if not _4 then
+            return nil
+        end
+        local _d = tonumber(_4[_7.SHELL_KEY]) or 0
+        _7.shellsLeft = _d
+        return _d
+    end
+    _7.readCoins = function()
+        local _4 = _7.readOwned()
+        if not _4 then
+            return nil
+        end
+        local _d = tonumber(_4.Coins) or 0
+        _7.coinsTotal = _d
+        return _d
+    end
+
+    _7.whBox = function(_4)
+        if not _7.whReady() then
+            return false, "no webhook set"
+        end
+        local _d, _5 = pcall(require, (game:GetService("ReplicatedStorage")).Database.Sync.Item)
+        local _b = _d and (type(_5) == "table" and _5[_4]) or nil
+        _b = type(_b) == "table" and _b or {}
+        _7.readShells()
+        local _3 = tostring(_b.ItemName or _4)
+        local _0 = tostring(_b.Rarity or "Unknown")
+        local _8 = _7.whPost
+        local _e = {
+            ping = _0:lower() == "godly",
+            title = "Opened a Summer Box!",
+            body = "Skin: **" .. (_3 .. "**\n\n**Info:**"),
+            thumb = _7.itemThumb(_b.ItemID)
+        }
+        local _f = {}
+        local _2 = _7.fld("Rarity", _0)
+        local _1 = _7.fld("Cost", _7.comma(_7.SBOX_COST))
+        local _c = _7.fld
+        local _6 = _7.comma
+        local _9 = _7.shellsLeft
+        _f[1] = _2
+        _f[2] = _1
+        do
+            local _4 = table.pack(_c("Shells left", _6(_9)))
+            table.move(_4, 1, _4.n, 3, _f)
+        end
+        _e.fields = _f
+        return _8(_e)
+    end
+
+    _7.whReward = function(_4, _d, _5)
+        if not _7.whReady() then
+            return false, "no webhook set"
+        end
+        local _b = (tostring(_4 or "")):gsub("^%s*[xX]%s*", "")
+        local _3 = tonumber
+        local _0 = _b:gsub("[^%d%.]", "")
+        local _8 = _3(_0)
+        if ((tostring(_d or "reward")):lower()):find("shell", 1, true) then
+            if not _7.readShells() and (_8 and type(_7.shellsLeft) == "number") then
+                _7.shellsLeft = _7.shellsLeft + _8
+            end
+            _8 = _8 and _7.comma(_8) or _b ~= "" and _b or "?"
+            local _4 = {}
+            local _d = _7.fld("Received", "+" .. (_8 .. " Shells"))
+            local _5 = _7.fld
+            local _3 = _7.comma(_7.shellsLeft) .. " Shells"
+            _4[1] = _d
+            do
+                local _d = table.pack(_5("Balance", _3))
+                table.move(_d, 1, _d.n, 2, _4)
+            end
+            if type(_7.shellsLeft) == "number" then
+                local _d = _7.SBOX_COST - _7.shellsLeft
+                _4[#_4 + 1] = _7.fld("Next box", _d > 0 and _7.comma(_d) .. " Shells left" or _7.comma(math.floor(_7.shellsLeft / _7.SBOX_COST)) .. " boxes ready")
+            end
+            return _7.whPost({
+                title = utf8.char(128026) .. ("  +" .. (_8 .. " shells")),
+                thumb = _7.SHELL_IMG,
+                fields = _7.pad3(_4)
+            })
+        end
+        _8 = _8 and _7.comma(_8) or _b ~= "" and _b or nil
+        local _e
+        return _7.whPost({
+            title = "Reward claimed",
+            body = _8 and "Received **" .. (_8 .. ("** " .. (_e .. "."))) or "Received **" .. (_e .. "**."),
+            thumb = _7.itemThumb(_5)
+        })
+    end
+
+    _7.roundCoins = 0
+    _7.roundBags = {}
+    _7.roundRole = nil
+    _7.roundEndRole = nil
+    _7.roundStart = nil
+    _7.roundLength = nil
+    _7.roundMode = nil
+    _7.roundWin = nil
+    _7.roundDead = nil
+    _7.roundId = nil
+    _7.roundLive = false
+    _7.roundLastT = nil
+
+    _7.roundRoster = function()
+        local _4, _d = pcall(require, (game:GetService("ReplicatedStorage")).Modules.CurrentRoundClient)
+        if not _4 or type(_d) ~= "table" then
+            return nil
+        end
+        return type(_d.PlayerData) == "table" and _d.PlayerData or nil
+    end
+    _7.myRoundRec = function()
+        local _4 = _7.roundRoster()
+        return _4 and _4[_3.Name] or nil
+    end
+    _7.ROLE_OK = {
+        Innocent = true,
+        Sheriff = true,
+        Murderer = true,
+        Hero = true,
+        Survivor = true,
+        Zombie = true,
+        Freezer = true,
+        Frozen = true,
+        Assassin = true,
+        Target = true
+    }
+    _7.roleText = function()
+        local _4 = _7.roundRole and tostring(_7.roundRole) or nil
+        local _d = _7.roundEndRole and tostring(_7.roundEndRole) or nil
+        if _4 and not _7.ROLE_OK[_4] then
+            _4 ..= " (?)"
+        end
+        if _d and not _7.ROLE_OK[_d] then
+            _d ..= " (?)"
+        end
+        if _4 and (_d and _4 ~= _d) then
+            return _4 .. (" -> " .. _d)
+        end
+        return _d or _4 or "unknown"
+    end
+    _7.WIN_TEXT = {
+        MurdererWin = "Murderer won",
+        MurdererDied = "Innocents won",
+        SheriffWin = "Sheriff won",
+        HeroWin = "Hero won",
+        InnocentWin = "Innocents won",
+        MurdererLeft = "Murderer left",
+        Time = "Time ran out",
+        TimeRanOut = "Time ran out",
+        Survivors = "Survivors won",
+        Zombies = "Zombies won",
+        Freezers = "Freezers won",
+        Frozen = "Everyone frozen"
+    }
+    _7.roundSnapshot = function()
+        local _4 = _7.myRoundRec()
+        if type(_4) ~= "table" then
+            return
+        end
+        if type(_4.Coins) == "number" then
+            _7.roundCoinsAuth = _4.Coins
+        end
+        if _4.Role ~= nil then
+            _7.roundEndRole = tostring(_4.Role)
+            if _7.roundRole == nil then
+                _7.roundRole = _7.roundEndRole
+            end
+        end
+        if _4.Dead ~= nil then
+            _7.roundDead = _4.Dead == true
+        end
+    end
+    _7.whRound = function()
+        if not _7.whReady() then
+            return false, "not sending"
+        end
+        _7.readCoins()
+        _7.readShells()
+        local _4 = _7.roundCoinsAuth or _7.roundCoins or 0
+        local _d
+        if _7.roundLength and _7.roundLastT then
+            _d = math.max(0, math.floor(_7.roundLength - _7.roundLastT))
+        else
+            _d = nil
+            if _7.roundStart then
+                local _4 = _7.roundStart
+                _d = math.max(0, math.floor(os.clock() - _4))
+            end
+        end
+        _d = _d and string.format("%dm %02ds", math.floor(_d / 60), _d % 60) or "?"
+        local _5 = _7.readXP()
+        local _b = _5 and _7.roundXP0
+        local _3 = nil
+        if _b then
+            _3 = math.max(0, math.floor(_5 - _7.roundXP0))
+        end
+        local _0 = _7.whPost
+        local _8 = {
+            title = "Round Over.",
+            thumb = _7.itemThumb(_7.COIN_ICON),
+            body = "Collected: **+" .. (_7.comma(_4) .. "** Coins\n\n**Other Info:**")
+        }
+        local _e = {}
+        local _f = _7.fld("Coins Balance", _7.comma(_7.coinsTotal))
+        local _2 = _7.fld("Played For", _d)
+        local _1 = _7.fld("XP Gained", _3 and "+" .. _7.comma(_3) or "?")
+        local _c = _7.fld("Shell Balance", _7.comma(_7.shellsLeft))
+        local _6 = _7.fld("Role", _7.roleText())
+        local _9 = _7.fld
+        local _a = table.pack(_7.comma(_7.readLevel()))
+        _a.n = (2 + _a.n) - 1
+        table.move(_a, 1, _a.n, 2, _a)
+        _a[1] = "Current Level"
+        local _4d = table.pack(_9(table.unpack(_a, 1, _a.n)))
+        _e[1] = _f
+        _e[2] = _2
+        _e[3] = _1
+        _e[4] = _c
+        _e[5] = _6
+        do
+            local _4 = table.pack(table.unpack(_4d, 1, _4d.n))
+            table.move(_4, 1, _4.n, 6, _e)
+        end
+        _8.fields = _e
+        return _0(_8)
+    end
+    _7.roundBegin = function(_4)
+        _7.roundCoins = 0
+        _7.roundCoinsAuth = nil
+        _7.roundBags = {}
+        _7.roundRole = nil
+        _7.roundEndRole = nil
+        _7.roundWin = nil
+        _7.roundDead = nil
+        _7.roundLength = _4
+        _7.roundLastT = _4
+        _7.roundXP0 = _7.readXP()
+        _7.roundStart = os.clock()
+        _7.roundLive = true
+        _7.roundMode = workspace:GetAttribute("GameMode")
+        if getrenv then
+            local _4, _d = pcall(function() return (getrenv())._G end)
+            if _4 and type(_d) == "table" then
+                _7.roundId = _d.LastRound
+            end
+        end
+        _7.roundSnapshot()
+    end
+    _7.roundFinish = function()
+        if not _7.roundLive then
+            return
+        end
+        _7.roundLive = false
+        _7.roundSnapshot()
+        task.spawn(function()
+            local _4 = os.clock()
+            while os.clock() - _4 < 30 do
+                local _4 = (_7.readXP() or 0) ~= (_7.roundXP0 or 0)
+                if not (_7.roundWin and _4) then
+                    task.wait(.25)
+                    continue
+                end
+                break
+            end
+            pcall(_7.whRound)
+        end)
+    end
+
+    task.spawn(function()
+        local _4 = game:GetService("ReplicatedStorage")
+        local _d = workspace:WaitForChild("RoundTimerPart", 30)
+        if _d then
+            local _4 = tonumber(_d:GetAttribute("Time"))
+            local _5 = tonumber(_d:GetAttribute("RoundLength"))
+            if _4 and _4 > 0 then
+                _7.roundBegin(_5)
+                if _5 then
+                    _7.roundStart = os.clock() - math.max(0, _5 - _4)
+                end
+            end
+            _7.conns[#_7.conns + 1] = (_d:GetAttributeChangedSignal("Time")):Connect(function()
+                if not _7.current() then
+                    return
+                end
+                local _4 = tonumber(_d:GetAttribute("Time"))
+                if _4 == nil then
+                    return
+                end
+                if _4 > 0 then
+                    _7.roundLastT = _4
+                end
+                if _4 > 0 and not _7.roundLive then
+                    _7.roundBegin(tonumber(_d:GetAttribute("RoundLength")))
+                elseif _4 <= 0 and _7.roundLive then
+                    _7.roundFinish()
+                end
+            end)
+        end
+        local _5 = _4:FindFirstChild("Remotes")
+        _5 = _5 and _5:FindFirstChild("Gameplay")
+        if not _5 then
+            return
+        end
+        local _b = _5:FindFirstChild("VictoryScreen")
+        if _b then
+            _7.conns[#_7.conns + 1] = _b.OnClientEvent:Connect(function(_4, _d, _5)
+                if not _7.current() then
+                    return
+                end
+                if type(_5) == "string" then
+                    _7.roundWin = _5
+                end
+                if type(_d) == "string" and _d ~= "" then
+                    _7.roundEndRole = _d
+                end
+            end)
+        end
+        local _3 = _5:FindFirstChild("CoinCollected")
+        if _3 then
+            _7.conns[#_7.conns + 1] = _3.OnClientEvent:Connect(function(_4, _d)
+                if not _7.current() then
+                    return
+                end
+                local _5 = tonumber(_d)
+                if _5 then
+                    _7.roundBags[tostring(_4 or "Coin")] = _5
+                    local _d = 0
+                    for _4, _5 in pairs(_7.roundBags) do
+                        _d += _5
+                    end
+                    _7.roundCoins = _d
+                end
+                _7.roundSnapshot()
+            end)
+        end
+        local _0 = _5:FindFirstChild("PlayerDataChanged")
+        if _0 then
+            _7.conns[#_7.conns + 1] = _0.OnClientEvent:Connect(function()
+                if not _7.current() then
+                    return
+                end
+                _7.roundSnapshot()
+            end)
+        end
+    end)
+
+    _7.setToggle = function(_4, _d, _5)
+        _7.sfxQuiet = true
+        local _b = false
+        pcall(function()
+            if _4 then
+                for _5, _7 in ipairs({"SetValue", "Set", "UpdateValue"}) do
+                    if type(_4[_7]) ~= "function" then
+                        continue
+                    end
+                    if pcall(function() _4[_7](_4, _d) end) then
+                        _b = true
+                        return
+                    end
+                end
+            end
+        end)
+        if not _b and _5 then
+            pcall(_5, _d)
+        end
+        _7.sfxQuiet = false
+        return _b
+    end
+
+    _7.underMapDepth = 15
+    _7.underMapCF = function()
+        if not _95 then
+            return nil
+        end
+        local _4 = _95:FindFirstChild("Spawns")
+        local _d = nil
+        if _4 then
+            local _5 = next
+            local _7, _b = _4:GetChildren()
+            _d = nil
+            for _4, _5 in _5, _7, _b do
+                if _5:IsA("BasePart") then
+                    _d = _5.Position
+                    break
+                else
+                    _d = nil
+                end
+            end
+        end
+        if not _d then
+            local _4, _5 = pcall(function() return _95:GetPivot() end)
+            if _4 and _5 then
+                _d = _5.Position
+            end
+        end
+        if not _d then
+            return nil
+        end
+        return CFrame.new(_d.X, _d.Y - _7.underMapDepth, _d.Z)
+    end
+    _7.hideUnderMap = function(_4)
+        local _d = _7.underMapCF()
+        if not _d then
+            return false
+        end
+        _0d(true)
+        _0 = true
+        if (_4.Position - _d.Position).Magnitude > 5 then
+            _4.Velocity = Vector3.zero
+            _4.CFrame = _d
+        end
+        return true
+    end
+
+    _7.finishFling = function()
+        if not _7.flingWhenDone then
+            return
+        end
+        if _7.flingDoneFired then
+            return
+        end
+        if _bd then
+            return
+        end
+        local _d = _7.roundCoinsAuth or _7.roundCoins or 0
+        if _d <= 0 and _5d() <= 0 then
+            return
+        end
+        _7.finishEarned = _d > 0 and _d or _5d()
+        local _5 = _c()
+        if not _5 or _5 == _3 or not _5.Character then
+            return
+        end
+        _7.flingDoneFired = true
+        task.spawn(function()
+            if _47 then
+                local _d = " coins. Resetting, then flinging " .. (_5.Name .. "...")
+                _4:Notify({
+                    Title = "Farm Done!",
+                    Content = "Collected " .. (_7.comma(_7.finishEarned) .. _d),
+                    Duration = 3,
+                    Icon = "flame"
+                })
+                local _b = _3.Character and _3.Character:FindFirstChildOfClass("Humanoid")
+                if _b and _b.Health > 0 then
+                    _b.Health = 0
+                end
+                local _0 = tick()
+                local _8
+                while true do
+                    task.wait(.2)
+                    local _4 = _3.Character
+                    local _d = _4 and _4:FindFirstChildOfClass("Humanoid")
+                    _8 = _4 ~= nil and (_d ~= nil and (_d.Health > 0 and _4:FindFirstChild("HumanoidRootPart") ~= nil))
+                    if not (_8 or tick() - _0 > 12) then
+                        continue
+                    end
+                    break
+                end
+                if not _8 then
+                    return
+                end
+                task.wait(.6)
+                _5 = _c()
+                if not _5 or _5 == _3 or not _5.Character then
+                    return
+                end
+            else
+                local _d = " coins. Flinging " .. (_5.Name .. "...")
+                _4:Notify({
+                    Title = "Farm Done!",
+                    Content = "Collected " .. (_7.comma(_7.finishEarned) .. _d),
+                    Duration = 2,
+                    Icon = "flame"
+                })
+            end
+            pcall(_3d, _5)
+        end)
+    end
+
+    _7.diedMidRound = false
+    _7.conns[#_7.conns + 1] = _3.CharacterAdded:Connect(function(_d)
+        local _5 = _d:WaitForChild("Humanoid", 5)
+        if _5 then
+            _7.conns[#_7.conns + 1] = _5.Died:Connect(function()
+                local _4 = _c()
+                _7.diedMidRound = _4 ~= nil and _4 ~= _3
+            end)
+        end
+        if not _7.diedMidRound then
+            return
+        end
+        _7.diedMidRound = false
+        if not _7.flingWhenDone then
+            return
+        end
+        if _7.flingDoneFired then
+            return
+        end
+        task.spawn(function()
+            task.wait(1.2)
+            if not _7.flingWhenDone or _7.flingDoneFired or _bd then
+                return
+            end
+            local _d = _c()
+            if not _d or _d == _3 or not _d.Character then
+                return
+            end
+            _7.flingDoneFired = true
+            _4:Notify({
+                Title = "Out Of The Round",
+                Content = "Flinging " .. (_d.Name .. "..."),
+                Duration = 3,
+                Icon = "flame"
+            })
+            pcall(_3d, _d)
+        end)
+    end)
+
+    _7.flingAll = function()
+        if _7.flingAllRunning then
+            _7.flingAllRunning = false
+            _4:Notify({
+                Title = "Fling All Stopped!",
+                Content = "Cancelled.",
+                Duration = 2,
+                Icon = "power-off"
+            })
+            return
+        end
+        local _d = {}
+        for _4, _5 in ipairs(Players:GetPlayers()) do
+            if _5 ~= _3 and _5.Character then
+                _d[#_d + 1] = _5
+            end
+        end
+        if #_d == 0 then
+            _4:Notify({
+                Title = "Fling All",
+                Content = "Nobody to fling!",
+                Duration = 2,
+                Icon = "x"
+            })
+            return
+        end
+        _7.flingAllRunning = true
+        task.spawn(function()
+            _4:Notify({
+                Title = "Fling All",
+                Content = "Flinging " .. (#_d .. " players..."),
+                Duration = 2,
+                Icon = "flame"
+            })
+            local _5 = 0
+            for _4, _d in ipairs(_d) do
+                if _7.flingAllRunning then
+                    if _d.Parent and _d.Character then
+                        pcall(_3d, _d)
+                        local _4 = tick()
+                        while _bd and (_7.flingAllRunning and tick() - _4 < 12) do
+                            task.wait(.1)
+                        end
+                        _5 += 1
+                    end
+                    continue
+                end
+                break
+            end
+            if _7.flingAllRunning then
+                _4:Notify({
+                    Title = "Fling All Done!",
+                    Content = "Flung " .. (_5 .. " players."),
+                    Duration = 2,
+                    Icon = "check"
+                })
+            end
+            _7.flingAllRunning = false
+        end)
+    end
+
+    _37 = function()
+        if _6 then
+            return
+        end
+        _6 = true
+        task.spawn(function()
+            while _47 do
+                task.wait(1)
+                pcall(function()
+                    if _5d() >= 999 then
+                        local _4 = _3.Character and _3.Character:FindFirstChildOfClass("Humanoid")
+                        if _4 then
+                            _4.Health = 0
+                        end
+                    end
+                end)
+            end
+            _6 = false
+        end)
+    end
+    _07 = function() _47 = false end
+
+    _87 = function()
+        if _9 then
+            return
+        end
+        _9 = _3.Idled:Connect(function()
+            if not _d7 then
+                return
+            end
+            pcall(function()
+                VirtualUser:CaptureController()
+                VirtualUser:ClickButton2(Vector2.new())
+            end)
+        end)
+    end
+    _e7 = function()
+        if _9 then
+            _9:Disconnect()
+            _9 = nil
+        end
+    end
+end
+-- MM2 script — fixed syntax, part 4b-2a/4
+-- Вставляй после части 4b-1. Копируется без последствий.
+
+local _f7
+_f7 = false
+
+_7.velTrack = {}
+_7.aimLead = .16
+_7.startVelTracker = function()
+    if _7.velConn then
+        return
+    end
+    _7.velConn = RunService.Heartbeat:Connect(function()
+        local _4 = os.clock()
+        for _d, _5 in ipairs(Players:GetPlayers()) do
+            local _b = _5.Character and _5.Character:FindFirstChild("HumanoidRootPart")
+            if not _b then
+                _7.velTrack[_5] = nil
+            else
+                local _d = _7.velTrack[_5]
+                if not _d then
+                    _7.velTrack[_5] = {p = _b.Position, t = _4, v = Vector3.zero}
+                elseif _4 - _d.t >= .03 then
+                    _d.v = (_b.Position - _d.p) / (_4 - _d.t)
+                    _d.p = _b.Position
+                    _d.t = _4
+                end
+            end
+        end
+    end)
+end
+_7.stopVelTracker = function()
+    if _7.velConn then
+        pcall(function() _7.velConn:Disconnect() end)
+        _7.velConn = nil
+        _7.velTrack = {}
+    end
+end
+
+_7.leadTime = function()
+    local _4 = tonumber(_G.__VOID_AIMLEAD) or _7.aimLead
+    local _d, _5 = pcall(function()
+        return (game:GetService("Stats")).Network.ServerStatsItem["Data Ping"]:GetValue() / 1000
+    end)
+    local _b = _d and (type(_5) == "number" and (_5 > 0 and _5 < 1))
+    local _3 = .04
+    if _b then
+        _3 = _5
+    end
+    return math.clamp(_3 + _4, 0, .3)
+end
+
+_7.aimAt = function(_4, _d)
+    local _5 = _4.Character and _4.Character:FindFirstChildOfClass("Humanoid")
+    local _b
+    if _5 and _5.MoveDirection.Magnitude > .1 then
+        _b = _5.MoveDirection.Unit * _5.WalkSpeed
+    else
+        _b = _d.AssemblyLinearVelocity or Vector3.zero
+        if _b.Magnitude < .5 then
+            local _d = _7.velTrack[_4]
+            if _d and _d.v.Magnitude >= .5 then
+                _b = _d.v
+            end
+        end
+    end
+    if _b.Magnitude < .5 then
+        return _d.Position
+    end
+    local _3 = _7.leadTime()
+    local _0 = _d.Position + Vector3.new(_b.X, 0, _b.Z) * _3
+    local _8 = _0 - _d.Position
+    if _8.Magnitude > 8 then
+        _0 = _d.Position + _8.Unit * 8
+    end
+    _G.__VOID_AIM = {
+        aim = _0,
+        targetPos = _d.Position,
+        vel = _b,
+        lead = _3,
+        t = os.clock()
+    }
+    return _0
+end
+
+_7.startVelTracker()
+local _27
+_27 = nil
+COOLDOWN = {Shoot = 3.2, Throw = 2}
+
+local _17, _c7, _67, _97, _a7, _4b, _db, _5b, _7b, _bb
+local _3b, _0b, _8b, _eb, _fb, _2b, _1b, _cb, _6b, _9b
+local _ab, _43, _d3, _53, _73, _b3
+
+do
+    local function _d(_4)
+        _4 = _4 and _4:GetAttribute("ThrowSpeed")
+        if type(_4) == "number" and _4 > 0 then
+            return 2 * _4
+        end
+        return COOLDOWN.Throw
+    end
+
+    local _5 = false
+    local _b = false
+    _17 = nil
+
+    local function _0()
+        local _4, _d = pcall(function()
+            return require((ReplicatedStorage:WaitForChild("ClientServices")):WaitForChild("WeaponService"))
+        end)
+        if not _4 or type(_d) ~= "table" or not _d.GunFired then
+            return nil
+        end
+        return _d.GunFired.OnClientEvent:Connect(function(_4)
+            local _d = _3.Character
+            if not _d or typeof(_4) ~= "Instance" then
+                return
+            end
+            if not _4:IsDescendantOf(_d) then
+                return
+            end
+            local _7 = COOLDOWN.Shoot
+            _5 = true
+            if _27 then
+                _27.startCooldown("Shoot", _7, "SHOOT\nMURDERER")
+            end
+            task.spawn(function()
+                task.wait(_7)
+                _5 = false
+            end)
+        end)
+    end
+
+    _c7 = _0()
+
+    local function _8()
+        local _4 = _3.Character
+        local _d = _3:FindFirstChild("Backpack")
+        return _4 and _4:FindFirstChild("Knife") or _d and _d:FindFirstChild("Knife")
+    end
+
+    local function _e(_4)
+        _4 = _4 and _4.Animation
+        if not _4 or _4.Name ~= "ThrowKnife" then
+            return
+        end
+        if _b then
+            return
+        end
+        local _5 = _d(_8())
+        _b = true
+        if _27 then
+            _27.startCooldown("Throw", _5, "THROW\nKNIFE")
+        end
+        task.spawn(function()
+            task.wait(_5)
+            _b = false
+        end)
+    end
+
+    local function _f()
+        if _17 then
+            pcall(function() _17:Disconnect() end)
+        end
+        _17 = nil
+        local _4 = _3.Character
+        _4 = _4 and _4:FindFirstChildOfClass("Humanoid")
+        _4 = _4 and _4:FindFirstChildOfClass("Animator")
+        if not _4 then
+            return
+        end
+        _17 = _4.AnimationPlayed:Connect(_e)
+    end
+    _f()
+
+    _67 = _3.CharacterAdded:Connect(function(_4)
+        _4:WaitForChild("Humanoid")
+        task.wait(.3)
+        _f()
+    end)
+
+    _97 = function(_4, _d)
+        if not _4 or not _d then
+            return false
+        end
+        local _5 = RaycastParams.new()
+        _5.FilterType = Enum.RaycastFilterType.Exclude
+        _5.FilterDescendantsInstances = {_3.Character}
+        _5.RespectCanCollide = true
+        local _7 = {}
+        for _d, _5 in ipairs({"HumanoidRootPart", "Head", "UpperTorso", "Torso", "LeftFoot", "RightFoot"}) do
+            local _b = _4:FindFirstChild(_5)
+            if _b then
+                table.insert(_7, _b.Position)
+                if #_7 == 0 and _4.PrimaryPart then
+                    table.insert(_7, _4.PrimaryPart.Position)
+                end
+                for _7, _b in ipairs(_7) do
+                    local _3 = workspace:Raycast(_d.Position, _b - _d.Position, _5)
+                    if not _3 then
+                        return true
+                    end
+                    if _3.Instance and _3.Instance:IsDescendantOf(_4) then
+                        return true
+                    end
+                    if _3.Instance and _3.Instance.Transparency > .5 then
+                        return true
+                    end
+                    if _3.Instance and _3.Instance.CanCollide == false then
+                        return true
+                    end
+                end
+                return false
+            end
+        end
+        return false
+    end
+
+    local function _2(_4, _d, _5)
+        local _7 = _4.Character
+        if not _7 then
+            return nil
+        end
+        local _b = _7:FindFirstChild("UpperTorso") or _7:FindFirstChild("HumanoidRootPart")
+        if not _b then
+            return nil
+        end
+        local _0 = _b.Position
+        local _8 = _b.AssemblyLinearVelocity or Vector3.new()
+        local _e = _3.Character
+        local _f
+        if _e then
+            _f = _3.Character:FindFirstChild("UpperTorso") or _3.Character:FindFirstChild("HumanoidRootPart")
+        else
+            _f = _e
+        end
+        if not _f then
+            return _0
+        end
+        local _2 = (_0 - _f.Position).Magnitude
+        if _2 < 1 then
+            return _0
+        end
+        return _0 + _8 * math.min((_2 / _d) * (_5 or 1), .5)
+    end
+
+    _a7 = function()
+        local _4 = _3.Character
+        if not _4 then
+            return nil
+        end
+        local _d = _4:FindFirstChild("HumanoidRootPart")
+        if not _d then
+            return nil
+        end
+        local _5 = math.huge
+        local _7 = nil
+        for _4, _b in ipairs(Players:GetPlayers()) do
+            if _b ~= _3 and _b.Character then
+                local _4 = _b.Character:FindFirstChild("HumanoidRootPart")
+                if _4 then
+                    local _3 = (_d.Position - _4.Position).Magnitude
+                    if _3 < _5 then
+                        _5 = _3
+                        _7 = _b
+                    end
+                end
+            end
+        end
+        return _7
+    end
+
+    _4b = function()
+        if _5 then
+            return
+        end
+        _5 = true
+        local function _d(_4)
+            task.spawn(function()
+                task.wait(_4)
+                _5 = false
+            end)
+        end
+        if _6() ~= _3 then
+            _d(.5)
+            _4:Notify({
+                Title = "Not Sheriff!",
+                Content = "You don't have the gun.",
+                Duration = 2,
+                Icon = "x"
+            })
+            return
+        end
+        local _b = _c()
+        if not _b or not _b.Character then
+            _4:Notify({
+                Title = "Error!",
+                Content = "No murderer this round!",
+                Duration = 2,
+                Icon = "x"
+            })
+            _d(.5)
+            return
+        end
+        local _0 = _3.Character and _3.Character:FindFirstChild("HumanoidRootPart")
+        if not _0 then
+            _d(.5)
+            return
+        end
+        if _f7 then
+            if not _97(_b.Character, _3.Character:FindFirstChild("RightHand") or _0) then
+                _4:Notify({
+                    Title = "Wall Detected!",
+                    Content = "Murderer is behind a wall. Turn off Wall Check to shoot through it.",
+                    Duration = 3,
+                    Icon = "shield"
+                })
+                _d(.5)
+                return
+            end
+        end
+        local _8 = _3.Character and _3.Character:FindFirstChild("Gun")
+        if not _8 then
+            local _4 = _3:FindFirstChild("Backpack")
+            _4 = _4 and _4:FindFirstChild("Gun")
+            if _4 and _3.Character then
+                _3.Character.Humanoid:EquipTool(_4)
+                task.wait(.1)
+                _8 = _3.Character:FindFirstChild("Gun")
+            end
+            if not _8 then
+                _d(.5)
+                return
+            end
+        end
+        local _e = _8:FindFirstChild("Shoot")
+        if not _e or not _e:IsA("RemoteEvent") then
+            _d(.5)
+            return
+        end
+        local _f = _0:FindFirstChild("GunRaycastAttachment")
+        _f = _f and _f.WorldCFrame or CFrame.new(_0.Position)
+        local _2 = _b.Character:FindFirstChild("HumanoidRootPart")
+        if not _2 then
+            _d(.5)
+            return
+        end
+        if (_0.Position - _2.Position).Magnitude > 300 then
+            _4:Notify({
+                Title = "Too Far!",
+                Content = "The gun only reaches 300 studs.",
+                Duration = 2,
+                Icon = "x"
+            })
+            _d(.5)
+            return
+        end
+        _e:FireServer(_f, CFrame.new(_7.aimAt(_b, _2)))
+        _d(.35)
+    end
+
+    _db = function()
+        if _b then
+            return
+        end
+        _b = true
+        local function _5(_4)
+            task.spawn(function()
+                task.wait(_4)
+                _b = false
+            end)
+        end
+        if _c() ~= _3 then
+            _4:Notify({
+                Title = "Not Murderer!",
+                Content = "You don't have the knife.",
+                Duration = 2,
+                Icon = "x"
+            })
+            _5(.5)
+            return
+        end
+        local _7 = _a7()
+        if not _7 or not _7.Character then
+            _4:Notify({
+                Title = "Error!",
+                Content = "No one nearby to throw at.",
+                Duration = 2,
+                Icon = "x"
+            })
+            _5(.5)
+            return
+        end
+        local _0 = _3.Character:FindFirstChild("RightHand") or _3.Character:FindFirstChild("HumanoidRootPart")
+        if not _0 then
+            _5(.5)
+            return
+        end
+        if _f7 and not _97(_7.Character, _0) then
+            _4:Notify({
+                Title = "Wall Detected!",
+                Content = _7.Name .. " is behind a wall.",
+                Duration = 2,
+                Icon = "shield"
+            })
+            _5(.5)
+            return
+        end
+        local _8 = _3.Character:FindFirstChild("Knife")
+        if not _8 then
+            local _4 = _3:FindFirstChild("Backpack")
+            _4 = _4 and _4:FindFirstChild("Knife")
+            if _4 then
+                _3.Character.Humanoid:EquipTool(_4)
+                task.wait(.1)
+                _8 = _3.Character:FindFirstChild("Knife")
+                if not _8 then
+                    _5(.5)
+                    return
+                end
+                local _e = _2(_7, 600, .95)
+                if not _e then
+                    _5(.5)
+                    return
+                end
+                local _f = _8:FindFirstChild("Throw") or _8:FindFirstChild("Events") and _8.Events:FindFirstChild("KnifeThrown")
+                if _f and _f:IsA("RemoteEvent") then
+                    _f:FireServer(CFrame.new(_0.Position), CFrame.new(_e))
+                    pcall(function()
+                        local _4 = _3.Character and _3.Character:FindFirstChildOfClass("Humanoid")
+                        _4 = _4 and _4:FindFirstChildOfClass("Animator")
+                        local _d = _8:FindFirstChild("ThrowKnife", true)
+                        if _4 and _d then
+                            (_4:LoadAnimation(_d)):Play(.1, 6, 1)
+                        end
+                    end)
+                    local _4 = _d(_8)
+                    if _27 then
+                        _27.startCooldown("Throw", _4, "THROW\nKNIFE")
+                    end
+                    _5(_4)
+                else
+                    _5(.5)
+                end
+            end
+        end
+    end
+
+    local function _1()
+        for _4, _d in ipairs(Workspace:GetDescendants()) do
+            if _d.Name == "GunDrop" and _d.Parent then
+                return _d
+            end
+        end
+        return nil
+    end
+
+    local function _9()
+        local _4 = _1()
+        if not _4 then
+            return false, "nodrop"
+        end
+        local _d = _3.Character
+        if not _d then
+            return false, "nochar"
+        end
+        local _5 = _d:FindFirstChild("HumanoidRootPart")
+        if not _5 then
+            return false, "nochar"
+        end
+        local _7 = nil
+        if _4:IsA("BasePart") and _4:FindFirstChild("TouchInterest") then
+            _7 = _4
+        end
+        if not _7 then
+            for _4, _d in ipairs(_4:GetDescendants()) do
+                if _d:IsA("BasePart") and _d:FindFirstChild("TouchInterest") then
+                    _7 = _d
+                    break
+                end
+            end
+        end
+        if not _7 then
+            if _4:IsA("BasePart") then
+                _7 = _4
+            else
+                for _4, _d in ipairs(_4:GetDescendants()) do
+                    if _d:IsA("BasePart") then
+                        _7 = _d
+                        break
+                    end
+                end
+            end
+        end
+        if not _7 then
+            return false, "notouch"
+        end
+        for _4 = 1, 5, 1 do
+            pcall(function()
+                firetouchinterest(_5, _7, 0)
+                firetouchinterest(_5, _7, 1)
+            end)
+            task.wait(.05)
+            local _b = _3:FindFirstChildOfClass("Backpack")
+            if _d:FindFirstChild("Gun") or _b and _b:FindFirstChild("Gun") then
+                return true
+            end
+        end
+        local _b = _3:FindFirstChildOfClass("Backpack")
+        if _d:FindFirstChild("Gun") or _b and _b:FindFirstChild("Gun") then
+            return true
+        end
+        return false, "refused"
+    end
+
+    local _a = nil
+    _5b = function()
+        if _a then
+            pcall(task.cancel, _a)
+            _a = nil
+        end
+    end
+    _7b = function()
+        _5b()
+        _a = task.spawn(function()
+            while true do
+                task.wait(.12)
+                local _4 = _3.Character
+                local _d = _3:FindFirstChildOfClass("Backpack")
+                if not (_4 and _4:FindFirstChild("Gun") or _d and _d:FindFirstChild("Gun")) then
+                    pcall(_9)
+                end
+            end
+        end)
+    end
+
+    BOMB_COOLDOWN = 22
+    _bb = 0
+    _3b = nil
+    _0b = {}
+
+    _8b = function()
+        local _d = tick()
+        if _d - _bb < BOMB_COOLDOWN then
+            _4:Notify({
+                Title = "Cooldown",
+                Content = string.format("Bomb jump on cooldown for %.1fs", (BOMB_COOLDOWN - _d) - _bb),
+                Duration = 2,
+                Icon = "clock"
+            })
+            return
+        end
+        pcall(function()
+            local _d = _3.Character
+            if not _d then
+                return
+            end
+            local _5 = _d:FindFirstChildOfClass("Humanoid")
+            local _7 = _d:FindFirstChild("HumanoidRootPart")
+            if not _5 or not _7 then
+                return
+            end
+            local _b = _d:FindFirstChildOfClass("Tool")
+            local _0 = _d:FindFirstChild("FakeBomb")
+            if not _0 then
+                _0 = _3:FindFirstChild("Backpack")
+                _0 = _0 and _0:FindFirstChild("FakeBomb")
+                if _0 then
+                    _5:EquipTool(_0)
+                    task.wait(.1)
+                    _0 = _d:FindFirstChild("FakeBomb")
+                    if not _0 then
+                        local _4 = ReplicatedStorage:FindFirstChild("Remotes")
+                        local _7 = _4 and _4:FindFirstChild("Extras")
+                        _7 = _7 and _7:FindFirstChild("ReplicateToy")
+                        if _7 then
+                            _7:InvokeServer("FakeBomb")
+                            task.wait(.15)
+                            _0 = _d:FindFirstChild("FakeBomb")
+                            if not _0 then
+                                local _4 = _3:FindFirstChild("Backpack")
+                                if _4 and _4:FindFirstChild("FakeBomb") then
+                                    _5:EquipTool(_4.FakeBomb)
+                                    task.wait(.1)
+                                    _0 = _d:FindFirstChild("FakeBomb")
+                                end
+                            end
+                        end
+                    end
+                    if not _0 then
+                        _4:Notify({
+                            Title = "No Bomb",
+                            Content = "Couldn't get the FakeBomb toy.",
+                            Duration = 2,
+                            Icon = "x"
+                        })
+                        return
+                    end
+                    _5:ChangeState(Enum.HumanoidStateType.Jumping)
+                    task.wait(.05)
+                    local _8 = _0:FindFirstChild("Remote")
+                    if _8 then
+                        local _4 = _7.Position
+                        _8:FireServer(CFrame.new(_4.X, _4.Y - 3, _4.Z), 50)
+                        _bb = tick()
+                        if _27 then
+                            _27.startCooldown("Bomb", BOMB_COOLDOWN, "BOMB\nJUMP")
+                        end
+                    end
+                    task.wait(.1)
+                    _5:ChangeState(Enum.HumanoidStateType.Jumping)
+                    task.wait(.1)
+                    _5:UnequipTools()
+                    if _b and (_b ~= _0 and _b.Name ~= "FakeBomb") then
+                        task.wait(.1)
+                        if _b.Parent then
+                            pcall(function() _5:EquipTool(_b) end)
+                        end
+                    end
+                end
+            end
+        end)
+    end
+
+    local function _4d()
+        _bb = 0
+        if _27 then
+            _27.clearCooldown("Bomb")
+        end
+    end
+
+    local function _dd(_4)
+        if _3b then
+            pcall(function() _3b:Disconnect() end)
+        end
+        _3b = nil
+        _4 = _4 and _4:FindFirstChildOfClass("Humanoid")
+        if _4 then
+            _3b = _4.Died:Connect(_4d)
+        end
+    end
+    _dd(_3.Character)
+    _eb = _3.CharacterAdded:Connect(function(_4)
+        _4:WaitForChild("Humanoid")
+        _4d()
+        _dd(_4)
+    end)
+
+    local _5d = 4
+    local _7d = 14
+    local _bd = .2
+    local _3d = false
+    local _0d = 0
+
+    local function _8d(_4, _d, _5, _7)
+        if UserInputService.MouseBehavior == Enum.MouseBehavior.LockCenter then
+            RunService:BindToRenderStep("VOIDWallFlick", Enum.RenderPriority.Camera.Value + 1, function()
+                local _4 = _3.Character and _3.Character:FindFirstChild("HumanoidRootPart")
+                if not _4 then
+                    return
+                end
+                local _7 = CFrame.Angles
+                _4.CFrame = CFrame.lookAt(_4.Position, _4.Position + _d) * _7(0, math.rad(_5), 0)
+            end)
+            task.wait(_7)
+            pcall(function() RunService:UnbindFromRenderStep("VOIDWallFlick") end)
+            pcall(function() _4.CFrame = CFrame.lookAt(_4.Position, _4.Position + _d) end)
+        else
+            local _b = CFrame.lookAt(_4.Position, _4.Position + _d)
+            pcall(function() _4.CFrame = _b * CFrame.Angles(0, math.rad(_5), 0) end)
+            task.wait(_7)
+            pcall(function() _4.CFrame = CFrame.lookAt(_4.Position, _4.Position + _d) end)
+        end
+    end
+
+    local function _ed(_4, _d)
+        local _5 = RaycastParams.new()
+        if not pcall(function() _5.FilterType = Enum.RaycastFilterType.Exclude end) then
+            _5.FilterType = Enum.RaycastFilterType.Blacklist
+        end
+        _5.FilterDescendantsInstances = {_4}
+        for _4, _7 in ipairs({_d.CFrame.LookVector, _d.CFrame.RightVector, -_d.CFrame.RightVector}) do
+            local _b = Workspace:Raycast(_d.Position, _7 * _5d, _5)
+            if _b and (_b.Instance and _b.Instance.CanCollide) then
+                return _b
+            end
+        end
+        return nil
+    end
+
+    _fb = function()
+        local _d = _3d
+        local _5
+        if _3d then
+            _5 = _d
+        else
+            _5 = os.clock() - _0d < _bd
+        end
+        if _5 then
+            return
+        end
+        local _7 = _3.Character
+        local _b = _7 and _7:FindFirstChild("HumanoidRootPart")
+        if not _b then
+            return
+        end
+        if not _ed(_7, _b) then
+            _4:Notify({
+                Title = "No wall",
+                Content = "Stand next to a wall first.",
+                Duration = 1.5,
+                Icon = "x"
+            })
+            return
+        end
+        _3d = true
+        task.spawn(function()
+            local function _4()
+                _3d = false
+                _0d = os.clock()
+            end
+            local _d = _3.Character
+            local _5 = _d and _d:FindFirstChild("HumanoidRootPart")
+            local _7 = _d and _d:FindFirstChildOfClass("Humanoid")
+            if not _5 or not _7 then
+                _4()
+                return
+            end
+            local _b = _ed(_d, _5)
+            if not _b then
+                _4()
+                return
+            end
+            local _0 = -_b.Normal
+            local _8 = Vector3.new(_0.X, 0, _0.Z)
+            if _8.Magnitude < .05 then
+                _4()
+                return
+            end
+            local _e = _8.Unit
+            local function _f()
+                pcall(function()
+                    _5.AssemblyLinearVelocity = Vector3.new(_e.X * _7d, _5.AssemblyLinearVelocity.Y, _e.Z * _7d)
+                end)
+                _7.Jump = true
+                pcall(function() _7:ChangeState(Enum.HumanoidStateType.Jumping) end)
+            end
+            _f()
+            task.wait(.12)
+            _8d(_5, _e, 60, .08)
+            task.wait(.03)
+            _f()
+            _4()
+        end)
+    end
+
+    _27 = {guis = {}, parts = {}, locked = false}
+    ICONS = {
+        crosshair = "rbxassetid://134242818164054",
+        hand = "rbxassetid://130703864968637",
+        sword = "rbxassetid://124448418211665",
+        bomb = "http://www.roblox.com/Thumbs/Asset.ashx?format=png&width=250&height=250&assetId=342187115",
+        target = "rbxassetid://87563802520297",
+        climb = "rbxassetid://100467452364672",
+        skull = "rbxassetid://137726256442333",
+        plane = "rbxassetid://126985561580989",
+        expand = "rbxassetid://137492887754537",
+        ghost = "rbxassetid://113822048130017",
+        badge = "rbxassetid://116620312917084",
+        xray = "rbxassetid://340313896"
+    }
+    IS_MOBILE = UserInputService.TouchEnabled
+    TILE_W = IS_MOBILE and 72 or 84
+    TILE_H = TILE_W
+    TILE_GAP = 10
+    if IS_MOBILE then
+        _7.hudScale = .7
+    end
+    COOLDOWN_GREY = Color3.fromRGB(72, 72, 80)
+
+    local function _fd(_4, _d)
+        return Color3.new(_4.R + (1 - _4.R) * _d, _4.G + (1 - _4.G) * _d, _4.B + (1 - _4.B) * _d)
+    end
+    _27.bgRest = function() return .18 end
+    _27.bgHover = function() return .06 end
+    _27.plateT = function(_4, _d)
+        if _4 then
+            _d = _d and .3 or .35
+            return _d
+        end
+        return _d and .7 or .82
+    end
+    _27.iconC = function(_4, _d) return _fd(_4, _d and .8 or .55) end
+    _27.glyphC = function(_4, _d)
+        if _4 and _4.raw then
+            return Color3.fromRGB(255, 255, 255)
+        end
+        return _27.iconC(_4 and _4.accent, _d)
+    end
+    _27.labelC = function(_4)
+        if _4 then
+            return Color3.fromRGB(240, 240, 246)
+        end
+        return Color3.fromRGB(146, 146, 158)
+    end
+    _27.labelStrokeT = function() return 1 end
+    _27.iconPx = function(_4)
+        local _d = HUDIconSize and HUDIconSize[_4]
+        if not _d then
+            return nil
+        end
+        return math.max(8, math.floor((_d * TILE_H) / 84 + .5))
+    end
+    _27.SLOT_PLATED = IS_MOBILE and 30 or 34
+    _27.SLOT_PLAIN = IS_MOBILE and 22 or 25
+    _27.SLOT_GAP = 6
+    _27.GLYPH_MAX = _27.SLOT_PLAIN + 2 * (_27.SLOT_GAP - 1)
+    _27.layout = function(_4, _d)
+        local _5 = _4.btn.Size.Y.Offset
+        _4.footer = _d
+        local _7 = 3 * (IS_MOBILE and 8 or 9)
+        local _b = _27.plateless() and _27.SLOT_PLAIN or _27.SLOT_PLATED
+        local _3 = math.max(_b, math.min(_27.iconPx(_4.name) or 0, _27.GLYPH_MAX))
+        local _0 = (_b + _27.SLOT_GAP) + (_7 + math.ceil(((_4.lines or 2) * _4.label.TextSize) * _4.label.LineHeight)) / 2
+        local _8 = math.floor(_5 - _0) / 2)
+        local _e = (((_8 + _0) - _5) - _d) - 3
+        if _e > 0 then
+            _8 -= math.ceil(_e)
+        end
+        local _f = math.max(2, _8)
+        _4.plate.Position = UDim2.new(.5, 0, 0, _f + math.floor(_b / 2))
+        _4.label.AnchorPoint = Vector2.new(.5, 0)
+        _4.label.TextYAlignment = Enum.TextYAlignment.Center
+        _4.label.Size = UDim2.new(1, -6, 0, _7)
+        _4.label.Position = UDim2.new(.5, 0, 0, (_f + _b) + _27.SLOT_GAP)
+        if _3 < _4.icon.Size.Y.Offset then
+            _4.icon.Size = UDim2.fromOffset(_3, _3)
+        end
+    end
+-- MM2 script — fixed syntax, part 4b-2b-i/4
+-- Вставляй после части 4b-2a. Копируется без последствий.
+
+    _27.layout = _27.layout
+    _27.create = function(_4, _d, _5, _b, _3, _0)
+        if _27.guis[_4] then
+            return
+        end
+        local _8 = Instance.new("ScreenGui")
+        _8.Name = "VOID" .. (_4 .. "Button")
+        _8.ResetOnSpawn = false
+        _8.IgnoreGuiInset = true
+        _8.Parent = CoreGui
+        local _e = IS_MOBILE
+        local _f = TILE_W
+        local _2 = TILE_H
+        local _1 = Instance.new("TextButton")
+        _1.Size = UDim2.new(0, _f, 0, _2)
+        local _c = _7.hudPos[_4]
+        _1.Position = _c and UDim2.new(_c[1], _c[2], _c[3], _c[4]) or _5
+        _1.AnchorPoint = Vector2.new(.5, .5)
+        _1.Text = ""
+        _1.BackgroundColor3 = Color3.fromRGB(10, 10, 13)
+        _1.BackgroundTransparency = _27.bgRest()
+        _1.BorderSizePixel = 0
+        _1.AutoButtonColor = false
+        _1.ZIndex = 2
+        _1.Name = _4 .. "Btn"
+        _1.Parent = _8
+        ;(Instance.new("UICorner", _1)).CornerRadius = UDim.new(0, 16)
+
+        local _6 = Instance.new("UIScale")
+        _6.Scale = _7.hudScale or 1
+        _6.Parent = _1
+
+        local _9 = Instance.new("UIStroke")
+        _9.Thickness = 1.5
+        _9.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+        _9.Color = _b
+        _9.Transparency = .15
+        _9.Parent = _1
+
+        local _a = Instance.new("Frame")
+        _a.Name = "Plate"
+        _a.Size = UDim2.new(0, _27.SLOT_PLATED, 0, _27.SLOT_PLATED)
+        _a.Position = UDim2.new(.5, 0, 0, math.floor(_2 * .36))
+        _a.AnchorPoint = Vector2.new(.5, .5)
+        _a.BackgroundColor3 = _b
+        _a.BackgroundTransparency = _27.plateT(false, false)
+        _a.BorderSizePixel = 0
+        _a.ZIndex = 3
+        _a.Parent = _1
+        ;(Instance.new("UICorner", _a)).CornerRadius = UDim.new(0, 11)
+
+        local _4d = Instance.new("UIStroke")
+        _4d.Thickness = 1
+        _4d.Color = _b
+        _4d.Transparency = .55
+        _4d.Parent = _a
+
+        local _dd = Instance.new("ImageLabel")
+        _dd.Name = "Icon"
+        _dd.Size = UDim2.new(0, 23, 0, 23)
+        _dd.Position = UDim2.new(.5, 0, .5, 0)
+        _dd.AnchorPoint = Vector2.new(.5, .5)
+        _dd.BackgroundTransparency = 1
+        _dd.Image = ICONS[_3] or ""
+        _dd.ImageColor3 = _27.iconC(_b, false)
+        _dd.ZIndex = 5
+        _dd.Parent = _a
+
+        local _5d = Instance.new("TextLabel")
+        _5d.Name = "Label"
+        _5d.Size = UDim2.new(1, -10, 0, 24)
+        _5d.Position = UDim2.new(.5, 0, 1, -7)
+        _5d.AnchorPoint = Vector2.new(.5, 1)
+        _5d.BackgroundTransparency = 1
+        _5d.Text = _d
+        _5d.TextSize = _e and 9 or 10
+        _5d.Font = Enum.Font.GothamBold
+        _5d.TextColor3 = _27.labelC(false)
+        _5d.TextStrokeColor3 = Color3.fromRGB(0, 0, 0)
+        _5d.TextStrokeTransparency = _27.labelStrokeT()
+        _5d.TextWrapped = true
+        _5d.LineHeight = 1.1
+        _5d.ZIndex = 6
+        _5d.Parent = _1
+
+        local _7d = select(2, _d:gsub("\n", "")) + 1
+        if _7d >= 3 then
+            _a.Size = UDim2.new(0, _27.SLOT_PLATED - 6, 0, _27.SLOT_PLATED - 6)
+            _dd.Size = UDim2.new(0, 20, 0, 20)
+            _5d.TextSize = _e and 8 or 9
+            _5d.LineHeight = 1
+        end
+
+        local _bd = HUDIconArt and HUDIconArt[_4]
+        if _bd then
+            _dd.ImageRectOffset = Vector2.new(_bd[1], _bd[2])
+            _dd.ImageRectSize = Vector2.new(_bd[3], _bd[3])
+            _dd.ImageColor3 = Color3.fromRGB(255, 255, 255)
+        end
+
+        local _3d = _27.iconPx(_4)
+        if _3d then
+            _dd.Size = UDim2.new(0, _3d, 0, _3d)
+            _a.ClipsDescendants = false
+        end
+
+        _27.parts[_4] = {
+            btn = _1,
+            stroke = _9,
+            plate = _a,
+            plateStroke = _4d,
+            icon = _dd,
+            label = _5d,
+            accent = _b,
+            active = false,
+            scale = _6,
+            lines = _7d,
+            raw = (HUDIconArt and HUDIconArt[_4]) ~= nil,
+            name = _4
+        }
+        _27.layout(_27.parts[_4], 0)
+        pcall(_27.applyDesign, _27.parts[_4])
+
+        local function _0d(_4, _d, _5)
+            (TweenService:Create(_4, TweenInfo.new(_5 or .12, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), _d)):Play()
+        end
+
+        _1.MouseEnter:Connect(function()
+            local _d = _27.parts[_4]
+            _0d(_1, {BackgroundTransparency = _27.designHover()})
+            if _d and _d.cdUntil then
+                return
+            end
+            if not _27.plateless() then
+                _0d(_a, {BackgroundTransparency = _27.plateT(_d and _d.active, true)})
+            end
+            _0d(_5d, {TextColor3 = Color3.fromRGB(228, 228, 236)})
+        end)
+
+        _1.MouseLeave:Connect(function()
+            local _d = _27.parts[_4]
+            _0d(_1, {BackgroundTransparency = _27.designRest()})
+            if _d and _d.cdUntil then
+                return
+            end
+            if not _27.plateless() then
+                _0d(_a, {BackgroundTransparency = _27.plateT(_d and _d.active, false)})
+            end
+            _0d(_5d, {TextColor3 = _27.labelC(_d and _d.active)})
+        end)
+
+        local _8d = nil
+        local _ed = nil
+        local _fd = nil
+        local _2d = nil
+        local _1d = nil
+        local _cd = 0
+
+        local function _6d()
+            if _ed then
+                return
+            end
+            local _4 = os.clock()
+            if _4 - _cd < .2 then
+                return
+            end
+            _cd = _4
+            _7.playSfx("click")
+            local _d = _7.hudScale or 1
+            _0d(_6, {Scale = _d * .93}, .06)
+            task.delay(.08, function()
+                if _6.Parent then
+                    _0d(_6, {Scale = _d}, .16)
+                end
+            end)
+            task.spawn(_0)
+        end
+
+        _1.MouseButton1Click:Connect(_6d)
+        _1.TouchTap:Connect(_6d)
+
+        _1.InputBegan:Connect(function(_4)
+            if _4.UserInputType == Enum.UserInputType.MouseButton1 or _4.UserInputType == Enum.UserInputType.Touch then
+                _8d = true
+                _ed = false
+                _fd = _4
+                _2d = _1.Position
+                _1d = _4.Position
+            end
+        end)
+
+        _27.parts[_4].dragConn = UserInputService.InputChanged:Connect(function(_4)
+            if not _8d or _27.locked or not _1.Parent then
+                return
+            end
+            if _4.UserInputType ~= Enum.UserInputType.MouseMovement and _4 ~= _fd then
+                return
+            end
+            local _d = _4.Position - _1d
+            if not _ed then
+                if math.abs(_d.X) + math.abs(_d.Y) < 6 then
+                    return
+                end
+                _ed = true
+            end
+            _1.Position = UDim2.new(_2d.X.Scale, _2d.X.Offset + _d.X, _2d.Y.Scale, _2d.Y.Offset + _d.Y)
+        end)
+
+        _27.parts[_4].endConn = UserInputService.InputEnded:Connect(function(_d)
+            if not _8d or _d ~= _fd then
+                return
+            end
+            _8d = false
+            _fd = nil
+            if _ed then
+                local _d = _1.Position
+                _7.hudPos[_4] = {_d.X.Scale, _d.X.Offset, _d.Y.Scale, _d.Y.Offset}
+            end
+            task.delay(.05, function() _ed = false end)
+        end)
+
+        _27.guis[_4] = _8
+        _7.hudBtns[_4] = _1
+        return _1, _5d
+    end
+
+    HUDOrder = {"Shoot", "Grab", "Aimbot", "Bomb", "Throw", "WallHop"}
+    HUDOrder2 = {"KillAll", "KillSheriff", "Fly", "Noclip", "Xray"}
+    _2b = {}
+
+    local function _2d(_4, _d)
+        for _5, _7 in ipairs(_4) do
+            _2b[_7] = UDim2.new(.5, (_5 - (#_4 + 1) / 2) * (TILE_W + TILE_GAP), .25, _d)
+        end
+    end
+    _2d(HUDOrder, 0)
+    _2d(HUDOrder2, TILE_H + TILE_GAP)
+
+    _27.relayout = function()
+        local _4 = _7.hudScale or 1
+        local function _d(_d, _5)
+            for _b, _3 in ipairs(_d) do
+                _2b[_3] = UDim2.new(.5, ((_b - (#_d + 1) / 2) * (TILE_W + TILE_GAP)) * _4, .25, _5 * _4)
+                if not _7.hudPos[_3] then
+                    local _4 = _27.parts[_3]
+                    if _4 and _4.btn then
+                        _4.btn.Position = _2b[_3]
+                    end
+                end
+            end
+        end
+        _d(HUDOrder, 0)
+        _d(HUDOrder2, TILE_H + TILE_GAP)
+    end
+
+    HUDIcon = {
+        Shoot = "crosshair",
+        Grab = "hand",
+        Throw = "sword",
+        Bomb = "bomb",
+        Aimbot = "target",
+        WallHop = "climb",
+        KillAll = "badge",
+        Fly = "plane",
+        Noclip = "ghost",
+        KillSheriff = "skull",
+        Xray = "xray"
+    }
+    HUDIconSize = {Xray = 34, Bomb = 48}
+    HUDIconArt = {Xray = {165, 85, 250}, Bomb = {8, 24, 170}}
+    HUDAccent = {
+        Shoot = Color3.fromHex("#257AF7"),
+        Grab = Color3.fromHex("#10C550"),
+        Throw = Color3.fromHex("#EF4444"),
+        Bomb = Color3.fromHex("#F97316"),
+        Aimbot = Color3.fromHex("#2DD4BF"),
+        WallHop = Color3.fromHex("#A855F7"),
+        KillAll = Color3.fromHex("#DC2626"),
+        Fly = Color3.fromHex("#38BDF8"),
+        Noclip = Color3.fromHex("#94A3B8"),
+        KillSheriff = Color3.fromHex("#DC2626"),
+        Xray = Color3.fromHex("#FACC15")
+    }
+
+    _1b = function()
+        local _d, _5 = _9()
+        if _d then
+            _4:Notify({
+                Title = "Gun Grabbed!",
+                Content = "Got the gun!",
+                Duration = 1.5,
+                Icon = "check"
+            })
+            return
+        end
+        local _7 = next
+        local _b, _3 = Workspace:GetChildren()
+        local _0 = false
+        for _4, _d in _7, _b, _3 do
+            if _d:FindFirstChild("CoinAreas") or _d:FindFirstChild("CoinContainer") then
+                _0 = true
+                break
+            end
+        end
+        if _5 == "nochar" then
+            _4:Notify({
+                Title = "No Character",
+                Content = "Nothing to grab with right now.",
+                Duration = 2,
+                Icon = "x"
+            })
+        elseif not _0 then
+            _4:Notify({
+                Title = "Not In A Round",
+                Content = "The round is over, so the gun can't be picked up. Wait for the next one.",
+                Duration = 3,
+                Icon = "clock"
+            })
+        elseif _5 == "nodrop" then
+            _4:Notify({
+                Title = "No Gun Found!",
+                Content = "No gun on the ground right now.",
+                Duration = 1.5,
+                Icon = "x"
+            })
+        else
+            _4:Notify({
+                Title = "Couldn't Grab It",
+                Content = "Found the gun but the pickup didn't land -- move closer and try again.",
+                Duration = 2.5,
+                Icon = "x"
+            })
+        end
+    end
+
+    _27.setActive = function(_4, _d)
+        local _5 = _27.parts[_4]
+        if not _5 then
+            return
+        end
+        _5.active = _d
+        local _7 = _27.designNow and _27.designNow()
+        if _7 and _7.active then
+            pcall(_7.active, _5, _d)
+            return
+        end
+        local function _b(_4, _d)
+            (TweenService:Create(_4, TweenInfo.new(.18, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), _d)):Play()
+        end
+        _b(_5.stroke, {Transparency = _d and 0 or .15})
+        _b(_5.plate, {BackgroundTransparency = _27.plateT(_d, false)})
+        _b(_5.plateStroke, {Transparency = _d and .15 or .55})
+        _b(_5.icon, {ImageColor3 = _27.glyphC(_5, _d)})
+        _b(_5.label, {TextColor3 = _27.labelC(_d)})
+    end
+
+    _27.DESIGN = "Default Design"
+    _27.DESIGN_LIST = {"Round Design", "Default Design"}
+    _27.DESIGN_RENAMED = {
+        Ring = "Round Design",
+        ["Base Bar"] = "Default Design",
+        ["New Style"] = "Default Design"
+    }
+
+    _27.snapDesign = function(_4)
+        if _4.base then
+            return
+        end
+        local _d = _4.btn:FindFirstChildOfClass("UICorner")
+        _4.base = {
+            corner = _d and _d.CornerRadius or UDim.new(0, 16),
+            body = _4.btn.BackgroundColor3,
+            strokeThk = _4.stroke.Thickness,
+            plateSize = _4.plate.Size,
+            platePos = _4.plate.Position,
+            iconSize = _4.icon.Size,
+            labelPos = _4.label.Position,
+            labelSize = _4.label.Size
+        }
+    end
+
+    _27.stopGlide = function(_4)
+        if _4.glideT then
+            _4.glideT:Cancel()
+            _4.glideT = nil
+        end
+        if _4.arcT then
+            _4.arcT:Cancel()
+            _4.arcT = nil
+        end
+    end
+
+    _27.setNow = function(_4, _d)
+        if not _4 then
+            return
+        end
+        ;(TweenService:Create(_4, TweenInfo.new(.03, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), _d)):Play()
+    end
+
+    _27.designNow = function()
+        return _27.DESIGNS and _27.DESIGNS[_27.DESIGN] or nil
+    end
+
+    _27.designRest = function()
+        local _4 = _27.designNow()
+        if _4 and _4.rest then
+            return _4.rest
+        end
+        return _27.bgRest()
+    end
+
+    _27.designHover = function()
+        local _4 = _27.designNow()
+        if _4 and _4.hover then
+            return _4.hover
+        end
+        return _27.bgHover()
+    end
+
+    _27.plateless = function()
+        local _4 = _27.designNow()
+        return _4 ~= nil and _4.plateless == true
+    end
+
+    _27.BAR_H = 4
+    _27.BAR_DROP = 6
+    _27.BAR_INSET = 13
+    _27.buildBar = function(_4)
+        if _4.track then
+            return
+        end
+        local _d = Instance.new("Frame")
+        _d.Name = "Track"
+        _d.AnchorPoint = Vector2.new(.5, 1)
+        _d.Position = UDim2.new(.5, 0, 1, -_27.BAR_DROP)
+        _d.Size = UDim2.new(1, -_27.BAR_INSET * 2, 0, _27.BAR_H)
+        _d.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+        _d.BackgroundTransparency = .86
+        _d.BorderSizePixel = 0
+        _d.ZIndex = 4
+        _d.Parent = _4.btn
+        ;(Instance.new("UICorner", _d)).CornerRadius = UDim.new(1, 0)
+
+        local _5 = Instance.new("Frame")
+        _5.Name = "Fill"
+        _5.AnchorPoint = Vector2.new(0, .5)
+        _5.Position = UDim2.new(0, 0, .5, 0)
+        _5.Size = UDim2.fromScale(0, 1)
+        _5.BackgroundColor3 = _4.accent
+        _5.BorderSizePixel = 0
+        _5.ZIndex = 5
+        _5.Parent = _d
+        ;(Instance.new("UICorner", _5)).CornerRadius = UDim.new(1, 0)
+        _4.track = _d
+        _4.fill = _5
+    end
+
+    _27.RING_INSET = 5
+    _27.RING_THICK = 3
+    _27.buildRing = function(_4)
+        if _4.ring then
+            return
+        end
+        local _d = (_4.btn.Size.Y.Offset - _27.RING_INSET * 2) - _27.RING_THICK
+        local _5 = Instance.new("Frame")
+        _5.Name = "Ring"
+        _5.BackgroundTransparency = 1
+        _5.Size = UDim2.fromScale(1, 1)
+        _5.ZIndex = 4
+        _5.Parent = _4.btn
+        local _7 = Instance.new("Frame")
+        _7.Name = "Track"
+        _7.AnchorPoint = Vector2.new(.5, .5)
+        _7.Position = UDim2.fromScale(.5, .5)
+        _7.Size = UDim2.fromOffset(_d, _d)
+        _7.BackgroundTransparency = 1
+        _7.ZIndex = 4
+        _7.Parent = _5
+        ;(Instance.new("UICorner", _7)).CornerRadius = UDim.new(1, 0)
+        local _b = Instance.new("UIStroke")
+        _b.Thickness = _27.RING_THICK
+        _b.Color = Color3.fromRGB(255, 255, 255)
+        _b.Transparency = .88
+        _b.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+        _b.Parent = _7
+        _4.arcs = {}
+        for _7, _b in ipairs({"Right", "Left"}) do
+            local _3 = Instance.new("Frame")
+            _3.Name = _b .. "Mask"
+            _3.BackgroundTransparency = 1
+            _3.ClipsDescendants = true
+            _3.Size = UDim2.fromScale(.5, 1)
+            _3.Position = UDim2.fromScale(_b == "Right" and .5 or 0, 0)
+            _3.ZIndex = 5
+            _3.Parent = _5
+            local _0 = Instance.new("Frame")
+            _0.Name = "Arc"
+            _0.AnchorPoint = Vector2.new(.5, .5)
+            _0.Position = UDim2.new(_b == "Right" and 0 or 1, 0, .5, 0)
+            _0.Size = UDim2.fromOffset(_d, _d)
+            _0.BackgroundTransparency = 1
+            _0.ZIndex = 5
+            _0.Parent = _3
+            ;(Instance.new("UICorner", _0)).CornerRadius = UDim.new(1, 0)
+            local _8 = Instance.new("UIStroke")
+            _8.Thickness = _27.RING_THICK
+            _8.Color = _4.accent
+            _8.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+            _8.Parent = _0
+            local _e = Instance.new("UIGradient")
+            local _f = NumberSequence.new
+            local _2 = {}
+            local _1 = NumberSequenceKeypoint.new(0, 0)
+            local _c = NumberSequenceKeypoint.new(.499, 0)
+            local _6 = NumberSequenceKeypoint.new(.5, 1)
+            local _9 = NumberSequenceKeypoint.new
+            _2[1] = _1
+            _2[2] = _c
+            _2[3] = _6
+            do
+                local _4 = table.pack(_9(1, 1))
+                table.move(_4, 1, _4.n, 4, _2)
+            end
+            _e.Transparency = _f(_2)
+            _e.Parent = _8
+            _4.arcs[_7] = _e
+        end
+        _4.ringTrack = _7
+        _4.ring = _5
+    end
+
+    _27.setRing = function(_4, _d)
+        if not _4.arcs then
+            return
+        end
+        _27.stopGlide(_4)
+        local _5 = math.clamp(_d, 0, 1) * 360
+        _4.arcs[1].Rotation = math.min(_5, 180)
+        _4.arcs[2].Rotation = math.clamp(_5, 180, 360)
+    end
+
+    _27.resetDesign = function(_4)
+        _27.snapDesign(_4)
+        local _d = _4.base
+        local _5 = _4.btn:FindFirstChildOfClass("UICorner")
+        if _5 then
+            _5.CornerRadius = _d.corner
+        end
+        _4.btn.BackgroundColor3 = _d.body
+        _4.btn.ClipsDescendants = false
+        _4.stroke.Thickness = _d.strokeThk
+        local _7 = _4.plate
+        local _b = _d.platePos
+        _4.plate.Size = _d.plateSize
+        _7.Position = _b
+        _4.plate.BackgroundColor3 = _4.accent
+        _4.icon.Size = _d.iconSize
+        _4.label.Visible = true
+        local _3 = _4.label
+        local _0 = _d.labelPos
+        local _8 = _d.labelSize
+        _4.label.Position = _0
+        _3.Size = _8
+        _4.footer = 0
+        _27.setNow(_4.btn, {BackgroundTransparency = _27.bgRest()})
+        _27.setNow(_4.stroke, {Color = _4.accent, Transparency = _4.active and 0 or .15})
+        _27.setNow(_4.plate, {BackgroundTransparency = _27.plateT(_4.active, false)})
+        _27.setNow(_4.plateStroke, {Transparency = _4.active and .15 or .55})
+        _27.setNow(_4.icon, {ImageColor3 = _27.glyphC(_4, _4.active)})
+        _27.setNow(_4.label, {TextColor3 = _27.labelC(_4.active)})
+        if _4.track then
+            _4.track.Visible = false
+        end
+        if _4.fill then
+            _4.fill.Visible = false
+        end
+        if _4.ring then
+            _4.ring.Visible = false
+        end
+        if _4.arcs then
+            _27.setRing(_4, 0)
+        end
+    end
+
+    _27.applyDesign = function(_4)
+        if not _4 or not _4.btn or not _4.btn.Parent then
+            return
+        end
+        _27.resetDesign(_4)
+        local _d = _27.designNow()
+        if _d and _d.apply then
+            pcall(_d.apply, _4)
+        end
+        _27.setActive(_4.name, _4.active)
+    end
+
+    _27.setDesign = function(_4)
+        local _d = _27.DESIGN_RENAMED and _27.DESIGN_RENAMED[_4] or _4
+        if not _27.DESIGNS[_d] then
+            _d = "Default Design"
+        end
+        _27.DESIGN = _d
+        _7.hudDesign = _d
+        for _4, _d in next, _27.parts, nil do
+            pcall(_27.applyDesign, _d)
+        end
+    end
+
+    _27.designSet = function(_4, _d)
+        local _5 = _27.designNow()
+        if _5 and _5.set then
+            pcall(_5.set, _4, _d)
+        end
+    end
+
+    _27.designSlide = function(_4, _d)
+        local _5 = _27.designNow()
+        if _5 and _5.slide then
+            pcall(_5.slide, _4, _d)
+        end
+    end
+
+    _27.DESIGNS = {
+        ["Round Design"] = {
+            plateless = true,
+            rest = .12,
+            hover = .04,
+            apply = function(_4)
+                local _d = _4.btn:FindFirstChildOfClass("UICorner")
+                if _d then
+                    _d.CornerRadius = UDim.new(1, 0)
+                end
+                _4.stroke.Thickness = 2
+                _4.plate.Position = UDim2.new(.5, 0, .5, 0)
+                _4.plate.AnchorPoint = Vector2.new(.5, .5)
+                local _5 = _27.iconPx(_4.name) or 26
+                _4.icon.Size = UDim2.fromOffset(_5, _5)
+                _27.setNow(_4.btn, {BackgroundTransparency = .12})
+                _27.setNow(_4.stroke, {Color = _4.accent, Transparency = 0})
+                _27.setNow(_4.plate, {BackgroundTransparency = 1})
+                _27.setNow(_4.plateStroke, {Transparency = 1})
+                _27.setNow(_4.icon, {ImageColor3 = _27.glyphC(_4, _4.active)})
+                _4.label.Visible = false
+                _27.buildRing(_4)
+                _4.ring.Visible = true
+                _27.setRing(_4, 0)
+            end,
+            active = function(_4, _d)
+                _27.setNow(_4.stroke, {Transparency = 0})
+                _27.setNow(_4.icon, {ImageColor3 = _27.glyphC(_4, _d)})
+                if not _4.cdUntil then
+                    _27.setRing(_4, _d and 1 or 0)
+                end
+            end,
+            set = function(_4, _d)
+                _27.setRing(_4, _d)
+            end,
+            slide = function(_4, _d)
+                if not _4.arcs then
+                    return
+                end
+                _27.stopGlide(_4)
+                _4.arcs[1].Rotation = 180
+                _4.arcs[2].Rotation = 360
+                _4.arcT = TweenService:Create(_4.arcs[2], TweenInfo.new(_d / 2, Enum.EasingStyle.Linear), {Rotation = 180})
+                _4.arcT:Play()
+                _4.glideT = TweenService:Create(_4.arcs[1], TweenInfo.new(_d / 2, Enum.EasingStyle.Linear, Enum.EasingDirection.Out, 0, false, _d / 2), {Rotation = 0})
+                _4.glideT:Play()
+            end
+        },
+        ["Default Design"] = {
+            plateless = true,
+            rest = .1,
+            hover = .03,
+            apply = function(_4)
+                local _d = _4.btn:FindFirstChildOfClass("UICorner")
+                if _d then
+                    _d.CornerRadius = UDim.new(0, 20)
+                end
+                _4.stroke.Thickness = 1
+                local _5 = _27.iconPx(_4.name) or _27.SLOT_PLAIN
+                _4.icon.Size = UDim2.fromOffset(_5, _5)
+                _27.setNow(_4.btn, {BackgroundTransparency = .1})
+                _27.setNow(_4.stroke, {
+                    Color = _4.active and _4.accent or Color3.fromRGB(255, 255, 255),
+                    Transparency = _4.active and .35 or .88
+                })
+                _27.setNow(_4.plate, {BackgroundTransparency = 1})
+                _27.setNow(_4.plateStroke, {Transparency = 1})
+                local _7 = _27.setNow
+                local _b = _4.icon
+                local _3 = {}
+                local _0 = _4.raw and Color3.fromRGB(255, 255, 255)
+                if not _0 then
+                    _0 = _fd(_4.accent, _4.active and .6 or .25)
+                end
+                _3.ImageColor3 = _0
+                _7(_b, _3)
+                _27.buildBar(_4)
+                _27.layout(_4, _27.BAR_H + _27.BAR_DROP)
+                _4.track.Visible = true
+                _4.fill.Visible = true
+                _4.fill.BackgroundColor3 = _4.accent
+                _27.stopGlide(_4)
+                _4.fill.Size = UDim2.fromScale(_4.active and 1 or 0, 1)
+            end,
+            active = function(_4, _d)
+                _27.setNow(_4.stroke, {
+                    Color = _d and _4.accent or Color3.fromRGB(255, 255, 255),
+                    Transparency = _d and .35 or .88
+                })
+                local _5 = _27.setNow
+                local _7 = _4.icon
+                local _b = {}
+                local _3 = _4.raw and Color3.fromRGB(255, 255, 255)
+                if not _3 then
+                    _3 = _fd(_4.accent, _d and .6 or .25)
+                end
+                _b.ImageColor3 = _3
+                _5(_7, _b)
+                _27.setNow(_4.label, {TextColor3 = _27.labelC(_d)})
+                if _4.fill then
+                    _27.stopGlide(_4)
+                    _4.fill.Size = UDim2.fromScale(_d and 1 or 0, 1)
+                end
+            end,
+            set = function(_4, _d)
+                if not _4.fill then
+                    return
+                end
+                _27.stopGlide(_4)
+                _4.fill.Size = UDim2.fromScale(_d, 1)
+            end,
+            slide = function(_4, _d)
+                if not _4.fill then
+                    return
+                end
+                _27.stopGlide(_4)
+                _4.fill.Size = UDim2.fromScale(1, 1)
+                _4.glideT = TweenService:Create(_4.fill, TweenInfo.new(_d, Enum.EasingStyle.Linear), {Size = UDim2.fromScale(0, 1)})
+                _4.glideT:Play()
+            end
+        }
+    }
+
+    _27.startCooldown = function(_4, _d, _5)
+        local _7 = _27.parts[_4]
+        if not _7 or not _7.label then
+            return
+        end
+        _7.cdUntil = os.clock() + _d
+        _7.cdTotal = _d
+        _27.designSlide(_7, _d)
+        if _7.cdThread then
+            return
+        end
+        local _b = _5:match("^[^\n]+") or _5
+        local function _3(_4, _d, _5)
+            if not _4 then
+                return
+            end
+            ;(TweenService:Create(_4, TweenInfo.new(_5 or .25, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), _d)):Play()
+        end
+        _3(_7.stroke, {Color = COOLDOWN_GREY})
+        _3(_7.plateStroke, {Color = COOLDOWN_GREY})
+        _3(_7.plate, {BackgroundColor3 = COOLDOWN_GREY})
+        _3(_7.icon, {ImageColor3 = Color3.fromRGB(124, 124, 134)})
+        _3(_7.label, {TextColor3 = Color3.fromRGB(112, 112, 124)})
+        _7.cdThread = task.spawn(function()
+            while true do
+                local _d = _27.parts[_4]
+                if not (not _d or not _d.cdUntil) then
+                    local _4 = _d.cdUntil - os.clock()
+                    if not (_4 <= 0) then
+                        _d.label.Text = _b .. ("\n" .. string.format("%.1fs", _4))
+                        task.wait(.05)
+                        continue
+                    end
+                end
+                break
+            end
+            local _d = _27.parts[_4]
+            if _d then
+                _d.cdUntil = nil
+                _d.cdThread = nil
+                _27.designSet(_d, 0)
+                if _d.active then
+                    local _4 = _27.designNow and _27.designNow()
+                    if _4 and _4.active then
+                        pcall(_4.active, _d, true)
+                        if _d.label then
+                            _d.label.Text = _5
+                        end
+                        _3(_d.stroke, {Color = _d.accent})
+                        _3(_d.plateStroke, {Color = _d.accent})
+                        _3(_d.plate, {BackgroundColor3 = _d.accent})
+                        _3(_d.icon, {ImageColor3 = _27.glyphC(_d, _d.active)})
+                        _3(_d.label, {TextColor3 = _27.labelC(_d.active)})
+                        _3(_d.plate, {BackgroundTransparency = _27.plateT(_d.active, false)})
+                    end
+                end
+            end
+        end)
+    end
+
+    _27.clearCooldown = function(_4)
+        local _d = _27.parts[_4]
+        if _d then
+            _d.cdUntil = nil
+        end
+    end
+
+    _27.destroy = function(_4)
+        local _d = _27.parts[_4]
+        if _d then
+            if _d.dragConn then
+                _d.dragConn:Disconnect()
+            end
+            if _d.endConn then
+                _d.endConn:Disconnect()
+            end
+        end
+        local _5 = _27.guis[_4]
+        if _5 then
+            _5:Destroy()
+            _27.guis[_4] = nil
+        end
+        _27.parts[_4] = nil
+    end
+
+    _27.destroyAll = function()
+        for _4 in pairs(_27.guis) do
+            _27.destroy(_4)
+        end
+    end
+
+    _cb = {
+        enabled = false,
+        conn = nil,
+        smooth = 1,
+        part = "UpperTorso",
+        murdererOnly = true,
+        wallCheck = false,
+        fov = 500,
+        leadFactor = 1,
+        predictedPosition = function(_4)
+            if not _4 then
+                return nil
+            end
+            local _d = _3.Character and _3.Character:FindFirstChild("HumanoidRootPart")
+            if not _d then
+                return _4.Position
+            end
+            return _4.Position + (_4.AssemblyLinearVelocity or Vector3.zero) * math.clamp(((_d.Position - _4.Position).Magnitude / 1200) * _cb.leadFactor, .01, .3)
+        end,
+        getPart = function(_4)
+            if not _4 then
+                return nil
+            end
+            return _4:FindFirstChild(_cb.part) or _4:FindFirstChild("UpperTorso") or _4:FindFirstChild("Torso") or _4:FindFirstChild("HumanoidRootPart") or _4:FindFirstChild("Head")
+        end,
+        alive = function(_4)
+            if not _4 or not _4.Character then
+                return false
+            end
+            local _d = _4.Character:FindFirstChildOfClass("Humanoid")
+            return _d ~= nil and _d.Health > 0
+        end,
+        inFov = function(_4)
+            if _cb.fov >= 500 then
+                return true
+            end
+            local _d = workspace.CurrentCamera
+            local _5, _7 = _d:WorldToViewportPoint(_4)
+            if not _7 then
+                return false
+            end
+            local _b = _d.ViewportSize / 2
+            return (Vector2.new(_5.X, _5.Y) - _b).Magnitude <= _cb.fov
+        end,
+        getTarget = function()
+            local _4 = _c()
+            if _4 and (_4 ~= _3 and _cb.alive(_4)) then
+                local _d = _cb.getPart(_4.Character)
+                if _d and _cb.inFov(_d.Position) then
+                    local _5 = not _cb.wallCheck
+                    if not _5 then
+                        _5 = _97(_4.Character, _3.Character and _3.Character:FindFirstChild("HumanoidRootPart"))
+                    end
+                    if _5 then
+                        return _4, _d
+                    end
+                end
+            end
+            if _cb.murdererOnly then
+                return nil, nil
+            end
+            local _d = workspace.CurrentCamera
+            local _5 = _d.ViewportSize / 2
+            local _7 = math.huge
+            local _b = nil
+            local _0 = nil
+            for _4, _8 in ipairs(Players:GetPlayers()) do
+                if _8 ~= _3 and _cb.alive(_8) then
+                    local _4 = _cb.getPart(_8.Character)
+                    if _4 then
+                        local _e, _f = _d:WorldToViewportPoint(_4.Position)
+                        if _f then
+                            local _d = (Vector2.new(_e.X, _e.Y) - _5).Magnitude
+                            if _d <= _cb.fov and _d < _7 then
+                                local _5 = not _cb.wallCheck
+                                local _e
+                                if _5 then
+                                    _e = _5
+                                else
+                                    _e = _97(_8.Character, _3.Character and _3.Character:FindFirstChild("HumanoidRootPart"))
+                                end
+                                if _e then
+                                    _7 = _d
+                                    _b = _8
+                                    _0 = _4
+                                end
+                            end
+                        end
+                    end
+                end
+            end
+            return _b, _0
+        end
+    }
+
+    _7.hasGun = function()
+        local _4 = _3.Character
+        return _4 ~= nil and _4:FindFirstChild("Gun") ~= nil
+    end
+
+    _cb.noGunWarned = false
+    _cb.warnNoGun = function()
+        if _cb.noGunWarned then
+            return
+        end
+        _cb.noGunWarned = true
+        _4:Notify({
+            Title = "No Gun",
+            Content = "Aimbot is on but you are not holding a gun - it will start aiming the moment you pick one up.",
+            Duration = 4,
+            Icon = "clock"
+        })
+    end
+
+    _cb.start = function()
+        if _cb.conn then
+            return
+        end
+        _cb.conn = RunService.RenderStepped:Connect(function()
+            if not _cb.enabled then
+                return
+            end
+            if not _7.hasGun() then
+                _cb.warnNoGun()
+                return
+            end
+            _cb.noGunWarned = false
+            pcall(function()
+                local _4
+                _4, _4 = _cb.getTarget()
+                if not _4 then
+                    return
+                end
+                local _d = workspace.CurrentCamera
+                if not _d then
+                    return
+                end
+                _d.CFrame = _d.CFrame:Lerp(CFrame.new(_d.CFrame.Position, _cb.predictedPosition(_4) or _4.Position), math.clamp(_cb.smooth, .01, 1))
+            end)
+        end)
+    end
+
+    _cb.stop = function()
+        if _cb.conn then
+            _cb.conn:Disconnect()
+            _cb.conn = nil
+        end
+    end
+
+    _cb.refreshLabel = function()
+        if _cb.label then
+            _cb.label.Text = _cb.enabled and "AIMBOT\nON" or "AIMBOT\nOFF"
+        end
+        _27.setActive("Aimbot", _cb.enabled)
+    end
+
+    _cb.set = function(_4)
+        _cb.enabled = _4
+        if _4 then
+            _cb.start()
+        else
+            _cb.stop()
+        end
+        _cb.refreshLabel()
+        if _cb.toggleRef then
+            pcall(function() _cb.toggleRef:Set(_4) end)
+        end
+        _4 = _4 and _7.enableSilentAim
+        if _4 then
+            _7.enableSilentAim()
+        end
+    end
+
+    _6b = {aimOn = false, aimConn = nil, aimDisabled = {}, conns = {}}
+    _9b = {enabled = false, conn = nil, delay = .18, fov = 60, last = 0}
+
+    local function _1d(_4)
+        if not _4 or not _4.Character then
+            return false
+        end
+        local _d = _4.Character:FindFirstChildOfClass("Humanoid")
+        return _d ~= nil and _d.Health > 0
+    end
+
+    local function _cd(_4, _d)
+        for _4, _d in ipairs(_d) do
+            pcall(function() _d:Enable() end)
+        end
+        for _4 = #_d, 1, -1 do
+            _d[_4] = nil
+        end
+        if not getconnections then
+            return false
+        end
+        return (pcall(function()
+            local _5 = _3.Character
+            _5 = _5 and _5:FindFirstChild(_4)
+            if not _5 then
+                return
+            end
+            for _4, _5 in ipairs(getconnections(_5.Activated)) do
+                _5:Disable()
+                table.insert(_d, _5)
+            end
+        end))
+    end
+
+    local function _6d(_4)
+        for _4, _d in ipairs(_4) do
+            pcall(function() _d:Enable() end)
+        end
+        for _d = #_4, 1, -1 do
+            _4[_d] = nil
+        end
+    end
+
+    local function _9d(_4, _d, _5, _7)
+        local function _b(_b)
+            if not _b then
+                return
+            end
+            table.insert(_7, _b.ChildAdded:Connect(function(_7)
+                if _7.Name == _4 and (_7:IsA("Tool") and _5()) then
+                    task.wait(.1)
+                    _cd(_4, _d)
+                end
+            end))
+        end
+        _b(_3.Character)
+        table.insert(_7, _3.CharacterAdded:Connect(function(_7)
+            if not _5() then
+                return
+            end
+            task.wait(1)
+            _cd(_4, _d)
+            _b(_7)
+        end))
+    end
+
+    _ab = function()
+        if _6b.aimConn then
+            return
+        end
+        _cd("Gun", _6b.aimDisabled)
+        if not getconnections then
+            _4:Notify({
+                Title = "Silent Aim",
+                Content = "Your executor has no getconnections - the normal shot fires too.",
+                Duration = 4,
+                Icon = "x"
+            })
+        end
+        _9d("Gun", _6b.aimDisabled, function() return _6b.aimOn end, _6b.conns)
+        _6b.aimConn = (_3:GetMouse()).Button1Down:Connect(function()
+            if not _6b.aimOn then
+                return
+            end
+            local _d = _3.Character
+            local _5 = _d and _d:FindFirstChild("Gun")
+            _5 = _5 and _5:FindFirstChild("Shoot")
+            _d = _d and _d:FindFirstChild("HumanoidRootPart")
+            if not _5 or not _d then
+                return
+            end
+            local _b = _c()
+            local _0 = _b and (_b ~= _3 and _1d(_b))
+            local _8 = nil
+            if _0 then
+                local _5 = _b.Character:FindFirstChild("HumanoidRootPart")
+                local _3 = _5 and (_d.Position - _5.Position).Magnitude <= 300
+                _8 = nil
+                if _3 then
+                    if _f7 and not _97(_b.Character, _d) then
+                        _4:Notify({
+                            Title = "Wall Detected!",
+                            Content = "Murderer is behind a wall.",
+                            Duration = 2,
+                            Icon = "shield"
+                        })
+                        _8 = nil
+                    else
+                        _8 = _7.aimAt(_b, _5)
+                    end
+                end
+            end
+            _8 = _8 or _7.mouseAimPoint()
+            if not _8 then
+                return
+            end
+            local _e = _d:FindFirstChild("GunRaycastAttachment")
+            _5:FireServer(_e and _e.WorldCFrame or CFrame.new(_d.Position), CFrame.new(_8))
+        end)
+    end
+
+    _43 = function()
+        if _6b.aimConn then
+            pcall(function() _6b.aimConn:Disconnect() end)
+            _6b.aimConn = nil
+        end
+        _6d(_6b.aimDisabled)
+        _7.dropConns(_6b.conns)
+    end
+
+    _7.enableSilentAim = function()
+        if _6b.aimOn then
+            return
+        end
+        _6b.aimOn = true
+        _ab()
+        _7.setToggle(_7.el.silentaim, true)
+    end
+
+    _9b.start = function()
+        if _9b.conn then
+            return
+        end
+        _9b.conn = RunService.Heartbeat:Connect(function()
+            if not _9b.enabled then
+                return
+            end
+            local _4 = _9b.last
+            if tick() - _4 < _9b.delay then
+                return
+            end
+            pcall(function()
+                if _6() ~= _3 then
+                    return
+                end
+                local _4 = _3.Character
+                local _d = _4 and _4:FindFirstChild("Gun")
+                _d = _d and _d:FindFirstChild("Shoot")
+                if not _d then
+                    return
+                end
+                local _5 = _c()
+                if not _5 or _5 == _3 or not _1d(_5) then
+                    return
+                end
+                local _b = _5.Character:FindFirstChild("HumanoidRootPart")
+                local _0 = _4:FindFirstChild("HumanoidRootPart")
+                if not _b or not _0 then
+                    return
+                end
+                local _8 = Workspace.CurrentCamera
+                local _e, _f = _8:WorldToViewportPoint(_b.Position)
+                if not _f then
+                    return
+                end
+                local _2 = _8.ViewportSize / 2
+                if _9b.fov < (Vector2.new(_e.X, _e.Y) - _2).Magnitude then
+                    return
+                end
+                if _f7 and not _97(_5.Character, _0) then
+                    return
+                end
+                if (_0.Position - _b.Position).Magnitude > 300 then
+                    return
+                end
+                _9b.last = tick()
+                local _1 = _0:FindFirstChild("GunRaycastAttachment")
+                _d:FireServer(_1 and _1.WorldCFrame or CFrame.new(_0.Position), CFrame.new(_7.aimAt(_5, _b)))
+            end)
+        end)
+    end
+
+    _9b.stop = function()
+        if _9b.conn then
+            pcall(function() _9b.conn:Disconnect() end)
+            _9b.conn = nil
+        end
+    end
+
+    local function _ad()
+        local _4 = _3.Character
+        if not _4 then
+            return nil
+        end
+        local _d = _4:FindFirstChild("Knife")
+        if _d then
+            return _d, _4
+        end
+        local _5 = _3:FindFirstChild("Backpack")
+        _5 = _5 and _5:FindFirstChild("Knife")
+        local _7 = _4:FindFirstChildOfClass("Humanoid")
+        if _5 and _7 then
+            _7:EquipTool(_5)
+            task.wait(.1)
+            local _4 = _3.Character
+            return _4 and _4:FindFirstChild("Knife"), _4
+        end
+        return nil
+    end
+
+    local function _45(_4)
+        if not _4 or not _4.Character then
+            return false
+        end
+        local _d = _4.Character:FindFirstChildOfClass("Humanoid")
+        if not _d or _d.Health <= 0 then
+            return false
+        end
+        local _5, _7 = _ad()
+        if not _5 or not _7 then
+            return false
+        end
+        local _b = _7:FindFirstChild("RightHand") or _7:FindFirstChild("HumanoidRootPart")
+        if not _b then
+            return false
+        end
+        local _3 = _2(_4, 600, .95)
+        if not _3 then
+            return false
+        end
+        local _0 = _5:FindFirstChild("Throw") or _5:FindFirstChild("Events") and _5.Events:FindFirstChild("KnifeThrown")
+        if not (_0 and _0:IsA("RemoteEvent")) then
+            return false
+        end
+        local _8 = _5:FindFirstChild("Handle")
+        _0:FireServer(_8 and _8.CFrame or CFrame.new(_b.Position), CFrame.new(_3))
+        pcall(function()
+            local _4 = _7:FindFirstChildOfClass("Humanoid")
+            _4 = _4 and _4:FindFirstChildOfClass("Animator")
+            local _d = _5:FindFirstChild("ThrowKnife", true)
+            if _4 and _d then
+                (_4:LoadAnimation(_d)):Play(.1, 6, 1)
+            end
+        end)
+        return true
+    end
+
+    local function _d5(_4, _d)
+        local _5
+        if _d then
+            _5 = _3.Character
+            _5 = _5 and _5:FindFirstChild("Knife")
+        else
+            _5 = _ad()
+        end
+        _5 = _5 and _5:FindFirstChild("Events")
+        if not _5 then
+            return 0
+        end
+        local _7 = _5:FindFirstChild("KnifeStabbed")
+        local _b = _5:FindFirstChild("HandleTouched")
+        if not (_7 and _b) then
+            return 0
+        end
+        pcall(function() _7:FireServer() end)
+        local _0 = 0
+        for _4, _d in ipairs(_4) do
+            local _5 = _d.Character
+            local _7 = _5 and (_5:FindFirstChild("HumanoidRootPart") or _5:FindFirstChild("Torso") or _5:FindFirstChildWhichIsA("BasePart"))
+            if _7 then
+                pcall(function() _b:FireServer(_7) end)
+                _0 += 1
+            end
+        end
+        return _0
+    end
+
+    local function _55(_4)
+        local _d = _3.Character and _3.Character:FindFirstChild("HumanoidRootPart")
+        local _5 = {}
+        for _7, _b in ipairs(Players:GetPlayers()) do
+            if _b ~= _3 and _b.Character then
+                local _7 = _b.Character:FindFirstChild("HumanoidRootPart")
+                local _3 = _b.Character:FindFirstChildOfClass("Humanoid")
+                if _7 and (_3 and _3.Health > 0) then
+                    local _3 = _4 and _d
+                    local _0 = true
+                    if _3 then
+                        _0 = (_7.Position - _d.Position).Magnitude <= _4
+                    end
+                    if _0 then
+                        _5[#_5 + 1] = _b
+                    end
+                end
+            end
+        end
+        return _5
+    end
+
+    _d3 = function(_d)
+        if not _d or _d == "" then
+            _4:Notify({
+                Title = "No target",
+                Content = "Pick a player first.",
+                Duration = 2,
+                Icon = "x"
+            })
+            return
+        end
+        if _c() ~= _3 then
+            _4:Notify({
+                Title = "Not Murderer!",
+                Content = "You don't have the knife.",
+                Duration = 2,
+                Icon = "x"
+            })
+            return
+        end
+        local _5 = Players:FindFirstChild(_d)
+        if not _5 then
+            _4:Notify({
+                Title = "Gone",
+                Content = _d .. " isn't in the server.",
+                Duration = 2,
+                Icon = "x"
+            })
+            return
+        end
+        local _7 = _d5({_5})
+        _4:Notify({
+            Title = _7 > 0 and "Stabbed" or "Failed",
+            Content = _7 > 0 and "Stabbed " .. (_d .. ".") or "Couldn't reach " .. (_d .. "."),
+            Duration = 2,
+            Icon = _7 > 0 and "check" or "x"
+        })
+    end
+
+    _53 = function()
+        if _c() ~= _3 then
+            _4:Notify({
+                Title = "Not Murderer!",
+                Content = "You don't have the knife.",
+                Duration = 2,
+                Icon = "x"
+            })
+            return
+        end
+        local _d = _d5(_55(nil))
+        _4:Notify({
+            Title = "Kill All",
+            Content = "Stabbed %d player%s.":format(_d, _d == 1 and "" or "s"),
+            Duration = 2,
+            Icon = "check"
+        })
+    end
+
+    _73 = {
+        on = false,
+        conn = nil,
+        show = false,
+        ball = nil,
+        showConn = nil,
+        NORMAL = 1.5,
+        STEP = .1,
+        mult = 1,
+        radius = 1.5,
+        setMult = function(_4)
+            _73.mult = _4
+            _73.radius = _73.NORMAL * (1 + (_4 - 1) * _73.STEP)
+        end,
+        stop = function()
+            if _73.conn then
+                pcall(function() _73.conn:Disconnect() end)
+            end
+            _73.conn = nil
+            if _73.thrownConn then
+                pcall(function() _73.thrownConn:Disconnect() end)
+            end
+            _73.thrownConn = nil
+        end,
+        start = function()
+            _73.stop()
+            _73.conn = (_3:GetMouse()).Button1Down:Connect(function()
+                if not _73.on then
+                    return
+                end
+                if _c() ~= _3 then
+                    return
+                end
+                _d5(_55(_73.radius), true)
+            end)
+            _73.thrownConn = (CollectionService:GetInstanceAddedSignal("ThrowingKnife")):Connect(function(_4)
+                if not _73.on then
+                    return
+                end
+                task.spawn(function()
+                    local _d = _4:WaitForChild("HandleLink", 3)
+                    _d = _d and _d.Value
+                    _d = _d and _d.Parent
+                    local _5 = _3.Character
+                    if not (_d and (_5 and _d:IsDescendantOf(_5))) then
+                        return
+                    end
+                    local _7 = _d:FindFirstChild("Events")
+                    local _b = _7 and _7:FindFirstChild("KnifeStabbed")
+                    local _0 = _7 and _7:FindFirstChild("HandleTouched")
+                    if not (_b and _0) then
+                        return
+                    end
+                    local _8 = {}
+                    while _4.Parent and _73.on do
+                        local _d = _4:IsA("BasePart") and _4.Position
+                        local _5
+                        if _d then
+                            _5 = _d
+                        else
+                            _5 = _4:IsA("Model") and (_4:GetPivot()).Position
+                        end
+                        if _5 then
+                            for _4, _d in ipairs(Players:GetPlayers()) do
+                                if _d ~= _3 and (not _8[_d] and _d.Character) then
+                                    local _4 = _d.Character:FindFirstChild("HumanoidRootPart")
+                                    local _7 = _d.Character:FindFirstChildOfClass("Humanoid")
+                                    if _4 and (_7 and (_7.Health > 0 and (_4.Position - _5).Magnitude <= _73.radius)) then
+                                        _8[_d] = true
+                                        pcall(function() _b:FireServer() end)
+                                        pcall(function() _0:FireServer(_4) end)
+                                    end
+                                end
+                            end
+                        end
+                        task.wait(.05)
+                    end
+                end)
+            end)
+        end,
+        hideBall = function()
+            if _73.showConn then
+                pcall(function() _73.showConn:Disconnect() end)
+            end
+            _73.showConn = nil
+            if _73.ball then
+                pcall(function() _73.ball:Destroy() end)
+            end
+            _73.ball = nil
+        end,
+        showBall = function()
+            _73.hideBall()
+            local _4 = Instance.new("Part")
+            _4.Name = "VOIDHitboxSphere"
+            _4.Shape = Enum.PartType.Ball
+            _4.Anchored = true
+            _4.CanCollide = false
+            _4.CanTouch = false
+            _4.CanQuery = false
+            _4.CastShadow = false
+            _4.Material = Enum.Material.Neon
+            _4.Color = Color3.fromRGB(255, 90, 90)
+            _4.Transparency = .88
+            _4.Size = (Vector3.one * _73.radius) * 2
+            _4.Parent = Workspace.CurrentCamera
+            _73.ball = _4
+            _73.showConn = RunService.RenderStepped:Connect(function()
+                if not _4.Parent then
+                    return
+                end
+                local _d = _3.Character
+                if not _d then
+                    return
+                end
+                local _5 = nil
+                for _4, _7 in ipairs(CollectionService:GetTagged("ThrowingKnife")) do
+                    local _b = _7:FindFirstChild("HandleLink")
+                    local _3 = _b and _b.Value
+                    local _0 = _3 and _3.Parent
+                    if _0 and _0:IsDescendantOf(_d) then
+                        _5 = _7:IsA("BasePart") and _7.Position or _7:IsA("Model") and (_7:GetPivot()).Position
+                        if not _5 then
+                            continue
+                        end
+                    else
+                        continue
+                    end
+                    break
+                end
+                if not _5 then
+                    _5 = _d:FindFirstChild("Knife")
+                    _5 = _5 and _5:FindFirstChild("Handle")
+                    _5 = _5 and _5.Position
+                end
+                if not _5 then
+                    _5 = _d:FindFirstChild("HumanoidRootPart")
+                    _5 = _5 and _5.Position
+                end
+                if _5 then
+                    _4.Size = (Vector3.one * _73.radius) * 2
+                    _4.CFrame = CFrame.new(_5)
+                end
+            end)
+        end
+    }
+
+    _b3 = {
+        on = false,
+        conn = nil,
+        disabled = {},
+        conns = {},
+        stop = function()
+            if _b3.conn then
+                pcall(function() _b3.conn:Disconnect() end)
+            end
+            _b3.conn = nil
+            _6d(_b3.disabled)
+            _7.dropConns(_b3.conns)
+        end,
+        start = function()
+            if _b3.conn then
+                return
+            end
+            _cd("Knife", _b3.disabled)
+            if not getconnections then
+                _4:Notify({
+                    Title = "Silent Throw",
+                    Content = "Your executor has no getconnections - the normal throw fires too.",
+                    Duration = 4,
+                    Icon = "x"
+                })
+            end
+            _9d("Knife", _b3.disabled, function() return _b3.on end, _b3.conns)
+            _b3.conn = (_3:GetMouse()).Button2Down:Connect(function()
+                if not _b3.on then
+                    return
+                end
+                if _c() ~= _3 then
+                    return
+                end
+                local _d = _a7()
+                if not _d then
+                    return
+                end
+                local _5 = _3.Character and _3.Character:FindFirstChild("HumanoidRootPart")
+                if _5 and (_f7 and not _97(_d.Character, _5)) then
+                    _4:Notify({
+                        Title = "Wall Detected!",
+                        Content = _d.Name .. " is behind a wall.",
+                        Duration = 2,
+                        Icon = "shield"
+                    })
+                    return
+                end
+                _45(_d)
+            end)
+        end
+    }
+end
+
+local _33
+_33 = function()
+    local _4 = _9b
+    _6b.aimOn = false
+    _4.enabled = false
+    _43()
+    _9b.stop()
+    _7.dropConns(_6b.conns)
+    _73.on = false
+    _73.stop()
+    _73.show = false
+    _73.hideBall()
+    _b3.on = false
+    _b3.stop()
+end
+-- MM2 script — fixed syntax, part 4b-2b-ii-α/4
+-- Вставляй после части 4b-2b-i. Копируется без последствий.
+
+MM2_GUN_ICON = "rbxassetid://79658449"
+CURSORS = {
+    Default = MM2_GUN_ICON,
+    Paw = "rbxassetid://11767069582",
+    Gengar = "rbxassetid://11759293285",
+    Bunny = "rbxassetid://1912438810",
+    ["Hello Kitty"] = "rbxassetid://11351620343",
+    ["Kitty v2"] = "rbxassetid://11802094220",
+    Heart = "rbxthumb://type=Asset&w=420&h=420&id=11722368344",
+    Pentagram = "rbxassetid://51838212",
+    Star = "rbxassetid://11716559277",
+    ["Star v2"] = "rbxassetid://11716557686",
+    Osu = "rbxassetid://8390115370",
+    ["Power Star"] = "rbxassetid://1718840561",
+    Troll = "rbxassetid://12438907427",
+    Cross = "rbxthumb://type=Asset&w=420&h=420&id=14034486267",
+    ["Pink Star"] = "rbxthumb://type=Asset&w=420&h=420&id=11719595129",
+    Kuromi = "rbxthumb://type=Asset&w=420&h=420&id=11893991373",
+    ["Red Heart"] = "rbxthumb://type=Asset&w=420&h=420&id=11754042886",
+    ["Green Heart"] = "rbxthumb://type=Asset&w=420&h=420&id=11754039821",
+    ["Blue Heart"] = "rbxthumb://type=Asset&w=420&h=420&id=11754037423",
+    ["Yellow Heart"] = "rbxthumb://type=Asset&w=420&h=420&id=11754042019",
+    ["Heart Cross"] = "rbxassetid://11739569678",
+    ["Clean Kitty"] = "rbxassetid://11718192673",
+    ["Pixel Cat"] = "rbxassetid://10878214990",
+    ["Evil Kitty"] = "rbxassetid://11734940424",
+    ["Vamp Face"] = "rbxassetid://11734893655",
+    ["Glowing Circle"] = "rbxassetid://10891594349",
+    Bear = "rbxassetid://11722088774",
+    ["Shoot this guy"] = "rbxassetid://8680062686",
+    Barbie = "rbxassetid://11754489642",
+    Death = "rbxassetid://12472046162",
+    Donut = "rbxassetid://11717104785",
+    Cat = "rbxassetid://11722553511",
+    ["Blue Donut"] = "rbxassetid://11717093063"
+}
+
+local _03, _83, _e3, _f3, _23, _13
+
+do
+    local _4 = 55
+    _03 = {
+        style = "Default",
+        onlyWithGun = false,
+        size = 50,
+        spin = false
+    }
+    local _d = _3:GetMouse()
+    local _5 = nil
+    _83 = nil
+    local _b = nil
+    local _0 = UserInputService.MouseIconEnabled
+
+    local function _8()
+        return _7.hasGun()
+    end
+
+    local function _e()
+        if _b then
+            pcall(function() _b:Disconnect() end)
+            _b = nil
+        end
+        if _5 then
+            pcall(function() _5:Destroy() end)
+            _5 = nil
+        end
+        _83 = nil
+        UserInputService.MouseIconEnabled = _0
+        pcall(function() _d.Icon = _8() and MM2_GUN_ICON or "" end)
+    end
+
+    _e3 = function()
+        _e()
+        if _03.style == "Default" or not CURSORS[_03.style] then
+            return
+        end
+        local _d = Instance.new("ScreenGui")
+        _d.Name = "VOIDCrosshair"
+        _d.ResetOnSpawn = false
+        _d.IgnoreGuiInset = true
+        _d.DisplayOrder = 10000
+        _d.Parent = CoreGui
+        local _7 = Instance.new("ImageLabel")
+        _7.AnchorPoint = Vector2.new(.5, .5)
+        _7.BackgroundTransparency = 1
+        _7.Image = CURSORS[_03.style] or CURSORS.Paw
+        _7.Size = UDim2.fromOffset(_03.size, _03.size)
+        _7.ScaleType = Enum.ScaleType.Stretch
+        _7.Parent = _d
+        _5 = _d
+        _83 = _7
+        _b = RunService.RenderStepped:Connect(function(_d)
+            if not _7.Parent then
+                return
+            end
+            if _03.spin then
+                _7.Rotation = (_7.Rotation + _d * _4) % 360
+            elseif _7.Rotation ~= 0 then
+                _7.Rotation = 0
+            end
+            local _5 = not _03.onlyWithGun or _8()
+            _7.Visible = _5
+            if _5 then
+                UserInputService.MouseIconEnabled = false
+            else
+                UserInputService.MouseIconEnabled = _0
+            end
+            if _5 then
+                local _4 = UserInputService:GetMouseLocation()
+                _7.Position = UDim2.fromOffset(_4.X, _4.Y)
+            end
+        end)
+    end
+
+    _f3 = false
+    _23 = function(_4)
+        return function(...)
+            if not _f3 then
+                return
+            end
+            return _4(...)
+        end
+    end
+
+    _13 = function()
+        _03.style = "Default"
+        _e()
+    end
+end
+
+local _c3
+_c3 = {}
+ICON = {
+    teal = Color3.fromHex("#14B8A6"),
+    green = Color3.fromHex("#10B981"),
+    grey = Color3.fromHex("#94A3B8"),
+    purple = Color3.fromHex("#8B5CF6"),
+    blue = Color3.fromHex("#3B82F6"),
+    yellow = Color3.fromHex("#F59E0B"),
+    red = Color3.fromHex("#F43F5E"),
+    pink = Color3.fromHex("#EC4899"),
+    gold = Color3.fromHex("#FFC107"),
+    mono = Color3.fromHex("#E5E7EB"),
+    tile = Color3.fromHex("#6E6E7B")
+}
+
+_c3.combat = _d:Tab({Title = "Combat", Icon = "lucide:shield", IconColor = ICON.tile, IconShape = "Square", Border = true})
+_c3.crosshair = _d:Tab({Title = "Crosshair", Icon = "lucide:crosshair", IconColor = ICON.tile, IconShape = "Square", Border = true})
+_c3.skins = _d:Tab({Title = "Skin Changer", Icon = "lucide:sword", IconColor = ICON.tile, IconShape = "Square", Border = true})
+
+do
+    local _4 = Color3.new(1, 1, 1)
+    local _5 = false
+    local function _7()
+        for _d, _7 in ipairs(_d.UIElements.Main:GetDescendants()) do
+            if _7:IsA("TextLabel") and _7.Text == "Skin Changer" then
+                for _d, _7 in ipairs(_7.Parent.Parent:GetDescendants()) do
+                    if _7:IsA("ImageLabel") and (_7.Name == "ImageLabel" and _7.ImageColor3 ~= ICON.tile) then
+                        _7.ImageColor3 = _4
+                        ;(_7:GetPropertyChangedSignal("ImageColor3")):Connect(function()
+                            if _7.ImageColor3 ~= _4 then
+                                _7.ImageColor3 = _4
+                            end
+                        end)
+                        _5 = true
+                    end
+                end
+                return _5
+            end
+        end
+        return false
+    end
+    if not _7() then
+        task.spawn(function()
+            for _4 = 1, 30, 1 do
+                RunService.RenderStepped:Wait()
+                if _7() then
+                    return
+                end
+            end
+        end)
+    end
+end
+
+_c3.buttons = _d:Tab({Title = "Buttons", Icon = "lucide:gamepad-directional", IconColor = ICON.tile, IconShape = "Square", Border = true})
+_c3.esp = _d:Tab({Title = "ESP", Icon = "solar:eye-bold", IconColor = ICON.tile, IconShape = "Square", Border = true})
+_c3.fling = _d:Tab({Title = "Fling & Teleport", Icon = "solar:bolt-bold", IconColor = ICON.tile, IconShape = "Square", Border = true})
+_c3.farm = _d:Tab({Title = "Autofarm", Icon = "solar:dollar-minimalistic-bold", IconColor = ICON.tile, IconShape = "Square", Border = true})
+_c3.player = _d:Tab({Title = "Player", Icon = "solar:user-bold", IconColor = ICON.tile, IconShape = "Square", Border = true})
+_c3.visuals = _d:Tab({Title = "Visuals", Icon = "lucide:sparkles", IconColor = ICON.tile, IconShape = "Square", Border = true})
+_7.discordCard(_c3.visuals)
+
+_c3.visuals:Section({Title = "Sound Changer"})
+_c3.visuals:Toggle({Title = "Error Sound", Flag = "Toggle_Sound_Errors", Desc = "A cue when something fails or gets refused.", Type = "Toggle", Value = true, Callback = function(_4) _7.sfxOn.error = _4 end})
+_c3.visuals:Toggle({Title = "Gun Drop Sound", Flag = "Toggle_Sound_Gun_Drop", Desc = "A cue when the sheriff dies and the gun drops. Useful with the window closed.", Type = "Toggle", Value = true, Callback = function(_4) _7.sfxOn.gun = _4 end})
+_c3.visuals:Toggle({Title = "Button Click Sound", Flag = "Toggle_Sound_Button_Click", Desc = "A click when you press an on-screen button.", Type = "Toggle", Value = true, Callback = function(_4) _7.sfxOn.click = _4 end})
+_c3.visuals:Toggle({Title = "Toggle Sound", Flag = "Toggle_Sound_Switches", Desc = "A click when you flip a switch in the menu.", Type = "Toggle", Value = true, Callback = function(_4)
+    _7.sfxOn.toggle = _4
+    if _4 and (_7.sfxReady and not _7.sfxQuiet) then
+        _7.playSfx("toggle")
+    end
+end})
+
+_7.myRole = function()
+    local _4 = ReplicatedStorage:FindFirstChild("Remotes")
+    _4 = _4 and _4:FindFirstChild("Extras")
+    local _d = _4 and _4:FindFirstChild("GetPlayerData")
+    if not _d then
+        return nil
+    end
+    local _5, _7 = pcall(function() return _d:InvokeServer() end)
+    if not _5 or type(_7) ~= "table" then
+        return nil
+    end
+    local _b = _7[_3.Name]
+    return _b and _b.Role or nil
+end
+
+_7.godMode = function()
+    if _7.godBusy then
+        _4:Notify({Title = "God Mode", Content = "Already running.", Duration = 3, Icon = "clock"})
+        return
+    end
+    local _d = next
+    local _5, _b = Workspace:GetChildren()
+    local _0 = nil
+    for _4, _d in _d, _5, _b do
+        if _d:FindFirstChild("CoinAreas") or _d:FindFirstChild("CoinContainer") then
+            _0 = _d
+        end
+    end
+    if not _0 then
+        _4:Notify({Title = "No Map Yet", Content = "Wait till the round starts, then try again.", Duration = 5, Icon = "clock"})
+        return
+    end
+    _95 = _0
+    if not (_3.Character and _3.Character:FindFirstChildOfClass("Humanoid")) then
+        _4:Notify({Title = "God Mode", Content = "No character to reset.", Duration = 4, Icon = "x"})
+        return
+    end
+    task.spawn(function()
+        local _d = _7.myRole()
+        if _d == "Murderer" then
+            _4:Notify({Title = "Murderer", Content = "This only works for Innocent and Sheriff.", Duration = 6, Icon = "x"})
+            return
+        end
+        if _d == "Sheriff" then
+            _4:Popup({
+                Title = "ARE YOU SURE YOU WANT TO LOSE UR GUN?",
+                Icon = "shield",
+                Content = "If you enable god mode you CANT pick up coins or kill someone.",
+                Buttons = {
+                    {Title = "Cancel", Variant = "Tertiary", Callback = function() end},
+                    {Title = "Yes, do it", Variant = "Primary", Callback = function() _7.godRun() end}
+                }
+            })
+            return
+        end
+        _7.godRun()
+    end)
+end
+
+_7.godRun = function()
+    if _7.godBusy then
+        return
+    end
+    local _d = _3.Character and _3.Character:FindFirstChildOfClass("Humanoid")
+    if not _d then
+        _4:Notify({Title = "God Mode", Content = "No character to reset.", Duration = 4, Icon = "x"})
+        return
+    end
+    _7.godBusy = true
+    task.spawn(function()
+        _4:Notify({Title = "God Mode", Content = "Resetting, back on the map in a second...", Duration = 3, Icon = "shield"})
+        pcall(function() _d.Health = 0 end)
+        task.wait(1)
+        local _5 = tick()
+        local _b
+        while true do
+            _b = _57(_3)
+            if not _b then
+                task.wait(.2)
+            end
+            if not (_b or tick() - _5 > 10) then
+                continue
+            end
+            break
+        end
+        if _b then
+            pcall(_7.teleportHome)
+            _4:Notify({Title = "God Mode On!", Content = "You cannot pick up coins or the gun now.", Duration = 6, Icon = "shield"})
+        else
+            _4:Notify({Title = "God Mode", Content = "Respawn took too long - try again.", Duration = 5, Icon = "x"})
+        end
+        _7.godBusy = false
+    end)
+end
+
+_c3.keybinds = _d:Tab({Title = "Keybinds", Icon = "lucide:keyboard", IconColor = ICON.tile, IconShape = "Square", Border = true})
+_c3.settings = _d:Tab({Title = "Settings & Configs", Icon = "solar:settings-bold", IconColor = ICON.tile, IconShape = "Square", Border = true})
+LOADUI.step(.78, "Building tabs")
+_7.discordCard(_c3.settings)
+
+do
+    local _4 = {
+        Combat = ICON.tile,
+        Crosshair = ICON.tile,
+        ["Skin Changer"] = ICON.tile,
+        Buttons = ICON.tile,
+        ESP = ICON.tile,
+        ["Fling & Teleport"] = ICON.tile,
+        Autofarm = ICON.tile,
+        Player = ICON.tile,
+        Visuals = ICON.tile,
+        Keybinds = ICON.tile,
+        ["Settings & Configs"] = ICON.tile
+    }
+    local _5 = Color3.new(1, 1, 1)
+    local _7 = {}
+    local function _b(_4, _d)
+        return math.abs(_4.R - _d.R) < .02 and (math.abs(_4.G - _d.G) < .02 and math.abs(_4.B - _d.B) < .02)
+    end
+    task.spawn(function()
+        for _3 = 1, 60, 1 do
+            local _0 = 0
+            pcall(function()
+                for _d, _3 in ipairs(_d.UIElements.Main:GetDescendants()) do
+                    local _8 = _3:IsA("TextLabel") and (_4[_3.Text] and (_3.Parent and _3.Parent.Parent)) or nil
+                    if _8 and _8:IsA("ImageButton") then
+                        local _d = _8:GetDescendants()
+                        local _e = nil
+                        for _d, _5 in ipairs(_d) do
+                            if _5:IsA("ImageLabel") and _b(_5.ImageColor3, _4[_3.Text]) then
+                                _e = _5
+                                break
+                            else
+                                _e = nil
+                            end
+                        end
+                        if _e then
+                            if not _e:FindFirstChildWhichIsA("UIGradient") then
+                                local _4 = Instance.new("UIGradient")
+                                _4.Rotation = 90
+                                local _d = ColorSequenceKeypoint.new
+                                local _5 = Color3.fromRGB
+                                _4.Color = ColorSequence.new({
+                                    ColorSequenceKeypoint.new(0, Color3.new(1, 1, 1)),
+                                    _d(1, _5(115, 115, 125))
+                                })
+                                _4.Parent = _e
+                                _0 += 1
+                            end
+                            for _4, _d in ipairs(_d) do
+                                if _d ~= _e and (_d:IsA("ImageLabel") and (_d.Name == "ImageLabel" and not _7[_d])) then
+                                    _7[_d] = true
+                                    _d.ImageColor3 = _5
+                                    ;(_d:GetPropertyChangedSignal("ImageColor3")):Connect(function()
+                                        if _d.ImageColor3 ~= _5 then
+                                            _d.ImageColor3 = _5
+                                        end
+                                    end)
+                                    _0 += 1
+                                end
+                            end
+                        end
+                    end
+                end
+            end)
+            if _0 > 0 then
+                return
+            end
+            RunService.RenderStepped:Wait()
+        end
+    end)
+end
+
+local _63
+_63 = function(_4, _5, _7, _b)
+    _7 = _7 or .55
+    for _d, _3 in ipairs(_d.UIElements.Main:GetDescendants()) do
+        if _3:IsA("TextLabel") and _3.Text == _4 then
+            local _4 = _3:FindFirstAncestorWhichIsA("ImageButton")
+            if _4 then
+                _4.ImageColor3 = _5
+                _4.ImageTransparency = _7
+                ;(_4:GetPropertyChangedSignal("ImageColor3")):Connect(function()
+                    if _4.ImageColor3 ~= _5 then
+                        _4.ImageColor3 = _5
+                    end
+                end)
+                ;(_4:GetPropertyChangedSignal("ImageTransparency")):Connect(function()
+                    if _4.ImageTransparency > _7 then
+                        _4.ImageTransparency = _7
+                    end
+                end)
+                if _b then
+                    for _4, _d in ipairs(_4:GetDescendants()) do
+                        if _d:IsA("TextLabel") then
+                            _d.TextColor3 = _b
+                            ;(_d:GetPropertyChangedSignal("TextColor3")):Connect(function()
+                                if _d.TextColor3 ~= _b then
+                                    _d.TextColor3 = _b
+                                end
+                            end)
+                        elseif _d:IsA("ImageLabel") and _d.Size ~= UDim2.new(1, 0, 1, 0) then
+                            _d.ImageColor3 = _b
+                            ;(_d:GetPropertyChangedSignal("ImageColor3")):Connect(function()
+                                if _d.ImageColor3 ~= _b then
+                                    _d.ImageColor3 = _b
+                                end
+                            end)
+                        end
+                    end
+                end
+            end
+            return
+        end
+    end
+end
+
+local _93
+_93 = function(_4)
+    local _d, _5 = pcall(function() return _4.ParagraphFrame.UIElements.Container end)
+    if _d and typeof(_5) == "Instance" then
+        return _5
+    end
+    return nil
+end
+
+local _a3
+local _40 = {}
+_a3 = function(_4)
+    for _d, _5 in ipairs(_d.UIElements.Main:GetDescendants()) do
+        if not _40[_5] and _5.Name == "ToggleFrame" then
+            local _d = _5:FindFirstChild("Layer")
+            if _d then
+                _40[_5] = true
+                _d.ImageColor3 = _4
+                if not _d:FindFirstChildWhichIsA("UIGradient") then
+                    local _4 = Instance.new("UIGradient")
+                    _4.Rotation = 115
+                    _4.Color = ColorSequence.new({
+                        ColorSequenceKeypoint.new(0, Color3.new(1, 1, 1)),
+                        ColorSequenceKeypoint.new(1, Color3.fromRGB(120, 120, 130))
+                    })
+                    _4.Parent = _d
+                end
+                local _7 = _5:FindFirstChild("Frame")
+                _7 = _7 and _7:FindFirstChild("Bar")
+                _7 = _7 and _7:FindFirstChild("Highlight")
+                local _b = _7 and _7:FindFirstChild("Glass")
+                if _b then
+                    _b.ImageColor3 = _4
+                    ;(_b:GetPropertyChangedSignal("ImageColor3")):Connect(function()
+                        if _b.ImageColor3 ~= _4 then
+                            _b.ImageColor3 = _4
+                        end
+                    end)
+                end
+            end
+        end
+    end
+end
+
+_c3.esp:Section({Title = "ESP — See Through Walls"})
+_c3.esp:Toggle({Title = "ESP Outline", Flag = "Toggle_ESP_Outline", Desc = "Glowing outline on every player through walls.", Type = "Toggle", Value = false, Callback = function(_4)
+    _0 = _4
+    if _9() then
+        _a()
+        _5d()
+    else
+        _1:RemoveGroup("players")
+        _7d()
+    end
+end})
+_c3.esp:Toggle({Title = "Full Body ESP", Flag = "Toggle_Full_Body_ESP", Desc = "Fills the whole body in the role colour.", Type = "Toggle", Value = false, Callback = function(_4)
+    _8 = _4
+    if _9() then
+        _a()
+        _5d()
+    else
+        _1:RemoveGroup("players")
+        _7d()
+    end
+end})
+_c3.esp:Toggle({Title = "Display Name ESP", Flag = "Toggle_Display_Name_ESP", Desc = "Their display name above their head, in the role colour.", Type = "Toggle", Value = false, Callback = function(_4)
+    _e = _4
+    if _9() then
+        _a()
+        _5d()
+    else
+        _1:RemoveGroup("players")
+        _7d()
+    end
+end})
+_c3.esp:Toggle({Title = "Dropped Gun ESP", Flag = "Toggle_Dropped_Gun_ESP", Desc = "Shows the gun on the floor after the sheriff dies.", Type = "Toggle", Value = false, Callback = function(_4)
+    _f = _4
+    _4d()
+end})
+_c3.esp:Toggle({Title = "Trap ESP", Flag = "Toggle_Trap_ESP", Desc = "Shows traps other players hid around the map.", Type = "Toggle", Value = false, Callback = function(_4)
+    _2 = _4
+    _dd()
+end})
+
+_c3.esp:Section({Title = "Tracers & Distance"})
+_c3.esp:Toggle({Title = "Tracers", Flag = "Toggle_ESP_Tracers", Desc = "Draws a line from the bottom of your screen to every player, in their role colour.", Type = "Toggle", Value = false, Callback = function(_4)
+    _7.tr.lines = _4
+    _7.tr.sync()
+end})
+_c3.esp:Toggle({Title = "Distance", Flag = "Toggle_ESP_Distance", Desc = "How many studs away each player is, written under their feet.", Type = "Toggle", Value = false, Callback = function(_4)
+    _7.tr.dist = _4
+    _7.tr.sync()
+end})
+_c3.esp:Toggle({Title = "Off-Screen Arrows", Flag = "Toggle_ESP_Arrows", Desc = "Arrows around your crosshair pointing at the players you cannot see - including the ones behind you.", Type = "Toggle", Value = false, Callback = function(_4)
+    _7.tr.arrows = _4
+    _7.tr.sync()
+end})
+
+_c3.esp:Section({Title = "ESP Colours"})
+_c3.esp:Colorpicker({Title = "Innocent", Flag = "Colorpicker_Innocent", Desc = "Outline colour for everyone else", Default = espColors.innocent, Callback = function(_4)
+    espColors.innocent = _4
+    local _d = _0
+    local _5
+    if _0 then
+        _5 = _d
+    else
+        _5 = _8
+    end
+    if _5 then
+        _a()
+    end
+end})
+_c3.esp:Colorpicker({Title = "Sheriff", Flag = "Colorpicker_Sheriff", Desc = "Outline colour for the sheriff", Default = espColors.sheriff, Callback = function(_4)
+    espColors.sheriff = _4
+    local _d = _0
+    local _5
+    if _0 then
+        _5 = _d
+    else
+        _5 = _8
+    end
+    if _5 then
+        _a()
+    end
+end})
+_c3.esp:Colorpicker({Title = "Murderer", Flag = "Colorpicker_Murderer", Desc = "Outline colour for the murderer", Default = espColors.murderer, Callback = function(_4)
+    espColors.murderer = _4
+    local _d = _0
+    local _5
+    if _0 then
+        _5 = _d
+    else
+        _5 = _8
+    end
+    if _5 then
+        _a()
+    end
+end})
+_c3.esp:Colorpicker({Title = "Dropped Gun", Flag = "Colorpicker_Dropped_Gun_Blue", Desc = "Highlight colour for the dropped gun", Default = espColors.gun, Callback = function(_4)
+    espColors.gun = _4
+    _4d()
+end})
+_c3.esp:Colorpicker({Title = "Traps", Flag = "Colorpicker_Traps", Desc = "Highlight colour for traps", Default = espColors.trap, Callback = function(_4)
+    espColors.trap = _4
+    _dd()
+end})
+_a3(ICON.mono)
+
+_c3.fling:Section({Title = "Quick Actions"})
+_7.el.flingMurd = _c3.fling:Button({Title = "Fling Murderer", Desc = "Yeet whoever has the knife", Icon = "lucide:flame", Callback = function()
+    local _d = _c()
+    if not _d then
+        _4:Notify({Title = "Error!", Content = "No murderer this round!", Duration = 1.5, Icon = "x"})
+        return
+    end
+    if _d == _3 then
+        _4:Notify({Title = "Error!", Content = "You can't fling yourself!", Duration = 1.5, Icon = "x"})
+        return
+    end
+    _3d(_d)
+end})
+_7.el.flingSher = _c3.fling:Button({Title = "Fling Sheriff", Desc = "Yeet whoever has the gun", Icon = "lucide:flame", Callback = function()
+    local _d = _6()
+    if not _d then
+        _4:Notify({Title = "Error!", Content = "No sheriff this round!", Duration = 1.5, Icon = "x"})
+        return
+    end
+    if _d == _3 then
+        _4:Notify({Title = "Error!", Content = "You can't fling yourself!", Duration = 1.5, Icon = "x"})
+        return
+    end
+    _3d(_d)
+end})
+_c3.fling:Button({Title = "Fling All", Desc = "Yeet everyone in the server, one after another. Press again to stop", Icon = "lucide:flame", Callback = function() _7.flingAll() end})
+_63("Fling Murderer", Color3.fromHex("#FCA5A5"))
+_63("Fling Sheriff", Color3.fromHex("#93C5FD"))
+_63("Fling All", Color3.fromHex("#FDBA74"))
+_7.el.tpMurd = _c3.fling:Button({Title = "Teleport to Murderer", Desc = "Instantly go to whoever has the knife", Icon = "lucide:crosshair", Callback = function() _2d(_c(), "Murderer") end})
+_7.el.tpSher = _c3.fling:Button({Title = "Teleport to Sheriff", Desc = "Instantly go to whoever has the gun", Icon = "lucide:shield", Callback = function() _2d(_6(), "Sheriff") end})
+
+_c3.fling:Section({Title = "Target Player"})
+local _d0
+do
+    local _5 = nil
+    local function _b()
+        local _4 = {}
+        for _d, _5 in ipairs(Players:GetPlayers()) do
+            if _5 ~= _3 then
+                table.insert(_4, _5.Name)
+            end
+        end
+        return _4
+    end
+    local _0 = _c3.fling:Dropdown({Title = "Target", Desc = "Pick a player for the buttons below", Multi = false, Value = nil, Values = _b(), Callback = function(_4) _5 = _4 end})
+    _8d = function() return _5 end
+    local function _8()
+        pcall(function() _0:Refresh(_b()) end)
+        pcall(function() killTargetDropdown:Refresh(_b()) end)
+    end
+    _7.conns[#_7.conns + 1] = Players.PlayerAdded:Connect(_8)
+    _7.conns[#_7.conns + 1] = Players.PlayerRemoving:Connect(_8)
+    local function _e()
+        if not _5 then
+            _4:Notify({Title = "Error!", Content = "Pick a player first!", Duration = 1.5, Icon = "x"})
+            return nil
+        end
+        local _d = Players:FindFirstChild(_5)
+        if not _d then
+            _4:Notify({Title = "Error!", Content = "Player left the game!", Duration = 1.5, Icon = "x"})
+            return nil
+        end
+        if _d == _3 then
+            _4:Notify({Title = "Error!", Content = "You can't target yourself!", Duration = 1.5, Icon = "x"})
+            return nil
+        end
+        return _d
+    end
+    _c3.fling:Button({Title = "Fling Player", Desc = "Fling whoever you picked above", Icon = "lucide:zap", Color = Color3.fromHex("#d6d6d6"), Callback = function()
+        local _4 = _e()
+        if _4 then
+            _3d(_4)
+        end
+    end})
+    _c3.fling:Button({Title = "Teleport", Desc = "Teleport to the selected player", Icon = "lucide:navigation", Color = Color3.fromHex("#d6d6d6"), Callback = function()
+        local _4 = _e()
+        if _4 then
+            _2d(_4, _4.Name)
+        end
+    end})
+    local _f = nil
+    _f = _c3.fling:Toggle({Title = "Spam Fling", Flag = "Toggle_Spam_Fling", Desc = "Keeps flinging the player picked above until you turn it off", Type = "Toggle", Value = false, Callback = function(_d)
+        _0d = _d
+        if _d then
+            if not _5 then
+                _4:Notify({Title = "Error!", Content = "Pick a player from the dropdown first!", Duration = 2, Icon = "x"})
+                _0d = false
+                pcall(function() _f:Set(false) end)
+                return
+            end
+            _ed()
+            _4:Notify({Title = "Spam Fling ON", Content = "Spam flinging " .. (_5 .. "!"), Duration = 2, Icon = "flame"})
+        else
+            _fd()
+            _4:Notify({Title = "Spam Fling OFF", Content = "Stopped spam flinging.", Duration = 2, Icon = "power-off"})
+        end
+    end})
+end
+
+_7.GUN_ICON = "http://www.roblox.com/asset/?id=197518111"
+_7.KNIFE_ICON = "rbxassetid://584555920"
+_7.FLAG_ICON = {
+    Toggle_Sound_Errors = "rbxassetid://83898160590116",
+    Toggle_Sound_Button_Click = "rbxassetid://107150227368485",
+    Toggle_Sound_Switches = "rbxassetid://85887872573050"
+}
+_7.ROLE_ICON = {
+    Toggle_Auto_Grab_Gun = "gun",
+    Toggle_Silent_Aim = "gun",
+    Toggle_Dropped_Gun_ESP = "gun",
+    Toggle_Sound_Gun_Drop = "gun",
+    Toggle_Silent_Throw = "knife",
+    Toggle_Fling_Murderer_When_Done = "knife",
+    Toggle_Kill_All_When_Bag_Full = "knife"
+}
+
+task.spawn(function()
+    local _4 = {}
+    for _d, _5 in pairs(_7.ROLE_ICON) do
+        _4[_d] = _5 == "gun" and _7.GUN_ICON or _7.KNIFE_ICON
+    end
+    for _d, _5 in pairs(_7.FLAG_ICON) do
+        _4[_d] = _5
+    end
+    local _d = {}
+    local _5 = os.clock() + 30
+    while os.clock() < _5 do
+        local _5 = _7.config and _7.config.Elements
+        if type(_5) ~= "table" then
+            task.wait(.5)
+            continue
+        else
+            local _7 = false
+            for _4, _b in pairs(_4) do
+                if not _d[_4] then
+                    local _3 = _5[_4]
+                    if _3 then
+                        pcall(function() _3:SetImage(_b, 28) end)
+                        _d[_4] = true
+                    else
+                        _7 = true
+                    end
+                end
+            end
+            if _7 then
+                task.wait(.5)
+                continue
+            end
+        end
+        break
+    end
+    for _4 = 1, 80, 1 do
+        if not (#_7.gunEls > 0 and (#_7.knifeEls > 0 and (_7.el.flingSher and (_7.el.tpSher and (_7.el.flingMurd and _7.el.tpMurd))))) then
+            task.wait(.25)
+            continue
+        end
+        break
+    end
+    local _b = {}
+    for _4, _d in ipairs(_7.gunEls) do
+        _b[#_b + 1] = {_d, _7.GUN_ICON}
+    end
+    for _4, _d in ipairs(_7.knifeEls) do
+        _b[#_b + 1] = {_d, _7.KNIFE_ICON}
+    end
+    _b[#_b + 1] = {_7.el.flingSher, _7.GUN_ICON}
+    _b[#_b + 1] = {_7.el.tpSher, _7.GUN_ICON}
+    _b[#_b + 1] = {_7.el.flingMurd, _7.KNIFE_ICON}
+    _b[#_b + 1] = {_7.el.tpMurd, _7.KNIFE_ICON}
+    _7.iconsApplied = 0
+    for _4, _d in ipairs(_b) do
+        if type(_d[1]) == "table" then
+            if pcall(function() _d[1]:SetImage(_d[2], 28) end) then
+                _7.iconsApplied = _7.iconsApplied + 1
+            end
+        end
+    end
+    for _4 in pairs(_d) do
+        _7.iconsApplied = _7.iconsApplied + 1
+    end
+end)
+-- MM2 script — fixed syntax, part 4b-2b-ii-β-1/4
+-- Вставляй после части 4b-2b-ii-α. Копируется без последствий.
+
+_a3(ICON.mono)
+_c3.farm:Section({Title = "Coin Autofarm"})
+_c3.farm:Toggle({Title = "Coin Autofarm", Flag = "Toggle_Coin_Autofarm", Desc = "Walks you around picking up coins.", Type = "Toggle", Value = false, Callback = function(_d)
+    if _d then
+        if _9d then
+            _7.setToggle(_7.el.fly, false, function()
+                _9d = false
+                _f5()
+            end)
+        end
+        _77()
+        _7.startFarmHopWatch()
+        _4:Notify({Title = "Autofarm Started!", Content = "Farming coins!", Duration = 2, Icon = "check"})
+    else
+        _b7()
+        _7.stopFarmHopWatch()
+        _4:Notify({Title = "Autofarm Stopped!", Content = "Stopped farming.", Duration = 2, Icon = "power-off"})
+    end
+end})
+_c3.farm:Slider({Title = "Farm Speed", Flag = "Slider_Farm_Speed", Desc = "Meters per second", Step = 1, Value = {Min = 5, Max = 25, Default = 25}, Callback = function(_4)
+    _a5 = _4 >= 25 and 23 or _4
+end})
+
+_c3.farm:Section({Title = "Settings"})
+_7.perfFarmToggle = _c3.farm:Toggle({Title = "Performance Mode", Flag = "Toggle_Farm_Perf_Master", Desc = "Strips textures, shadows, particles and effects for framerate. Same switch as the one on the Visuals tab.", Type = "Toggle", Value = false, Callback = function(_4)
+    if _7.perf then
+        _7.perf.setAll(_4)
+    end
+end})
+_7.farmHopOn = true
+_c3.farm:Toggle({Title = "Hop When Server Dies", Flag = "Toggle_Farm_Dead_Hop", Desc = "Hops to a fresh server when this one empties out mid-farm.", Type = "Toggle", Value = true, Callback = function(_4)
+    _7.farmHopOn = _4
+end})
+_c3.farm:Toggle({Title = "Anti-AFK", Flag = "Toggle_Anti_AFK", Desc = "Prevents you from getting AFK kicked.", Type = "Toggle", Value = true, Callback = function(_d)
+    _d7 = _d
+    if _d then
+        _87()
+        _4:Notify({Title = "Anti-AFK Enabled!", Content = "You can go AFK now!", Duration = 2, Icon = "shield"})
+    else
+        _e7()
+        _4:Notify({Title = "Anti-AFK Disabled!", Content = "AFK protection off.", Duration = 2, Icon = "power-off"})
+    end
+end})
+_c3.farm:Toggle({Title = "Auto-Reset When Bag Full", Flag = "Toggle_Auto_Reset_When_Bag_Full", Desc = "Resets you once your coin bag is full", Type = "Toggle", Value = true, Callback = function(_4)
+    _47 = _4
+    if _4 then
+        _37()
+    else
+        _07()
+    end
+end})
+_c3.farm:Toggle({Title = "Auto Claim Shells", Flag = "Toggle_Auto_Claim_Shells", Desc = "Claims the end-of-round reward popup for you", Type = "Toggle", Value = false, Callback = function(_d)
+    _7.shellsOn = _d
+    if _d then
+        _7.startShells()
+        _4:Notify({Title = "Auto Claim Shells On!", Content = "Rewards claim themselves.", Duration = 2, Icon = "check"})
+    else
+        _7.stopShells()
+        _4:Notify({Title = "Auto Claim Shells Off!", Content = "Claim them yourself.", Duration = 2, Icon = "power-off"})
+    end
+end})
+_c3.farm:Toggle({Title = "Fling Murderer When Done", Flag = "Toggle_Fling_Murderer_When_Done", Desc = "Yeets the murderer once your bag is full or the coins run out", Type = "Toggle", Value = false, Callback = function(_4)
+    _7.flingWhenDone = _4
+    if _4 then
+        _7.flingDoneFired = false
+    end
+end})
+_c3.farm:Toggle({Title = "Kill All When Bag Full", Flag = "Toggle_Kill_All_When_Bag_Full", Desc = "Stabs everyone once your bag fills up. Murderer only.", Type = "Toggle", Value = false, Callback = function(_4)
+    _7.killWhenFull = _4
+    if _4 then
+        _7.killFired = false
+    end
+end})
+
+_d7 = true
+_87()
+_47 = true
+_37()
+
+_c3.farm:Section({Title = "Discord Webhook"})
+_7.el.whUrl = _c3.farm:Input({Title = "Webhook URL", Flag = "Input_Discord_Webhook", Desc = "Paste a Discord webhook and logging starts. Logs box opens, shell claims and round coins. Empty the box to stop.", Placeholder = "https://discord.com/api/webhooks/...", Callback = function(_4)
+    local _d = tostring(_4 or "")
+    if _d ~= tostring(_7.WH_URL or "") then
+        _7.saidHello = false
+        _7.whBreak = false
+        _7.whLastErr = nil
+    end
+    _7.WH_URL = _d
+end})
+_7.el.whOn = _c3.farm:Toggle({Title = "Start Sender", Flag = "Toggle_Discord_Sender", Desc = "Starts posting to the webhook above. Logs box opens, shell claims and the coins each round paid out.", Type = "Toggle", Value = false, Callback = function(_d)
+    _7.whOn = _d
+    if not _d then
+        return
+    end
+    task.spawn(function()
+        local _d, _5 = _7.whHello()
+        _4:Notify({
+            Title = _d and "Sender Started" or "Sender Failed",
+            Content = _d and "Posted the opening message to your webhook." or "Could not post: " .. (tostring(_5) .. "."),
+            Duration = 6,
+            Icon = _d and "check" or "x"
+        })
+        if not _d then
+            _7.whOn = false
+            _7.setToggle(_7.el.whOn, false)
+        end
+    end)
+end})
+
+_c3.farm:Section({Title = "Auto Open Boxes"})
+_7.el.box = {}
+for _4, _d in ipairs(_7.BOXES) do
+    local _5 = _d[1]
+    local _b = _d[2]
+    local _3, _0 = _7.boxPrice(_5)
+    _7.el.box[_5] = _c3.farm:Toggle({
+        Title = "Auto Open " .. _b,
+        Flag = "Toggle_Box_" .. _5:gsub("%W", "_"),
+        Desc = "Waits until you get " .. ((_0 and _7.comma(_0) or "?") .. (" " .. (_7.curName(_3) .. ", then auto-opens the box for you!"))),
+        Type = "Toggle",
+        Value = false,
+        Callback = function(_4)
+            _7.boxOn[_5] = _4
+            if _4 then
+                _7.startBox(_5, _b)
+            else
+                _7.stopBox(_5)
+            end
+        end
+    })
+    local _8 = _7.boxImage(_5)
+    if _8 then
+        pcall(function() _7.el.box[_5]:SetImage(_8, 30) end)
+    end
+    if _5 == "Summer2026Box" then
+        local _4 = _7.el.box[_5] and _7.el.box[_5].ElementFrame
+        if typeof(_4) == "Instance" then
+            local _d = _4:FindFirstChildWhichIsA("UIGradient")
+            if _d then
+                _d:Destroy()
+            end
+            local _5 = Instance.new("UIGradient")
+            _5.Color = ColorSequence.new(ICON.yellow, ICON.teal)
+            _5.Parent = _4
+        end
+    end
+end
+
+_a3(ICON.mono)
+_c3.buttons:Toggle({Title = "Lock Buttons In Place", Flag = "Toggle_Lock_Buttons_In_Place", Desc = "Stops the on-screen buttons moving when you tap them.", Type = "Toggle", Value = false, Callback = function(_4)
+    _27.locked = _4
+end})
+_7.el.designDrop = _c3.buttons:Dropdown({Title = "Button Design", Flag = "Dropdown_Button_Design", Desc = "Round Design is a circle with a ring that fills as the cooldown runs. Default Design puts a gauge along the bottom.", Multi = false, Value = "Default Design", Values = _27.DESIGN_LIST, Callback = function(_4)
+    _27.setDesign(tostring(type(_4) == "table" and (_4[1] or _4.Value) or _4))
+end})
+_7.el.sizeSlider = _c3.buttons:Slider({Title = "Button Size", Flag = "Slider_Button_Size", Desc = "Scales the on-screen buttons. 100 is normal.", Step = 1, Value = {Min = 50, Max = 200, Default = IS_MOBILE and 70 or 100}, Callback = function(_4)
+    local _d = tonumber(_4)
+    local _5
+    if _d then
+        _5 = _d
+    else
+        _5 = type(_4) == "table" and tonumber(_4.Value)
+    end
+    _7.hudScale = (_5 or (IS_MOBILE and 70 or 100)) / 100
+    for _4, _d in next, _27.parts, nil do
+        if _d.scale then
+            local _4 = {Scale = _7.hudScale}
+            ;(TweenService:Create(_d.scale, TweenInfo.new(.15, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), _4)):Play()
+        end
+    end
+    _27.relayout()
+end})
+
+_c3.buttons:Section({Title = "On-Screen Buttons"})
+_c3.buttons:Toggle({Title = "Shoot Murderer", Flag = "Toggle_Shoot_Murderer", Desc = "Draggable on-screen button that shoots the murderer", Type = "Toggle", Value = true, Callback = function(_4)
+    if _4 then
+        _27.create("Shoot", "SHOOT\nMURDERER", _2b.Shoot, HUDAccent.Shoot, HUDIcon.Shoot, _4b)
+    else
+        _27.destroy("Shoot")
+    end
+end})
+_c3.buttons:Toggle({Title = "Grab Gun", Flag = "Toggle_Grab_Gun", Desc = "Grabs the gun off the floor. It only drops when the sheriff dies.", Type = "Toggle", Value = true, Callback = function(_4)
+    if _4 then
+        _27.create("Grab", "GRAB\nGUN", _2b.Grab, HUDAccent.Grab, HUDIcon.Grab, _1b)
+    else
+        _27.destroy("Grab")
+    end
+end})
+_c3.buttons:Toggle({Title = "Throw Knife", Flag = "Toggle_Throw_Knife", Desc = "Throws your knife at the nearest player", Type = "Toggle", Value = true, Callback = function(_4)
+    if _4 then
+        _27.create("Throw", "THROW\nKNIFE", _2b.Throw, HUDAccent.Throw, HUDIcon.Throw, _db)
+    else
+        _27.destroy("Throw")
+    end
+end})
+_c3.buttons:Toggle({Title = "Bomb Jump", Flag = "Toggle_Bomb_Jump", Desc = "Bomb jump, with the cooldown shown on the button", Type = "Toggle", Value = true, Callback = function(_4)
+    if _4 then
+        _27.create("Bomb", "BOMB\nJUMP", _2b.Bomb, HUDAccent.Bomb, HUDIcon.Bomb, _8b)
+    else
+        _27.destroy("Bomb")
+    end
+end})
+_c3.buttons:Toggle({Title = "Wall Hop", Flag = "Toggle_Wall_Hop", Desc = "Climbs the wall you are standing against.", Type = "Toggle", Value = true, Callback = function(_4)
+    if _4 then
+        _27.create("WallHop", "WALL\nHOP", _2b.WallHop, HUDAccent.WallHop, HUDIcon.WallHop, _fb)
+    else
+        _27.destroy("WallHop")
+    end
+end})
+_c3.buttons:Toggle({Title = "Aimbot Button", Flag = "Toggle_Aimbot_Button", Desc = "Turns the aimbot on and off, and shows its state.", Type = "Toggle", Value = true, Callback = function(_4)
+    if _4 then
+        local _4, _d = _27.create("Aimbot", "AIMBOT\nOFF", _2b.Aimbot, HUDAccent.Aimbot, HUDIcon.Aimbot, function() _cb.set(not _cb.enabled) end)
+        _cb.label = _d
+        _cb.refreshLabel()
+    else
+        _27.destroy("Aimbot")
+        _cb.label = nil
+        _cb.set(false)
+    end
+end})
+
+_7.killSheriff = function()
+    local _d = _6()
+    if not _d then
+        _4:Notify({Title = "No Sheriff", Content = "Nobody is holding the gun right now.", Duration = 2, Icon = "x"})
+        return
+    end
+    _d3(_d.Name)
+end
+
+_c3.buttons:Section({Title = "Extra Buttons"})
+_c3.buttons:Toggle({Title = "Kill All Button  (Murderer Only)", Flag = "Toggle_Kill_All_Button", Desc = "Stabs every player at once. Murderer only.", Type = "Toggle", Value = true, Callback = function(_4)
+    if _4 then
+        _27.create("KillAll", "KILL ALL\nMURDER\nONLY", _2b.KillAll, HUDAccent.KillAll, HUDIcon.KillAll, _53)
+    else
+        _27.destroy("KillAll")
+    end
+end})
+_c3.buttons:Toggle({Title = "Kill Sheriff Button  (Murderer Only)", Flag = "Toggle_Kill_Sheriff_Button", Desc = "Stabs whoever is holding the gun. Murderer only.", Type = "Toggle", Value = true, Callback = function(_4)
+    if _4 then
+        _27.create("KillSheriff", "KILL\nSHERIFF", _2b.KillSheriff, HUDAccent.KillSheriff, HUDIcon.KillSheriff, _7.killSheriff)
+    else
+        _27.destroy("KillSheriff")
+    end
+end})
+_c3.buttons:Toggle({Title = "Free X-Ray Button", Flag = "Toggle_Xray_Button", Desc = "Unlocks the X-Ray perk for free.", Type = "Toggle", Value = true, Callback = function(_4)
+    if _4 then
+        _27.create("Xray", "FREE\nX-RAY", _2b.Xray, HUDAccent.Xray, HUDIcon.Xray, function()
+            _7.setXray(not _7.xrayOn)
+            _27.setActive("Xray", _7.xrayOn)
+        end)
+        _27.setActive("Xray", _7.xrayOn)
+    else
+        _27.destroy("Xray")
+    end
+end})
+_c3.buttons:Toggle({Title = "Fly Button", Flag = "Toggle_Fly_Button", Desc = "On-screen button that turns Fly on and off. Same fly as the Player tab.", Type = "Toggle", Value = true, Callback = function(_4)
+    if _4 then
+        _27.create("Fly", "FLY", _2b.Fly, HUDAccent.Fly, HUDIcon.Fly, function()
+            _9d = not _9d
+            if _9d then
+                _e5()
+            else
+                _f5()
+            end
+            _27.setActive("Fly", _9d)
+            _7.setToggle(_7.el.fly, _9d)
+        end)
+        _27.setActive("Fly", _9d)
+    else
+        _27.destroy("Fly")
+    end
+end})
+_c3.buttons:Toggle({Title = "Noclip Button", Flag = "Toggle_Noclip_Button", Desc = "Turns Noclip on and off - walk through walls.", Type = "Toggle", Value = true, Callback = function(_4)
+    if _4 then
+        _27.create("Noclip", "NOCLIP", _2b.Noclip, HUDAccent.Noclip, HUDIcon.Noclip, function()
+            _6d = not _6d
+            if _6d then
+                _05()
+            else
+                _85()
+            end
+            _27.setActive("Noclip", _6d)
+            _7.setToggle(_7.el.noclip, _6d)
+        end)
+        _27.setActive("Noclip", _6d)
+    else
+        _27.destroy("Noclip")
+    end
+end})
+
+_7.BTN_GLYPH = {
+    Toggle_Shoot_Murderer = "Shoot",
+    Toggle_Grab_Gun = "Grab",
+    Toggle_Throw_Knife = "Throw",
+    Toggle_Bomb_Jump = "Bomb",
+    Toggle_Wall_Hop = "WallHop",
+    Toggle_Aimbot_Button = "Aimbot",
+    Toggle_Kill_All_Button = "KillAll",
+    Toggle_Kill_Sheriff_Button = "KillSheriff",
+    Toggle_Xray_Button = "Xray",
+    Toggle_Fly_Button = "Fly",
+    Toggle_Noclip_Button = "Noclip"
+}
+
+task.spawn(function()
+    for _4 = 1, 40, 1 do
+        if not (_7.config and type(_7.config.Elements) == "table") then
+            task.wait(.25)
+            continue
+        end
+        break
+    end
+    local _4 = _7.config and _7.config.Elements
+    if type(_4) ~= "table" then
+        return
+    end
+    for _d, _5 in pairs(_7.BTN_GLYPH) do
+        local _7 = _4[_d]
+        local _b = HUDIcon[_5]
+        local _3 = _b and ICONS[_b] or nil
+        if _7 and _3 then
+            pcall(function() _7:SetImage(_3, 28) end)
+        end
+    end
+end)
+
+_27.create("Shoot", "SHOOT\nMURDERER", _2b.Shoot, HUDAccent.Shoot, HUDIcon.Shoot, _4b)
+_27.create("Grab", "GRAB\nGUN", _2b.Grab, HUDAccent.Grab, HUDIcon.Grab, _1b)
+_27.create("Throw", "THROW\nKNIFE", _2b.Throw, HUDAccent.Throw, HUDIcon.Throw, _db)
+local _2, _1 = _27.create("Aimbot", "AIMBOT\nOFF", _2b.Aimbot, HUDAccent.Aimbot, HUDIcon.Aimbot, function() _cb.set(not _cb.enabled) end)
+_cb.label = _1
+_cb.refreshLabel()
+_27.create("Bomb", "BOMB\nJUMP", _2b.Bomb, HUDAccent.Bomb, HUDIcon.Bomb, _8b)
+_27.create("WallHop", "WALL\nHOP", _2b.WallHop, HUDAccent.WallHop, HUDIcon.WallHop, _fb)
+_27.create("KillAll", "KILL ALL\nMURDER\nONLY", _2b.KillAll, HUDAccent.KillAll, HUDIcon.KillAll, _53)
+_27.create("KillSheriff", "KILL\nSHERIFF", _2b.KillSheriff, HUDAccent.KillSheriff, HUDIcon.KillSheriff, _7.killSheriff)
+_27.create("Xray", "FREE\nX-RAY", _2b.Xray, HUDAccent.Xray, HUDIcon.Xray, function()
+    _7.setXray(not _7.xrayOn)
+    _27.setActive("Xray", _7.xrayOn)
+end)
+_27.create("Fly", "FLY", _2b.Fly, HUDAccent.Fly, HUDIcon.Fly, function()
+    _9d = not _9d
+    if _9d then
+        _e5()
+    else
+        _f5()
+    end
+    _27.setActive("Fly", _9d)
+    _7.setToggle(_7.el.fly, _9d)
+end)
+_27.create("Noclip", "NOCLIP", _2b.Noclip, HUDAccent.Noclip, HUDIcon.Noclip, function()
+    _6d = not _6d
+    if _6d then
+        _05()
+    else
+        _85()
+    end
+    _27.setActive("Noclip", _6d)
+    _7.setToggle(_7.el.noclip, _6d)
+end)
+_27.relayout()
+
+task.spawn(function()
+    RunService.RenderStepped:Wait()
+    pcall(function()
+        local _4 = _d.UIElements.Main
+        local _5
+        for _4 in next, _27.guis, nil do
+            local _d = CoreGui:FindFirstChild("VOID" .. (_4 .. "Button"))
+            _d = _d and _d:FindFirstChildWhichIsA("TextButton")
+            if _d then
+                local _4 = _d.AbsolutePosition.Y + _d.AbsoluteSize.Y
+                if not _5 or _4 > _5 then
+                    _5 = _4
+                end
+            end
+        end
+        if not _5 then
+            return
+        end
+        local _7 = Workspace.CurrentCamera.ViewportSize
+        local _b = math.min(560, _7.Y - 40)
+        local _3 = _4.AbsolutePosition.Y + _4.AbsoluteSize.Y / 2
+        local _0 = math.min((_5 + 12) + _b / 2, (_7.Y - _b / 2) - 8) - _3
+        if _0 > 0 then
+            local _d = _4.Position
+            _4.Position = UDim2.new(_d.X.Scale, _d.X.Offset, _d.Y.Scale, _d.Y.Offset + _0)
+        end
+    end)
+end)
+
+local function _c()
+    local _4 = BOMB_COOLDOWN
+    if tick() - _bb < _4 then
+        return
+    end
+    _bb = tick()
+    if _27 then
+        _27.startCooldown("Bomb", BOMB_COOLDOWN, "BOMB\nJUMP")
+    end
+end
+
+local function _9()
+    for _4, _d in ipairs(_0b) do
+        pcall(function() _d:Disconnect() end)
+    end
+    _0b = {}
+    local function _4(_4)
+        if not _4 then
+            return
+        end
+        local _d = _4:FindFirstChild("FakeBomb")
+        if _d and _d:IsA("Tool") then
+            table.insert(_0b, _d.Activated:Connect(_c))
+        end
+        table.insert(_0b, _4.ChildAdded:Connect(function(_4)
+            if _4.Name == "FakeBomb" and _4:IsA("Tool") then
+                table.insert(_0b, _4.Activated:Connect(_c))
+            end
+        end))
+    end
+    _4(_3:FindFirstChild("Backpack"))
+    _4(_3.Character)
+end
+_9()
+
+_d0 = _3.CharacterAdded:Connect(function(_4)
+    _4:WaitForChild("Humanoid")
+    task.wait(.5)
+    _9()
+end)
+
+_a3(ICON.mono)
+
+_a = function()
+    local _4 = game:GetService("Players")
+    local _d = game:GetService("ReplicatedStorage")
+    game:GetService("InsertService")
+    local _5 = _4.LocalPlayer
+    pcall(function()
+        if setthreadidentity then
+            setthreadidentity(2)
+        end
+    end)
+    if _G.__MM2Viz and _G.__MM2Viz.destroy then
+        pcall(_G.__MM2Viz.destroy)
+    end
+    local _7 = {conns = {}}
+    _G.__MM2Viz = _7
+    local _b = require((_d:WaitForChild("ClientServices")):WaitForChild("EquipService"))
+    local _3 = require((_d:WaitForChild("Database")):WaitForChild("Sync"))
+    local _0 = require((_d:WaitForChild("Modules")):WaitForChild("ProfileData"))
+    local _8 = _3.Weapons
+    local _e = ((_d:WaitForChild("Remotes")):WaitForChild("Inventory")):WaitForChild("InventoryDataChanged")
+    -- skin changer body below continues in 4b-2b-ii-β-2
+end
+-- MM2 script — fixed syntax, part 4b-2b-ii-β-2a/4
+-- Вставляй после части 4b-2b-ii-β-1. Копируется без последствий.
+
+    local function _f(_4)
+        local _d, _5 = pcall(function() return game:HttpGet(_4, true) end)
+        if _d and (type(_5) == "string" and #_5 > 0) then
+            return _5
+        end
+        local _7 = syn and syn.request or request or http_request or http and http.request
+        if not _7 then
+            return nil, tostring(_5)
+        end
+        local _b, _3 = pcall(_7, {Url = _4, Method = "GET"})
+        if _b and (type(_3) == "table" and (type(_3.Body) == "string" and #_3.Body > 0)) then
+            return _3.Body
+        end
+        return nil, tostring(_b and (_3 and _3.StatusCode) or _3)
+    end
+
+    local _2 = nil
+    if isfile and (readfile and isfile("VOIDV2/weapon.lua")) then
+        local _4, _d = pcall(readfile, "VOIDV2/weapon.lua")
+        if _4 and (type(_d) == "string" and #_d > 100000) then
+            _2 = _d
+        end
+    end
+    local _1 = _2 ~= nil
+    local _c = nil
+    if not _2 then
+        _2, _c = _f("https://raw.githubusercontent.com/xdxd-coder/Request/refs/heads/main/weapon.lua")
+    end
+    if not _2 then
+        error("[MM2Viz] could not fetch mesh data from " .. ("https://raw.githubusercontent.com/xdxd-coder/Request/refs/heads/main/weapon.lua" .. (" -- " .. tostring(_c))), 0)
+    end
+    local _6, _9 = loadstring(_2 .. "\nreturn MESHES_FULL")
+    if not _6 and _1 then
+        _2 = _f("https://raw.githubusercontent.com/xdxd-coder/Request/refs/heads/main/weapon.lua")
+        _6 = _2 and loadstring(_2 .. "\nreturn MESHES_FULL")
+        _1 = false
+        _9 = nil
+    end
+    if not _6 then
+        error("[MM2Viz] mesh data failed to compile -- " .. tostring(_9), 0)
+    end
+    if not _1 and writefile then
+        pcall(function()
+            if makefolder and (isfolder and not isfolder("VOIDV2")) then
+                makefolder("VOIDV2")
+            end
+            writefile("VOIDV2/weapon.lua", _2)
+        end)
+    end
+    local _a = _6()
+    if type(_a) ~= "table" or next(_a) == nil then
+        error("[MM2Viz] fetched file produced no MESHES_FULL table (is the URL the data file?)", 0)
+    end
+    local _4d = {}
+    for _4, _d in pairs(_a) do
+        _4d[_4] = _d
+    end
+    local _dd = _4d.SweetChroma
+    if _dd and (_dd.Model and not _4d.Sweet) then
+        local _4 = nil
+        _4 = function(_d)
+            local _5 = {
+                Class = _d.Class,
+                Id = _d.Id,
+                Name = _d.Name,
+                Props = _d.Props,
+                Tags = _d.Tags
+            }
+            if _d.Children then
+                _5.Children = {}
+                for _d, _7 in ipairs(_d.Children) do
+                    if not (_7.Class == "Decal" and _7.Name == "Chroma") then
+                        _5.Children[#_5.Children + 1] = _4(_7)
+                    end
+                end
+            end
+            return _5
+        end
+        local _d = {}
+        local _5 = pairs
+        local _7 = _dd.Meta or {}
+        for _4, _5 in _5(_7) do
+            _d[_4] = _5
+        end
+        _d.Chroma = nil
+        _4d.Sweet = {
+            Complete = false,
+            Meta = _d,
+            Model = _4(_dd.Model)
+        }
+    end
+    local _5d = {Godly = true, Ancient = true}
+    local function _7d(_4)
+        local _d = tostring(_4 or "")
+        return _d == "" or _d:match("^%?+$") ~= nil
+    end
+    local _bd = {}
+    local _3d = 0
+    for _4, _d in pairs(_4d) do
+        local _5 = _8[_4]
+        if type(_5) == "table" and ((_5.ItemType == "Knife" or _5.ItemType == "Gun") and (_5d[_5.Rarity] and not _7d(_5.ItemName))) then
+            _bd[_4] = _d
+        else
+            _3d += 1
+        end
+    end
+    local _0d = _bd
+    local _8d = 0
+    local _ed = 0
+    for _4, _d in pairs(_0d) do
+        _8d += 1
+        if _d.Model then
+            _ed += 1
+        end
+    end
+    local _fd = game:GetService("RunService")
+    local _2d = game:GetService("CollectionService")
+
+    local function _1d(_4)
+        if type(_4) == "string" then
+            return ((_4:gsub("^%s+", "")):gsub("%s+$", ""))
+        end
+        return _4
+    end
+
+    local function _cd(_4, _d, _5)
+        for _d, _7 in pairs(_d) do
+            if not (_5 and _5[_d]) then
+                if _d == "MeshId" or _d == "TextureId" or _d == "TextureID" or _d == "Texture" then
+                    _7 = _1d(_7)
+                end
+                pcall(function() _4[_d] = _7 end)
+            end
+        end
+    end
+
+    local function _6d(_4)
+        local _d = _1d(_4.MeshId or "")
+        local _5 = _4.Size or Vector3.one
+        local _7 = nil
+        pcall(function()
+            _7 = (game:GetService("InsertService")):CreateMeshPartAsync(_d, Enum.CollisionFidelity.Box, Enum.RenderFidelity.Precise)
+        end)
+        if _7 then
+            pcall(function() _7.Size = _5 end)
+            return _7
+        end
+        local _b = Instance.new("Part")
+        _b.Size = _5
+        local _3 = Instance.new("SpecialMesh")
+        _3.MeshType = Enum.MeshType.FileMesh
+        pcall(function() _3.MeshId = _d end)
+        pcall(function() _3.TextureId = _1d(_4.TextureID or "") end)
+        _3.Parent = _b
+        return _b
+    end
+
+    local _9d = {}
+    local _ad = Color3.fromRGB(255, 0, 0)
+    local _45 = Color3.fromRGB(255, 255, 0)
+    local _d5 = Color3.fromRGB(0, 255, 0)
+    local _55 = Color3.fromRGB(0, 255, 255)
+    local _75 = Color3.fromRGB(0, 0, 255)
+    local _b5 = Color3.fromRGB
+    _9d[1] = _ad
+    _9d[2] = _45
+    _9d[3] = _d5
+    _9d[4] = _55
+    _9d[5] = _75
+    do
+        local _4 = table.pack(_b5(255, 0, 255))
+        table.move(_4, 1, _4.n, 6, _9d)
+    end
+
+    local function _35(_4)
+        local _d = #_9d
+        local _5 = _4 % _d
+        local _7 = math.floor(_5)
+        return _9d[_7 + 1]:Lerp(_9d[(_7 + 1) % _d + 1], _5 - _7)
+    end
+
+    local function _05(_4, _d)
+        if _d.Meta and _d.Meta.Chroma == true then
+            return true
+        end
+        return _4:sub(-6) == "Chroma"
+    end
+
+    local _85 = 1.8
+    local _e5 = "rbxassetid://18363392181"
+
+    local function _f5(_4)
+        local _d = {}
+        local _5 = {}
+        local _7 = {}
+        local _b = {}
+        local _3 = false
+        for _4, _b in ipairs(_4:GetDescendants()) do
+            local _0 = _b:GetAttribute("MM2Chroma")
+            if _0 then
+                if _0 == "part" then
+                    _d[#_d + 1] = _b
+                    _3 = true
+                elseif _0 == "decal" and _b:IsA("Decal") then
+                    pcall(function() _b.Texture = _e5 end)
+                    _5[#_5 + 1] = _b
+                    _3 = true
+                else
+                    _3 = true
+                    if _0 == "fire" then
+                        _7[#_7 + 1] = _b
+                    end
+                end
+            end
+        end
+        if not _3 then
+            for _4, _b in ipairs(_4:GetDescendants()) do
+                if _b:IsA("BasePart") and (_b.Material == Enum.Material.Neon or (_b.Name:lower()):find("light")) then
+                    _d[#_d + 1] = _b
+                elseif _b:IsA("Decal") and (_b.Name:lower()):find("chroma") then
+                    _5[#_5 + 1] = _b
+                elseif _b:IsA("Fire") then
+                    _7[#_7 + 1] = _b
+                end
+            end
+            if #_5 == 0 then
+                _7[#_7 + 1] = _4
+            end
+        end
+        local _0 = {}
+        for _4, _d in ipairs(_7) do
+            if _d:IsA("BasePart") then
+                _0[_d] = true
+            end
+        end
+        for _4, _d in ipairs(_d) do
+            _0[_d] = nil
+        end
+        for _4, _d in ipairs(_4:GetDescendants()) do
+            if _d:IsA("SpecialMesh") and (_d.TextureId ~= "" and _0[_d.Parent]) then
+                _b[#_b + 1] = _d
+            end
+        end
+        if _4:IsA("Part") and _0[_4] then
+            local _d = _4:FindFirstChildWhichIsA("SpecialMesh")
+            if _d and _d.TextureId ~= "" then
+                _b[#_b + 1] = _d
+            end
+        end
+        if #_d == 0 and (#_5 == 0 and (#_7 == 0 and #_b == 0)) then
+            return nil
+        end
+        return _fd.Heartbeat:Connect(function()
+            local _4 = os.clock()
+            local _3 = _35(_4)
+            for _4, _d in ipairs(_5) do
+                _d.Color3 = _3
+            end
+            for _4, _d in ipairs(_b) do
+                _d.VertexColor = Vector3.new(_3.R, _3.G, _3.B)
+            end
+            for _4, _d in ipairs(_7) do
+                if _d:IsA("Fire") then
+                    _d.Color = _3
+                elseif _d:IsA("BasePart") then
+                    _d.Color = _3
+                end
+            end
+            local _0 = math.floor(_4 * _85)
+            for _4, _d in ipairs(_d) do
+                _d.Color = _9d[((_0 + _4) - 1) % #_9d + 1]
+            end
+        end)
+    end
+
+    local _25 = {
+        WeldConstraint = true,
+        Weld = true,
+        Motor6D = true,
+        RigidConstraint = true,
+        Bone = true,
+        Snap = true,
+        ManualWeld = true,
+        Rotate = true,
+        RotateP = true,
+        RotateV = true
+    }
+
+    local function _15(_4, _d)
+        if not (_4 and _d.Tags) then
+            return
+        end
+        for _d, _5 in ipairs(_d.Tags) do
+            local _7 = _5 == "ChromaPart" and "part" or _5 == "ChromaDecal" and "decal"
+            local _b
+            if _7 then
+                _b = _7
+            else
+                _b = _5 == "ChromaFire" and "fire"
+            end
+            _b = _b or nil
+            if _b then
+                pcall(function() _4:SetAttribute("MM2Chroma", _b) end)
+            end
+        end
+    end
+
+    local function _c5(_4)
+        local _d = _4.Class
+        if _25[_d] then
+            return nil
+        end
+        local _5
+        if _d == "MeshPart" then
+            _5 = _6d(_4.Props)
+            _cd(_5, _4.Props, {MeshId = true, Size = true, RelCF = true, CanCollide = true})
+        else
+            local _7, _b = pcall(Instance.new, _d)
+            if not _7 or not _b then
+                return nil
+            end
+            _5 = _b
+            _cd(_5, _4.Props, {RelCF = true})
+        end
+        if _4.Name then
+            pcall(function() _5.Name = _4.Name end)
+        end
+        _15(_5, _4)
+        return _5
+    end
+
+    local _65 = nil
+    _65 = function(_4, _d, _5, _7, _b, _3)
+        local _0 = ipairs
+        local _8 = _4.Children or {}
+        for _4, _0 in _0(_8) do
+            local _8 = _c5(_0)
+            if _8 then
+                _7[_0.Id] = _8
+                if _8:IsA("BasePart") then
+                    _8.Anchored = false
+                    _8.CanCollide = false
+                    _8.CanQuery = false
+                    _8.CanTouch = false
+                    _8.Massless = true
+                    _b[#_b + 1] = {inst = _8, relcf = _0.Props.RelCF}
+                    _8.Parent = _5
+                    _65(_0, _8, _5, _7, _b, _3)
+                elseif _8:IsA("Attachment") then
+                    if _0.Props.RelCF then
+                        pcall(function() _8.CFrame = _0.Props.RelCF end)
+                    end
+                    _8.Parent = _5
+                    _65(_0, _8, _5, _7, _b, _3)
+                elseif _8:IsA("Beam") or _8:IsA("Trail") then
+                    _8.Parent = _d
+                    _3[#_3 + 1] = {inst = _8, a0 = _0.Att0, a1 = _0.Att1}
+                    _65(_0, _8, _5, _7, _b, _3)
+                else
+                    _8.Parent = _d
+                    _65(_0, _8, _5, _7, _b, _3)
+                end
+            else
+                _65(_0, _d, _5, _7, _b, _3)
+            end
+        end
+    end
+
+    local function _95(_4)
+        local _d = _4.Model
+        if not _d then
+            return nil
+        end
+        local _5
+        if _d.Class == "MeshPart" then
+            _5 = _6d(_d.Props)
+            _cd(_5, _d.Props, {MeshId = true, Size = true, RelCF = true, CanCollide = true})
+        else
+            _5 = Instance.new("Part")
+            _cd(_5, _d.Props, {RelCF = true, CanCollide = true})
+        end
+        if _d.Name then
+            pcall(function() _5.Name = _d.Name end)
+        end
+        _15(_5, _d)
+        _5.Anchored = false
+        _5.CanCollide = false
+        _5.CanQuery = false
+        _5.CanTouch = false
+        _5.Massless = true
+        local _7 = {[_d.Id] = _5}
+        local _b = {}
+        local _3 = {}
+        _65(_d, _5, _5, _7, _b, _3)
+        for _4, _d in ipairs(_3) do
+            if _d.a0 and _7[_d.a0] then
+                pcall(function() _d.inst.Attachment0 = _7[_d.a0] end)
+            end
+            if _d.a1 and _7[_d.a1] then
+                pcall(function() _d.inst.Attachment1 = _7[_d.a1] end)
+            end
+        end
+        return {root = _5, parts = _b}
+    end
+
+    local function _a5(_4, _d)
+        local _5 = _4.root
+        pcall(function() _5.CFrame = _d end)
+        for _4, _7 in ipairs(_4.parts) do
+            if _7.relcf then
+                pcall(function() _7.inst.CFrame = _d * _7.relcf end)
+            end
+            local _b = Instance.new("WeldConstraint")
+            _b.Part0 = _7.inst
+            _b.Part1 = _5
+            _b.Parent = _7.inst
+        end
+        return _5
+    end
+
+    local _47 = {
+        ParticleEmitter = true,
+        Fire = true,
+        Smoke = true,
+        Sparkles = true,
+        PointLight = true,
+        SpotLight = true,
+        SurfaceLight = true
+    }
+
+    local function _d7(_4)
+        local _d = nil
+        local _5 = {}
+        local _7 = {}
+        local _b = {}
+        local _3 = ipairs
+        local _0 = _4.Display or {}
+        for _4, _3 in _3(_0) do
+            if _3.Path == "(root)" then
+                _d = _3
+            elseif _3.Class == "SpecialMesh" then
+                _5[#_5 + 1] = _3
+            elseif _3.Class == "Decal" or _3.Class == "Texture" then
+                _7[#_7 + 1] = _3
+            elseif _47[_3.Class] then
+                _b[#_b + 1] = _3
+            end
+        end
+        if not _d then
+            return nil
+        end
+        local _8
+        if _d.Class == "MeshPart" then
+            _8 = _6d(_d.Props)
+            _cd(_8, _d.Props, {MeshId = true, Size = true, CanCollide = true})
+        else
+            _8 = Instance.new("Part")
+            _8.Size = _d.Props.Size or Vector3.one
+            _cd(_8, _d.Props, {Size = true, CanCollide = true})
+            for _4, _d in ipairs(_5) do
+                local _5 = Instance.new("SpecialMesh")
+                _5.MeshType = Enum.MeshType.FileMesh
+                _cd(_5, _d.Props)
+                _5.Parent = _8
+            end
+        end
+        _8.Anchored = false
+        _8.CanCollide = false
+        _8.CanQuery = false
+        _8.CanTouch = false
+        _8.Massless = true
+        if _d.Name then
+            pcall(function() _8.Name = _d.Name end)
+        end
+        for _4, _d in ipairs(_7) do
+            local _5 = Instance.new("Decal")
+            _cd(_5, _d.Props)
+            if _d.Name then
+                pcall(function() _5.Name = _d.Name end)
+            end
+            _5.Parent = _8
+        end
+        for _4, _d in ipairs(_b) do
+            local _5, _7 = pcall(Instance.new, _d.Class)
+            if _5 and _7 then
+                _cd(_7, _d.Props)
+                if _d.Name then
+                    pcall(function() _7.Name = _d.Name end)
+                end
+                _7.Parent = _8
+            end
+        end
+        return {root = _8, parts = {}}
+    end
+
+    local function _57(_4)
+        if _4.Model then
+            return _95(_4)
+        end
+        if _4.Display then
+            return _d7(_4)
+        end
+        return nil
+    end
+
+    local function _77(_4)
+        if _4.Model then
+            local _d = _4.Model
+            if _d.Class == "MeshPart" then
+                return _1d(_d.Props.MeshId or "")
+            end
+            local _5 = ipairs
+            local _7 = _d.Children or {}
+            for _4, _d in _5(_7) do
+                if _d.Class == "SpecialMesh" then
+                    return _1d(_d.Props.MeshId or "")
+                end
+            end
+            return ""
+        end
+        local _d = ipairs
+        local _5 = _4.Display or {}
+        for _4, _d in _d(_5) do
+            if _d.Path == "(root)" and _d.Class == "MeshPart" then
+                return _1d(_d.Props.MeshId or "")
+            end
+            if _d.Class == "SpecialMesh" then
+                return _1d(_d.Props.MeshId or "")
+            end
+        end
+        return ""
+    end
+
+    local function _b7(_4)
+        if not _4 then
+            return ""
+        end
+        if _4:IsA("MeshPart") then
+            return _1d(_4.MeshId or "")
+        end
+        local _d = _4:FindFirstChildWhichIsA("SpecialMesh", true)
+        if _d then
+            _d = _1d(_d.MeshId or "")
+        end
+        return _d or ""
+    end
+
+    local _37 = CFrame.identity
+
+    local _07 = nil
+    _07 = function(_4)
+        local _d = ipairs
+        local _5 = _4.Children or {}
+        for _4, _d in _d(_5) do
+            if _d.Class == "Attachment" and (_d.Name == "CustomAttachment" and (_d.Props and _d.Props.RelCF)) then
+                return _d.Props.RelCF
+            end
+            local _5 = _07(_d)
+            if _5 then
+                return _5
+            end
+        end
+        return nil
+    end
+
+    local function _87(_4)
+        if _4.Model then
+            return _4.Model.Props and _4.Model.Props.Size
+        end
+        local _d = ipairs
+        local _5 = _4.Display or {}
+        for _4, _d in _d(_5) do
+            if _d.Path == "(root)" then
+                return _d.Props and _d.Props.Size
+            end
+        end
+        return nil
+    end
+
+    local function _e7(_4)
+        if not _4 then
+            return nil
+        end
+        local _d = {{_4.X, "X"}, {_4.Y, "Y"}, {_4.Z, "Z"}}
+        table.sort(_d, function(_4, _d) return _4[1] > _d[1] end)
+        return _d[1][2] .. (_d[2][2] .. _d[3][2])
+    end
+
+    local _f7 = {
+        Gun_ZYX = CFrame.new(.12991, -3e-05, .075, 1, 0, 0, 0, .70713, .70708, 0, -.70708, .70713),
+        Gun_ZXY = CFrame.new(.12991, 0, .07501, 2e-05, -.5, -.86603, 1, -4e-05, 5e-05, -6e-05, -.86603, .5),
+        Gun_XYZ = CFrame.new(-.22989, .09821, .1, 1e-05, .98481, -.17362, -1e-05, .17362, .98481, 1, -1e-05, 1e-05),
+        Knife_YXZ = CFrame.new(0, 0, 0, -.0446, -.00031, -.99901, .03549, .99937, -.00189, .99837, -.03553, -.04456),
+        Knife_ZYX = CFrame.new(.00151, -.12701, -.15448, -.99867, .03727, .03568, -.04098, -.15276, -.98741, -.03135, -.98756, .15409),
+        Knife_ZXY = CFrame.new(.00151, -.12701, -.15448, -.99867, .03727, .03568, -.04098, -.15276, -.98741, -.03135, -.98756, .15409)
+    }
+    local _27 = _G.__MM2VizLearned or {}
+    _G.__MM2VizLearned = _27
+    local _17 = _G.__MM2VizOverride or {}
+    _G.__MM2VizOverride = _17
+    local _c7 = _G.__MM2VizOverrideGrip or {}
+    _G.__MM2VizOverrideGrip = _c7
+
+    local function _67(_4)
+        if not _4 then
+            return nil
+        end
+        return _4:FindFirstChild("CustomAttachment") or _4:FindFirstChildWhichIsA("Attachment")
+    end
+
+    local function _97(_4)
+        local _d = _b7(_4)
+        local _5 = _67(_4)
+        if _d ~= "" and _5 then
+            _27[_d] = _5.CFrame
+        end
+    end
+
+    local function _a7(_4, _d, _5)
+        if _17[_4] then
+            return _17[_4]
+        end
+        if _d.Model then
+            return _07(_d.Model) or _37
+        end
+        local _7 = _77(_d)
+        if _7 ~= "" and _27[_7] then
+            return _27[_7]
+        end
+        local _b = _e7(_87(_d))
+        return _b and _f7[(_d.Meta and _d.Meta.ItemType or _5) .. ("_" .. _b)] or _37
+    end
+
+    local function _4b(_4, _d)
+        local _5 = _67(_4)
+        return (_4.CFrame * (_5 and _5.CFrame or _37)) * _d:Inverse()
+    end
+
+    local function _db(_4, _d)
+        if _d:IsA("BasePart") or _d:IsA("Decal") then
+            _4[#_4 + 1] = {inst = _d, prop = "Transparency", val = _d.Transparency}
+            pcall(function() _d.Transparency = 1 end)
+        elseif _d:IsA("ParticleEmitter") or _d:IsA("Trail") or _d:IsA("Beam") or _d:IsA("Fire") or _d:IsA("Smoke") or _d:IsA("Sparkles") then
+            _4[#_4 + 1] = {inst = _d, prop = "Enabled", val = _d.Enabled}
+            pcall(function() _d.Enabled = false end)
+        end
+    end
+
+    local function _5b(_4)
+        for _4, _d in ipairs(_4) do
+            pcall(function() _d.inst[_d.prop] = _d.val end)
+        end
+    end
+
+    local function _7b(_4)
+        local _d = {}
+        for _4, _5 in ipairs(_4) do
+            local _7 = _5.inst
+            local _b = _5.prop
+            _d[#_d + 1] = (_7:GetPropertyChangedSignal(_b)):Connect(function()
+                if _b == "Enabled" then
+                    if _7.Enabled then
+                        _7.Enabled = false
+                    end
+                elseif _7.Transparency ~= 1 then
+                    _7.Transparency = 1
+                end
+            end)
+        end
+        return _d
+    end
+
+    local function _bb(_4)
+        local _d = ipairs
+        local _5 = _4 or {}
+        for _4, _d in _d(_5) do
+            pcall(function() _d:Disconnect() end)
+        end
+    end
+
+    local function _3b()
+        return _5.Character
+    end
+
+    local function _0b(_4)
+        local _d = _3b()
+        if not _d then
+            return nil
+        end
+        local _5 = _d:FindFirstChild("DisplayRef" .. _4)
+        return _5 and _5.Value or nil
+    end
+
+    local function _8b(_4, _d)
+        local _5 = os.clock() + (_d or 1)
+        while os.clock() < _5 do
+            local _d = _0b(_4)
+            if _d then
+                return _d
+            end
+            task.wait(.05)
+        end
+        return _0b(_4)
+    end
+
+    local _eb = {}
+    local _fb = {}
+    local _2b = {}
+    local _1b = nil
+
+    local function _cb(_4, _d)
+        local _5 = workspace:FindFirstChild("WeaponDisplays")
+        if not _5 then
+            return
+        end
+        for _5, _7 in ipairs(_5:GetChildren()) do
+            if _7 ~= _d and _7:GetAttribute("MM2VizSlot") == _4 then
+                pcall(function() _7:Destroy() end)
+            end
+        end
+    end
+
+    local function _6b(_4)
+        _cb(_4)
+        local _d = _eb[_4]
+        if not _d then
+            return
+        end
+        if _d.chroma then
+            pcall(function() _d.chroma:Disconnect() end)
+        end
+        if _d.overlay then
+            pcall(function() _d.overlay:Destroy() end)
+        end
+        _5b(_d.hidden)
+        _eb[_4] = nil
+    end
+
+    local function _9b(_4, _d)
+        if _eb[_4] and (_fb[_4] == _d and _d ~= nil) then
+            return
+        end
+        _2b[_4] = (_2b[_4] or 0) + 1
+        local _5 = _2b[_4]
+        _6b(_4)
+        local _7 = _d and _0d[_d]
+        if not _7 then
+            _fb[_4] = _d
+            return
+        end
+        _fb[_4] = _d
+        local _b = _0b(_4) or _8b(_4, 1.5)
+        if _2b[_4] ~= _5 then
+            return
+        end
+        if not _b then
+            if _1b then
+                _1b("No " .. (_4 .. (" shown — equip a normal " .. (_4 .. " first."))), Color3.fromRGB(240, 200, 120))
+            end
+            return
+        end
+        _97(_b)
+        if _b7(_b) == _77(_7) and _b7(_b) ~= "" then
+            return
+        end
+        local _3 = _a7(_d, _7, _4)
+        local _0 = {}
+        _db(_0, _b)
+        for _4, _d in ipairs(_b:GetDescendants()) do
+            _db(_0, _d)
+        end
+        local _8 = _57(_7)
+        if not _8 or not _8.root or _2b[_4] ~= _5 or not _b.Parent then
+            _5b(_0)
+            if _8 and _8.root then
+                _8.root:Destroy()
+            end
+            return
+        end
+        _a5(_8, _4b(_b, _3))
+        local _e = _8.root
+        _e:SetAttribute("MM2VizOverlay", true)
+        _e:SetAttribute("MM2VizSlot", _4)
+        _e.Parent = _b.Parent or _b
+        local _f = Instance.new("WeldConstraint")
+        _f.Part0 = _e
+        _f.Part1 = _b
+        _f.Parent = _e
+        local _2 = _05(_d, _7) and _f5(_e) or nil
+        _cb(_4, _e)
+        _eb[_4] = {overlay = _e, hidden = _0, chroma = _2}
+        if _1b then
+            _1b("Showing: " .. (_d .. (" (" .. (_4 .. ")"))), Color3.fromRGB(150, 230, 170))
+        end
+    end
+-- MM2 script — fixed syntax, part 4b-2b-ii-β-2b-γ-1/4
+-- Вставляй после части 4b-2b-ii-β-2a. Копируется без последствий.
+
+    local _ab = {
+        X = Vector3.new(1, 0, 0),
+        Y = Vector3.new(0, 1, 0),
+        Z = Vector3.new(0, 0, 1)
+    }
+
+    local function _43(_4)
+        local _d = {{_4.X, "X"}, {_4.Y, "Y"}, {_4.Z, "Z"}}
+        table.sort(_d, function(_4, _d) return _4[1] > _d[1] end)
+        return _d[1][2], _d[2][2], _d[3][2]
+    end
+
+    local _d3 = {
+        Gun = {Vector3.new(0, 0, 1), Vector3.new(0, 1, 0), Vector3.new(-1, 0, 0)},
+        Knife = {Vector3.new(0, 1, 0), Vector3.new(0, 0, 1), Vector3.new(1, 0, 0)}
+    }
+    local _53 = {
+        Harvester = CFrame.Angles(0, 0, -1.5707963267948966),
+        Icepiercer = CFrame.Angles(0, 0, -1.5707963267948966)
+    }
+    local _73 = {Sweet = true, SweetChroma = true}
+    local _b3 = {Harvester = .5, Icepiercer = .5}
+
+    local function _33(_4, _d, _5, _7)
+        if _d and _73[_d] then
+            return _37
+        end
+        local _b = _87(_5)
+        local _3 = _d3[_7]
+        if not (_b and _3) then
+            return _37
+        end
+        local _0, _8, _e = _43(_b)
+        local _f = {[_0] = _3[1], [_8] = _3[2], [_e] = _3[3]}
+        if (_ab[_0]:Cross(_ab[_8])):Dot(_ab[_e]) < 0 then
+            _f[_e] = -_f[_e]
+        end
+        local _2 = _f.X
+        local _1 = _f.Y
+        local _c = _f.Z
+        local _6 = _4.Grip.Rotation * CFrame.fromMatrix(Vector3.new(), _2, _1, _c)
+        local _9 = _d and _53[_d]
+        if _9 then
+            _6 *= _9
+        end
+        _d = _d and _b3[_d]
+        if _d then
+            _6 *= CFrame.new(_ab[_0] * _d)
+        end
+        return _6
+    end
+
+    local function _03(_4, _d)
+        local _5 = _87(_d)
+        if not _5 then
+            return _37
+        end
+        local _7, _b, _3 = _43(_5)
+        local _0, _8, _e = _43(_4)
+        local _f = {[_7] = _ab[_0], [_b] = _ab[_8], [_3] = _ab[_e]}
+        if (_ab[_7]:Cross(_ab[_b])):Dot(_ab[_3]) ~= (_ab[_0]:Cross(_ab[_8])):Dot(_ab[_e]) then
+            _f[_3] = -_f[_3]
+        end
+        local _2 = _f.X
+        local _1 = _f.Y
+        local _c = _f.Z
+        return CFrame.fromMatrix(Vector3.new(), _2, _1, _c)
+    end
+
+    local function _83(_4)
+        if not _4 then
+            return nil
+        end
+        return _4:match("^(.-)Chroma$") or _4:match("^Chroma(.+)$")
+    end
+
+    local function _e3(_4, _d)
+        local _5 = _83(_4)
+        local _7 = _5 and (_0d[_5] and _0d[_5].Meta) or _d.Meta
+        if not _7 then
+            return nil
+        end
+        if _7.ItemID then
+            return "rbxthumb://type=Asset&w=150&h=150&id=%d":format(_7.ItemID)
+        end
+        return _7.Image
+    end
+
+    local _f3 = setmetatable({}, {__mode = "k"})
+
+    local function _23(_4)
+        local _d = _f3[_4]
+        if _d and _d.Parent then
+            return _d
+        end
+        local _7 = _5:FindFirstChild("PlayerGui")
+        _7 = _7 and _7:FindFirstChild("BackpackUI")
+        _7 = _7 and _7:FindFirstChild("BackpackFrame")
+        if not _7 then
+            return nil
+        end
+        for _d, _5 in ipairs(_7:GetChildren()) do
+            local _7 = _5:IsA("GuiObject") and _5:FindFirstChild("Container")
+            local _b = _7 and _7:FindFirstChild("NameLabel")
+            if _b and _7:FindFirstChild("ToolIcon") then
+                local _d = _5.Name
+                local _3 = _b.Text
+                _5.Name = _d .. " "
+                task.wait()
+                local _0 = _b.Text
+                _5.Name = _d
+                task.wait()
+                _b.Text = _3
+                if _0 == _4.Name then
+                    _f3[_4] = _7
+                    return _7
+                end
+            end
+        end
+        return nil
+    end
+
+    local function _13(_4, _d)
+        task.spawn(function()
+            local _5 = _23(_4)
+            if not _5 then
+                return
+            end
+            local _7 = _5:FindFirstChild("ToolIcon")
+            if _7 then
+                _7.Image = _d
+            end
+            local _b = _5:FindFirstChild("NameLabel")
+            if _b then
+                _b.Text = _d == "" and _4.Name or ""
+            end
+        end)
+    end
+
+    local function _c3(_4, _d)
+        if not _d or _d == "" then
+            return nil
+        end
+        local _5 = _4.TextureId
+        _4.TextureId = _d
+        _13(_4, _d)
+        return _5
+    end
+
+    local function _63(_4, _d)
+        if not _d then
+            return
+        end
+        pcall(function() _4.TextureId = _d end)
+        _13(_4, _d)
+    end
+
+    local _93 = {
+        Harvester = "rbxassetid://7808472682",
+        Icepiercer = "rbxassetid://7808472682",
+        Raygun = "rbxassetid://92066070356304",
+        RaygunChroma = "rbxassetid://92066070356304",
+        Snowcannon = "rbxassetid://136161856273464",
+        SnowcannonChroma = "rbxassetid://136161856273464",
+        Gingerscope = "rbxassetid://74240492893421"
+    }
+    local _a3 = _G.__MM2VizSounds or {}
+    _G.__MM2VizSounds = _a3
+
+    local function _40()
+        for _4, _d in ipairs(_4:GetPlayers()) do
+            for _4, _d in ipairs({_d.Character, _d:FindFirstChild("Backpack")}) do
+                local _5 = ipairs
+                _d = _d and _d:GetChildren() or {}
+                for _4, _d in _5(_d) do
+                    local _5 = _d:IsA("Tool") and _d:GetAttribute("ItemID")
+                    local _7 = _5 and _d:FindFirstChild("Handle")
+                    _7 = _7 and _7:FindFirstChild("AltSound")
+                    if _7 and (_7:IsA("Sound") and (_7.SoundId ~= "" and _a3[_5] ~= _7.SoundId)) then
+                        _a3[_5] = _7.SoundId
+                        print("learned shot sound -- SHOT_SOUND[%q] = %q":format(_5, _7.SoundId))
+                    end
+                end
+            end
+        end
+    end
+
+    local function _d0(_4, _d)
+        local _5 = _93[_d] or _a3[_d]
+        local _7 = _5 and _4:FindFirstChild("Handle")
+        _7 = _7 and _7:FindFirstChild("Gunshot")
+        if not (_7 and _7:IsA("Sound")) then
+            return nil
+        end
+        local _b = _7.SoundId
+        _7.SoundId = _5
+        return {sound = _7, old = _b}
+    end
+
+    local function _50(_4)
+        if _4 and _4.sound then
+            pcall(function() _4.sound.SoundId = _4.old end)
+        end
+    end
+
+    local _30 = {}
+
+    local function _80(_4)
+        if _4:IsDescendantOf(_5) then
+            return true
+        end
+        local _d = _3b()
+        return _d ~= nil and _4:IsDescendantOf(_d)
+    end
+
+    local function _e0(_4, _d)
+        if _30[_4] then
+            return
+        end
+        local _5 = _4:FindFirstChild("Handle") or _4:WaitForChild("Handle", 5)
+        if not _5 then
+            return
+        end
+        local _7 = _0.Weapons.Equipped[_d]
+        local _b = _7 and _0d[_7]
+        if not _b then
+            return
+        end
+        _97(_5)
+        local _3 = _57(_b)
+        if not _3 or not _3.root then
+            return
+        end
+        local _8 = {}
+        _db(_8, _5)
+        for _4, _d in ipairs(_5:GetDescendants()) do
+            _db(_8, _d)
+        end
+        _a5(_3, _5.CFrame * (_c7[_7] or _33(_4, _7, _b, _d)))
+        local _e = _3.root
+        _e.Parent = _5
+        local _f = Instance.new("WeldConstraint")
+        _f.Part0 = _e
+        _f.Part1 = _5
+        _f.Parent = _e
+        local _2 = _05(_7, _b) and _f5(_e) or nil
+        _e:SetAttribute("MM2VizOverlay", true)
+        _30[_4] = {
+            overlay = _e,
+            hidden = _8,
+            chroma = _2,
+            icon = _c3(_4, _e3(_7, _b)),
+            skin = _7,
+            guards = _7b(_8),
+            shot = _d0(_4, _7)
+        }
+    end
+
+    local function _f0(_4)
+        local _d = {}
+        local _5 = ipairs
+        local _7 = _2d
+        local _b = _7.GetTagged
+        local _3 = _4 == "Gun" and "Weapon_Gun" or "Weapon_Knife"
+        for _4, _5 in _5(_b(_7, _3)) do
+            if _80(_5) then
+                _d[#_d + 1] = _5
+            end
+        end
+        return _d
+    end
+
+    local function _20(_4)
+        local _d = _30[_4]
+        if not _d then
+            return
+        end
+        if _d.chroma then
+            pcall(function() _d.chroma:Disconnect() end)
+        end
+        if _d.overlay then
+            pcall(function() _d.overlay:Destroy() end)
+        end
+        pcall(_63, _4, _d.icon)
+        _50(_d.shot)
+        _bb(_d.guards)
+        _5b(_d.hidden)
+        _30[_4] = nil
+    end
+
+    local _10 = _G.__MM2VizBaseline
+    if not _10 then
+        _10 = {}
+        for _4, _d in pairs(_0.Weapons.Owned) do
+            _10[_4] = _d
+        end
+        _G.__MM2VizBaseline = _10
+    end
+    local _c0 = _G.__MM2VizBaselineEq
+    if not _c0 then
+        _c0 = {
+            Knife = _0.Weapons.Equipped.Knife,
+            Gun = _0.Weapons.Equipped.Gun
+        }
+        _G.__MM2VizBaselineEq = _c0
+    end
+
+    local function _60(_4, _d)
+        local _5 = _d or 1
+        local _7 = _0.Weapons.Owned
+        _7[_4] = (_7[_4] or 0) + _5
+        pcall(function() _e:Fire("Weapons", _4, _7[_4]) end)
+    end
+
+    local function _90()
+        local _4 = _0.Weapons.Owned
+        local _d = 0
+        for _5 in pairs(_0d) do
+            local _7 = _10[_5]
+            if _4[_5] ~= _7 then
+                _4[_5] = _7
+                pcall(function() _e:Fire("Weapons", _5, _4[_5] or 0) end)
+                _d += 1
+            end
+        end
+        for _d, _5 in ipairs({"Knife", "Gun"}) do
+            local _7 = _0.Weapons.Equipped[_5]
+            if _7 and _4[_7] == nil then
+                local _d = _c0[_5]
+                if not (_d and _4[_d]) then
+                    _d = nil
+                    for _4 in pairs(_4) do
+                        local _7 = _8[_4]
+                        if type(_7) == "table" and _7.ItemType == _5 then
+                            _d = _4
+                            break
+                        end
+                    end
+                end
+                if not _d then
+                    _d = _5 == "Knife" and "DefaultKnife" or "DefaultGun"
+                end
+                _0.Weapons.Equipped[_5] = _d
+                pcall(function() _b.EquippedChanged:Fire(_5, _d) end)
+            end
+        end
+        return _d
+    end
+
+    local _a0 = {}
+    for _4 in pairs(_0d) do
+        local _d = _8[_4]
+        _a0[#_a0 + 1] = {
+            key = _4,
+            name = type(_d) == "table" and _d.ItemName or _4,
+            type = type(_d) == "table" and _d.ItemType or "",
+            rarity = type(_d) == "table" and _d.Rarity or "",
+            chroma = _05(_4, _0d[_4])
+        }
+    end
+    table.sort(_a0, function(_4, _d)
+        if _4.type ~= _d.type then
+            return _4.type < _d.type
+        end
+        if _4.rarity ~= _d.rarity then
+            return _4.rarity < _d.rarity
+        end
+        return _4.name:lower() < _d.name:lower()
+    end)
+
+    local _48 = nil
+    local _d8 = Instance.new("ScreenGui")
+    _d8.Name = "MM2Spawner"
+    _d8.ResetOnSpawn = false
+    _d8.IgnoreGuiInset = true
+    _d8.DisplayOrder = 999999
+    pcall(function() _d8.Parent = gethui and gethui() or game:GetService("CoreGui") end)
+    if not _d8.Parent then
+        _d8.Parent = _5:WaitForChild("PlayerGui")
+    end
+    _7.gui = _d8
+
+    local _58 = Instance.new("Frame")
+    _58.Size = UDim2.fromOffset(290, 420)
+    _58.Position = UDim2.new(0, 20, .5, -210)
+    _58.BackgroundColor3 = Color3.fromRGB(20, 20, 27)
+    _58.BorderSizePixel = 0
+    _58.Active = true
+    _58.Draggable = true
+    _58.Parent = _d8
+    ;(Instance.new("UICorner", _58)).CornerRadius = UDim.new(0, 10)
+
+    local _78 = Instance.new("UIStroke", _58)
+    _78.Color = Color3.fromRGB(120, 90, 230)
+    _78.Thickness = 1.5
+
+    local _b8 = Instance.new("TextButton")
+    _b8.Size = UDim2.new(.5, -14, 0, 26)
+    _b8.Position = UDim2.fromOffset(12, 10)
+    _b8.BackgroundColor3 = Color3.fromRGB(60, 95, 70)
+    _b8.BorderSizePixel = 0
+    _b8.Font = Enum.Font.GothamBold
+    _b8.TextSize = 12
+    _b8.TextColor3 = Color3.fromRGB(200, 255, 215)
+    _b8.Text = "Spawn all"
+    _b8.Parent = _58
+    ;(Instance.new("UICorner", _b8)).CornerRadius = UDim.new(0, 6)
+
+    local _38 = Instance.new("TextButton")
+    _38.Size = UDim2.new(.5, -14, 0, 26)
+    _38.Position = UDim2.new(.5, 2, 0, 10)
+    _38.BackgroundColor3 = Color3.fromRGB(95, 60, 70)
+    _38.BorderSizePixel = 0
+    _38.Font = Enum.Font.GothamBold
+    _38.TextSize = 12
+    _38.TextColor3 = Color3.fromRGB(255, 205, 215)
+    _38.Text = "Despawn all"
+    _38.Parent = _58
+    ;(Instance.new("UICorner", _38)).CornerRadius = UDim.new(0, 6)
+
+    local _08 = Instance.new("ScrollingFrame")
+    _08.Size = UDim2.new(1, -20, 1, -56)
+    _08.Position = UDim2.fromOffset(10, 46)
+    _08.BackgroundColor3 = Color3.fromRGB(14, 14, 19)
+    _08.BackgroundTransparency = .3
+    _08.BorderSizePixel = 0
+    _08.ScrollBarThickness = 6
+    _08.ScrollBarImageColor3 = Color3.fromRGB(120, 90, 230)
+    _08.CanvasSize = UDim2.new(0, 0, 0, 0)
+    _08.AutomaticCanvasSize = Enum.AutomaticSize.Y
+    _08.Parent = _58
+    ;(Instance.new("UICorner", _08)).CornerRadius = UDim.new(0, 6)
+
+    local _88 = Instance.new("UIListLayout")
+    _88.Padding = UDim.new(0, 2)
+    _88.SortOrder = Enum.SortOrder.LayoutOrder
+    _88.Parent = _08
+
+    local _e8 = Instance.new("UIPadding")
+    _e8.PaddingTop = UDim.new(0, 3)
+    _e8.PaddingBottom = UDim.new(0, 3)
+    _e8.PaddingLeft = UDim.new(0, 3)
+    _e8.PaddingRight = UDim.new(0, 3)
+    _e8.Parent = _08
+
+    local function _f8() end
+
+    local _28 = {
+        Godly = Color3.fromRGB(255, 110, 190),
+        Ancient = Color3.fromRGB(165, 95, 245)
+    }
+    local _18 = false
+    local _c8 = {}
+
+    local function _68()
+        if _18 then
+            return
+        end
+        _18 = true
+        task.spawn(function()
+            for _4, _d in ipairs(_a0) do
+                local _5 = Instance.new("TextButton")
+                _5.Size = UDim2.new(1, -6, 0, 24)
+                _5.BackgroundColor3 = _d.type == "Knife" and Color3.fromRGB(48, 44, 70) or Color3.fromRGB(44, 56, 72)
+                _5.BackgroundTransparency = .25
+                _5.Font = Enum.Font.Gotham
+                _5.TextSize = 12
+                _5.TextColor3 = Color3.fromRGB(235, 235, 245)
+                _5.TextXAlignment = Enum.TextXAlignment.Left
+                _5.TextTruncate = Enum.TextTruncate.AtEnd
+                _5.Text = "  " .. (_d.name .. ((_d.chroma and "  [Chroma]" or "") .. ("   -  " .. (_d.rarity .. (" " .. _d.type)))))
+                _5.LayoutOrder = _4
+                _5.Parent = _08
+                ;(Instance.new("UICorner", _5)).CornerRadius = UDim.new(0, 4)
+                local _7 = Instance.new("UIStroke", _5)
+                _7.Color = _28[_d.rarity] or Color3.fromRGB(90, 90, 110)
+                _7.Thickness = 1.4
+                _7.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+                local _b = _d.key
+                _5.MouseButton1Click:Connect(function()
+                    _60(_b, 1)
+                    _f8(_b)
+                    local _4 = _5.BackgroundColor3
+                    _5.BackgroundColor3 = Color3.fromRGB(0, 150, 100)
+                    task.delay(.18, function()
+                        if _5.Parent then
+                            _5.BackgroundColor3 = _4
+                        end
+                    end)
+                end)
+                _c8[#_c8 + 1] = {btn = _5, hay = (_d.key .. (" " .. _d.name)):lower()}
+                if _4 % 60 == 0 then
+                    task.wait()
+                end
+            end
+        end)
+    end
+    _68()
+
+    _b8.MouseButton1Click:Connect(function()
+        if _b8.Text ~= "Spawn all" then
+            return
+        end
+        _b8.Text = "..."
+        task.spawn(function()
+            for _4, _d in ipairs(_a0) do
+                _60(_d.key, 1)
+                if _4 % 25 == 0 then
+                    task.wait()
+                end
+            end
+            _b8.Text = "Spawn all"
+        end)
+    end)
+
+    _38.MouseButton1Click:Connect(function()
+        if _38.Text ~= "Despawn all" then
+            return
+        end
+        _38.Text = "..."
+        task.spawn(function()
+            _90()
+            _38.Text = "Despawn all"
+        end)
+    end)
+
+    _1b = function(_4, _d)
+        if _48 then
+            _48.Text = _4
+            _48.TextColor3 = _d or Color3.fromRGB(190, 190, 205)
+        end
+    end
+
+    local _98 = {Knife = nil, Gun = nil}
+    pcall(function()
+        _98.Knife = _0.Weapons.Equipped.Knife
+        _98.Gun = _0.Weapons.Equipped.Gun
+    end)
+
+    task.spawn(function()
+        for _4, _d in ipairs({"Knife", "Gun"}) do
+            local _5 = _0.Weapons.Equipped[_d]
+            if _5 then
+                task.spawn(function() _9b(_d, _5) end)
+            end
+        end
+        while _G.__MM2Viz == _7 do
+            for _4, _d in ipairs({"Knife", "Gun"}) do
+                local _5 = nil
+                pcall(function() _5 = _0.Weapons.Equipped[_d] end)
+                if _5 ~= _98[_d] then
+                    _98[_d] = _5
+                    local _4 = _5
+                    task.spawn(function() _9b(_d, _4) end)
+                    for _4, _5 in ipairs(_f0(_d)) do
+                        task.spawn(function()
+                            _20(_5)
+                            _e0(_5, _d)
+                        end)
+                    end
+                end
+            end
+            task.wait(.1)
+        end
+    end)
+
+    local _a8 = _b.EquippedChanged.Event:Connect(function(_4, _d)
+        if _4 == "Knife" or _4 == "Gun" then
+            _98[_4] = _d
+            task.spawn(function() _9b(_4, _d) end)
+        end
+    end)
+    table.insert(_7.conns, _a8)
+
+    local function _4e(_4)
+        local _d = _4.ChildAdded:Connect(function(_4)
+            local _d = _4.Name
+            if _d == "DisplayRefKnife" or _d == "DisplayRefGun" then
+                local _4 = _d == "DisplayRefKnife" and "Knife" or "Gun"
+                task.delay(.2, function()
+                    local _d = _eb[_4] and _fb[_4]
+                    if _d then
+                        _eb[_4] = nil
+                        _9b(_4, _d)
+                    end
+                end)
+            end
+        end)
+        table.insert(_7.conns, _d)
+    end
+
+    if _3b() then
+        local _4 = _3b()
+        _4e(_4)
+    end
+
+    local _de = _5.CharacterAdded:Connect(function(_4)
+        for _4, _d in ipairs({"Knife", "Gun"}) do
+            local _5 = _eb[_d]
+            if _5 and _5.overlay then
+                pcall(function() _5.overlay:Destroy() end)
+            end
+        end
+        _eb = {}
+        _4e(_4)
+        task.delay(1, function()
+            for _4, _d in ipairs({"Knife", "Gun"}) do
+                if _fb[_d] then
+                    _9b(_d, _fb[_d])
+                end
+            end
+        end)
+    end)
+    table.insert(_7.conns, _de)
+
+    for _4, _d in ipairs({"Weapon_Knife", "Weapon_Gun"}) do
+        local _5 = _d == "Weapon_Gun" and "Gun" or "Knife"
+        for _4, _d in ipairs(_2d:GetTagged(_d)) do
+            if _80(_d) then
+                task.spawn(function() _e0(_d, _5) end)
+            end
+        end
+        table.insert(_7.conns, (_2d:GetInstanceAddedSignal(_d)):Connect(function(_4)
+            if _80(_4) then
+                task.spawn(function() _e0(_4, _5) end)
+            end
+        end))
+        table.insert(_7.conns, (_2d:GetInstanceRemovedSignal(_d)):Connect(function(_4) _20(_4) end))
+    end
+
+    local function _5e(_4)
+        local _d = _4:WaitForChild("KnifeVisual", 5)
+        if not _d then
+            return
+        end
+        local _5 = nil
+        for _4, _d in ipairs(_d:GetDescendants()) do
+            if _d:GetAttribute("MM2VizOverlay") then
+                _5 = _d
+                break
+            else
+                _5 = nil
+            end
+        end
+        if not _5 then
+            return
+        end
+        local _7 = {}
+        _db(_7, _d)
+        for _4, _d in ipairs(_d:GetDescendants()) do
+            if _d ~= _5 and not _d:IsDescendantOf(_5) then
+                _db(_7, _d)
+            end
+        end
+    end
+    table.insert(_7.conns, (_2d:GetInstanceAddedSignal("ThrowingKnife")):Connect(function(_4) task.spawn(_5e, _4) end))
+
+    local _7e = {}
+
+    local function _be()
+        local _4 = _3b()
+        for _d, _7 in ipairs(_2d:GetTagged("Weapon_Knife")) do
+            if _7:IsDescendantOf(_5) or _4 and _7:IsDescendantOf(_4) then
+                return true
+            end
+        end
+        return false
+    end
+
+    local function _3e(_4)
+        local _d = _7e[_4]
+        if not _d then
+            return
+        end
+        _7e[_4] = nil
+        if _d.chroma then
+            pcall(function() _d.chroma:Disconnect() end)
+        end
+        _bb(_d.guards)
+        if _d.overlay then
+            pcall(function() _d.overlay:Destroy() end)
+        end
+    end
+
+    local function _0e(_4)
+        if _7e[_4] or not _be() then
+            return
+        end
+        local _d = _0.Weapons.Equipped.Knife
+        local _5 = _d and _0d[_d]
+        if not _5 then
+            return
+        end
+        _7e[_4] = {}
+        local _7 = _57(_5)
+        if not _7 or not _7.root or not _4.Parent then
+            if _7 and _7.root then
+                _7.root:Destroy()
+            end
+            _7e[_4] = nil
+            return
+        end
+        local _b = {}
+        _db(_b, _4)
+        for _4, _d in ipairs(_4:GetDescendants()) do
+            _db(_b, _d)
+        end
+        _a5(_7, _4.CFrame * _03(_4.Size, _5))
+        local _3 = _7.root
+        _3.Parent = _4
+        local _8 = Instance.new("WeldConstraint")
+        _8.Part0 = _3
+        _8.Part1 = _4
+        _8.Parent = _3
+        _7e[_4] = {
+            overlay = _3,
+            chroma = _05(_d, _5) and _f5(_3) or nil,
+            guards = _7b(_b)
+        }
+        _4.Destroying:Once(function() _3e(_4) end)
+    end
+
+    local function _8e(_4)
+        if _4:IsA("BasePart") and _4.Name == "StuckKnife" then
+            task.spawn(_0e, _4)
+        end
+    end
+
+    for _4, _d in ipairs(workspace:GetChildren()) do
+        _8e(_d)
+    end
+    table.insert(_7.conns, workspace.ChildAdded:Connect(_8e))
+
+    task.spawn(function()
+        while _G.__MM2Viz == _7 do
+            pcall(_40)
+            task.wait(2)
+        end
+    end)
+
+    _7.tune = function(_4, _d, _5, _7)
+        local _b = _fb[_4]
+        local _3 = _b and _0d[_b]
+        if not _3 then
+            warn("nothing applied on " .. tostring(_4))
+            return
+        end
+        local _0 = (_17[_b] or _a7(_b, _3, _4)) * CFrame.Angles(_d or 0, _5 or 0, _7 or 0)
+        _17[_b] = _0
+        local _8 = {_0:GetComponents()}
+        for _4, _d in ipairs(_8) do
+            _8[_4] = string.format("%.5f", _d)
+        end
+        print("OVERRIDE[%q] = CFrame.new(%s)":format(_b, table.concat(_8, ", ")))
+        task.spawn(function()
+            _fb[_4] = nil
+            _9b(_4, _b)
+        end)
+    end
+
+    _7.tuneGrip = function(_4, _d, _5, _7)
+        local _b = nil
+        for _d in pairs(_30) do
+            if (_2d:HasTag(_d, "Weapon_Gun") and "Gun" or "Knife") == _4 then
+                _b = _d
+            end
+        end
+        local _3 = _b and _30[_b]
+        local _0 = _3 and _0d[_3.skin]
+        if not _0 then
+            warn("not holding a " .. tostring(_4))
+            return
+        end
+        local _8 = (_c7[_3.skin] or _33(_b, _3.skin, _0, _4)) * CFrame.Angles(_d or 0, _5 or 0, _7 or 0)
+        _c7[_3.skin] = _8
+        local _e = {_8:GetComponents()}
+        for _4, _d in ipairs(_e) do
+            _e[_4] = string.format("%.5f", _d)
+        end
+        print("OVERRIDE_GRIP[%q] = CFrame.new(%s)":format(_3.skin, table.concat(_e, ", ")))
+        task.spawn(function()
+            _20(_b)
+            _e0(_b, _4)
+        end)
+    end
+
+    _7.nudge = function(_4, _d)
+        local _5 = nil
+        for _d in pairs(_30) do
+            if (_2d:HasTag(_d, "Weapon_Gun") and "Gun" or "Knife") == _4 then
+                _5 = _d
+            end
+        end
+        local _7 = _5 and _30[_5]
+        if not _7 then
+            warn("not holding a " .. tostring(_4))
+            return
+        end
+        _b3[_7.skin] = (_b3[_7.skin] or 0) + (_d or 0)
+        print("GRIP_NUDGE[%q] = %.2f":format(_7.skin, _b3[_7.skin]))
+        task.spawn(function()
+            _20(_5)
+            _e0(_5, _4)
+        end)
+    end
+
+    _7.spawn = _60
+    _7.despawnAll = _90
+    _7.list = _a0
+    _7.icon = function(_4)
+        local _d = _0d[_4]
+        return _d and _e3(_4, _d) or nil
+    end
+
+    _7.destroy = function()
+        for _4, _d in ipairs(_7.conns) do
+            pcall(function() _d:Disconnect() end)
+        end
+        for _4 in pairs(_eb) do
+            pcall(_6b, _4)
+        end
+        for _4 in pairs(_30) do
+            pcall(_20, _4)
+        end
+        for _4 in pairs(_7e) do
+            pcall(_3e, _4)
+        end
+        if _7.gui then
+            pcall(function() _7.gui:Destroy() end)
+        end
+    end
+
+    _1b("Ready — %d weapons (%d full). Spawn + equip; works in-round too.":format(_8d, _ed))
+    return _G.__MM2Viz
+end
+-- MM2 script — fixed syntax, part 4b-2b-ii-β-2b-γ-2/4
+-- Вставляй после части 4b-2b-ii-β-2b-γ-1. Это конец файла.
+
+_c3.skins:Paragraph({Title = "Visual Skin Changer — ONLY YOU CAN SEE THIS!", Desc = "Beta - expect the odd bug while holding items. Report them in our YouTube comments."})
+local _4d = nil
+local _dd = nil
+_c3.skins:Button({Title = "Spawn all visual skins", Callback = function()
+    if not _4d then
+        _4:Notify({Title = "Skins", Content = "Still loading, try again in a second.", Duration = 2, Icon = "loader"})
+        return
+    end
+    task.spawn(function()
+        for _4, _d in ipairs(_4d.list) do
+            pcall(_4d.spawn, _d.key, 1)
+        end
+        _4:Notify({Title = "Skins", Content = "Spawned %d skins.":format(#_4d.list), Duration = 2, Icon = "check"})
+    end)
+end})
+_c3.skins:Button({Title = "Despawn all visual skins", Callback = function()
+    if not _4d then
+        return
+    end
+    pcall(_4d.despawnAll)
+    _4:Notify({Title = "Skins", Content = "Despawned.", Duration = 2, Icon = "check"})
+end})
+local _5d = Color3.fromRGB
+_63("Spawn all visual skins", Color3.fromHex("#D9D9E0"), .25, _5d(24, 24, 27))
+local _7d = Color3.fromRGB
+_63("Despawn all visual skins", Color3.fromHex("#2A2A32"), .25, _7d(228, 228, 236))
+
+local _bd = _c3.skins:Paragraph({Title = "Skins", Desc = "Loading…"})
+local _1d = {}
+local function _cd()
+    local _d = _93(_bd)
+    if not _d then
+        warn("[VOID] couldn't reach the Paragraph container - skin grid skipped")
+        return
+    end
+    local _5 = Instance.new("Frame")
+    _5.Name = "VOIDSkinSearch"
+    _5.LayoutOrder = -1
+    _5.Size = UDim2.new(1, 0, 0, 30)
+    _5.BackgroundColor3 = Color3.fromRGB(10, 10, 13)
+    _5.BackgroundTransparency = .25
+    _5.BorderSizePixel = 0
+    _5.Parent = _d
+    ;(Instance.new("UICorner", _5)).CornerRadius = UDim.new(0, 8)
+    local _7 = Instance.new("TextBox")
+    _7.BackgroundTransparency = 1
+    _7.Size = UDim2.new(1, -18, 1, 0)
+    _7.Position = UDim2.fromOffset(9, 0)
+    _7.Font = Enum.Font.Gotham
+    _7.TextSize = 12
+    _7.TextXAlignment = Enum.TextXAlignment.Left
+    _7.TextColor3 = Color3.fromRGB(230, 230, 240)
+    _7.PlaceholderText = "Search skins..."
+    _7.PlaceholderColor3 = Color3.fromRGB(120, 120, 135)
+    _7.ClearTextOnFocus = false
+    _7.Text = ""
+    _7.Parent = _5
+    local _b = Instance.new("Frame")
+    _b.Name = "VOIDSkinGrid"
+    _b.LayoutOrder = 0
+    _b.BackgroundTransparency = 1
+    _b.Parent = _d
+    local _0 = Instance.new("UIGridLayout")
+    _0.CellSize = UDim2.fromOffset(84, 84)
+    _0.CellPadding = UDim2.fromOffset(6, 6)
+    _0.SortOrder = Enum.SortOrder.LayoutOrder
+    _0.HorizontalAlignment = Enum.HorizontalAlignment.Center
+    _0.Parent = _b
+    local function _8()
+        _b.Size = UDim2.new(1, 0, 0, _0.AbsoluteContentSize.Y)
+    end
+    ;(_0:GetPropertyChangedSignal("AbsoluteContentSize")):Connect(_8)
+    _8()
+    local _e = nil
+    pcall(function()
+        local _4 = _3:FindFirstChild("PlayerGui")
+        if not _4 then
+            return
+        end
+        for _4, _d in ipairs(_4:GetDescendants()) do
+            if _d:IsA("Frame") and (_d.Name == "Chroma" and _d:FindFirstChild("BG")) then
+                _e = _d:Clone()
+                break
+            end
+        end
+    end)
+    local _f = {
+        Godly = Color3.fromRGB(255, 110, 190),
+        Ancient = Color3.fromRGB(165, 95, 245)
+    }
+    local function _2(_4)
+        local _d = _dd and _dd[_4]
+        if _d then
+            local _4 = type(_d.Image) == "string" and _d.Image or nil
+            local _5
+            if _4 then
+                _5 = _4:find("rbxassetid") or _4:find("rbxthumb")
+            else
+                _5 = _4
+            end
+            if _5 then
+                return _4
+            end
+            if _4 then
+                local _d = _4:match("[Aa]sset[Ii][Dd]=(%d+)") or _4:match("[?&]id=(%d+)")
+                if _d then
+                    return "rbxthumb://type=Asset&w=150&h=150&id=" .. _d
+                end
+            end
+            if tonumber(_d.ItemID) then
+                return "rbxthumb://type=Asset&w=150&h=150&id=%s":format(tostring(_d.ItemID))
+            end
+        end
+        return _4d.icon(_4) or ""
+    end
+    local _1 = {Ancient = 1, Godly = 2}
+    local _c = {}
+    for _4, _d in ipairs(_4d.list) do
+        _c[#_c + 1] = _d
+    end
+    table.sort(_c, function(_4, _d)
+        local _5 = _1[_4.rarity] or 3
+        local _7 = _1[_d.rarity] or 3
+        if _5 ~= _7 then
+            return _5 < _7
+        end
+        return _4.name:lower() < _d.name:lower()
+    end)
+    for _d, _5 in ipairs(_c) do
+        local _7 = Instance.new("TextButton")
+        _7.Name = _5.key
+        _7.LayoutOrder = _d
+        _7.Text = ""
+        _7.AutoButtonColor = false
+        _7.BackgroundColor3 = Color3.fromRGB(10, 10, 13)
+        _7.BackgroundTransparency = .25
+        _7.BorderSizePixel = 0
+        _7.Parent = _b
+        ;(Instance.new("UICorner", _7)).CornerRadius = UDim.new(0, 10)
+        local _3 = Instance.new("UIStroke")
+        _3.Thickness = 1.5
+        _3.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+        _3.Color = _f[_5.rarity] or Color3.fromRGB(255, 255, 255)
+        _3.Transparency = .55
+        _3.Parent = _7
+        local _0 = Instance.new("ImageLabel")
+        _0.BackgroundTransparency = 1
+        _0.AnchorPoint = Vector2.new(.5, 0)
+        _0.Position = UDim2.new(.5, 0, 0, 5)
+        _0.Size = UDim2.fromOffset(56, 56)
+        _0.Image = _2(_5.key)
+        _0.ScaleType = Enum.ScaleType.Fit
+        _0.Parent = _7
+        local _8 = Instance.new("TextLabel")
+        _8.BackgroundTransparency = 1
+        _8.AnchorPoint = Vector2.new(.5, 1)
+        _8.Position = UDim2.new(.5, 0, 1, -4)
+        _8.Size = UDim2.new(1, -6, 0, 18)
+        _8.Font = Enum.Font.GothamBold
+        _8.TextSize = 10
+        _8.TextWrapped = true
+        _8.TextColor3 = Color3.fromRGB(200, 200, 210)
+        _8.Text = _5.name
+        _8.Parent = _7
+        if _5.chroma then
+            local _4
+            if _e then
+                _4 = _e:Clone()
+                _4.Visible = true
+                _4.AnchorPoint = Vector2.new(0, 1)
+                _4.Position = UDim2.new(0, 3, 0, 61)
+                _4.Size = UDim2.fromOffset(36, 11)
+                local _d = _4:FindFirstChild("TagName")
+                if _d and _d:IsA("TextLabel") then
+                    _d.TextSize = 9
+                end
+            else
+                _4 = Instance.new("TextLabel")
+                _4.BackgroundTransparency = .3
+                _4.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+                _4.AnchorPoint = Vector2.new(0, 1)
+                _4.Position = UDim2.new(0, 3, 0, 61)
+                _4.Size = UDim2.fromOffset(36, 11)
+                _4.Font = Enum.Font.SourceSansBold
+                _4.TextSize = 9
+                _4.TextColor3 = Color3.fromRGB(255, 255, 255)
+                _4.Text = "Chroma"
+                ;(Instance.new("UICorner", _4)).CornerRadius = UDim.new(0, 4)
+            end
+            _4.Name = "ChromaTag"
+            _4.ZIndex = 5
+            for _4, _d in ipairs(_4:GetDescendants()) do
+                if _d:IsA("GuiObject") then
+                    _d.ZIndex = 5
+                end
+            end
+            _4.Parent = _7
+        end
+        _7.MouseButton1Click:Connect(function()
+            local _d = pcall(_4d.spawn, _5.key, 1)
+            _4:Notify({
+                Title = _d and "Spawned" or "Failed",
+                Content = _d and _5.name .. " — equip it from your inventory." or "Couldn't spawn " .. _5.name,
+                Duration = 2,
+                Icon = _d and "check" or "x"
+            })
+        end)
+        _1d[#_1d + 1] = {tile = _7, search = _5.name:lower()}
+    end
+    ;(_7:GetPropertyChangedSignal("Text")):Connect(function()
+        local _4 = _7.Text:lower()
+        for _d, _5 in ipairs(_1d) do
+            _5.tile.Visible = _4 == "" or _5.search:find(_4, 1, true) ~= nil
+        end
+    end)
+    _bd:SetDesc("%d skins — click one to add it, then equip it normally.":format(#_4d.list))
+    task.spawn(function()
+        local _4 = {}
+        for _d, _5 in ipairs(_1d) do
+            local _7 = _5.tile:FindFirstChildWhichIsA("ImageLabel")
+            if _7 then
+                _4[#_4 + 1] = _7
+            end
+        end
+        pcall(function() (game:GetService("ContentProvider")):PreloadAsync(_4) end)
+    end)
+end
+
+task.spawn(function()
+    local _4 = getthreadidentity and getthreadidentity() or nil
+    local _d, _5 = pcall(_a)
+    pcall(function()
+        _dd = (require((game:GetService("ReplicatedStorage")).Database.Sync)).Weapons
+    end)
+    if _4 and setthreadidentity then
+        pcall(setthreadidentity, _4)
+    end
+    if not _d or not _5 then
+        pcall(function() _bd:SetDesc("Couldn't load skins: " .. (tostring(_5)):sub(1, 120)) end)
+        return
+    end
+    _4d = _5
+    pcall(function()
+        if _4d.gui then
+            _4d.gui.Enabled = false
+        end
+    end)
+    _cd()
+end)
+
+_c3.combat:Section({Title = "Misc"})
+_c3.combat:Toggle({Title = "Auto Grab Gun", Flag = "Toggle_Auto_Grab_Gun", Desc = "Picks up the dropped gun for you.", Type = "Toggle", Value = false, Callback = function(_4)
+    if _4 then
+        _7b()
+    else
+        _5b()
+    end
+end})
+_c3.combat:Toggle({Title = "Wall Check", Flag = "Toggle_Wall_Check", Desc = "Only act when you can actually see the target. Covers Silent Aim, Triggerbot and the on-screen buttons.", Type = "Toggle", Value = false, Callback = function(_4) _f7 = _4 end})
+
+_7.gunEls = {}
+_7.knifeEls = {}
+
+_c3.combat:Section({Title = "Sheriff — you have the gun"})
+_7.el.silentaim = _c3.combat:Toggle({Title = "Silent Aim", Flag = "Toggle_Silent_Aim", Desc = "Bends your shots to the murderer when you click. Needs the gun, and the aimbot turns it on too.", Type = "Toggle", Value = false, Callback = function(_4)
+    _6b.aimOn = _4
+    if _4 then
+        _ab()
+    else
+        _43()
+    end
+end})
+_7.gunEls[#_7.gunEls + 1] = _7.el.silentaim
+_7.gunEls[#_7.gunEls + 1] = _c3.combat:Toggle({Title = "Triggerbot", Flag = "Toggle_Triggerbot", Desc = "Fires by itself when the murderer crosses your crosshair. Sheriff only.", Type = "Toggle", Value = false, Callback = function(_4)
+    _9b.enabled = _4
+    if _4 then
+        _9b.start()
+    else
+        _9b.stop()
+    end
+end})
+
+_c3.combat:Section({Title = "Murderer — you have the knife"})
+local _ad = 0
+UserInputService.InputBegan:Connect(function() _ad = os.clock() end)
+local function _45() return os.clock() - _ad < 1 end
+-- perf stub: farm-tab и visuals-tab ссылаются на _7["perf"]
+_7.perf = _7.perf or {
+    on = {},
+    set = function(_4, _d) end,
+    setAll = function(_4) end,
+    restoreAll = function() end
+}
+_73.on = true
+_73.start()
+_7.knifeEls[#_7.knifeEls + 1] = _c3.combat:Slider({Title = "Change Knife Hitbox  (OP!)", Flag = "Slider_Change_Knife_Hitbox", Desc = "Change the size of your Knife! (1 is default hitbox)", Step = 1, Value = {Min = 1, Max = 200, Default = 1}, Callback = function(_4)
+    local _d = tonumber(_4) or type(_4) == "table" and tonumber(_4.Value)
+    if _d then
+        _73.setMult(_d)
+    end
+end})
+_7.knifeEls[#_7.knifeEls + 1] = _c3.combat:Toggle({Title = "Show Hitbox", Flag = "Toggle_Show_Hitbox", Desc = "Draws the reach as a sphere.", Type = "Toggle", Value = false, Callback = function(_4)
+    if not _45() then
+        return
+    end
+    _73.show = _4
+    if _4 then
+        _73.showBall()
+    else
+        _73.hideBall()
+    end
+end})
+_7.knifeEls[#_7.knifeEls + 1] = _c3.combat:Toggle({Title = "Silent Throw", Flag = "Toggle_Silent_Throw", Desc = "Right click throws the knife at the nearest player. Murderer only.", Type = "Toggle", Value = false, Callback = function(_4)
+    _b3.on = _4
+    if _4 then
+        _b3.start()
+    else
+        _b3.stop()
+    end
+end})
+killTargetDropdown = _c3.combat:Dropdown({Title = "Target", Desc = "Pick who to stab, then use the button below.", Multi = false, Value = nil, Values = _b(), Callback = function(_4) selectedKillTarget = _4 end})
+_7.knifeEls[#_7.knifeEls + 1] = killTargetDropdown
+_7.knifeEls[#_7.knifeEls + 1] = _c3.combat:Button({Title = "Kill Target", Desc = "Instantly stabs the player picked above.", Callback = function() _d3(selectedKillTarget) end})
+_7.knifeEls[#_7.knifeEls + 1] = _c3.combat:Button({Title = "Kill All", Desc = "Instantly stabs every player in the server.", Callback = function() _53() end})
+_63("Kill All", Color3.fromHex("#7F1D1D"), .25)
+_a3(ICON.mono)
+_63("Change Knife Hitbox  (OP!)", Color3.fromHex("#7F1D1D"), .25)
+
+_c3.player:Section({Title = "Speeds"})
+_c3.player:Slider({Title = "Walk Speed", Flag = "Slider_Walk_Speed", Desc = "How fast you walk — crank it to outrun the murderer", Step = 1, Value = {Min = 16, Max = 100, Default = 16}, Callback = function(_4) _b5(_4) end})
+_c3.player:Slider({Title = "Jump Power", Flag = "Slider_Jump_Power", Desc = "How high you jump", Step = 1, Value = {Min = 50, Max = 200, Default = 50}, Callback = function(_4) _35(_4) end})
+
+_c3.player:Section({Title = "Escape & Defense"})
+_7.el.antifling = _c3.player:Toggle({Title = "Anti-Fling", Flag = "Toggle_Anti_Fling", Desc = "Blocks other players from flinging you. On by default.", Type = "Toggle", Value = true, Callback = function(_d)
+    _d5 = _d
+    if _d then
+        _c5()
+        _4:Notify({Title = "Anti-Fling ON", Content = "Fling protection on!", Duration = 2, Icon = "shield"})
+    else
+        _65()
+        _4:Notify({Title = "Anti-Fling OFF", Content = "Fling protection off.", Duration = 2, Icon = "power-off"})
+    end
+end})
+_7.el.noclip = _c3.player:Toggle({Title = "Noclip", Flag = "Toggle_Noclip", Desc = "Walk through walls", Type = "Toggle", Value = false, Callback = function(_4)
+    _6d = _4
+    if _4 then
+        _05()
+    else
+        _85()
+    end
+    if _27 then
+        _27.setActive("Noclip", _4)
+    end
+end})
+_7.el.infjump = _c3.player:Toggle({Title = "Infinite Jump", Flag = "Toggle_Infinite_Jump", Desc = "Jump as many times as you want mid-air", Type = "Toggle", Value = false, Callback = function(_4)
+    _45 = _4
+    if _4 then
+        _25()
+    else
+        _15()
+    end
+end})
+_7.el.fly = _c3.player:Toggle({Title = "Fly", Flag = "Toggle_Fly", Desc = "Fly around the map freely. WASD + Space / LeftShift", Type = "Toggle", Value = false, Callback = function(_4)
+    _9d = _4
+    if _4 then
+        _e5()
+    else
+        _f5()
+    end
+    if _27 then
+        _27.setActive("Fly", _4)
+    end
+end})
+_c3.player:Slider({Title = "Fly Speed", Flag = "Slider_Fly_Speed", Desc = "How fast you fly", Step = 1, Value = {Min = 10, Max = 200, Default = 50}, Callback = function(_4) _ad = _4 end})
+_c3.player:Section({Title = "Beta"})
+_c3.player:Button({Title = "God Mode  [BETA]", Desc = "Nothing can kill you - but you cannot pick up coins or the gun. Needs a round in progress.", Callback = function() _7.godMode() end})
+_63("God Mode  [BETA]", Color3.fromHex("#FDE68A"))
+
+_c3.settings:Section({Title = "Interface"})
+_7.setOpacity = function(_5)
+    local _b = math.clamp(tonumber(_5) or 60, 0, 100)
+    _7.uiOpacity = _b
+    local _3 = 1 - _b / 100
+    pcall(function() _d:SetBackgroundTransparency(_3) end)
+    pcall(function() _d:SetBackgroundImageTransparency(_3 * .875) end)
+    local _0 = (_7.opTok or 0) + 1
+    _7.opTok = _0
+    task.delay(.12, function()
+        if _7.opTok ~= _0 then
+            return
+        end
+        pcall(function()
+            local _d = _4.Themes and _4.Themes.VOID
+            if not _d then
+                return
+            end
+            _d.ElementBackgroundTransparency = math.min(_3 * .75, .6)
+            _4:SetTheme("VOID")
+        end)
+    end)
+end
+_c3.settings:Slider({Title = "UI Opacity", Flag = "Slider_UI_Opacity", Desc = "How solid the window is. 100 hides the game behind it completely, low turns it to glass.", Step = 1, Value = {Min = 0, Max = 100, Default = 60}, Callback = function(_4) _7.setOpacity(tonumber(_4) or type(_4) == "table" and tonumber(_4.Value) or 60) end})
+_c3.settings:Section({Title = "Protection"})
+_7.antiStealer = false
+_c3.settings:Toggle({Title = "Anti Stealer", Flag = "Toggle_Anti_Stealer", Desc = "Stops other scripts you run from taking your godlys and other valuable items.", Type = "Toggle", Value = false, Callback = function(_4) _7.antiStealer = _4 end})
+_c3.settings:Section({Title = "Server"})
+_c3.settings:Button({Title = "Server Hop", Desc = "Quickly join another server", Icon = "lucide:arrow-right-left", Callback = function() task.spawn(_1d) end})
+_c3.settings:Button({Title = "Smallest Server", Desc = "Join the server with the fewest players", Icon = "lucide:users", Callback = function() task.spawn(_cd) end})
+
+_c3.settings:Section({Title = "Config"})
+_7.cfgName = ""
+_7.namedConfig = function(_4)
+    local _5 = _d.ConfigManager:GetConfig(_4) or _d.ConfigManager:CreateConfig(_4)
+    if _5 and (_7.config and _7.config.Elements) then
+        _5.Elements = _7.config.Elements
+    end
+    return _5
+end
+_7.hudFileFor = function(_4)
+    if not _4 or _4 == "" or _4 == "autosave" then
+        return _7.hudFile
+    end
+    return _7.hudDir .. ("/" .. (_4 .. ".json"))
+end
+_7.hudSaveTo = function(_4)
+    pcall(function()
+        if writefile then
+            local _d = HttpService
+            local _5 = _d.JSONEncode
+            local _b = _7.captureHud
+            writefile(_7.hudFileFor(_4), _5(_d, _b()))
+        end
+    end)
+end
+_7.hudLoadFrom = function(_4)
+    pcall(function()
+        local _d = _7.hudFileFor(_4)
+        if isfile and isfile(_d) then
+            local _4 = HttpService:JSONDecode(readfile(_d))
+            if type(_4) == "table" then
+                _7.hudPos = _4
+                _7.applyHud()
+            end
+        end
+    end)
+end
+_7.namedList = function()
+    local _4 = {}
+    pcall(function()
+        local _5 = ipairs
+        local _b = _7.config and _d.ConfigManager:AllConfigs() or {}
+        for _d, _5 in _5(_b) do
+            if _5 ~= "autosave" and not (tostring(_5)):match("^void_hud") then
+                _4[#_4 + 1] = _5
+            end
+        end
+    end)
+    return _4
+end
+_7.el.cfgList = _c3.settings:Dropdown({Title = "Saved Configs", Desc = "Pick one, then use Load or Delete", Multi = false, Value = nil, Values = _7.namedList(), Callback = function(_4) _7.cfgName = tostring(_4 or "") end})
+_7.refreshCfgList = function()
+    pcall(function()
+        if _7.el.cfgList and _7.el.cfgList.Refresh then
+            _7.el.cfgList:Refresh(_7.namedList())
+        elseif _7.el.cfgList and _7.el.cfgList.SetValues then
+            _7.el.cfgList:SetValues(_7.namedList())
+        end
+    end)
+end
+_7.el.cfgInput = _c3.settings:Input({Title = "Config Name", Desc = "Name to save under, or type an existing one to load/delete", Placeholder = "myconfig", Callback = function(_4) _7.cfgName = tostring(_4 or "") end})
+
+_7.DEFAULT_CFG = "VOID_Default"
+pcall(function()
+    local _4 = _d.ConfigManager:GetConfig(_7.DEFAULT_CFG) or _d.ConfigManager:CreateConfig(_7.DEFAULT_CFG)
+    if _7.config and _7.config.Elements then
+        _4.Elements = _7.config.Elements
+    end
+    _4:Save()
+    local _5 = {}
+    for _4, _d in next, _2b, nil do
+        _5[_4] = {_d.X.Scale, _d.X.Offset, _d.Y.Scale, _d.Y.Offset}
+    end
+    if writefile then
+        local _4 = HttpService
+        local _d = _4.JSONEncode
+        writefile(_7.hudFileFor(_7.DEFAULT_CFG), _d(_4, _5))
+    end
+end)
+_7.refreshCfgList()
+_7.cfgPick = function(_d)
+    local _5 = ((_7.cfgName or ""):gsub("^%s+", "")):gsub("%s+$", "")
+    if _5 == "" then
+        _4:Notify({Title = "Config", Content = "Pick or type a name first.", Duration = 4, Icon = "x"})
+        return nil
+    end
+    if _5 == "autosave" then
+        _4:Notify({Title = "Config", Content = "That name is reserved for the autosave.", Duration = 4, Icon = "x"})
+        return nil
+    end
+    if _5 == _7.DEFAULT_CFG and _d ~= "load" then
+        _4:Notify({Title = "Protected Config", Content = "VOID_Default is the built-in fallback - it cannot be " .. (_d == "delete" and "deleted." or "overwritten."), Duration = 5, Icon = "shield"})
+        return nil
+    end
+    return _5
+end
+_7.cfgApply = function(_4)
+    if _4 ~= _7.DEFAULT_CFG then
+        pcall(function() (_7.namedConfig(_7.DEFAULT_CFG)):Load() end)
+        task.wait(.35)
+    end
+    return (pcall(function() (_7.namedConfig(_4)):Load() end))
+end
+_c3.settings:Button({Title = "Load Config", Desc = "Applies the named config to every setting and button position.", Icon = "lucide:folder-open", Callback = function()
+    local _d = _7.cfgPick("load")
+    if not _d then
+        return
+    end
+    task.spawn(function()
+        local _5 = _7.cfgApply(_d)
+        _7.hudLoadFrom(_d)
+        task.delay(1, function() pcall(_7.saveNow) end)
+        _4:Notify({Title = _5 and "Config Loaded!" or "Config", Content = _5 and "Loaded " .. _d or "Could not load that config.", Duration = 4, Icon = _5 and "check" or "x"})
+    end)
+end})
+_c3.settings:Button({Title = "Save Config", Desc = "Writes your current settings and button positions to the name above.", Icon = "lucide:save", Callback = function()
+    local _d = _7.cfgPick("save")
+    if not _d then
+        return
+    end
+    local _5 = pcall(function() (_7.namedConfig(_d)):Save() end)
+    _7.hudSaveTo(_d)
+    _7.refreshCfgList()
+    _4:Notify({Title = _5 and "Config Saved!" or "Config", Content = _5 and "Saved as " .. _d or "Could not save.", Duration = 4, Icon = _5 and "check" or "x"})
+end})
+_c3.settings:Button({Title = "Delete Config", Desc = "Removes the named config. Leaves the autosave alone.", Icon = "lucide:trash", Callback = function()
+    local _5 = _7.cfgPick("delete")
+    if not _5 then
+        return
+    end
+    local _b = pcall(function()
+        local _4 = _d.ConfigManager:GetConfig(_5)
+        if _4 then
+            _4:Delete()
+        else
+            _d.ConfigManager:DeleteConfig(_5)
+        end
+    end)
+    pcall(function()
+        local _4 = _7.hudFileFor(_5)
+        if delfile and (isfile and isfile(_4)) then
+            delfile(_4)
+        end
+    end)
+    if _7.cfgName == _5 then
+        _7.cfgName = ""
+    end
+    _7.refreshCfgList()
+    _4:Notify({Title = _b and "Config Deleted!" or "Config", Content = _b and _5 .. " removed." or "Could not delete that config.", Duration = 4, Icon = _b and "check" or "x"})
+end})
+_c3.settings:Paragraph({Title = "Autosave Config", Desc = "Everything saves itself a couple of seconds after you change it and comes back next time you execute. Separate from the named configs above."})
+_c3.settings:Button({Title = "Delete Autosave Config", Desc = "Wipes the saved config and goes back to defaults on next execute", Icon = "lucide:trash-2", Callback = function()
+    if not _7.config then
+        _4:Notify({Title = "Config", Content = "Nothing to delete.", Duration = 3, Icon = "x"})
+        return
+    end
+    _7.cfgWiped = true
+    _7.hudPos = {}
+    local _d = pcall(function() _7.config:Delete() end)
+    pcall(function()
+        if delfile and (isfile and isfile(_7.hudFile)) then
+            delfile(_7.hudFile)
+        end
+    end)
+    _4:Notify({Title = _d and "Config Deleted!" or "Config", Content = _d and "Re-execute the script to come up on defaults." or "Could not delete the config file.", Duration = 6, Icon = _d and "check" or "x"})
+end})
+_63("Load Config", Color3.fromHex("#86EFAC"))
+_63("Save Config", Color3.fromHex("#FDE68A"))
+_63("Delete Config", Color3.fromHex("#FCA5A5"))
+_63("Delete Autosave Config", Color3.fromHex("#FCA5A5"))
+
+local function _50()
+    _7d()
+    _fd()
+    _0 = false
+    _8 = false
+    _e = false
+    _1:Destroy()
+    _7.unreveal()
+    _6d = false
+    _9d = false
+    _45 = false
+    _d5 = false
+    _85()
+    _f5()
+    _15()
+    _65()
+    _b5(16)
+    _35(50)
+    _b7()
+    _07()
+    _e7()
+    _7.stopShells()
+    local _4 = ipairs
+    local _d = _7.BOXES or {}
+    for _4, _d in _4(_d) do
+        _7.boxOn[_d[1]] = false
+    end
+    _7.stopFarmHopWatch()
+    _7.flingAllRunning = false
+    _cb.enabled = false
+    _cb.stop()
+    _33()
+    _5b()
+    pcall(function()
+        if _G.__MM2Viz and _G.__MM2Viz.destroy then
+            _G.__MM2Viz.destroy()
+        end
+    end)
+    if keybindConn then
+        pcall(function() keybindConn:Disconnect() end)
+        keybindConn = nil
+    end
+    if _c7 then
+        pcall(function() _c7:Disconnect() end)
+        _c7 = nil
+    end
+    if _17 then
+        pcall(function() _17:Disconnect() end)
+        _17 = nil
+    end
+    if _67 then
+        pcall(function() _67:Disconnect() end)
+        _67 = nil
+    end
+    if _eb then
+        pcall(function() _eb:Disconnect() end)
+        _eb = nil
+    end
+    if _3b then
+        pcall(function() _3b:Disconnect() end)
+        _3b = nil
+    end
+    if _d0 then
+        pcall(function() _d0:Disconnect() end)
+        _d0 = nil
+    end
+    for _4, _d in ipairs(_0b) do
+        pcall(function() _d:Disconnect() end)
+    end
+    _0b = {}
+    _27.destroyAll()
+    _13()
+    pcall(function()
+        if _7.perf then
+            _7.perf.restoreAll()
+        end
+    end)
+    pcall(function()
+        if ROLEBOX then
+            ROLEBOX.stop()
+        end
+    end)
+    _7.stopVelTracker()
+    _7.tr.stop()
+    _7.setXray(false)
+    _7.dropConns(_7.conns)
+    _7.reclip(_7.clipWas)
+    _7.reclip(_7.farmClipWas)
+    _G.VOIDSilentTarget = nil
+end
+
+_d:OnDestroy(function()
+    _7.farewell()
+    _50()
+    local _4 = {}
+    pcall(function()
+        local _d = gethui and gethui() or CoreGui
+        for _d, _5 in ipairs(_d:GetChildren()) do
+            if _5.Name == "WindUI" or _5.Name:match("^WindUI/") then
+                _4[#_4 + 1] = _5
+            end
+        end
+    end)
+    task.delay(.6, function()
+        for _4, _d in ipairs(_4) do
+            pcall(function() _d:Destroy() end)
+        end
+    end)
+    if _G.VOIDV2 == _d then
+        _G.VOIDV2 = nil
+    end
+    if _G.VOIDV2Cleanup == _50 then
+        _G.VOIDV2Cleanup = nil
+    end
+end)
+
+_G.VOIDV2Cleanup = _50
+_d:Open()
+_7.pinOpenPill()
+_d:SelectTab(1)
+task.spawn(function()
+    for _4 = 1, 60, 1 do
+        RunService.RenderStepped:Wait()
+        if _d.CurrentTab ~= 1 then
+            _d:SelectTab(1)
+        end
+    end
+end)
+
+_7.captureHud = function()
+    local _4 = {}
+    for _d, _5 in next, _7.hudBtns, nil do
+        if _5 and _5.Parent then
+            local _7 = _5.Position
+            _4[_d] = {_7.X.Scale, _7.X.Offset, _7.Y.Scale, _7.Y.Offset}
+        end
+    end
+    return _4
+end
+_7.applyHud = function()
+    for _4, _d in next, _7.hudPos, nil do
+        local _5 = _7.hudBtns[_4]
+        if _5 and (_5.Parent and (type(_d) == "table" and #_d == 4)) then
+            _5.Position = UDim2.new(_d[1], _d[2], _d[3], _d[4])
+        end
+    end
+end
+_7.snapshot = function()
+    if not _7.config then
+        return ""
+    end
+    local _4, _d = pcall(function()
+        return HttpService:JSONEncode({data = _7.config:GetData(), hud = _7.captureHud()})
+    end)
+    return _4 and _d or ""
+end
+_7.saveNow = function()
+    if _7.cfgWiped then
+        return
+    end
+    pcall(function()
+        if writefile then
+            writefile(_7.hudFile, HttpService:JSONEncode(_7.captureHud()))
+        end
+    end)
+    if _7.config then
+        pcall(function() _7.config:Save() end)
+    end
+    _7.cfgSnapshot = _7.snapshot()
+end
+
+task.spawn(function()
+    if not _7.config then
+        _7.notifyReady = true
+        _7.sfxReady = true
+        _7.notifyNow({Title = "Config", Content = "ConfigManager unavailable - settings will not persist.", Duration = 5, Icon = "x"})
+        return
+    end
+    pcall(function() return _7.config:Load() end)
+    _7.applyHud()
+    task.wait(1)
+    _7.cfgSnapshot = _7.snapshot()
+    _7.notifyReady = true
+    _7.sfxReady = true
+    while _G.VOIDV2 == _d do
+        task.wait(2)
+        if not _7.cfgWiped then
+            local _4 = _7.snapshot()
+            if _4 ~= "" and _4 ~= _7.cfgSnapshot then
+                _7.saveNow()
+            end
+        end
+    end
+end)
+
+LOADUI.step(1, "Ready")
+LOADUI.done()
+_7.notifyNow({Title = "VOID Script", Content = "Loaded. G toggles the window. Invite copied - t.me/acript", Duration = 10, Icon = "solar:planet-bold"})
+task.delay(1.5, function()
+    pcall(function()
+        _7.card({
+            title = "We have a Telegram!",
+            subtitle = "Report bugs, suggest features, ask questions",
+            body = "Script not working correctly? Use the red Restore Settings button to reset all settings to their defaults.",
+            actions = {
+                {label = "Restore Settings", flex = 3, tint = Color3.fromHex("#E5484D"), callback = function()
+                    local _d = pcall(function() (_7.namedConfig(_7.DEFAULT_CFG)):Load() end)
+                    _7.hudLoadFrom(_7.DEFAULT_CFG)
+                    task.delay(1, function() pcall(_7.saveNow) end)
+                    _4:Notify({Title = _d and "Defaults Restored!" or "Restore Failed", Content = _d and "Every setting is back to how it ships." or "Could not load VOID_Default.", Duration = 5, Icon = _d and "check" or "x"})
+                end},
+                {label = "Close", flex = 4}
+            }
+        })
+    end)
+end)
+
+-- [VOID Cleanroom] Скрытый logger и передача консоли удалены.
+
+do
+    local _4 = "https://t.me/" .. (_7.DISCORD_INVITE or "acript")
+    local _d = getgenv and getgenv() or _G
+    local _5 = false
+    for _7, _b in ipairs({"setclipboard", "toclipboard", "tosetclipboard", "set_clipboard", "write_clipboard", "setClipboard"}) do
+        if not _5 then
+            local _7 = rawget(_d, _b)
+            local _3
+            if type(_7) ~= "function" then
+                local _4, _d = pcall(function() return (getfenv(0))[_b] end)
+                if _4 and type(_d) == "function" then
+                    _3 = _d
+                else
+                    _3 = _7
+                end
+            else
+                _3 = _7
+            end
+            if type(_3) == "function" and pcall(_3, _4) then
+                _5 = true
+            end
+        end
+    end
+    if not _5 then
+        local _7 = ipairs
+        local _b = {}
+        local _3 = {syn, "write_clipboard"}
+        local _0 = {syn, "set_clipboard"}
+        local _8 = {rawget(_d, "Clipboard"), "set"}
+        local _e = {rawget(_d, "Clipboard"), "Set"}
+        _b[1] = _3
+        _b[2] = _0
+        _b[3] = _8
+        _b[4] = _e
+        for _d, _7 in _7(_b) do
+            local _b = _7[1]
+            local _3 = _7[2]
+            if not _5 and (type(_b) == "table" and type(rawget(_b, _3)) == "function") then
+                if pcall(_b[_3], _4) then
+                    _5 = true
+                end
+            end
+        end
+    end
+end
